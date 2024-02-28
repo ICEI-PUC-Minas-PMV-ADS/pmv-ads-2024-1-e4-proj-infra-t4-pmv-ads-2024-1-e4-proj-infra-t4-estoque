@@ -81,12 +81,14 @@ Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em segu
 
 ## Indicadores de Desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
 
-Usar o seguinte modelo: 
+| **Indicador** | **Objetivos** | **Descrição** | **Fonte dados** | **Perspectiva** |
+| ---           | ---           | ---           | ---             | ---             |
+| Qualidade do uso do app | Avaliar crescimento de cadastro de empresas | Percentual de novos cadastros no mês | Banco de dados com cadastros | Crescimento da plataforma |
+| Eficiência no controle de estoque | Ver a velocidade de resposta ao criar um estoque | Velocidade de criação de estoque | Sistema de Controle de Estoque | Eficiência Operacional |
+| Administração de controle de estoque | Ver a eficiência dos CRUDs de novos produtos | Eficiência de administração de estoque | Sistema de Controle de Estoque | Eficiência Administrativa |
 
-![Indicadores de Desempenho](img/02-indic-desemp.png)
-Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
+Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriormente. 
 
 ## Requisitos
 
