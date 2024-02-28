@@ -1,12 +1,12 @@
-# TÍTULO DO PROJETO
+# Estoque
 
-`CURSO`
+`Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Projeto: Desenvolvimento de uma Aplicação Distribuída`
 
-`SEMESTRE`
+`4º Semestre`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Nosso projeto visa criar uma plataforma intuitiva que permitirá às empresas monitorar em tempo real informações sobre seus produtos, estoques e preços, facilitando a tomada de decisões informadas para redução de desperdícios e aumento dos lucros. 
 
 ## Integrantes
 
