@@ -1,7 +1,5 @@
 # Especificações do Projeto
 
-<span style="color:red">Pré-requisitos: <a href="1-Documentação de Contexto.md"> Documentação de Contexto</a></span>
-
 Definição do problema e ideia de solução a partir da perspectiva do usuário. É composta pela definição do  diagrama de personas, histórias de usuários, requisitos funcionais e não funcionais além das restrições do projeto.
 
 Apresente uma visão geral do que será abordado nesta parte do documento, enumerando as técnicas e/ou ferramentas utilizadas para realizar a especificações do projeto
@@ -90,38 +88,39 @@ Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em segu
 
 Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriormente. 
 
+
 ## Requisitos
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
+><br>Lembre-se que cada requisito deve corresponder à uma e somente uma característica alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas Histórias de Usuário foram cobertos.
 
-### Requisitos Funcionais
+### Requisitos Funcionais(RF):
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+Os requisitos funcionais são as descriçõoes detalhadas das funções que um sistema, software oou produto deve executar. Especificam o comportamento funcional esperado do sistema sob diferentes condições.
 
-### Requisitos não Funcionais
+|ID    | Descrição do Requisito  											 | Prioridade |
+|------|-----------------------------------------|------------------------------------------------------------|
+|RF-001| O sistema deve permitir que a empresa crie sua conta e faça login. 					|  ALTA | 
+|RF-002| O sistema deve permitir que o usuário insira produtos.   						|  ALTA |
+|RF-003| O sistema deve permitir que o usuário acompanhe os níveis de estoque de cada produto.   	|  ALTA |
+|RF-004| O sistema deve permitir que o usuário ajuste os valores dos produtos conforme necessário.   	|  ALTA |
+|RF-005| O sistema deve oferecer o monitoramento em tempo real de cada produto em estoque.		| MÉDIA |
+|RF-006| O sistema deve ter uma interface intuitiva e amigável para facilitar a navegação.		|  ALTA |
+|RF-007| O sistema deve ter um recurso de busca avançado para encontrar produtos.				| MÉDIA |
+|RF-008| O sistema deve ter um recurso de busca avançado para encontrar produtos.				| MÉDIA |
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
+### Requisitos Não Funcionais(RNF):
 
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+Os requisitos não funcionais correspondem a uma característica técnica, seja de usabilidade, desempenho, confiabilidade, segurança ou outro (ex: suporte a dispositivos iOS e Android).
+
+|ID      | Descrição do Requisito  														 | Prioridade |
+|--------|-----------------------------------------|----------------------------------------------------------------------------|
+|RNF-001 | O sistema deve ser altamente seguro, protegendo os dados do estoque contra acesso não autorizado. 		| MÉDIA | 
+|RNF-002 | O sistema deve ser escalável para lidar com o aumento de produtos conforme o crescimento da empresa.	 	|  ALTA | 
+|RNF-003 | O sistema deve ter alta disponibilidade, minimizando o tempo de inativaidade.						|  ALTA | 
+|RNF-004 | O sistema deve ser compatível com diferentes dispositivos e navegadores. 						|  ALTA | 
+|RNF-005 | O sistema deve ser responsivo, garantindo tempos de resposta rápidos para consultas de estoque e dados. 	|  ALTA | 
 
 ## Restrições
 
