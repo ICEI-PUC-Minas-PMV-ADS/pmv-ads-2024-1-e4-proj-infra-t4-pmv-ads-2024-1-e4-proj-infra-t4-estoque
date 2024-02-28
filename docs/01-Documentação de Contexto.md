@@ -1,6 +1,9 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+No cenário empresarial contemporâneo, a eficaz gestão de estoque é essencial para o sucesso de qualquer empreendimento. As empresas enfrentam desafios constantes para garantir que seus produtos estejam disponíveis em quantidade adequada para atender à demanda dos clientes, ao mesmo tempo em que buscam otimizar os custos e minimizar os riscos associados ao armazenamento excessivo ou à falta de produtos.
+Neste contexto, a implementação de um sistema de controle de estoque eficiente e acessível torna-se uma prioridade estratégica para as organizações. O presente projeto propõe o desenvolvimento de uma plataforma online que oferece às empresas a possibilidade de gerir seu estoque de forma prática, intuitiva e personalizada.
+
+A plataforma permitirá que as empresas criem uma conta, proporcionando-lhes um ambiente exclusivo onde possam inserir informações sobre seus produtos, acompanhar os níveis de estoque e ajustar os valores conforme necessário. Ao centralizar todas essas operações em um único sistema online, o projeto visa simplificar e agilizar o processo de gestão de estoque, permitindo que as empresas dediquem mais tempo e recursos a outras áreas críticas do negócio. Isso possibilitará que os gestores tomem decisões mais informadas e estratégicas, identificando oportunidades para reduzir desperdícios, melhorar a eficiência operacional e maximizar os lucros.
 
 ## Problema
 Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
