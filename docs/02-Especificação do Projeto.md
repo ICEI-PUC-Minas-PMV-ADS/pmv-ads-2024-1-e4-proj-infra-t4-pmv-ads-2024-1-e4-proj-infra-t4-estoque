@@ -8,19 +8,36 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+| <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSowyIPHTZzLfrZqdAxwjLtEjQEPoISoeIwqxpiL-frK3DA_wCamj7_8ie3ICiAyFxlz4&usqp=CAU" width="300" height="175"/> | José Silva, 32 anos|
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------|
+| Ocupação:                                                       | Chefe de uma empresa                                                                                         |
+| Aplicativos:                                                    | Instagram, Youtube, Whatsapp, Tik-tok.                                                        |
+| Motivações:                                                     | Desejo de administrar melhor seu estoque de produtos e ter uma estimativa de como está a relação de produtos e vendas.|       
+| Frustrações:                                                    | Dificuldade de administrar o estoque de seus produtos; Não ter uma projeção de vendas e estoque de seu produto.|
+| Hobbies, História:                                              | Gosta de pesquisar sobre empreendedorismo; Apaixonado por administrção de negócios.|
+<div align="center"><sup>Figura 3 - Persona 1</sup></div>
+<br/>
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
+| <img src="https://media.istockphoto.com/id/1392528328/pt/foto/portrait-of-smiling-handsome-man-in-white-t-shirt-standing-with-crossed-arms.webp?b=1&s=170667a&w=0&k=20&c=MeBhhGQ9bghlVjKjtswn0aGBxsmlDBj8aNrhd_aZ1HY=" width="270" height="175"/> | Carlos Gomes, 27 anos|
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------|
+| Ocupação:                                                       | Gestor de empresas                                                                                                      |
+| Aplicativos:                                                    | Youtube, Whatsapp, Linked-in.                                                        |
+| Motivações:                                                     | Melhorar a gerência de produtos de sua empresa, melhorar o CRUD de produtos e ter uma visão melhor dos produtos de sua empresa|       
+| Frustrações:                                                    | Não conseguir administrar bem seus negócios usando as planilhas tradicionais.|
+| Hobbies, História:                                              | Política e economia; Música; Fascinado por computadores e Internet das coisas (IOT)          |
+<div align="center"><sup>Figura 4 - Persona 2</sup></div>
+<br/>
 
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
+| <img src="https://www.geradordeideias.com/blog/wp-content/uploads/2020/03/Perfil-de-consumo-da-mulher-brasileira.jpg" width="280" height="175"/> | Fernanda Soares, 45 anos|
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------|
+| Ocupação:                                                       | Analista de dados                                                                                          |
+| Aplicativos:                                                    | Instagram, Youtube, Whatsapp, Linked-in.                                                        |
+| Motivações:                                                     | Análise de dados de estoque, geração de relatórios personalizados, identificação de padrões e tendências para otimização do estoque.|       
+| Frustrações:                                                    | Enfrenta dificuldades devido à falta de integração entre sistemas. Os dados relevantes para análise de estoque estão dispersos em diferentes plataformas, tornando difícil obter uma visão unificada.|
+| Hobbies, História:                                              | Musculação; Caminhada ao ar livre; Desenhista nas horas vagas.                   |
+<div align="center"><sup>Figura 5 - Persona 3</sup></div>
+<br/>
+
 
 ## Histórias de Usuários
 
