@@ -18,19 +18,12 @@ Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thin
 > - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
 
 ## Objetivos
-
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
-
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
+O objetivo de desenvolver um aplicativo para estoque que funcione em diferentes plataformas, como Android, Desktop e Mobile, é proporcionar flexibilidade e acessibilidade às empresas, permitindo que elas gerenciem seus estoques de forma eficiente em diferentes dispositivos e ambientes. Isso possibilita que os usuários acessem e atualizem informações sobre os produtos em estoque, realizem controle de inventário, façam pedidos e acompanhem o fluxo de mercadorias em tempo real, independentemente do dispositivo que estão utilizando. Essa abordagem multiplataforma amplia a acessibilidade e a usabilidade do aplicativo, atendendo às necessidades variadas das empresas e de seus colaboradores.
 > **Links Úteis**:
 > - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
-
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
-
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
+A justificativa para desenvolver um aplicativo multiplataforma de controle de estoque é proporcionar maior eficiência operacional e melhorar a gestão dos recursos da empresa. Ao permitir que as empresas acessem e gerenciem seus estoques em diferentes dispositivos, como Android, Desktop e Mobile, o aplicativo facilita o acompanhamento em tempo real das movimentações de estoque, reduzindo erros manuais, minimizando o tempo gasto em tarefas administrativas e aumentando a precisão das informações. Além disso, a acessibilidade em diversas plataformas oferece flexibilidade aos usuários, permitindo que realizem tarefas de gestão de estoque em qualquer lugar e a qualquer momento, contribuindo para uma tomada de decisão mais ágil e assertiva. Em suma, o desenvolvimento deste aplicativo visa otimizar processos, aumentar a produtividade e melhorar o controle sobre o estoque, resultando em benefícios significativos para a empresa.
 
 > **Links Úteis**:
 > - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
