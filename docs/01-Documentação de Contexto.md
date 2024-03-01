@@ -6,16 +6,7 @@ Neste contexto, a implementação de um sistema de controle de estoque eficiente
 A plataforma permitirá que as empresas criem uma conta, proporcionando-lhes um ambiente exclusivo onde possam inserir informações sobre seus produtos, acompanhar os níveis de estoque e ajustar os valores conforme necessário. Ao centralizar todas essas operações em um único sistema online, o projeto visa simplificar e agilizar o processo de gestão de estoque, permitindo que as empresas dediquem mais tempo e recursos a outras áreas críticas do negócio. Isso possibilitará que os gestores tomem decisões mais informadas e estratégicas, identificando oportunidades para reduzir desperdícios, melhorar a eficiência operacional e maximizar os lucros.
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
-
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
-
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Para muitas empresas, a falta de um sistema de controle de estoque eficiente é um obstáculo significativo para a eficiência operacional e o sucesso financeiro. Sem uma visão clara e atualizada dos níveis de estoque e das demandas dos clientes, é comum enfrentar desperdícios de produtos vencidos ou obsoletos, bem como a incapacidade de atender às demandas do mercado de forma ágil. Esses problemas resultam em perdas financeiras substanciais devido a estoques excedentes não vendidos ou produtos em falta quando os clientes estão prontos para comprar. Em última análise, a ausência de controle de estoque eficaz impacta negativamente a lucratividade e a competitividade das empresas, tornando imperativo a implementação de soluções que ofereçam uma gestão precisa e em tempo real dos recursos disponíveis.
 
 ## Objetivos
 O objetivo de desenvolver um aplicativo para estoque que funcione em diferentes plataformas, como Android, Desktop e Mobile, é proporcionar flexibilidade e acessibilidade às empresas, permitindo que elas gerenciem seus estoques de forma eficiente em diferentes dispositivos e ambientes. Isso possibilita que os usuários acessem e atualizem informações sobre os produtos em estoque, realizem controle de inventário, façam pedidos e acompanhem o fluxo de mercadorias em tempo real, independentemente do dispositivo que estão utilizando. Essa abordagem multiplataforma amplia a acessibilidade e a usabilidade do aplicativo, atendendo às necessidades variadas das empresas e de seus colaboradores.
