@@ -65,7 +65,10 @@ Além disso, é crucial garantir a segurança dos dados, especialmente ao lidar 
 
 ### Descrição Geral da Proposta
 
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
+A proposta consiste na criação de um aplicativo de gestão de estoque que seja acessível tanto em dispositivos móveis quanto em desktops. Este aplicativo visa fornecer uma solução
+abrangente para o gerenciamento eficiente do estoque de uma empresa, permitindo aos usuários acessar e atualizar informações sobre o inventário, pedidos, fornecedores e vendas
+em tempo real, independentemente do dispositivo que estão utilizando. A interface do aplicativo será adaptada para fornecer uma experiẽncia de usuário intuitiva e consistente,
+independentemente do tamanho da tela ou do tipo de dispositivo, enquanto são implementadas medidas de segurança robustas para proteger os dados sensíveis do estoque.
 
 ### Processo 1 – NOME DO PROCESSO
 
