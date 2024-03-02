@@ -58,8 +58,10 @@ Apresente aqui as histórias de usuário que são relevantes para o projeto de s
 ## Modelagem do Processo de Negócio 
 
 ### Análise da Situação Atual
-
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
+A criação de um aplicativo de estoque que funcione em dispositivos móveis e desktops pode ser vantajosa, pois atende a uma variedade de usuários com diferentes preferências
+de dispositivo. Isso pode aumentar a acessibilidade e a usabilidade do aplicativo, permitindo que os usuários acessem o estoque de qualquer lugar. No entanto, é importante 
+garantir uma experiência consistente em todas as plataformas, adaptando a interface de acordo com o tamanho da tela e considerando as funcionalidades específicas de cada aplicativo.
+Além disso, é crucial garantir a segurança dos dados, especialmente ao lidar com informações seinsíveis de estoque.
 
 ### Descrição Geral da Proposta
 
