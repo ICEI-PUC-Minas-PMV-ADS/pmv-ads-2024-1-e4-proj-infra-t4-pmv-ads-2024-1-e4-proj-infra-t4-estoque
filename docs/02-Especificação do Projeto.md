@@ -91,7 +91,7 @@ independentemente do tamanho da tela ou do tipo de dispositivo, enquanto são im
 
 Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
 
-![Processo 1](img/02-bpmn-proc1.png)
+![Processo 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/Estoque1%20Diagrama.png)
 
 ### Processo 2 – NOME DO PROCESSO
 
