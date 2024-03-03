@@ -125,7 +125,7 @@ Os requisitos não funcionais correspondem a uma característica técnica, seja 
 |RNF-001 | O sistema deve ser altamente seguro, protegendo os dados do estoque contra acesso não autorizado. 		                      | MÉDIA | 
 |RNF-002 | O sistema deve ser escalável para lidar com o aumento de produtos conforme o crescimento da empresa.	 	                    |  ALTA | 
 |RNF-003 | O sistema deve ter alta disponibilidade, minimizando o tempo de inativaidade.						                                  |  ALTA | 
-|RNF-004 | O sistema deve ser compatível com diferentes dispositivos e navegadores. 						                                      |  ALTA |       
+|RNF-004 | O sistema deve ser compatível com diferentes dispositivos(Android e IOS) e navegadores(Chrome e Opera). |             |  ALTA |       
 |RNF-005 | O sistema deve ter um desempenho alto, garantindo tempos de resposta rápidos para consultas de estoque e dados. 	          |  ALTA | 
 |RNF-006 | O sistema deve ter um desempenho uma interface intuitiva e amigável para facilitar a navegação. 	                          | MÉDIA | 
 |RNF-007 | O sistema deve ser responsivo, podendo se adaptar de forma adequada a diferentes dispositivos e tamanhos de tela.  	      |  ALTA | 
