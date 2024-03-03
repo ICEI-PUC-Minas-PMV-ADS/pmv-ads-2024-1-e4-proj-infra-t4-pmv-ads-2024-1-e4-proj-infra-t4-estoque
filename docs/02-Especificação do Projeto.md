@@ -43,8 +43,14 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+|Chefe de uma empresa | Relatório de vendas por produto |Tomar decisões sobre o estoque mais facilmente. |
+|Chefe de uma empresa | De um Sistema de alerta de estoque baixo | Garantir a disponibilidade de produtos. |
+|Gestor de empresas |Interface intuitiva para cadastro e atualização de produtos |agilizar o processo de gerenciamento de produtos e manter as informações atualizadas |
+|Gestor de empresas |Dashboard de análise de produtos |Identificar oportunidades de crescimento, otimizar o mix de produtos e aumentar a rentabilidade do negócio. |
+|Analista de dados | Geração de relatórios personalizados |Facilitar a tomada de decisões baseadas em dados e aumentar a eficácia das estratégias de estoque. |
+|Analista de dados | Identificar padrões e tendências para otimização do estoque |antecipar demandas futuras, evitar excesso ou falta de produtos e maximizar a eficiência operacional |
+
+
 
 Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
 
