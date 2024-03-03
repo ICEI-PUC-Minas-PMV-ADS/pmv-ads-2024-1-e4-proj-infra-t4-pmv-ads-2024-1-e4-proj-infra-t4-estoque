@@ -6,7 +6,7 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-| <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSowyIPHTZzLfrZqdAxwjLtEjQEPoISoeIwqxpiL-frK3DA_wCamj7_8ie3ICiAyFxlz4&usqp=CAU" width="300" height="175"/> | José Silva, 32 anos|
+| <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSowyIPHTZzLfrZqdAxwjLtEjQEPoISoeIwqxpiL-frK3DA_wCamj7_8ie3ICiAyFxlz4&usqp=CAU" width="320" height="200"/> | José Silva, 32 anos|
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------|
 | Ocupação:                                                       | Chefe de uma empresa                                                                                         |
 | Aplicativos:                                                    | Instagram, Youtube, Whatsapp, Tik-tok.                                                        |
@@ -16,24 +16,35 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 <div align="center"><sup>Figura 3 - Persona 1</sup></div>
 <br/>
 
-| <img src="https://media.istockphoto.com/id/1392528328/pt/foto/portrait-of-smiling-handsome-man-in-white-t-shirt-standing-with-crossed-arms.webp?b=1&s=170667a&w=0&k=20&c=MeBhhGQ9bghlVjKjtswn0aGBxsmlDBj8aNrhd_aZ1HY=" width="270" height="175"/> | Carlos Gomes, 27 anos|
+| <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0E6GjAU2k8qtLIQq_X4q8oI5Y7geOcThsEQ&usqp=CAU" width="320" height="200"/>  | Maria Oliveira, 26 anos|
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------|
+| Ocupação:                                                       | Chefe de Almoxarifado em uma indústria de logística                                                     |
+| Aplicativos:                                                    | Microsoft Excel, WhatsApp, Slack, Sistema de Gestão de Estoque                                      |
+| Motivações:                                                     | Aperfeiçoar o controle de estoque, otimizando processos logísticos; Busca por eficiência e redução de custos.|       
+| Frustrações:                                                    | Dificuldades na rastreabilidade de produtos; Falta de integração entre setores; Desafios na gestão de inventário.|
+| Hobbies, História:                                              | Apaixonada por logística e gestão de cadeia de suprimentos; Participa de cursos sobre tecnologias aplicadas à logística.|
+<div align="center"><sup>Figura 4 - Persona 2</sup></div>
+<br/>
+
+
+| <img src="https://media.istockphoto.com/id/1392528328/pt/foto/portrait-of-smiling-handsome-man-in-white-t-shirt-standing-with-crossed-arms.webp?b=1&s=170667a&w=0&k=20&c=MeBhhGQ9bghlVjKjtswn0aGBxsmlDBj8aNrhd_aZ1HY=" width="320" height="200"/> | Carlos Gomes, 27 anos|
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------|
 | Ocupação:                                                       | Gestor de empresas                                                                                                      |
 | Aplicativos:                                                    | Youtube, Whatsapp, Linked-in.                                                        |
 | Motivações:                                                     | Melhorar a gerência de produtos de sua empresa, melhorar o CRUD de produtos e ter uma visão melhor dos produtos de sua empresa|       
 | Frustrações:                                                    | Não conseguir administrar bem seus negócios usando as planilhas tradicionais.|
 | Hobbies, História:                                              | Política e economia; Música; Fascinado por computadores e Internet das coisas (IOT)          |
-<div align="center"><sup>Figura 4 - Persona 2</sup></div>
+<div align="center"><sup>Figura 5 - Persona 3</sup></div>
 <br/>
 
-| <img src="https://www.geradordeideias.com/blog/wp-content/uploads/2020/03/Perfil-de-consumo-da-mulher-brasileira.jpg" width="280" height="175"/> | Fernanda Soares, 45 anos|
+| <img src="https://www.geradordeideias.com/blog/wp-content/uploads/2020/03/Perfil-de-consumo-da-mulher-brasileira.jpg" width="320" height="200"/> | Fernanda Soares, 45 anos|
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------|
 | Ocupação:                                                       | Analista de dados                                                                                          |
 | Aplicativos:                                                    | Instagram, Youtube, Whatsapp, Linked-in.                                                        |
 | Motivações:                                                     | Análise de dados de estoque, geração de relatórios personalizados, identificação de padrões e tendências para otimização do estoque.|       
 | Frustrações:                                                    | Enfrenta dificuldades devido à falta de integração entre sistemas. Os dados relevantes para análise de estoque estão dispersos em diferentes plataformas, tornando difícil obter uma visão unificada.|
 | Hobbies, História:                                              | Musculação; Caminhada ao ar livre; Desenhista nas horas vagas.                   |
-<div align="center"><sup>Figura 5 - Persona 3</sup></div>
+<div align="center"><sup>Figura 6 - Persona 4</sup></div>
 <br/>
 
 
