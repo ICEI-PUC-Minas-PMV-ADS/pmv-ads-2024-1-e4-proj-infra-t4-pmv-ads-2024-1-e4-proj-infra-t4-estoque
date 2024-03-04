@@ -10,21 +10,11 @@ Para muitas empresas, a falta de um sistema de controle de estoque eficiente é 
 
 ## Objetivos
 O objetivo de desenvolver um aplicativo para estoque que funcione em diferentes plataformas, como Android, Desktop e Mobile, é proporcionar flexibilidade e acessibilidade às empresas, permitindo que elas gerenciem seus estoques de forma eficiente em diferentes dispositivos e ambientes. Isso possibilita que os usuários acessem e atualizem informações sobre os produtos em estoque, realizem controle de inventário, façam pedidos e acompanhem o fluxo de mercadorias em tempo real, independentemente do dispositivo que estão utilizando. Essa abordagem multiplataforma amplia a acessibilidade e a usabilidade do aplicativo, atendendo às necessidades variadas das empresas e de seus colaboradores.
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
 A justificativa para desenvolver um aplicativo multiplataforma de controle de estoque é proporcionar maior eficiência operacional e melhorar a gestão dos recursos da empresa. Ao permitir que as empresas acessem e gerenciem seus estoques em diferentes dispositivos, como Android, Desktop e Mobile, o aplicativo facilita o acompanhamento em tempo real das movimentações de estoque, reduzindo erros manuais, minimizando o tempo gasto em tarefas administrativas e aumentando a precisão das informações. Além disso, a acessibilidade em diversas plataformas oferece flexibilidade aos usuários, permitindo que realizem tarefas de gestão de estoque em qualquer lugar e a qualquer momento, contribuindo para uma tomada de decisão mais ágil e assertiva. Em suma, o desenvolvimento deste aplicativo visa otimizar processos, aumentar a produtividade e melhorar o controle sobre o estoque, resultando em benefícios significativos para a empresa.
 
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
 
 ## Público-Alvo
 
 Busca-se desenvolver uma aplicação distribuída de fácil interação para que todos os membros associados a empresas possa utilizá-lo, sendo que os principais beneficiados são os profissionais que trabalham em empresas com controle de estoque e também as pessoa que querem gerenciar algum produto não havendo distinção de faixa etária de idade, sexo entre outros. Exemplos: Adolescentes, adultos, jovens, adultos de meia-idade, adultos mais velhos, aposentados e idosos ativos.
-
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
