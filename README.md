@@ -6,6 +6,8 @@
 
 `4º Semestre`
 
+<div align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/72dabda8569473c375b352e2391f10f16b39a7e9/docs/img/ControleDeEstoqueLogo.jpg"></div>
+
 Nosso projeto visa criar uma plataforma intuitiva que permitirá às empresas monitorar em tempo real informações sobre seus produtos, estoques e preços, facilitando a tomada de decisões informadas para redução de desperdícios e aumento dos lucros. 
 
 ## Integrantes
