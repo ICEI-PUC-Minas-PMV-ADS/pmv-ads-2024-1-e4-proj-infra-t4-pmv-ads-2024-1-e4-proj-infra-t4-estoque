@@ -30,6 +30,7 @@ comentários
 Má gestão de estoque 
 
 
+
 ## Público-Alvo
 
 Busca-se desenvolver uma aplicação distribuída de fácil interação para que todos os membros associados a empresas possa utilizá-lo, sendo que os principais beneficiados são os profissionais que trabalham em empresas com controle de estoque e também as pessoa que querem gerenciar algum produto não havendo distinção de faixa etária de idade, sexo entre outros. Exemplos: Adolescentes, adultos, jovens, adultos de meia-idade, adultos mais velhos, aposentados e idosos ativos.
