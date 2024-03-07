@@ -7,6 +7,12 @@ A plataforma permitirá que as empresas criem uma conta, proporcionando-lhes um 
 
 ## Problema
 Para muitas empresas, a falta de um sistema de controle de estoque eficiente é um obstáculo significativo para a eficiência operacional e o sucesso financeiro. Sem uma visão clara e atualizada dos níveis de estoque e das demandas dos clientes, é comum enfrentar desperdícios de produtos vencidos ou obsoletos, bem como a incapacidade de atender às demandas do mercado de forma ágil. Esses problemas resultam em perdas financeiras substanciais devido a estoques excedentes não vendidos ou produtos em falta quando os clientes estão prontos para comprar. Em última análise, a ausência de controle de estoque eficaz impacta negativamente a lucratividade e a competitividade das empresas, tornando imperativo a implementação de soluções que ofereçam uma gestão precisa e em tempo real dos recursos disponíveis.
+A má gestão no estoque irá gerar muitos problemas e conflitos para as empresas, principalmente:
+Não ter o produto desejado pelo cliente. Isso “queima” a imagem da empresa e muito, pois isso gera desconfiança para o público consumidor e diminuem as vendas.
+Produtos “mofando” no depósito
+O excesso de produtos também é um problemão, deixar muitos produtos encalhados no depósito causam muitos prejuízos para o negócio. Produtos perecíveis estragam e não perecíveis tornam-se obsoletos.
+Pode ter certeza que a falta de atenção com o estoque irá gerar um grande decréscimo de pontos na reputação da empresa, popularizando a mesma com o termo “serviço ruim”.
+Aumentos de gastos
 
 ## Objetivos
 O objetivo de desenvolver um aplicativo para estoque que funcione em diferentes plataformas, como Android, Desktop e Mobile, é proporcionar flexibilidade e acessibilidade às empresas, permitindo que elas gerenciem seus estoques de forma eficiente em diferentes dispositivos e ambientes.
