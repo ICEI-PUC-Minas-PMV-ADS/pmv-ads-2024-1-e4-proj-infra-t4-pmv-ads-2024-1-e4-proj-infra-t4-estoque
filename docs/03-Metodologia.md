@@ -32,7 +32,7 @@ Os commits e as pull requests devem aderir ao seguinte padrão:
 
 - `feature`: O nome deve ser descrito com um título que identifica de forma precisa e concisa a funcionalidade ou ação implementada.;
 - `refactor`: O nome deve descrever a refatoração realizada;
-- `enhancement`: O nome deve descrever a documentação que foi ajustada/alterada;
+- `docs`: O nome deve descrever a documentação que foi ajustada/alterada;
 - `fix`: O nome deve descrever o bug corrigido.
 
 ## Gerenciamento de Projeto
