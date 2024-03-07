@@ -158,11 +158,11 @@ De acordo com o PMBoK v6 as dez áreas que constituem os pilares para gerenciar 
 
 Com diagramas bem organizados que permitem gerenciar o tempo nos projetos, o gerente de projetos agenda e coordena tarefas dentro de um projeto para estimar o tempo necessário de conclusão.
 
-![Diagrama de rede simplificado notação francesa (método francês)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/3e5d9374ef5f5d5e3420f6a3ec13862e995de360/docs/img/GRÁFICO%20TEMPORAL.png)
+![Diagrama de rede simplificado notação francesa (método francês)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/39b8b3d2242bd63c13e01256608dde0ce8183ec3/docs/img/GRÁFICO%20TEMPORAL.png)
 
 O gráfico de Gantt ou diagrama de Gantt também é uma ferramenta visual utilizada para controlar e gerenciar o cronograma de atividades de um projeto. Com ele, é possível listar tudo que precisa ser feito para colocar o projeto em prática, dividir em atividades e estimar o tempo necessário para executá-las.
 
-![Gráfico de Gantt](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/103315c9e1a14d4dc928e3f07b3cce12e30c3dd8/docs/img/GRÁFICO%20GANTT.png)
+![Gráfico de Gantt](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/4797fa5779388f9eac5f48d6c6f97909914a21c7/docs/img/GRÁFICO%20GANTT.png)
 
 ## Gerenciamento de Equipe
 
