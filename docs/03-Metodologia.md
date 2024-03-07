@@ -1,14 +1,16 @@
 
 # Metodologia
-
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
-
-Descreva aqui a metodologia de trabalho do grupo para atacar o problema. Definições sobre os ambiente de trabalho utilizados pela  equipe para desenvolver o projeto. Abrange a relação de ambientes utilizados, a estrutura para gestão do código fonte, além da definição do processo e ferramenta através dos quais a equipe se organiza (Gestão de Times).
+A metodologia de trabalho adotada pelo grupo para abordar o problema será o Scrum, uma abordagem ágil de gerenciamento de projetos que enfatiza a colaboração, a entrega contínua e a adaptação às mudanças. 
 
 ## Relação de Ambientes de Trabalho
 
-Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com seu respectivo propósito deverá ser apresentada em uma tabela que especifica que detalha Ambiente, Plataforma e Link de Acesso. 
-Nota: Vide documento modelo do estudo de caso "Portal de Notícias" e defina também os ambientes e frameworks que serão utilizados no desenvolvimento de aplicações móveis.
+Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a relação dos ambientes com seu respectivo propósito é apresentada na tabela que se segue. 
+
+| AMBIENTE                                       | PLATAFORMA / LINK DE ACESSO                                                                                                                               |
+|------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Repositório de código fonte e documentação     | [Github](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque)                               |
+| Gerenciamento do Projeto                       | [GitProjects](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/874/views/1) |
+| Projeto de Interface e  Wireframes | [Canva]() |                                                                                                                                                           |
 
 ## Controle de Versão
 
