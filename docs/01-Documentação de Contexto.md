@@ -23,7 +23,6 @@ O objetivo de desenvolver um aplicativo para estoque que funcione em diferentes 
 ## Justificativa
 A justificativa para desenvolver um aplicativo multiplataforma de controle de estoque é proporcionar maior eficiência operacional e melhorar a gestão dos recursos da empresa. Ao permitir que as empresas acessem e gerenciem seus estoques em diferentes dispositivos, como Android, Desktop e Mobile, o aplicativo facilita o acompanhamento em tempo real das movimentações de estoque, reduzindo erros manuais, minimizando o tempo gasto em tarefas administrativas e aumentando a precisão das informações. Além disso, a acessibilidade em diversas plataformas oferece flexibilidade aos usuários, permitindo que realizem tarefas de gestão de estoque em qualquer lugar e a qualquer momento, contribuindo para uma tomada de decisão mais ágil e assertiva. Em suma, o desenvolvimento deste aplicativo visa otimizar processos, aumentar a produtividade e melhorar o controle sobre o estoque, resultando em benefícios significativos para a empresa.
 
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/estoqueimgwarning-1024x579.jpg.webp
 
 ## Público-Alvo
 
