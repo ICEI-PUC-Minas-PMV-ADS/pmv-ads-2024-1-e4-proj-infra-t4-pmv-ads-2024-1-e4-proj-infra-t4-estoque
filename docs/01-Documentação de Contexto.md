@@ -29,7 +29,7 @@ comentários
 33
 Má gestão de estoque 
 
-
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/estoqueimgwarning-1024x579.jpg.webp
 
 ## Público-Alvo
 
