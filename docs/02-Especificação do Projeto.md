@@ -107,18 +107,18 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 Os requisitos funcionais são as descriçõoes detalhadas das funções que um sistema, software oou produto deve executar. Especificam o comportamento funcional esperado do sistema sob diferentes condições.
 
-|ID    | Descrição do Requisito  											                                           | Prioridade |
-|------|-----------------------------------------------------------------------------------------|------------|
-|RF-001| O sistema deve permitir que a empresa crie uma conta e faça o login. 				                |  ALTA | 
-|RF-002| O sistema deve permitir que o usuário cadastre produtos.   		                      				|  ALTA |
-|RF-003| O sistema deve oferecer o monitoramento em tempo real de cada produto em estoque.	     	    |  ALTA |
-|RF-004| O sistema deve ter um recurso de busca avançado para encontrar produtos.		                  | MÉDIA |
-|RF-005| O sistema dever ter um relatório com a descrição dos produtos, a quantidade, etc.            | MÉDIA |
-|RF-006| O sistema deve incorporar recursos de localização que permitam aos usuários identificar a posição de um produto dentro de um determinado local.          |  ALTA |
-|RF-007| O sistema deve alertar o usuário, quando um produto estiver em pouca quantidade no estoque.  | MÉDIA |
-|RF-008| O sistema deve poder registrar e monitorar produtos danificados, vencidos, reembolsados ou obsoletos para ações corretivas.   | MÉDIA |
-|RF-009| O sistema deve permitir o registro do fornecedor associado a cada produto, facilitando a identificação e o histórico de fornecedores para futuras compras. | MÉDIA |
-|RF-010| O sistema deve exibir os produtos que tiveram o maior volume de vendas.  | BAIXA |
+|ID    | Descrição do Requisito  											                                                                                                          | Prioridade |
+|------|--------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+|RF-001| O sistema deve permitir que a empresa crie uma conta e faça o login. 				                                                                               |  ALTA | 
+|RF-002| O sistema deve permitir que o usuário cadastre produtos.   		                      				                                                               |  ALTA |
+|RF-003| O sistema deve oferecer o monitoramento em tempo real de cada produto em estoque.	     	                                                                   |  ALTA |
+|RF-004| O sistema deve ter um recurso de busca avançado para encontrar produtos.		                                                                                 |  ALTA |
+|RF-005| O sistema dever ter um relatório com a descrição dos produtos, a quantidade, etc.                                                                           | MÉDIA |
+|RF-006| O sistema deve incorporar recursos de localização que permitam aos usuários identificar a posição de um produto dentro de um determinado local.             |  ALTA |
+|RF-007| O sistema deve alertar o usuário, quando um produto estiver em pouca quantidade no estoque.                                                                 | ALTA  |
+|RF-008| O sistema deve poder registrar e monitorar produtos danificados, vencidos, reembolsados ou obsoletos para ações corretivas.                                 | ALTA  |
+|RF-009| O sistema deve permitir o registro do fornecedor associado a cada produto, facilitando a identificação e o histórico de fornecedores para futuras compras.  | MÉDIA |
+|RF-010| O sistema deve exibir os produtos que tiveram o maior volume de vendas.                                                                                     | BAIXA |
 
 ### Requisitos Não Funcionais(RNF):
 
@@ -126,23 +126,23 @@ Os requisitos não funcionais correspondem a uma característica técnica, seja 
 
 |ID      | Descrição do Requisito  														                                                                   | Prioridade |
 |--------|-----------------------------------------------------------------------------------------------------------------------|------------|
-|RNF-001 | O sistema deve ser altamente seguro, protegendo os dados do estoque contra acesso não autorizado. 		                      | MÉDIA | 
+|RNF-001 | O sistema deve ser altamente seguro, protegendo os dados do estoque contra acesso não autorizado. 		                      |  ALTA | 
 |RNF-002 | O sistema deve ser escalável para lidar com o aumento de produtos conforme o crescimento da empresa.	 	                    |  ALTA | 
 |RNF-003 | O sistema deve ter alta disponibilidade, minimizando o tempo de inativaidade.						                                  |  ALTA | 
-|RNF-004 | O sistema deve ser compatível com diferentes dispositivos (Android e IOS) e navegadores (Chrome e Opera). |                |  ALTA |       
+|RNF-004 | O sistema deve ser compatível com diferentes dispositivos (Android e IOS) e navegadores (Chrome e Opera).                  |  ALTA |       
 |RNF-005 | O sistema deve ter um desempenho alto, garantindo tempos de resposta rápidos para consultas de estoque e dados. 	          |  ALTA | 
-|RNF-006 | O sistema deve ter um desempenho uma interface intuitiva e amigável para facilitar a navegação. 	                          | MÉDIA | 
+|RNF-006 | O sistema deve ter uma interface intuitiva e amigável para facilitar a navegação. 	                                        |  ALTA | 
 |RNF-007 | O sistema deve ser responsivo, podendo se adaptar de forma adequada a diferentes dispositivos e tamanhos de tela.  	      |  ALTA | 
 
 ## Restrições
 
 O projeto está restrito pelos itens apresentados na tabela a seguir.
 
-|ID| Restrição                                             |
-|--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-|03| A equipe não pode subcontratar o desenvolvimento do trabalho.        |
+|ID| Restrição                                                     |
+|--|---------------------------------------------------------------|
+|01| O projeto deverá ser entregue até o final do semestre.        |
+|02| Deve ser desenvolvido um módulo de backend.                   |
+|03| A equipe não pode subcontratar o desenvolvimento do trabalho. |
 
 ## Diagrama de Casos de Uso
 
