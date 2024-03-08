@@ -148,7 +148,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
 
-<img src=https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/Diagrama%20de%20caso%20de%20uso.png/>
+<img src=https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/Diagrama%20de%20caso%20de%20uso.png>
+<div align="center"><sup>Imagem 7</sup></div>
+<br/>
 
 # Gerenciamento de Projeto
 
