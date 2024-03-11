@@ -23,7 +23,7 @@ O projeto segue a seguinte convenção para o nome de branches:
 
 >Os nomes das branches seguirão o padrão seguinte:
 >
->`MAIN-PRINCIPAL`
+>`main`
 >`UNSTABLE-AJUSTES`
 >`TESTING-TESTES`
 >`DEV-DESENVOLVIMENTO`
