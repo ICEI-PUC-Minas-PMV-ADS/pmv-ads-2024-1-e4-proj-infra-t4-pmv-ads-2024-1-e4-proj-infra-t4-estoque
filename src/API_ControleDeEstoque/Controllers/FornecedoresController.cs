@@ -53,6 +53,35 @@ namespace ProjetoControleDeEstoque.Controllers
             }
         }
 
+        //Método para verificar se o fornecedor existe. 
+        [HttpGet("cnpjCpf")]
+        public async Task<ActionResult> ExisteFornecedor(string cnpjCpf)
+        {
+            try
+            {
+                if (cnpjCpf == null)
+                {
+                    return NotFound("É obrigatório inserir um fornecedor!");
+                }
+
+                var model = await _context.Fornecedores.FirstOrDefaultAsync(m => m.CnpjCpf == cnpjCpf);
+
+                if (model != null)
+                {
+                    return NotFound("Este fornecedor já consta na base de dados!");
+                }
+                else
+                {
+                    return NotFound("O fornecedor pode ser cadastrado!");
+                }
+
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
+            }
+        }
+
         //Método para criar um fornecedor.
         [HttpPost]
         public async Task<ActionResult> Create(Fornecedor model)
