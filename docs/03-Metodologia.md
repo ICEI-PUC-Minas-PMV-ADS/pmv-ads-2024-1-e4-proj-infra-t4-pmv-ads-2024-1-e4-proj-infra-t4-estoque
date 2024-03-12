@@ -24,8 +24,6 @@ O projeto segue a seguinte convenção para o nome de branches:
 >Os nomes das branches seguirão o padrão seguinte:
 >
 >`main`
->`UNSTABLE-AJUSTES`
->`TESTING-TESTES`
 >`DEV-DESENVOLVIMENTO`
 
 Os commits e as pull requests devem aderir ao seguinte padrão:
