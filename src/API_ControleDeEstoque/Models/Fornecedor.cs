@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ProjetoControleDeEstoque.Models
 {
     [Table("Fornecedores")]
-    public class Fornecedor
+    // A classe Fornecedor está herdando da classe LinkHATEOS
+    public class Fornecedor : LinkHATEOS
     {
         [Key]
         public int Id { get; set; }

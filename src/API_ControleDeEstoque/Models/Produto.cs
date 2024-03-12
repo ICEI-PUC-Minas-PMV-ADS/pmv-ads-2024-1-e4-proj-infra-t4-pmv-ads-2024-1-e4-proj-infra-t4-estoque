@@ -5,7 +5,9 @@ using System.Runtime.InteropServices;
 namespace ProjetoControleDeEstoque.Models
 {
     [Table("Produtos")]
-    public class Produto
+
+    // A classe Produto está herdando da classe LinkHATEOS
+    public class Produto : LinkHATEOS
     {
         [Key]
         public int Id { get; set; }

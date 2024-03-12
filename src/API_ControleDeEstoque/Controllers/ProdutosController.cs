@@ -30,7 +30,7 @@ namespace ProjetoControleDeEstoque.Controllers
             {
                 throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
             }
-            return Ok(produtos); 
+            return Ok(produtos);
         }
 
         //Método para acessar um produto específico.
@@ -45,6 +45,8 @@ namespace ProjetoControleDeEstoque.Controllers
                 {
                     return NotFound("Este produto não consta na base de dados!");
                 }
+
+                GerarLinks(model);
 
                 return Ok(model);
             }
@@ -121,6 +123,14 @@ namespace ProjetoControleDeEstoque.Controllers
             {
                 throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
             }
+        }
+
+        // GERANDO LINKS PARA ACESSAR AS REQUISIÇÕES.
+        private void GerarLinks(Produto model)
+        {
+            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "self", metodo: "GET"));
+            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "update", metodo: "PUT"));
+            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "delete", metodo: "Delete"));
         }
     }
 }
