@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProjetoControleDeEstoque.Models;
+using ProjetoControleDeEstoque.Models.Context;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,4 +1,4 @@
-﻿namespace ProjetoControleDeEstoque.Models
+﻿namespace ProjetoControleDeEstoque.Models.Entites
 {
     public class LinkDTO
     {

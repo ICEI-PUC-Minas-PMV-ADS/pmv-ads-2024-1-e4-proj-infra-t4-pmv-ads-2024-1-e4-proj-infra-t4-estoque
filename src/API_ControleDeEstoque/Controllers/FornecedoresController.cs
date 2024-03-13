@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProjetoControleDeEstoque.Models;
+using ProjetoControleDeEstoque.Models.Context;
+using ProjetoControleDeEstoque.Models.Entites;
+using System;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -159,6 +161,34 @@ namespace ProjetoControleDeEstoque.Controllers
             model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "self", metodo: "GET"));
             model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "update", metodo: "PUT"));
             model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "delete", metodo: "Delete"));
+        }
+
+        [HttpGet("EnviarFeedBack")]
+        public ActionResult EnviarFeedBackPorEmail([FromQuery]Feedback model)
+        {
+            try
+            {
+                _context.Feedbacks.Add(model);
+                _context.SaveChangesAsync();
+
+                // E-mail que irá enviar para os adms por padrão.
+                var gmail = new Email("smtp.gmail.com", "desenvolvedoresprojetocontrole@gmail.com", "");
+
+                gmail.SendEmail(
+                emailsTo: new List<string>
+                {
+                    "lscoutinho@sga.pucminas.br"
+                },
+                subject: $"Feedback - Da empresa: {model.Email}",
+                body: $"Segue o FeedBack da empresa {model.Email} - Identificador: {model.Id}"
+                + "<br/>"
+                + $"{model.FeedBackDescricao}");
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao tentar enviar o feedback.");
+            }
+            return NoContent();
         }
     }
 }

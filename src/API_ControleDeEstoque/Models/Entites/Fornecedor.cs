@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ProjetoControleDeEstoque.Models
+namespace ProjetoControleDeEstoque.Models.Entites
 {
     [Table("Fornecedores")]
     // A classe Fornecedor está herdando da classe LinkHATEOS

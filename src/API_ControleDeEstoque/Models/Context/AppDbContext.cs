@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjetoControleDeEstoque.Models.Entites;
 
-namespace ProjetoControleDeEstoque.Models
+namespace ProjetoControleDeEstoque.Models.Context
 {
     public class AppDbContext : DbContext
     {
@@ -9,5 +10,6 @@ namespace ProjetoControleDeEstoque.Models
         }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
 
-namespace ProjetoControleDeEstoque.Models
+namespace ProjetoControleDeEstoque.Models.Entites
 {
     [Table("Produtos")]
 
@@ -20,7 +20,7 @@ namespace ProjetoControleDeEstoque.Models
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Valor { get; set; }
-        public string Localizacao  { get; set; }
+        public string Localizacao { get; set; }
         [Required]
         public EstadoProduto EstadoProduto { get; set; }
         public int FornecedorId { get; set; }

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProjetoControleDeEstoque.Models;
+using ProjetoControleDeEstoque.Models.Context;
+using ProjetoControleDeEstoque.Models.Entites;
 using System.Linq.Expressions;
 
 namespace ProjetoControleDeEstoque.Controllers
