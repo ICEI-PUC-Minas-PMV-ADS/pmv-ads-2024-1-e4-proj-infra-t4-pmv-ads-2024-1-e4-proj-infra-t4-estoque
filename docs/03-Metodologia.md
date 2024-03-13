@@ -44,6 +44,8 @@ A equipe utiliza metodologias ágeis, tendo escolhido o Scrum como base para def
 ### Processo
 O processo adotado consistirá em sprints com duração média de duas semanas, com reuniões realizadas duas vezes por semana para acompanhar o progresso individual de cada membro da equipe, compartilhar as contribuições de cada um e analisar o que ainda precisa ser implementado.
 
+<div align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/GIT%20-%20PROJECTS%20-%20TASKS.png"/></div>
+
 ### Ferramentas
 As ferramentas empregadas no projeto são:
 > - [Github](https://github.com/): Ferramenta para repósitorio e inserir a documentação.
