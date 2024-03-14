@@ -23,6 +23,8 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public string Localizacao { get; set; }
         [Required]
         public EstadoProduto EstadoProduto { get; set; }
+        [Required]
+        public Categoria Categoria { get; set; }
         public int FornecedorId { get; set; }
         public Fornecedor Fornecedor { get; set; }
     }
@@ -42,5 +44,28 @@ namespace ProjetoControleDeEstoque.Models.Entites
 
         [Display(Name = "Produto obsoleto")]
         Obsoleto = 4
+    }
+    public enum Categoria
+    {
+        [Display(Name = "Sem Categoria")]
+        SemCategoria = 0,
+
+        [Display(Name = "Roupa")]
+        Roupa = 1,
+        
+        [Display(Name = "Sapato")]
+        Sapato = 2,
+        
+        [Display(Name = "Cosmético")]
+        Cosmetico = 3,
+
+        [Display(Name = "Alimento")]
+        Alimento = 4,
+
+        [Display(Name = "Eletrônico")]
+        Eletronico = 5,
+
+        [Display(Name = "Eletrodoméstico")]
+        Eletrodomestico = 6
     }
 }

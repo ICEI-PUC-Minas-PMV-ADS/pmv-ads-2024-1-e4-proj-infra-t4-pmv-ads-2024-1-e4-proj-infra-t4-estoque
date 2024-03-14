@@ -58,11 +58,11 @@ namespace ProjetoControleDeEstoque.Models.Entites
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Host = Provedor;
             smtpClient.Port = 587;
-            //smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.EnableSsl = true;
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new NetworkCredential(Username, Password);
-            smtpClient.Timeout = 10000;
+            smtpClient.Timeout = 100000;
             smtpClient.Send(message);
             smtpClient.Dispose();
         }
