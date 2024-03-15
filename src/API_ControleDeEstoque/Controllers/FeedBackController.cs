@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjetoControleDeEstoque.Models.Context;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
@@ -22,18 +23,24 @@ namespace ProjetoControleDeEstoque.Controllers
         [HttpPost("EnviarFeedBack")]
         public ActionResult EnviarFeedBackPorEmailESalvar(Feedback model)
         {
-            try
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                var modelDb = _context.Feedbacks.Add(model);
-                _emailService.EnviarEmail(modelDb.Entity);
+                try
+                {
+                    var modelDb = _context.Feedbacks.Add(model);
+                    _context.SaveChanges();
 
-                _context.SaveChanges();
+                    _emailService.EnviarEmail(modelDb.Entity);
+
+                    transaction.Commit();
+                    return NoContent();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Ocorreu um erro ao tentar enviar o feedback! Por favor, tente novamente.");
+                }
             }
-            catch (Exception)
-            {
-                throw new Exception("Ocorreu um erro ao tentar enviar o feedback. Tente novamente!");
-            }
-            return NoContent();
         }
     }
 }
