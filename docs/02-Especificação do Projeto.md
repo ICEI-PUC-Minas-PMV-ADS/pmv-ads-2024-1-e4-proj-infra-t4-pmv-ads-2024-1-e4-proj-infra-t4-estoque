@@ -118,7 +118,7 @@ Os requisitos funcionais são as descriçõoes detalhadas das funções que um s
 |RF-007| O sistema deve alertar o usuário, quando um produto estiver em pouca quantidade no estoque.                                                                 | ALTA  |
 |RF-008| O sistema deve poder registrar e monitorar produtos danificados, vencidos, reembolsados ou obsoletos para ações corretivas.                                 | ALTA  |
 |RF-009| O sistema deve permitir o registro do fornecedor associado a cada produto, facilitando a identificação e o histórico de fornecedores para futuras compras.  | MÉDIA |
-|RF-010| O sistema deve exibir os produtos que tiveram o maior volume de vendas.                                                                                     | BAIXA |
+|RF-010| O sistema deve exibir os produtos com estoque zerado, estoque mínimo e quantos estão cadastrados.                                                       | BAIXA |
 
 ### Requisitos Não Funcionais(RNF):
 
