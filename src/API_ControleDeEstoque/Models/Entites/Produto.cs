@@ -21,6 +21,7 @@ namespace ProjetoControleDeEstoque.Models.Entites
         [Column(TypeName = "decimal(18,2)")]
         public decimal Valor { get; set; }
         public string Localizacao { get; set; }
+        public string CodigoProduto { get; set; }
         [Required]
         public EstadoProduto EstadoProduto { get; set; }
         [Required]
