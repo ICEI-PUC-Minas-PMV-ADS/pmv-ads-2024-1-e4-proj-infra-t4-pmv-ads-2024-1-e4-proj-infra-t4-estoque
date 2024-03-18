@@ -1,7 +1,13 @@
+
 using Microsoft.EntityFrameworkCore;
+
+using ProjetoControleDeEstoque.Controllers;
 using ProjetoControleDeEstoque.Models.Context;
+using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
 using System.Text.Json.Serialization;
+using BookStoreApi.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +18,13 @@ builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.Re
 builder.Services.AddDbContext<AppDbContext>(options =>
      options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Injeção de dependência
+
+  builder.Services.Configure<FornecedorStoreDatabaseSettings>(
+    builder.Configuration.GetSection("FornecedorStoreDatabase"));
+
+    builder.Services.AddSingleton<DataAcess.FornecedorsService>();
+
+// Injeï¿½ï¿½o de dependï¿½ncia
 builder.Services.AddScoped<EmailService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

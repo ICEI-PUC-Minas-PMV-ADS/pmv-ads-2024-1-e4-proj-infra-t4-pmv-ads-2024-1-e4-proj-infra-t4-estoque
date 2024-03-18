@@ -1,8 +1,18 @@
-﻿namespace ProjetoControleDeEstoque.Models.Entites
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace ProjetoControleDeEstoque.Models.Entites
+
 {
-    public class Feedback
+    [Table("Feedback")]
+    // A classe Fornecedor está herdando da classe LinkHATEOS
+    public class Feedback : LinkHATEOS
     {
-        public int Id { get; set; }
+   
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         public string Email { get; set; }
         public string FeedBackDescricao { get; set; }
     }

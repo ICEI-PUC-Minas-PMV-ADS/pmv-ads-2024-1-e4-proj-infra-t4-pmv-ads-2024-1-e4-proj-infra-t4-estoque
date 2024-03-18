@@ -1,166 +1,204 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models.Context;
 using ProjetoControleDeEstoque.Models.Entites;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.Linq.Expressions;
+using BookStoreApi.Models;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FornecedoresController : ControllerBase
-    {
-        private readonly AppDbContext _context;
-        public FornecedoresController(AppDbContext context)
-        {
-            _context = context;
-        }
 
-        //Método para acessar todos os fornecedores.
-        [HttpGet]
-        public async Task<ActionResult> GetAll()
+   [Route("api/[controller]")]
+        [ApiController]
+
+                public class FornecedoresController : ControllerBase
         {
-            List<Fornecedor> fornecedores = new List<Fornecedor>();
-            try
+            private readonly DataAcess.FornecedorsService _dataAcess;
+
+            public FornecedoresController(DataAcess.FornecedorsService dataAcess)
             {
-                fornecedores = await _context.Fornecedores.ToListAsync();
-
+                _dataAcess = dataAcess;
             }
-            catch (Exception)
-            {
-                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
-            }
-            return Ok(fornecedores);
-        }
 
-        //Método para acessar um fornecedor específico. 
-        [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(int id)
-        {
-            try
+            [HttpGet]
+            public async Task<ActionResult<List<Fornecedor>>> GetAll()
             {
-                var model = await _context.Fornecedores.FirstOrDefaultAsync(m => m.Id == id);
-
-                if (model == null)
+                try
                 {
-                    return NotFound("Este fornecedor não consta na base de dados!");
+                    var fornecedores = await _dataAcess.GetAllFornecedores();
+                    return Ok(fornecedores);
                 }
-
-                GerarLinks(model);
-
-                return Ok(model);
-            }
-            catch (Exception)
-            {
-                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
-            }
-        }
-
-        //Método para verificar se o fornecedor existe. 
-        [HttpGet("cnpjCpf")]
-        public async Task<ActionResult> ExisteFornecedor(string cnpjCpf)
-        {
-            try
-            {
-                if (cnpjCpf == null)
+                catch (Exception ex)
                 {
-                    return NotFound("É obrigatório inserir um fornecedor!");
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar os fornecedores: {ex.Message}");
                 }
+            }
 
-                var model = await _context.Fornecedores.FirstOrDefaultAsync(m => m.CnpjCpf == cnpjCpf);
-
-                if (model != null)
+            [HttpGet("{id}")]
+            public async Task<ActionResult<Fornecedor>> GetById(string id)
+            {
+                try
                 {
-                    return NotFound("Este fornecedor já consta na base de dados!");
+                    var fornecedor = await _dataAcess.GetFornecedorById(id);
+                    if (fornecedor == null)
+                        return NotFound($"Fornecedor com ID {id} não encontrado.");
+
+                    return Ok(fornecedor);
                 }
-                else
+                catch (Exception ex)
                 {
-                    return NotFound("O fornecedor pode ser cadastrado!");
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar o fornecedor: {ex.Message}");
                 }
-
             }
-            catch (Exception)
-            {
-                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
-            }
-        }
 
-        //Método para criar um fornecedor.
-        [HttpPost]
-        public async Task<ActionResult> Create(Fornecedor model)
-        {
-            try
+            [HttpGet("cnpjCpf")]
+            public async Task<ActionResult<bool>> ExisteFornecedor(string cnpjCpf)
             {
-                if (String.IsNullOrEmpty(model.Nome) || String.IsNullOrEmpty(model.Email) || String.IsNullOrEmpty(model.CnpjCpf))
+                try
                 {
-                    return BadRequest("Alguns desses campos obrigatórios (Nome, E-mail, CNPJ/CPF) não foram preenchidos!");
+                    if (cnpjCpf == null)
+                        return BadRequest("CNPJ/CPF não fornecido.");
+
+                    var exists = await _dataAcess.CheckIfFornecedorExists(cnpjCpf);
+                    return Ok(exists);
                 }
-
-                _context.Fornecedores.Add(model);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-                throw new Exception("Ocorreu um erro ao tentar salvar os dados!");
-            }
-            return CreatedAtAction("GetById", new { id = model.Id }, model);
-        }
-
-        //Método para atualizar os dados do fornecedor.
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, Fornecedor model)
-        {
-            try
-            {
-                if (id != model.Id)
-                    return BadRequest("Ocorreu um erro!");
-
-                var modeloDb = await _context.Fornecedores.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
-
-                if (modeloDb == null)
-                    return NotFound("Este fornecedor não foi encontrado na base de dados!");
-
-                _context.Fornecedores.Update(model);
-                await _context.SaveChangesAsync();
-
-                return NoContent();
-            }
-            catch (Exception)
-            {
-                throw new Exception("Ocorreu um erro ao tentar atualizar os dados!");
-            }
-        }
-
-        //Método para deletar o fornecedor.
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
-        {
-            try
-            {
-                var model = await _context.Fornecedores.FindAsync(id);
-
-                if (model == null)
+                catch (Exception ex)
                 {
-                    return NotFound("Este fornecedor não consta na base de dados!");
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao verificar a existência do fornecedor: {ex.Message}");
                 }
-                _context.Fornecedores.Remove(model);
-                await _context.SaveChangesAsync();
-
-                return Ok(model);
             }
-            catch (Exception)
+
+            [HttpPost]
+            public async Task<ActionResult<Fornecedor>> Create(Fornecedor fornecedor)
             {
-                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
+                try
+                {
+                    await _dataAcess.CreateFornecedor(fornecedor);
+                    return CreatedAtAction(nameof(GetById), new { id = fornecedor.Id }, fornecedor);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao criar o fornecedor: {ex.Message}");
+                }
+            }
+
+            [HttpPut("{id}")]
+            public async Task<ActionResult> Update(string id, Fornecedor fornecedor)
+            {
+                try
+                {
+                    if (id != fornecedor.Id)
+                        return BadRequest("ID do fornecedor não corresponde ao ID fornecido na URL.");
+
+                    var success = await _dataAcess.UpdateFornecedor(id, fornecedor);
+                    if (!success)
+                        return NotFound($"Fornecedor com ID {id} não encontrado.");
+
+                    return NoContent();
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao atualizar o fornecedor: {ex.Message}");
+                }
+            }
+
+            [HttpDelete("{id}")]
+            public async Task<ActionResult> Delete(string id)
+            {
+                try
+                {
+                    var success = await _dataAcess.DeleteFornecedor(id);
+                    if (!success)
+                        return NotFound($"Fornecedor com ID {id} não encontrado.");
+
+                    return Ok($"Fornecedor com ID {id} excluído com sucesso.");
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao excluir o fornecedor: {ex.Message}");
+                }
             }
         }
-
-        // GERANDO LINKS PARA ACESSAR AS REQUISIÇÕES.
-        private void GerarLinks(Fornecedor model)
-        {
-            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "self", metodo: "GET"));
-            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "update", metodo: "PUT"));
-            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "delete", metodo: "Delete"));
-        }
+  
     }
+
+public class DataAcess
+{
+
+
+    public class FornecedorsService
+    {
+        private readonly IMongoCollection<Fornecedor> _FornecedorsCollection;
+
+        public FornecedorsService(
+            IOptions<FornecedorStoreDatabaseSettings> FornecedorStoreDatabaseSettings)
+        {
+            var mongoClient = new MongoClient(
+                FornecedorStoreDatabaseSettings.Value.ConnectionString);
+
+            var mongoDatabase = mongoClient.GetDatabase(
+                FornecedorStoreDatabaseSettings.Value.DatabaseName);
+
+            _FornecedorsCollection = mongoDatabase.GetCollection<Fornecedor>(
+            FornecedorStoreDatabaseSettings.Value.FornecedorsCollectionName);
+        }
+
+        public async Task<List<Fornecedor>> GetAllFornecedores()
+        {
+            var results = await _FornecedorsCollection.Find(_ => true).ToListAsync();
+            return results.ToList();
+
+        }
+
+        public async Task<Fornecedor> GetFornecedorById(string id)
+        {
+            var result = await _FornecedorsCollection.FindAsync(f => f.Id == id);
+            return await result.FirstOrDefaultAsync();
+
+        }
+
+        public async Task<bool> CheckIfFornecedorExists(string cnpjCpf)
+        {
+            var result = await _FornecedorsCollection.Find(f => f.CnpjCpf == cnpjCpf).FirstOrDefaultAsync();
+            return result != null;
+        }
+
+
+        public Task CreateFornecedor(Fornecedor fornecedor)
+        {
+
+
+            return _FornecedorsCollection.InsertOneAsync(fornecedor);
+
+        }
+
+
+        public async Task<bool> UpdateFornecedor(string id, Fornecedor fornecedor)
+        {
+
+            var result = await _FornecedorsCollection.ReplaceOneAsync(f => f.Id == id, fornecedor);
+            return result.ModifiedCount > 0;
+        }
+
+
+        public async Task<bool> DeleteFornecedor(string id)
+        {
+
+            var result = await _FornecedorsCollection.DeleteOneAsync(f => f.Id == id);
+            return result.DeletedCount > 0;
+
+        }
+
+
+
+    }
+
 }

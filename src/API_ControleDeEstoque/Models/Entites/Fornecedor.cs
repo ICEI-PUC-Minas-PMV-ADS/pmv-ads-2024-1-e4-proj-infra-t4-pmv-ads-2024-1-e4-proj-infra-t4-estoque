@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
@@ -7,9 +9,11 @@ namespace ProjetoControleDeEstoque.Models.Entites
     // A classe Fornecedor está herdando da classe LinkHATEOS
     public class Fornecedor : LinkHATEOS
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
+   
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+     
         public string Nome { get; set; }
         [Required]
         public string CnpjCpf { get; set; }
