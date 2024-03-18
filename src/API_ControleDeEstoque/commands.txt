@@ -1,0 +1,2 @@
+dotnet ef migrations add ControleEstoqueMigration
+dotnet ef database update

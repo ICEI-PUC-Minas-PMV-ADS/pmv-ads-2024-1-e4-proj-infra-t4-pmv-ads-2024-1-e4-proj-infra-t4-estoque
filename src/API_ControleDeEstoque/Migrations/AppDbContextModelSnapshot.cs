@@ -24,11 +24,8 @@ namespace ProjetoControleDeEstoque.Migrations
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Feedback", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -38,16 +35,13 @@ namespace ProjetoControleDeEstoque.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Feedbacks");
+                    b.ToTable("Feedback");
                 });
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Fornecedor", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CnpjCpf")
                         .IsRequired()
@@ -58,7 +52,6 @@ namespace ProjetoControleDeEstoque.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -74,8 +67,11 @@ namespace ProjetoControleDeEstoque.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("FornecedorId")
-                        .HasColumnType("int");
+                    b.Property<string>("FeedbackId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FornecedorId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Href")
                         .HasColumnType("nvarchar(max)");
@@ -90,6 +86,8 @@ namespace ProjetoControleDeEstoque.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FeedbackId");
 
                     b.HasIndex("FornecedorId");
 
@@ -119,6 +117,9 @@ namespace ProjetoControleDeEstoque.Migrations
                     b.Property<int>("FornecedorId")
                         .HasColumnType("int");
 
+                    b.Property<string>("FornecedorId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Localizacao")
                         .HasColumnType("nvarchar(max)");
 
@@ -134,13 +135,17 @@ namespace ProjetoControleDeEstoque.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FornecedorId");
+                    b.HasIndex("FornecedorId1");
 
                     b.ToTable("Produtos");
                 });
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.LinkDTO", b =>
                 {
+                    b.HasOne("ProjetoControleDeEstoque.Models.Entites.Feedback", null)
+                        .WithMany("Links")
+                        .HasForeignKey("FeedbackId");
+
                     b.HasOne("ProjetoControleDeEstoque.Models.Entites.Fornecedor", null)
                         .WithMany("Links")
                         .HasForeignKey("FornecedorId");
@@ -154,11 +159,14 @@ namespace ProjetoControleDeEstoque.Migrations
                 {
                     b.HasOne("ProjetoControleDeEstoque.Models.Entites.Fornecedor", "Fornecedor")
                         .WithMany()
-                        .HasForeignKey("FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FornecedorId1");
 
                     b.Navigation("Fornecedor");
+                });
+
+            modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Feedback", b =>
+                {
+                    b.Navigation("Links");
                 });
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Fornecedor", b =>
