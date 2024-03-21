@@ -1,6 +1,6 @@
-namespace BookStoreApi.Models;
+namespace DatabaseSettingsModel.Models;
 
-public class FornecedorStoreDatabaseSettings
+public class DatabaseSettings
 {
     public string ConnectionString { get; set; } = null!;
 

@@ -6,19 +6,14 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
-    [Table("Produtos")]
-
-    // A classe Produto está herdando da classe LinkHATEOS
-
-    // A classe Fornecedor está herdando da classe LinkHATEOS
     public class Produto : LinkHATEOS
     {
-   
-      
-     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id { get; set; }
-            public string Nome { get; set; }
+
+
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
+        public string Nome { get; set; }
         [Required]
         public string Descricao { get; set; }
         [Required]
@@ -59,10 +54,10 @@ namespace ProjetoControleDeEstoque.Models.Entites
 
         [Display(Name = "Roupa")]
         Roupa = 1,
-        
+
         [Display(Name = "Sapato")]
         Sapato = 2,
-        
+
         [Display(Name = "Cosmético")]
         Cosmetico = 3,
 

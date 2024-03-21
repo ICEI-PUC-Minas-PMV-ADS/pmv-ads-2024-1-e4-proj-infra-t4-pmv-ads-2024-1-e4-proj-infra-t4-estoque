@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NJ9Ugl4Ga6n2aGS8CRJUDSLqWvF71JQlVMxtXHHu7wV8ZdqUywMOIUHonXNrwHqN8RJsWh7wdPVrxouFiVnlRQ==",
+  "dgSpecHash": "0RvKoC+pGWeJ0ejNgaE2DVCzpIWDAQlwftEs/3ZbjRpjdRmbJaMPY1oAI//ZMoqyHyM/iGWEFdkuUyBA8AjuQA==",
   "success": true,
-  "projectFilePath": "C:\\milos\\programaçao\\ControleEstoqueMongoDb\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
+  "projectFilePath": "C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eudes\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\eudes\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

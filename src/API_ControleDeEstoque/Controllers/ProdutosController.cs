@@ -1,4 +1,5 @@
-﻿﻿using BookStoreApi.Models;
+﻿﻿
+using DatabaseSettingsModel.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -14,45 +15,31 @@ namespace ProjetoControleDeEstoque.Controllers
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        private readonly IMongoCollection<Produto> _produtosCollection;
 
-        public ProdutosController(IOptions<FornecedorStoreDatabaseSettings> produtoStoreDatabaseSettings)
+
+        private readonly ProdutosService _produtosCollection;
+
+        public ProdutosController(ProdutosService produtosService)
         {
-            var mongoClient = new MongoClient(produtoStoreDatabaseSettings.Value.ConnectionString);
-            var mongoDatabase = mongoClient.GetDatabase(produtoStoreDatabaseSettings.Value.DatabaseName);
-            _produtosCollection = mongoDatabase.GetCollection<Produto>(produtoStoreDatabaseSettings.Value.ProdutosCollectionName);
+            _produtosCollection = produtosService;
         }
-
         // Método para acessar todos os produtos.
-     [HttpGet]
-public async Task<ActionResult<List<Produto>>> GetAll()
-{
-    try
-    {
-       var produtos = await _produtosCollection
-    .Find(_ => true)
-    .Project(p => new Produto
-    {
-        Id = p.Id,
-        Nome = p.Nome,
-        Descricao = p.Descricao,
-        Quantidade = p.Quantidade,
-        Valor = p.Valor,
-        Localizacao = p.Localizacao,
-        EstadoProduto = p.EstadoProduto,
-        Categoria = p.Categoria,
-        FornecedorId = p.Fornecedor != null ? p.Fornecedor.Id : null // Verifica se há um fornecedor e atribui o ID, senão, atribui null
-    })
-    .ToListAsync();
+        [HttpGet]
+        public async Task<ActionResult<List<Produto>>> GetAll()
+        {
+            try
+            {
+                var produtos = await _produtosCollection.GetAllProdutos();
+                return Ok(produtos);
 
-return Ok(produtos);
 
-    }
-    catch (Exception ex)
-    {
-        return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar os produtos: {ex.Message}");
-    }
-}
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar os produtos: {ex.Message}");
+            }
+        }
 
         // Método para acessar um produto específico.
         [HttpGet("{id}")]
@@ -60,7 +47,7 @@ return Ok(produtos);
         {
             try
             {
-                var produto = await _produtosCollection.Find(p => p.Id == id).FirstOrDefaultAsync();
+                var produto = await _produtosCollection.GetProdutoById(id);
 
                 if (produto == null)
                     return NotFound($"Produto com ID {id} não encontrado.");
@@ -79,7 +66,7 @@ return Ok(produtos);
         {
             try
             {
-                await _produtosCollection.InsertOneAsync(produto);
+                await _produtosCollection.CreateProduto(produto);
                 return CreatedAtAction(nameof(GetById), new { id = produto.Id }, produto);
             }
             catch (Exception ex)
@@ -97,8 +84,8 @@ return Ok(produtos);
                 if (id != produto.Id)
                     return BadRequest("ID do produto não corresponde ao ID fornecido na URL.");
 
-                var result = await _produtosCollection.ReplaceOneAsync(p => p.Id == id, produto);
-                if (result.ModifiedCount == 0)
+                var result = await _produtosCollection.UpdateProduto(id, produto);
+                if (!result)
                     return NotFound($"Produto com ID {id} não encontrado.");
 
                 return NoContent();
@@ -115,8 +102,8 @@ return Ok(produtos);
         {
             try
             {
-                var result = await _produtosCollection.DeleteOneAsync(p => p.Id == id);
-                if (result.DeletedCount == 0)
+                var result = await _produtosCollection.DeleteProduto(id);
+                if (!result)
                     return NotFound($"Produto com ID {id} não encontrado.");
 
                 return Ok($"Produto com ID {id} excluído com sucesso.");
@@ -128,3 +115,4 @@ return Ok(produtos);
         }
     }
 }
+

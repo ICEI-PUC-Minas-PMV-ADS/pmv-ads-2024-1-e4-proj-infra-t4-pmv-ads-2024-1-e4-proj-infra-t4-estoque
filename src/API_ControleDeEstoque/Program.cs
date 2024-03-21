@@ -6,7 +6,7 @@ using ProjetoControleDeEstoque.Models.Context;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
 using System.Text.Json.Serialization;
-using BookStoreApi.Models;
+using DatabaseSettingsModel.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,11 +19,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
      options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-  builder.Services.Configure<FornecedorStoreDatabaseSettings>(
+  builder.Services.Configure<DatabaseSettings>(
     builder.Configuration.GetSection("DatabaseMongoDb"));
 
-    builder.Services.AddSingleton<DataAcess.FornecedorsService>();
-     builder.Services.AddSingleton<ProdutosController>();
+    builder.Services.AddSingleton<FornecedoresService>();
+     builder.Services.AddSingleton<ProdutosService>();
 
 // Inje��o de depend�ncia
 builder.Services.AddScoped<EmailService>();

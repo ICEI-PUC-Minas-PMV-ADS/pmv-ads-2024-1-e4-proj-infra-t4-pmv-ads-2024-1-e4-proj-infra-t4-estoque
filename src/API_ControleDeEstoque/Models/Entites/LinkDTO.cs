@@ -5,9 +5,9 @@ namespace ProjetoControleDeEstoque.Models.Entites
 {
     public class LinkDTO
     {
-       [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string? Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? Id { get; set; }
         // O link que utilizará para a navegação.
         public string Href { get; set; }
         // É o Método. Ação que você está usando relacionada a aquele objeto.
