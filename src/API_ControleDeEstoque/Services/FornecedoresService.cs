@@ -18,7 +18,7 @@ public class FornecedoresService
             DatabaseSettings.Value.DatabaseName);
 
         _fornecedorsCollection = mongoDatabase.GetCollection<Fornecedor>(
-        DatabaseSettings.Value.FornecedorsCollectionName);
+        DatabaseSettings.Value.FornecedoresCollectionName);
     }
 
     public async Task<List<Fornecedor>> GetAllFornecedores()

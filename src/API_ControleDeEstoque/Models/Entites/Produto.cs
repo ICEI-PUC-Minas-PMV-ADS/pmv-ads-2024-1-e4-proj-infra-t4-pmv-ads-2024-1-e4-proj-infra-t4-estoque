@@ -27,7 +27,13 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public EstadoProduto EstadoProduto { get; set; }
         [Required]
         public Categoria Categoria { get; set; }
-        public string FornecedorId { get; set; }
+
+        
+
+        public string FornecedorId   { get; set; }
+
+        
+   
         public Fornecedor Fornecedor { get; set; }
     }
     public enum EstadoProduto
