@@ -59,23 +59,26 @@ namespace ProjetoControleDeEstoque.Controllers
                 }
             }
 
-            [HttpGet("cnpjCpf")]
-            public async Task<ActionResult<bool>> ExisteFornecedor(string cnpjCpf)
-            {
-                try
-                {
-                    if (cnpjCpf == null)
-                        return BadRequest("CNPJ/CPF não fornecido.");
+           [HttpGet("cnpjCpf")]
+public async Task<ActionResult<Fornecedor>> ExisteFornecedor(string cnpjCpf)
+{
+    try
+    {
+        if (cnpjCpf == null)
+            return BadRequest("CNPJ/CPF não fornecido.");
 
-                    var exists = await _dataAcess.CheckIfFornecedorExists(cnpjCpf);
-                    return Ok(exists);
-                }
-                catch (Exception ex)
-                {
-                    return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao verificar a existência do fornecedor: {ex.Message}");
-                }
-            }
+        var fornecedor = await _dataAcess.GetFornecedorByCnpjCpf(cnpjCpf);
+        
+        if (fornecedor == null)
+            return NotFound($"Fornecedor com CNPJ/CPF {cnpjCpf} não encontrado.");
 
+        return Ok(fornecedor);
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao verificar a existência do fornecedor: {ex.Message}");
+    }
+}
             [HttpPost]
             public async Task<ActionResult<Fornecedor>> Create(Fornecedor fornecedor)
             {
@@ -165,11 +168,18 @@ public class DataAcess
 
         }
 
-        public async Task<bool> CheckIfFornecedorExists(string cnpjCpf)
-        {
-            var result = await _FornecedorsCollection.Find(f => f.CnpjCpf == cnpjCpf).FirstOrDefaultAsync();
-            return result != null;
-        }
+        public async Task<Fornecedor> GetFornecedorByCnpjCpf(string cnpjCpf)
+{
+    var fornecedor = await _FornecedorsCollection.Find(f => f.CnpjCpf == cnpjCpf).FirstOrDefaultAsync();
+    return fornecedor;
+}
+
+
+      public async Task<bool> CheckIfFornecedorExists(string cnpjCpf)
+{
+    var fornecedor = await GetFornecedorByCnpjCpf(cnpjCpf);
+    return fornecedor != null;
+}
 
 
         public Task CreateFornecedor(Fornecedor fornecedor)

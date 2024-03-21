@@ -27,8 +27,9 @@ namespace ProjetoControleDeEstoque.Migrations
                 name: "Fornecedores",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CnpjCpf = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -50,17 +51,17 @@ namespace ProjetoControleDeEstoque.Migrations
                     Localizacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EstadoProduto = table.Column<int>(type: "int", nullable: false),
                     Categoria = table.Column<int>(type: "int", nullable: false),
-                    FornecedorId = table.Column<int>(type: "int", nullable: false),
-                    FornecedorId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    FornecedorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produtos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Produtos_Fornecedores_FornecedorId1",
-                        column: x => x.FornecedorId1,
+                        name: "FK_Produtos_Fornecedores_FornecedorId",
+                        column: x => x.FornecedorId,
                         principalTable: "Fornecedores",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,7 +74,7 @@ namespace ProjetoControleDeEstoque.Migrations
                     Rel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Metodo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FeedbackId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    FornecedorId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    FornecedorId = table.Column<int>(type: "int", nullable: true),
                     ProdutoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -112,9 +113,9 @@ namespace ProjetoControleDeEstoque.Migrations
                 column: "ProdutoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Produtos_FornecedorId1",
+                name: "IX_Produtos_FornecedorId",
                 table: "Produtos",
-                column: "FornecedorId1");
+                column: "FornecedorId");
         }
 
         /// <inheritdoc />

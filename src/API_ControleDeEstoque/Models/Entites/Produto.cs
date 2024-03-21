@@ -1,18 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
     [Table("Produtos")]
 
     // A classe Produto está herdando da classe LinkHATEOS
+
+    // A classe Fornecedor está herdando da classe LinkHATEOS
     public class Produto : LinkHATEOS
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public string Nome { get; set; }
+   
+      
+     [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string? Id { get; set; }
+            public string Nome { get; set; }
         [Required]
         public string Descricao { get; set; }
         [Required]
@@ -21,11 +27,12 @@ namespace ProjetoControleDeEstoque.Models.Entites
         [Column(TypeName = "decimal(18,2)")]
         public decimal Valor { get; set; }
         public string Localizacao { get; set; }
+        public string CodigoProduto { get; set; }
         [Required]
         public EstadoProduto EstadoProduto { get; set; }
         [Required]
         public Categoria Categoria { get; set; }
-        public int FornecedorId { get; set; }
+        public string FornecedorId { get; set; }
         public Fornecedor Fornecedor { get; set; }
     }
     public enum EstadoProduto

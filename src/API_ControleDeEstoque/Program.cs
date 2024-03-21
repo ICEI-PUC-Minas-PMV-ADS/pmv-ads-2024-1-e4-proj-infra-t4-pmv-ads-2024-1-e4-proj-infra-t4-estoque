@@ -20,12 +20,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
   builder.Services.Configure<FornecedorStoreDatabaseSettings>(
-    builder.Configuration.GetSection("FornecedorStoreDatabase"));
+    builder.Configuration.GetSection("DatabaseMongoDb"));
 
     builder.Services.AddSingleton<DataAcess.FornecedorsService>();
+     builder.Services.AddSingleton<ProdutosController>();
 
 // Inje��o de depend�ncia
 builder.Services.AddScoped<EmailService>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

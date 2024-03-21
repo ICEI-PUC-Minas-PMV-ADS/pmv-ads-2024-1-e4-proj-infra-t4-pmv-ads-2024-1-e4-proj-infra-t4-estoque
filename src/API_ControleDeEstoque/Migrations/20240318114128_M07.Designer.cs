@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjetoControleDeEstoque.Models.Context;
 
@@ -11,9 +12,11 @@ using ProjetoControleDeEstoque.Models.Context;
 namespace ProjetoControleDeEstoque.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240318114128_M07")]
+    partial class M07
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,8 +27,11 @@ namespace ProjetoControleDeEstoque.Migrations
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Feedback", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -35,7 +41,7 @@ namespace ProjetoControleDeEstoque.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Feedback");
+                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Fornecedor", b =>
@@ -71,9 +77,6 @@ namespace ProjetoControleDeEstoque.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("FeedbackId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int?>("FornecedorId")
                         .HasColumnType("int");
 
@@ -90,8 +93,6 @@ namespace ProjetoControleDeEstoque.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FeedbackId");
 
                     b.HasIndex("FornecedorId");
 
@@ -146,10 +147,6 @@ namespace ProjetoControleDeEstoque.Migrations
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.LinkDTO", b =>
                 {
-                    b.HasOne("ProjetoControleDeEstoque.Models.Entites.Feedback", null)
-                        .WithMany("Links")
-                        .HasForeignKey("FeedbackId");
-
                     b.HasOne("ProjetoControleDeEstoque.Models.Entites.Fornecedor", null)
                         .WithMany("Links")
                         .HasForeignKey("FornecedorId");
@@ -168,11 +165,6 @@ namespace ProjetoControleDeEstoque.Migrations
                         .IsRequired();
 
                     b.Navigation("Fornecedor");
-                });
-
-            modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Feedback", b =>
-                {
-                    b.Navigation("Links");
                 });
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Fornecedor", b =>

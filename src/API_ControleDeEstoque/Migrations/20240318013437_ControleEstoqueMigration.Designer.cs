@@ -12,7 +12,7 @@ using ProjetoControleDeEstoque.Models.Context;
 namespace ProjetoControleDeEstoque.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240318011137_ControleEstoqueMigration")]
+    [Migration("20240318013437_ControleEstoqueMigration")]
     partial class ControleEstoqueMigration
     {
         /// <inheritdoc />
@@ -43,8 +43,11 @@ namespace ProjetoControleDeEstoque.Migrations
 
             modelBuilder.Entity("ProjetoControleDeEstoque.Models.Entites.Fornecedor", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CnpjCpf")
                         .IsRequired()
@@ -55,6 +58,7 @@ namespace ProjetoControleDeEstoque.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -73,8 +77,8 @@ namespace ProjetoControleDeEstoque.Migrations
                     b.Property<string>("FeedbackId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("FornecedorId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("FornecedorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Href")
                         .HasColumnType("nvarchar(max)");
@@ -120,9 +124,6 @@ namespace ProjetoControleDeEstoque.Migrations
                     b.Property<int>("FornecedorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FornecedorId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Localizacao")
                         .HasColumnType("nvarchar(max)");
 
@@ -138,7 +139,7 @@ namespace ProjetoControleDeEstoque.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FornecedorId1");
+                    b.HasIndex("FornecedorId");
 
                     b.ToTable("Produtos");
                 });
@@ -162,7 +163,9 @@ namespace ProjetoControleDeEstoque.Migrations
                 {
                     b.HasOne("ProjetoControleDeEstoque.Models.Entites.Fornecedor", "Fornecedor")
                         .WithMany()
-                        .HasForeignKey("FornecedorId1");
+                        .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Fornecedor");
                 });

@@ -7,4 +7,6 @@ public class FornecedorStoreDatabaseSettings
     public string DatabaseName { get; set; } = null!;
 
     public string FornecedorsCollectionName { get; set; } = null!;
+
+     public string ProdutosCollectionName { get; set; } = null!;
 }

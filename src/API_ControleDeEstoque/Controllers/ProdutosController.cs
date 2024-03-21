@@ -1,9 +1,12 @@
-﻿﻿using Microsoft.AspNetCore.Http;
+﻿﻿using BookStoreApi.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ProjetoControleDeEstoque.Models.Context;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models.Entites;
-using System.Linq.Expressions;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -11,127 +14,117 @@ namespace ProjetoControleDeEstoque.Controllers
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        private readonly AppDbContext _context;
-        public ProdutosController(AppDbContext context)
+        private readonly IMongoCollection<Produto> _produtosCollection;
+
+        public ProdutosController(IOptions<FornecedorStoreDatabaseSettings> produtoStoreDatabaseSettings)
         {
-            _context = context;
+            var mongoClient = new MongoClient(produtoStoreDatabaseSettings.Value.ConnectionString);
+            var mongoDatabase = mongoClient.GetDatabase(produtoStoreDatabaseSettings.Value.DatabaseName);
+            _produtosCollection = mongoDatabase.GetCollection<Produto>(produtoStoreDatabaseSettings.Value.ProdutosCollectionName);
         }
 
-        //Método para acessar todos os produtos.
-        [HttpGet]
-        public async Task<ActionResult> GetAll()
-        {
-            List<Produto> produtos = new List<Produto>();
-            try
-            {
-                produtos = await _context.Produtos.Include(i => i.Fornecedor).ToListAsync();
+        // Método para acessar todos os produtos.
+     [HttpGet]
+public async Task<ActionResult<List<Produto>>> GetAll()
+{
+    try
+    {
+       var produtos = await _produtosCollection
+    .Find(_ => true)
+    .Project(p => new Produto
+    {
+        Id = p.Id,
+        Nome = p.Nome,
+        Descricao = p.Descricao,
+        Quantidade = p.Quantidade,
+        Valor = p.Valor,
+        Localizacao = p.Localizacao,
+        EstadoProduto = p.EstadoProduto,
+        Categoria = p.Categoria,
+        FornecedorId = p.Fornecedor != null ? p.Fornecedor.Id : null // Verifica se há um fornecedor e atribui o ID, senão, atribui null
+    })
+    .ToListAsync();
 
-            }
-            catch (Exception)
-            {
-                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
-            }
-            return Ok(produtos);
-        }
+return Ok(produtos);
 
-        //Método para acessar um produto específico.
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar os produtos: {ex.Message}");
+    }
+}
+
+        // Método para acessar um produto específico.
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetById(int id)
+        public async Task<ActionResult<Produto>> GetById(string id)
         {
             try
             {
-                var model = await _context.Produtos.Include(i => i.Fornecedor).FirstOrDefaultAsync(m => m.Id == id);
+                var produto = await _produtosCollection.Find(p => p.Id == id).FirstOrDefaultAsync();
 
-                if (model == null)
-                {
-                    return NotFound("Este produto não consta na base de dados!");
-                }
+                if (produto == null)
+                    return NotFound($"Produto com ID {id} não encontrado.");
 
-                GerarLinks(model);
-
-                return Ok(model);
+                return Ok(produto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar o produto: {ex.Message}");
             }
         }
 
-        //Método para criar um produto.
+        // Método para criar um produto.
         [HttpPost]
-        public async Task<ActionResult> Create(Produto model)
+        public async Task<ActionResult<Produto>> Create(Produto produto)
         {
             try
             {
-                if (String.IsNullOrEmpty(model.Nome) || String.IsNullOrEmpty(model.Descricao) || model.Valor == 0)
-                {
-                    return BadRequest("Alguns desses campos obrigatórios (Nome, Descrição, Valor) não foram preenchidos!");
-                }
-
-                _context.Produtos.Add(model);
-                await _context.SaveChangesAsync();
+                await _produtosCollection.InsertOneAsync(produto);
+                return CreatedAtAction(nameof(GetById), new { id = produto.Id }, produto);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar salvar os dados!");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao criar o produto: {ex.Message}");
             }
-            return CreatedAtAction("GetById", new { id = model.Id }, model);
         }
 
-        //Método para atualizar o produto.
+        // Método para atualizar o produto.
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, Produto model)
+        public async Task<ActionResult> Update(string id, Produto produto)
         {
             try
             {
-                if (id != model.Id)
-                    return BadRequest("Ocorreu um erro!");
+                if (id != produto.Id)
+                    return BadRequest("ID do produto não corresponde ao ID fornecido na URL.");
 
-                var modeloDb = await _context.Produtos.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
-
-                if (modeloDb == null)
-                    return NotFound("Este produto não foi encontrado na base de dados!");
-
-                _context.Produtos.Update(model);
-                await _context.SaveChangesAsync();
+                var result = await _produtosCollection.ReplaceOneAsync(p => p.Id == id, produto);
+                if (result.ModifiedCount == 0)
+                    return NotFound($"Produto com ID {id} não encontrado.");
 
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar atualizar os dados!");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao atualizar o produto: {ex.Message}");
             }
         }
 
-        //Método para deletar o produto.
+        // Método para deletar o produto.
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(string id)
         {
             try
             {
-                var model = await _context.Produtos.FindAsync(id);
+                var result = await _produtosCollection.DeleteOneAsync(p => p.Id == id);
+                if (result.DeletedCount == 0)
+                    return NotFound($"Produto com ID {id} não encontrado.");
 
-                if (model == null)
-                {
-                    return NotFound("Este produto não consta na base de dados!");
-                }
-                _context.Produtos.Remove(model);
-                await _context.SaveChangesAsync();
-
-                return Ok(model);
+                return Ok($"Produto com ID {id} excluído com sucesso.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao tentar acessar os dados!");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao excluir o produto: {ex.Message}");
             }
-        }
-
-        // GERANDO LINKS PARA ACESSAR AS REQUISIÇÕES.
-        private void GerarLinks(Produto model)
-        {
-            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "self", metodo: "GET"));
-            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "update", metodo: "PUT"));
-            model.Links.Add(new LinkDTO(model.Id, Url.ActionLink(), rel: "delete", metodo: "Delete"));
         }
     }
 }
