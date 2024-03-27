@@ -1,13 +1,5 @@
-﻿﻿
-using DatabaseSettingsModel.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoControleDeEstoque.Models.Entites;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -15,25 +7,21 @@ namespace ProjetoControleDeEstoque.Controllers
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-
-
         private readonly ProdutosService _produtosCollection;
 
         public ProdutosController(ProdutosService produtosService)
         {
             _produtosCollection = produtosService;
         }
+
         // Método para acessar todos os produtos.
         [HttpGet]
-        public async Task<ActionResult<List<Produto>>> GetAll()
+        public async Task<ActionResult<IReadOnlyCollection<Produto>>> GetAll()
         {
             try
             {
                 var produtos = await _produtosCollection.GetAllProdutos();
                 return Ok(produtos);
-
-
-
             }
             catch (Exception ex)
             {

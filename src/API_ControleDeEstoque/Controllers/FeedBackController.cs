@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ProjetoControleDeEstoque.Models.Context;
+using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
+using System;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -11,35 +11,44 @@ namespace ProjetoControleDeEstoque.Controllers
     [ApiController]
     public class FeedBackController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly FeedBackService _feedBackService;
         private readonly EmailService _emailService;
-        public FeedBackController(AppDbContext context, EmailService emailService)
+        private readonly IMongoCollection<Feedback> _feedbacksCollection;
+
+        public FeedBackController(FeedBackService feedBackService, EmailService emailService, IMongoDatabase database)
         {
-            _context = context;
+            _feedBackService = feedBackService;
             _emailService = emailService;
+            _feedbacksCollection = database.GetCollection<Feedback>("Feedback");
         }
 
-        // Método para enviar e-mail e salvar no banco os dados referentes ao FEEDBACK.
         [HttpPost("EnviarFeedBack")]
         public ActionResult EnviarFeedBackPorEmailESalvar(Feedback model)
         {
-            using (var transaction = _context.Database.BeginTransaction())
+            try
             {
-                try
+                using (var session = _feedbacksCollection.Database.Client.StartSession())
                 {
-                    var modelDb = _context.Feedbacks.Add(model);
-                    _context.SaveChanges();
+                    try
+                    {
+                        session.StartTransaction();
 
-                    _emailService.EnviarEmail(modelDb.Entity);
+                        _feedBackService.CreateFeedBack(model);
+                        _emailService.EnviarEmail(model);
 
-                    transaction.Commit();
-                    return NoContent();
+                        session.CommitTransaction();
+                        return NoContent();
+                    }
+                    catch (Exception ex)
+                    {
+                        session.AbortTransaction();
+                        throw new Exception("Ocorreu um erro ao tentar realizar a transação! Por favor, tente novamente.", ex);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    throw new Exception("Ocorreu um erro ao tentar enviar o feedback! Por favor, tente novamente.");
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao tentar enviar o feedback! Por favor, tente novamente.");
             }
         }
     }

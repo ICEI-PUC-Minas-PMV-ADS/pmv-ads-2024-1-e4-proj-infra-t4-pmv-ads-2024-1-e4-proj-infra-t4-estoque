@@ -1,5 +1,4 @@
-﻿
-using DatabaseSettingsModel.Models;
+﻿using DatabaseSettingsModel.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,14 +6,10 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models.Entites;
 
-
-
 namespace ProjetoControleDeEstoque.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
-
     public class FornecedoresController : ControllerBase
     {
         private readonly FornecedoresService _fornecedoresService;
@@ -25,7 +20,7 @@ namespace ProjetoControleDeEstoque.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Fornecedor>>> GetAll()
+        public async Task<ActionResult<IReadOnlyCollection<Fornecedor>>> GetAll()
         {
             try
             {

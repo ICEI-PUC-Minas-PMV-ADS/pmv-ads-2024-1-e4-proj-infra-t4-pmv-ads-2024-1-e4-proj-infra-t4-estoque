@@ -8,11 +8,9 @@ namespace ProjetoControleDeEstoque.Models.Entites
 {
     public class Produto : LinkHATEOS
     {
-
-
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        public string Id { get; set; }
         public string Nome { get; set; }
         [Required]
         public string Descricao { get; set; }
@@ -28,12 +26,7 @@ namespace ProjetoControleDeEstoque.Models.Entites
         [Required]
         public Categoria Categoria { get; set; }
 
-        
-
         public string FornecedorId   { get; set; }
-
-        
-   
         public Fornecedor Fornecedor { get; set; }
     }
     public enum EstadoProduto

@@ -1,17 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
-using ProjetoControleDeEstoque.Models.Context;
 using ProjetoControleDeEstoque.Models.Entites;
 
 namespace ProjetoControleDeEstoque.Services
 {
     public class EmailService
     {
-        private readonly AppDbContext _context;
-        public EmailService(AppDbContext context)
-        {
-            _context = context;
-        }
-
         public void EnviarEmail(Feedback model)
         {
             try
