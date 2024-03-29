@@ -52,7 +52,7 @@ public class ProdutosService
     //Aguardando ajustes - Necessário usuário.
     public async Task<IReadOnlyCollection<Produto>> GetAllProdutosQuantidadeMinima(string userId)
     {
-        var results = await _produtosCollection.Find(f => f.Id == userId).ToListAsync();
+        var results = await _produtosCollection.Find(f => f.Id == userId && f.Quantidade >= 50).ToListAsync();
         results.Find(f => f.Quantidade == 0);
         return results;
     }
