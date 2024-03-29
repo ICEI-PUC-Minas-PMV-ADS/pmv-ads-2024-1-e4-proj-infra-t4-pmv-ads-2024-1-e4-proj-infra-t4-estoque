@@ -42,4 +42,24 @@ public class ProdutosService
         var result = await _produtosCollection.DeleteOneAsync(f => f.Id == id);
         return result.DeletedCount > 0;
     }
+    //Aguardando ajustes - Necessário usuário
+    public async Task<IReadOnlyCollection<Produto>> GetAllProdutosZerados(string userId)
+    {
+        var results = await _produtosCollection.Find(f => f.Id == userId).ToListAsync();
+        results.Find(f => f.Quantidade == 0);
+        return results;
+    }
+    //Aguardando ajustes - Necessário usuário.
+    public async Task<IReadOnlyCollection<Produto>> GetAllProdutosQuantidadeMinima(string userId)
+    {
+        var results = await _produtosCollection.Find(f => f.Id == userId).ToListAsync();
+        results.Find(f => f.Quantidade == 0);
+        return results;
+    }
+    //Aguardando ajustes - Necessário usuário.
+    public async Task<IReadOnlyCollection<Produto>> GetAllProdutosCadastrados(string userId)
+    {
+        var quantidadeProduto = await _produtosCollection.Find(p => true && p.Id == userId).ToListAsync();
+        return quantidadeProduto;
+    }
 }
