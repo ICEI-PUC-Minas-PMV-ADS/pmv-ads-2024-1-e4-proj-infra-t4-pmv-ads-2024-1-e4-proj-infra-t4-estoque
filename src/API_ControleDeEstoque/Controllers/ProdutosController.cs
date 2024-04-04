@@ -104,13 +104,11 @@ namespace ProjetoControleDeEstoque.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao excluir o produto: {ex.Message}");
             }
-
         }
 
         // Método para trazer produtos com estoque zerado.
 
         [HttpGet("{userId}")]
-
         public async Task<ActionResult<object>> GetAllProdutosAdministracao(string userId)
         {
             try
