@@ -17,14 +17,19 @@ namespace ProjetoControleDeEstoque.Controllers
             _authService = authService;
         }
 
-
-        //criar usuario
+        //Criação de usuário
         [HttpPost]
         public async Task<ActionResult<Usuario>> Create(Usuario usuario)
         {
-            await _authService.CreateUsuario(usuario);
-            return CreatedAtAction(nameof(Create), new { id = usuario.Id }, usuario.Password);
+            try
+            {
+                await _authService.CreateUsuario(usuario);
+                return CreatedAtAction(nameof(Create), new { id = usuario.Id }, usuario.Password);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro ao criar o usuário.");
+            }
         }
-        //get usuario
     }
 }

@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
-    public class Fornecedor : LinkHATEOS
+    public class Fornecedor
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

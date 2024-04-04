@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
-    public class Usuario : LinkHATEOS
+    public class Usuario
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -21,6 +21,5 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public string Cnpj { get; set; }
         [Required]
         public string Role { get; set; }
-
     }
 }
