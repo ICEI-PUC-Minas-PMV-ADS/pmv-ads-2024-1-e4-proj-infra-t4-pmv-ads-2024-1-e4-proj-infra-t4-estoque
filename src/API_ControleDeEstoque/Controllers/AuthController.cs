@@ -28,7 +28,7 @@ namespace ProjetoControleDeEstoque.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro ao criar o usuário.");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro ao tentar criar o usuário.");
             }
         }
     }

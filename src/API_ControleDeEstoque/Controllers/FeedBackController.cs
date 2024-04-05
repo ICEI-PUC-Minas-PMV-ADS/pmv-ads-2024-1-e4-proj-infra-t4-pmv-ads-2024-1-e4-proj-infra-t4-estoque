@@ -39,14 +39,14 @@ namespace ProjetoControleDeEstoque.Controllers
                         session.CommitTransaction();
                         return NoContent();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         session.AbortTransaction();
-                        throw new Exception("Ocorreu um erro ao tentar realizar a transação! Por favor, tente novamente.", ex);
+                        throw new Exception("Ocorreu um erro ao tentar realizar a transação! Por favor, tente novamente.");
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Ocorreu um erro ao tentar enviar o feedback! Por favor, tente novamente.");
             }

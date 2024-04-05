@@ -5,14 +5,14 @@ using ProjetoControleDeEstoque.Models.Entites;
 
 public class UsuarioService
 {
-        private readonly IMongoCollection<Usuario> _usuarioCollection;
+    private readonly IMongoCollection<Usuario> _usuarioCollection;
 
-        public UsuarioService(IOptions<DatabaseSettings> DatabaseSettings)
-        {
-            var mongoClient = new MongoClient(DatabaseSettings.Value.ConnectionString);
-            var mongoDatabase = mongoClient.GetDatabase(DatabaseSettings.Value.DatabaseName);
-            _usuarioCollection = mongoDatabase.GetCollection<Usuario>(DatabaseSettings.Value.UsuarioCollectionName);
-        }
+    public UsuarioService(IOptions<DatabaseSettings> DatabaseSettings)
+    {
+        var mongoClient = new MongoClient(DatabaseSettings.Value.ConnectionString);
+        var mongoDatabase = mongoClient.GetDatabase(DatabaseSettings.Value.DatabaseName);
+        _usuarioCollection = mongoDatabase.GetCollection<Usuario>(DatabaseSettings.Value.UsuarioCollectionName);
+    }
 
     public Task CreateUsuario(Usuario usuario)
     {

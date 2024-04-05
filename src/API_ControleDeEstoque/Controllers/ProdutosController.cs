@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoControleDeEstoque.Models.Entites;
+using ProjetoControleDeEstoque.Services;
+using System.Security.Claims;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -8,10 +10,14 @@ namespace ProjetoControleDeEstoque.Controllers
     public class ProdutosController : ControllerBase
     {
         private readonly ProdutosService _produtosCollection;
+        private readonly AuthService _authService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ProdutosController(ProdutosService produtosService)
+        public ProdutosController(ProdutosService produtosService, AuthService authService, IHttpContextAccessor httpContextAccessor)
         {
             _produtosCollection = produtosService;
+            _authService = authService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         // Método para acessar todos os produtos.
@@ -20,8 +26,13 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-                var produtos = await _produtosCollection.GetAllProdutos();
-                return Ok(produtos);
+                if (User.Identity.IsAuthenticated)
+                {
+                    var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                    var produtos = await _produtosCollection.GetAllProdutos(userId);
+                    return Ok(produtos);
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Usuário não autenticado.");
             }
             catch (Exception ex)
             {
@@ -38,7 +49,7 @@ namespace ProjetoControleDeEstoque.Controllers
                 var produto = await _produtosCollection.GetProdutoById(id);
 
                 if (produto == null)
-                    return NotFound($"Produto com ID {id} não encontrado.");
+                    return NotFound($"Produto com Id: {id} - não encontrado.");
 
                 return Ok(produto);
             }
@@ -70,11 +81,11 @@ namespace ProjetoControleDeEstoque.Controllers
             try
             {
                 if (id != produto.Id)
-                    return BadRequest("ID do produto não corresponde ao ID fornecido na URL.");
+                    return BadRequest("O Id do produto não corresponde ao Id fornecido.");
 
                 var result = await _produtosCollection.UpdateProduto(id, produto);
                 if (!result)
-                    return NotFound($"Produto com ID {id} não encontrado.");
+                    return NotFound($"Produto com o Id: {id} - não encontrado.");
 
                 return NoContent();
             }
@@ -92,13 +103,36 @@ namespace ProjetoControleDeEstoque.Controllers
             {
                 var result = await _produtosCollection.DeleteProduto(id);
                 if (!result)
-                    return NotFound($"Produto com ID {id} não encontrado.");
+                    return NotFound($"Produto com Id: {id} - não encontrado.");
 
-                return Ok($"Produto com ID {id} excluído com sucesso.");
+                return Ok($"Produto com Id: {id} - excluído com sucesso.");
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao excluir o produto: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao ao excluir o produto: {ex.Message}");
+            }
+        }
+
+        // Método para trazer os produtos filtrados na tela de ADM.
+        [HttpGet($"{{userId}}")]
+        public async Task<ActionResult<object>> GetAllProdutosAdministracao(string userId)
+        {
+            try
+            {
+                var produtoZerado = await _produtosCollection.GetAllProdutosZerados(userId);
+                var produtoQuantidadeMinima = await _produtosCollection.GetAllProdutosQuantidadeMinima(userId);
+                var produtoEstoqueMinimo = await _produtosCollection.GetAllProdutosCadastrados(userId);
+
+                return Ok(new
+                {
+                    ProdutosZerados = produtoZerado,
+                    ProdutosQuantidadeMinima = produtoQuantidadeMinima,
+                    ProdutosEstoqueMinimo = produtoEstoqueMinimo
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao tentar acessar os dados de produtos.");
             }
         }
     }

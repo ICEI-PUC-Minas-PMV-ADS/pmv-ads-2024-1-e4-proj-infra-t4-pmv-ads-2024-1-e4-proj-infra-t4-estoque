@@ -1,21 +1,15 @@
-using Microsoft.EntityFrameworkCore;
-using ProjetoControleDeEstoque.Controllers;
-using ProjetoControleDeEstoque.Models.Entites;
-using ProjetoControleDeEstoque.Services;
-using System.Text.Json.Serialization;
 using DatabaseSettingsModel.Models;
-using MongoDB.Driver;
-using MongoDB.Driver.Core.Configuration;
-using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using MongoDB.Driver;
 using ProjetoControleDeEstoque;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Identity;
+using ProjetoControleDeEstoque.Services;
+using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -27,9 +21,6 @@ builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
     var settings = serviceProvider.GetRequiredService<IOptions<DatabaseSettings>>().Value;
     return new MongoClient(settings.ConnectionString);
 });
-
-
-
 
 builder.Services.AddSingleton<IMongoDatabase>(serviceProvider =>
 {
@@ -46,21 +37,20 @@ builder.Services.AddSingleton<EmailService>();
 builder.Services.AddSingleton<UsuarioService>();
 builder.Services.AddSingleton<AuthService>();
 
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //inicio jwt teste
-
-
 var key = Encoding.ASCII.GetBytes(Key.Secret);
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    
+
 }).AddJwtBearer(x =>
 {
     x.RequireHttpsMetadata = false;
@@ -74,9 +64,8 @@ builder.Services.AddAuthentication(x =>
 
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer =  false,
+        ValidateIssuer = false,
         ValidateAudience = false,
-
     };
 });
 
@@ -93,9 +82,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 app.UseHttpsRedirection();
-
 
 app.MapControllers();
 

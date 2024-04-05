@@ -6,17 +6,17 @@ using ProjetoControleDeEstoque.Models.Entites;
 public class FornecedoresService
 {
     private readonly IMongoCollection<Fornecedor> _fornecedoresCollection;
-
     public FornecedoresService(IOptions<DatabaseSettings> DatabaseSettings)
     {
         var mongoClient = new MongoClient(DatabaseSettings.Value.ConnectionString);
         var mongoDatabase = mongoClient.GetDatabase(DatabaseSettings.Value.DatabaseName);
         _fornecedoresCollection = mongoDatabase.GetCollection<Fornecedor>(DatabaseSettings.Value.FornecedoresCollectionName);
     }
+
     public async Task<IReadOnlyCollection<Fornecedor>> GetAllFornecedores()
     {
         var results = await _fornecedoresCollection.Find(_ => true).ToListAsync();
-        return results.ToList();
+        return results;
     }
 
     public async Task<Fornecedor> GetFornecedorById(string id)
@@ -47,6 +47,7 @@ public class FornecedoresService
         var result = await _fornecedoresCollection.ReplaceOneAsync(f => f.Id == id, fornecedor);
         return result.ModifiedCount > 0;
     }
+
     public async Task<bool> DeleteFornecedor(string id)
     {
         var result = await _fornecedoresCollection.DeleteOneAsync(f => f.Id == id);
