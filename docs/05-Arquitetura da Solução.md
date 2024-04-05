@@ -43,9 +43,7 @@ Segue as tecnologias que foram utilizadas para a realização (desenvolvimento) 
 > - **[C#](https://learn.microsoft.com/pt-br/dotnet/csharp/tour-of-csharp/): Linguagem de programação usada para o desenvolvimento do backend da solução. Juntamente com o framework web da Microsoft o ASP.NET.**
 
 #### Desenvolvimento do frontend:
-> - **[HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML): Linguagem de marcação utilizada para estruturar e criar o conteúdo da web.**
-> - **[CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS): Linguagem de folha de estilo utilizada para formatar e estilizar páginas criadas com HTML.**
-> - **[JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript): Linguagem utilizada para adcionar interatividade e dinamismo da página web.**
+> - **[REACT](https://react.dev/): Framework utilizado para construir a aplicação web de forma dinâmica.**
 
 #### IDE utilizada:
 > - **[Visual Studio Community](https://visualstudio.microsoft.com/pt-br/): Foi escolhido devido a sua integração com o framework ASP.NET.**
