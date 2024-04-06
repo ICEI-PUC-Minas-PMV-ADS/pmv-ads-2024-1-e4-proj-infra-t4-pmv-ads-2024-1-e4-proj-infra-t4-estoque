@@ -1,31 +1,16 @@
-﻿using Amazon.Runtime.Internal;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoControleDeEstoque.Models.Entites;
-<<<<<<< HEAD
-using System;
-using System.Collections.Generic;
-=======
 using ProjetoControleDeEstoque.Services;
-using System.Security.Claims;
->>>>>>> DEV-DESENVOLVIMENTO
 
 namespace ProjetoControleDeEstoque.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutosController : ControllerBase
+    public class ProdutosController(ProdutosService produtosService, AuthService authService, IHttpContextAccessor httpContextAccessor) : ControllerBase
     {
-        private readonly ProdutosService _produtosCollection;
-        private readonly AuthService _authService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-
-        public ProdutosController(ProdutosService produtosService, AuthService authService, IHttpContextAccessor httpContextAccessor)
-        {
-            _produtosCollection = produtosService;
-            _authService = authService;
-            _httpContextAccessor = httpContextAccessor;
-        }
+        private readonly ProdutosService _produtosCollection = produtosService;
+        private readonly AuthService _authService = authService;
+        private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
         // Método para acessar todos os produtos.
         [HttpGet("usuarioIdProdutos")]
@@ -140,30 +125,6 @@ namespace ProjetoControleDeEstoque.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao tentar acessar os dados de produtos.");
-            }
-        }
-
-        // Método para trazer produtos com estoque zerado.
-
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<object>> GetAllProdutosAdministracao(string userId)
-        {
-            try
-            { 
-                var produtoZerado = await _produtosCollection.GetAllProdutosZerados(userId);
-                var produtoQuantidadeMinima = await _produtosCollection.GetAllProdutosQuantidadeMinima(userId);
-                var produtoEstoqueMinimo = await _produtosCollection.GetAllProdutosCadastrados(userId);
-
-                return Ok(new
-                {
-                    ProdutosZerados = produtoZerado,
-                    ProdutosQuantidadeMinima = produtoQuantidadeMinima,
-                    ProdutosEstoqueMinimo = produtoEstoqueMinimo
-                });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar os produtos: {ex.Message}");
             }
         }
     }

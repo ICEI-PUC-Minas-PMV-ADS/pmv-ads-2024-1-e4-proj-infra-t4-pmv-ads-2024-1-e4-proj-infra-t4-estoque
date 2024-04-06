@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoControleDeEstoque.Models.Entites;
+using ProjetoControleDeEstoque.Services;
 
 namespace ProjetoControleDeEstoque.Controllers
 {

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjetoControleDeEstoque")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6322364202c4b65b8c07209e2d54e1cec72758f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9a901d6d0cb69914fa5d913a5a626ca216602bf")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjetoControleDeEstoque")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjetoControleDeEstoque")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
