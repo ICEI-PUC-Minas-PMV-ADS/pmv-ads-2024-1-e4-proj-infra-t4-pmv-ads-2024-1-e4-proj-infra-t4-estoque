@@ -1,6 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Amazon.Runtime.Internal;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
 using ProjetoControleDeEstoque.Models.Entites;
+<<<<<<< HEAD
+using System;
+using System.Collections.Generic;
+=======
 using ProjetoControleDeEstoque.Services;
+using System.Security.Claims;
+>>>>>>> DEV-DESENVOLVIMENTO
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -132,6 +140,30 @@ namespace ProjetoControleDeEstoque.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao tentar acessar os dados de produtos.");
+            }
+        }
+
+        // Método para trazer produtos com estoque zerado.
+
+        [HttpGet("{userId}")]
+        public async Task<ActionResult<object>> GetAllProdutosAdministracao(string userId)
+        {
+            try
+            { 
+                var produtoZerado = await _produtosCollection.GetAllProdutosZerados(userId);
+                var produtoQuantidadeMinima = await _produtosCollection.GetAllProdutosQuantidadeMinima(userId);
+                var produtoEstoqueMinimo = await _produtosCollection.GetAllProdutosCadastrados(userId);
+
+                return Ok(new
+                {
+                    ProdutosZerados = produtoZerado,
+                    ProdutosQuantidadeMinima = produtoQuantidadeMinima,
+                    ProdutosEstoqueMinimo = produtoEstoqueMinimo
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao acessar os produtos: {ex.Message}");
             }
         }
     }

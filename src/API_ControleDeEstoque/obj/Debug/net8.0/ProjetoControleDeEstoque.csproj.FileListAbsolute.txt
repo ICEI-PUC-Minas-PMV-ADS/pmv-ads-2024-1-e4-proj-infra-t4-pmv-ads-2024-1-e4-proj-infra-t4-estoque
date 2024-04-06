@@ -1180,14 +1180,3 @@ C:\Users\adm\Desktop\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infr
 C:\Users\adm\Desktop\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\AspNetCore.Identity.MongoDbCore.dll
 C:\Users\adm\Desktop\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\MongoDbGenericRepository.dll
 >>>>>>> DEV-DESENVOLVIMENTO
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\AspNetCore.Identity.MongoDbCore.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\System.Net.Http.Formatting.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\System.Web.Http.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\System.Web.Http.WebHost.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\Microsoft.Web.Infrastructure.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\MongoDbGenericRepository.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\Swashbuckle.Core.dll
-C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\WebActivatorEx.dll
