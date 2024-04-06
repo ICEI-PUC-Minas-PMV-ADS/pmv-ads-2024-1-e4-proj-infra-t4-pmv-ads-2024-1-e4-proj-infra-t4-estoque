@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-using ProjetoControleDeEstoque.Models.Entites;
+﻿using ProjetoControleDeEstoque.Models.Entites;
 
 namespace ProjetoControleDeEstoque.Services
 {

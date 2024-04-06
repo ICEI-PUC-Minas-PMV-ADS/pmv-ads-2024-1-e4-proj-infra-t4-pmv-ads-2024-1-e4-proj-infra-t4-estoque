@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
-using System;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
