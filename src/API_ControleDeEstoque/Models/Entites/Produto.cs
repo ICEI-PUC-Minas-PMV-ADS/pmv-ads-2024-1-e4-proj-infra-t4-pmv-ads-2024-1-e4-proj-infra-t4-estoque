@@ -6,7 +6,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
-    public class Produto : LinkHATEOS
+    public class Produto
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -25,9 +25,11 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public EstadoProduto EstadoProduto { get; set; }
         [Required]
         public Categoria Categoria { get; set; }
-
-        public string FornecedorId   { get; set; }
+        public string FornecedorId { get; set; }
         public Fornecedor Fornecedor { get; set; }
+        [Required]
+        public string UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
     }
     public enum EstadoProduto
     {

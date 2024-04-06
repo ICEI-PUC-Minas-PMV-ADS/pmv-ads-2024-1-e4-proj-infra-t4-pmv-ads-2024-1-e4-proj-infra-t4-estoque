@@ -5,7 +5,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
-    public class Feedback : LinkHATEOS
+    public class Feedback
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
