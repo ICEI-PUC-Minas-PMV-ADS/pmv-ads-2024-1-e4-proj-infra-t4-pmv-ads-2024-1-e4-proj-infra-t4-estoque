@@ -1003,3 +1003,16 @@ C:\milos\programaçao\ProjetoControleEstoquePucMg\src\API_ControleDeEstoque\obj\
 C:\milos\programaçao\ProjetoControleEstoquePucMg\src\API_ControleDeEstoque\obj\Debug\net8.0\ProjetoControleDeEstoque.csproj.CopyComplete
 C:\milos\programaçao\ProjetoControleEstoquePucMg\src\API_ControleDeEstoque\obj\Debug\net8.0\ProjetoControleDeEstoque.genruntimeconfig.cache
 C:\milos\programaçao\ProjetoControleEstoquePucMg\src\API_ControleDeEstoque\obj\Debug\net8.0\ref\ProjetoControleDeEstoque.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\AWSSDK.Core.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\AWSSDK.SecurityToken.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\DnsClient.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\MongoDB.Driver.Core.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\MongoDB.Libmongocrypt.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\Snappier.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\ZstdSharp.dll
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\luisa\Source\Repos\ICEI-PUC-Minas-PMV-ADS\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\src\API_ControleDeEstoque\bin\Debug\net8.0\runtimes\win\native\mongocrypt.dll
