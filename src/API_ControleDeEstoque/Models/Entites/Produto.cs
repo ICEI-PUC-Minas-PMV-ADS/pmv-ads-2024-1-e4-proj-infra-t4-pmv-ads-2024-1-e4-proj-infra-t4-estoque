@@ -27,6 +27,7 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public Categoria Categoria { get; set; }
         public string FornecedorId { get; set; }
         public Fornecedor Fornecedor { get; set; }
+        [Required]
         public string UsuarioId { get; set; }
         public Usuario Usuario { get; set; }
     }

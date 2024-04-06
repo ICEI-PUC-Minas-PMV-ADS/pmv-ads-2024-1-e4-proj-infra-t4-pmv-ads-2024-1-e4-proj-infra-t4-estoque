@@ -21,18 +21,18 @@ namespace ProjetoControleDeEstoque.Controllers
         }
 
         // Método para acessar todos os produtos.
-        [HttpGet]
-        public async Task<ActionResult<IReadOnlyCollection<Produto>>> GetAll()
+        [HttpGet("usuarioIdProdutos")]
+        public async Task<ActionResult<IReadOnlyCollection<Produto>>> GetAll(string usuarioId)
         {
             try
             {
-                if (User.Identity.IsAuthenticated)
-                {
-                    var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-                    var produtos = await _produtosCollection.GetAllProdutos(userId);
-                    return Ok(produtos);
-                }
-                return StatusCode(StatusCodes.Status500InternalServerError, $"Usuário não autenticado.");
+                //if (User.Identity.IsAuthenticated)
+                //{
+                //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                var produtos = await _produtosCollection.GetAllProdutos(usuarioId);
+                return Ok(produtos);
+                //}
+                //return StatusCode(StatusCodes.Status500InternalServerError, $"Usuário não autenticado.");
             }
             catch (Exception ex)
             {
@@ -114,14 +114,14 @@ namespace ProjetoControleDeEstoque.Controllers
         }
 
         // Método para trazer os produtos filtrados na tela de ADM.
-        [HttpGet($"{{userId}}")]
-        public async Task<ActionResult<object>> GetAllProdutosAdministracao(string userId)
+        [HttpGet("usuarioId")]
+        public async Task<ActionResult<Produto>> GetAllProdutosAdministracao(string usuarioId)
         {
             try
             {
-                var produtoZerado = await _produtosCollection.GetAllProdutosZerados(userId);
-                var produtoQuantidadeMinima = await _produtosCollection.GetAllProdutosQuantidadeMinima(userId);
-                var produtoEstoqueMinimo = await _produtosCollection.GetAllProdutosCadastrados(userId);
+                var produtoZerado = await _produtosCollection.GetAllProdutosZerados(usuarioId);
+                var produtoQuantidadeMinima = await _produtosCollection.GetAllProdutosQuantidadeMinima(usuarioId);
+                var produtoEstoqueMinimo = await _produtosCollection.GetAllProdutosCadastrados(usuarioId);
 
                 return Ok(new
                 {

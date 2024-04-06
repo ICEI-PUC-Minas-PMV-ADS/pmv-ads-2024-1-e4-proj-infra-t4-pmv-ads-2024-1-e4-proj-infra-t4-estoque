@@ -14,5 +14,8 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public string CnpjCpf { get; set; }
         [Required]
         public string Email { get; set; }
+        [Required]
+        public string UsuarioId { get; set; }
+        public Usuario Usuario { get; set; }
     }
 }

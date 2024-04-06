@@ -19,12 +19,12 @@ namespace ProjetoControleDeEstoque.Controllers
             _fornecedoresService = fornecedoresService;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IReadOnlyCollection<Fornecedor>>> GetAll()
+        [HttpGet("usuarioIdFornecedores")]
+        public async Task<ActionResult<IReadOnlyCollection<Fornecedor>>> GetAll(string usuarioId)
         {
             try
             {
-                var fornecedores = await _fornecedoresService.GetAllFornecedores();
+                var fornecedores = await _fornecedoresService.GetAllFornecedores(usuarioId);
                 return Ok(fornecedores);
             }
             catch (Exception ex)
