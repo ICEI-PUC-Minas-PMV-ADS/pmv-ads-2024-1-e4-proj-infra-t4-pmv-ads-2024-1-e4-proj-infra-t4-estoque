@@ -85,8 +85,8 @@ Feito a  configuração do  aplicativo no Railway usando o comando railway up. I
 
 
 > **Links Úteis**:
-> - [Estrutura de Programação] (https://reactnative.dev/)
-> - [Hospedagem] (https://www.mongodbtutorial.org/)
+> - [Estrutura de Programação](https://reactnative.dev/)
+> - [Hospedagem](https://www.mongodbtutorial.org/)
 > - [Website com GitHub Pages](https://pages.github.com/)
 > - [Programação colaborativa com Repl.it](https://repl.it/)
 > - [Getting Started with Heroku](https://devcenter.heroku.com/start)
