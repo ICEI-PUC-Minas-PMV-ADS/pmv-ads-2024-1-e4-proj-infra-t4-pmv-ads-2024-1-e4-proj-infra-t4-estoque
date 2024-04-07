@@ -56,11 +56,37 @@ Segue as tecnologias que foram utilizadas para a realização (desenvolvimento) 
 > - **[Canva](https://www.canva.com/): Ferramenta utilizada para criar os wireframes do projeto.**
 
 ## Hospedagem
+Railway é uma plataforma de hospedagem e implantação de aplicativos que oferece uma abordagem simplificada para o processo de hospedagem e implantação de aplicativos da web. 
 
-Explique como a hospedagem e o lançamento da plataforma foi feita.
+Configuração do Projeto:
+
+Primeiro, feito  configuração do  projeto localmente.Foi usado as estruturas do  React e também c#.
+
+Instalação do Railway CLI:
+
+O Railway oferece uma CLI (Interface de Linha de Comando) que facilita a integração do  projeto com a plataforma. Foi  instalado  a CLI usando ferramentas de gerenciamento de pacotes npm.  
+
+Login e Autenticação:
+
+Após instalar a CLI, fazer login na  conta do Railway usando o comando railway login. Isso autentica a CLI para acessar a conta no Railway e realizar operações relacionadas ao projeto.
+
+Adicionando o Projeto:
+
+Com a CLI autenticada,pode adicionar o projeto ao Railway usando o comando railway init. Isso configura o projeto para ser implantado na plataforma.
+
+Configuração do Banco de Dados e Variáveis de Ambiente:
+
+Utilizado MongoDB as variáveis de ambiente com informações sensíveis, como chaves de API ou credenciais de banco de dados.
+
+Implantação do Aplicativo:
+
+Feito a  configuração do  aplicativo no Railway usando o comando railway up. Isso inicia o processo de implantação, onde o Railway compila e implanta o aplicativo em seus servidores.
+
+
 
 > **Links Úteis**:
->
+> - [Estrutura de Programação] (https://reactnative.dev/)
+> - [Hospedagem] (https://www.mongodbtutorial.org/)
 > - [Website com GitHub Pages](https://pages.github.com/)
 > - [Programação colaborativa com Repl.it](https://repl.it/)
 > - [Getting Started with Heroku](https://devcenter.heroku.com/start)
