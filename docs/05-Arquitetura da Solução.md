@@ -13,22 +13,6 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Diagramas de Classes - Documentação da IBM](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/DIAGRAMA%20DE%20CLASSES%20Diagrama.png)
 > - [O que é um diagrama de classe UML? | Lucidchart](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
 
-## Modelo ER
-
-O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.]
-
-As referências abaixo irão auxiliá-lo na geração do artefato “Modelo ER”.
-
-> - [Como fazer um diagrama entidade relacionamento | Lucidchart](https://www.lucidchart.com/pages/pt/como-fazer-um-diagrama-entidade-relacionamento)
-
-## Esquema Relacional
-
-O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
- 
-As referências abaixo irão auxiliá-lo na geração do artefato “Esquema Relacional”.
-
-> - [Criando um modelo relacional - Documentação da IBM](https://www.ibm.com/docs/pt-br/cognos-analytics/10.2.2?topic=designer-creating-relational-model)
-
 ## Modelo Físico
 
 Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
@@ -58,39 +42,23 @@ Segue as tecnologias que foram utilizadas para a realização (desenvolvimento) 
 ## Hospedagem
 Railway é uma plataforma de hospedagem e implantação de aplicativos que oferece uma abordagem simplificada para o processo de hospedagem e implantação de aplicativos da web. 
 
-Configuração do Projeto:
-
+#### Configuração do Projeto:
 Primeiro, feito  configuração do  projeto localmente.Foi usado as estruturas do  React e também c#.
 
-Instalação do Railway CLI:
-
+#### Instalação do Railway CLI:
 O Railway oferece uma CLI (Interface de Linha de Comando) que facilita a integração do  projeto com a plataforma. Foi  instalado  a CLI usando ferramentas de gerenciamento de pacotes npm.  
 
-Login e Autenticação:
-
+#### Login e Autenticação:
 Após instalar a CLI, fazer login na  conta do Railway usando o comando railway login. Isso autentica a CLI para acessar a conta no Railway e realizar operações relacionadas ao projeto.
 
-Adicionando o Projeto:
-
+#### Adicionando o Projeto:
 Com a CLI autenticada,pode adicionar o projeto ao Railway usando o comando railway init. Isso configura o projeto para ser implantado na plataforma.
 
-Configuração do Banco de Dados e Variáveis de Ambiente:
-
+#### Configuração do Banco de Dados e Variáveis de Ambiente:
 Utilizado MongoDB as variáveis de ambiente com informações sensíveis, como chaves de API ou credenciais de banco de dados.
 
-Implantação do Aplicativo:
-
+#### Implantação do Aplicativo:
 Feito a  configuração do  aplicativo no Railway usando o comando railway up. Isso inicia o processo de implantação, onde o Railway compila e implanta o aplicativo em seus servidores.
-
-
-
-> **Links Úteis**:
-> - [Estrutura de Programação](https://reactnative.dev/)
-> - [Hospedagem](https://www.mongodbtutorial.org/)
-> - [Website com GitHub Pages](https://pages.github.com/)
-> - [Programação colaborativa com Repl.it](https://repl.it/)
-> - [Getting Started with Heroku](https://devcenter.heroku.com/start)
-> - [Publicando Seu Site No Heroku](http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html)
 
 ## Qualidade de Software
 
