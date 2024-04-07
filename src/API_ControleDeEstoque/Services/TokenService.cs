@@ -8,28 +8,23 @@ namespace ProjetoControleDeEstoque.Services
 {
     public class TokenService
     {
-        public static object GenerateToken(Usuario usuario)
+        private string GenerateJSONWebToken(Usuario usuarioinfo)
         {
-            var key = Encoding.ASCII.GetBytes(Key.Secret);
-            var tokenConfig = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                      new Claim(type:ClaimTypes.Name, value:usuario.Name.ToString()),
-                      new Claim(type:ClaimTypes.Role, value:usuario.Role.ToString() )
-                }),
-                Expires = DateTime.UtcNow.AddHours(3),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Jwt:Key"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[] {
+                new Claim(JwtRegisteredClaimNames.Sub, usuarioinfo.Name),
+                new Claim(JwtRegisteredClaimNames.Email, usuarioinfo.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenConfig);
-            var tokenString = tokenHandler.WriteToken(token);
+            var token = new JwtSecurityToken(
+                issuer: "http://localhost:5020",
+                audience: "http://localhost:5020",
+                signingCredentials: credentials);
 
-            return new
-            {
-                token = tokenString
-            };
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }

@@ -3,10 +3,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models.Entites;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+
 
 namespace ProjetoControleDeEstoque.Services
 {
-    public class AuthService 
+    public class AuthService
     {
         private readonly IMongoCollection<Usuario> _userCollection;
         public AuthService(IOptions<DatabaseSettings> DatabaseSettings)
@@ -19,6 +23,8 @@ namespace ProjetoControleDeEstoque.Services
         {
             return _userCollection.InsertOneAsync(usuario);
         }
+
+
 
     }
 }
