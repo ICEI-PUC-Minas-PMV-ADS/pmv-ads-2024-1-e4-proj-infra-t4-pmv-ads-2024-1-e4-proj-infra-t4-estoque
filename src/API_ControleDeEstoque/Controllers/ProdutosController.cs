@@ -130,7 +130,7 @@ namespace ProjetoControleDeEstoque.Controllers
         }
 
         //Método de consulta e filtros.
-        [HttpGet]
+        [HttpGet("filtrar")]
         public async Task<IReadOnlyCollection<Produto>> FiltrarProdutos(string id, string usuarioId, string nome, int quantidade, string localizacao, string codigoProduto, int? estadoProduto, int? categoria)
         {
             IReadOnlyCollection<Produto> listaProdutos = new List<Produto>();
