@@ -1,11 +1,14 @@
 ﻿using Amazon.SecurityToken.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
+using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using System.Text;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
