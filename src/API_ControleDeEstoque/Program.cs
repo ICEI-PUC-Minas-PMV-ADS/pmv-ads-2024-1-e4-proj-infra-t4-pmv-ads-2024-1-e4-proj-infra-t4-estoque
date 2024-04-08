@@ -36,6 +36,7 @@ builder.Services.AddSingleton<FeedBackService>();
 builder.Services.AddSingleton<EmailService>();
 builder.Services.AddSingleton<AuthService>();
 
+builder.Services.AddHttpContextAccessor();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

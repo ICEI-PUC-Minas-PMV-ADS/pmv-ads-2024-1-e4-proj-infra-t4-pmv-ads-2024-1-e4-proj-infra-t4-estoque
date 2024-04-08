@@ -16,7 +16,6 @@ public class ProdutosService
         _authCollection = authService;
         _fornecedorCollection = fornecedoresService;
     }
-
     public async Task<IReadOnlyCollection<Produto>> GetAllProdutos(string userId)
     {
         List<Produto> listaDeProdutosPorUsuario = new List<Produto>();
