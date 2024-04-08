@@ -78,5 +78,58 @@
     }
   ```
 - **Resposta:** Evento criado com status 200. Iremos receber os dados e está ali o recurso de localização.
+
+#### RF-009 - O sistema deve permitir o registro do fornecedor associado a cada produto, facilitando a identificação e o histórico de fornecedores para futuras compras.		
+- **URL Local:** `https://localhost:7014/api/Produtos`
+- **Método:** `POST`
+- **Corpo da Requisição:**
+  ```json
+    {
+  "id": "string",
+  "nome": "string",
+  "descricao": "string",
+  "quantidade": 0,
+  "valor": 0,
+  "localizacao": "string",
+  "codigoProduto": "string",
+  "estadoProduto": 0,
+  "categoria": 0,
+  "fornecedorId": "string",
+  "fornecedor": {
+    "id": "string",
+    "nome": "string",
+    "cnpjCpf": "string",
+    "email": "string",
+    "usuarioId": "string",
+    "usuario": {
+      "id": "string",
+      "password": "string",
+      "email": "user@example.com",
+      "name": "string",
+      "cnpj": "string",
+      "role": "string"
+      }
+  ```
+- **Resposta:** Evento criado com status 201.
+
+#### RF-010 - O sistema deve exibir os produtos com estoque zerado, estoque mínimo e quantos estão cadastrados.	
+- **URL Local:** `https://localhost:7014/api/Produtos`
+- **Método:** `POST`
+- **Corpo da Requisição:**
+  ```json
+    {
+  "id": "string",
+  "nome": "string",
+  "descricao": "string",
+  "quantidade": 0,
+  "valor": 0,
+  "localizacao": "string",
+  "codigoProduto": "string",
+  "estadoProduto": 0,
+  "categoria": 0,
+  "fornecedorId": "string",
+      }
+  ```
+- **Resposta:** Evento criado com status 201.
 ## Ferramentas de Testes
 Ferramenta de teste utilizada: [POSTMAN](https://www.postman.com).
