@@ -85,22 +85,22 @@
 - **Corpo da Requisição:**
   ```json
     {
-  "id": "string",
-  "nome": "string",
-  "descricao": "string",
+  "id": "1df2519dedf9d031",
+  "nome": "teste",
+  "descricao": "teste",
   "quantidade": 0,
   "valor": 0,
-  "localizacao": "string",
-  "codigoProduto": "string",
+  "localizacao": "111ass",
+  "codigoProduto": "115a89d926b33ca98",
   "estadoProduto": 0,
-  "categoria": 0,
-  "fornecedorId": "string",
+  "categoria": 2,
+  "fornecedorId": "d0s98a53511o1180",
   "fornecedor": {
-    "id": "string",
-    "nome": "string",
-    "cnpjCpf": "string",
-    "email": "string",
-    "usuarioId": "string",
+    "id": "73218053289",
+    "nome": "teste",
+    "cnpjCpf": "09873217890",
+    "email": "teste@teste.com",
+    "usuarioId": "3543412as31256",
     "usuario": {
       "id": "string",
       "password": "string",
@@ -118,16 +118,16 @@
 - **Corpo da Requisição:**
   ```json
     {
-  "id": "string",
-  "nome": "string",
-  "descricao": "string",
+  "id": "19deddf2519f9d031",
+  "nome": "testando",
+  "descricao": "teste",
   "quantidade": 0,
-  "valor": 0,
-  "localizacao": "string",
-  "codigoProduto": "string",
-  "estadoProduto": 0,
+  "valor": 120,
+  "localizacao": "1211",
+  "codigoProduto": "645432412",
+  "estadoProduto": 1,
   "categoria": 0,
-  "fornecedorId": "string",
+  "fornecedorId": "teste",
       }
   ```
 - **Resposta:** Evento criado com status 201.
