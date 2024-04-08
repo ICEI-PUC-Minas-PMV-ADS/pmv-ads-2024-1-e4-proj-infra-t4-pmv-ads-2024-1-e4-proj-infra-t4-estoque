@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "VpABHNeEjUjZvI/Qnr/pK/CRvkkxuJlWWRkvjBp4wBKJX0GbrZqhYS9nTKc+nXnqD/6ou1R8uknwxtHkBR9aPA==",
+=======
+  "dgSpecHash": "dKD5Fqhe6xl6OyoSBGJ3sW5dJRZ74Mo/cBbGmwB5mQrMmVTSl4KAHbn3RbXSuoZ/0xjuvM128zgn5j7/ob9HnQ==",
+>>>>>>> Auth_services
   "success": true,
   "projectFilePath": "C:\\Users\\luisa\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
   "expectedPackageFiles": [

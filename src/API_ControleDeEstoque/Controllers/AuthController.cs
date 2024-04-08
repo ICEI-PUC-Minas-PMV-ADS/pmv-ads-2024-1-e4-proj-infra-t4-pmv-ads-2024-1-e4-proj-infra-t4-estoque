@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Amazon.SecurityToken.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using MongoDB.Driver;
+using ProjetoControleDeEstoque.Models;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
+using System.Reflection;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -9,10 +14,8 @@ namespace ProjetoControleDeEstoque.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;
-        public AuthController(AuthService authService)
-        {
-            _authService = authService;
-        }
+        
+        
 
         //Criação de usuário
         [HttpPost]
@@ -21,12 +24,29 @@ namespace ProjetoControleDeEstoque.Controllers
             try
             {
                 await _authService.CreateUsuario(usuario);
-                return CreatedAtAction(nameof(Create), new { id = usuario.Id }, usuario.Password);
+                {
+                    var tokenString = GenerateJSONWebToken(usuario);
+                    return CreatedAtAction(nameof(Create), new { id = usuario.Id }, usuario.Password);
+
+                }
             }
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro ao tentar criar o usuário.");
             }
+        }
+
+        private string GenerateJSONWebToken(Usuario usuarioinfo)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Jwt:Key"));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: "http://localhost:5020",
+                audience: "http://localhost:5020",
+                signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
