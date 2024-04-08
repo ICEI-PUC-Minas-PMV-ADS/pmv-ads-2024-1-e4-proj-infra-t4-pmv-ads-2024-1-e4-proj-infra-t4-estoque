@@ -1,23 +1,15 @@
-using Microsoft.EntityFrameworkCore;
-using ProjetoControleDeEstoque.Controllers;
-using ProjetoControleDeEstoque.Models.Entites;
-using ProjetoControleDeEstoque.Services;
-using System.Text.Json.Serialization;
-using DatabaseSettingsModel.Models;
-using MongoDB.Driver;
-using MongoDB.Driver.Core.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using ProjetoControleDeEstoque;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Identity;
 using AspNetCore.Identity.MongoDbCore.Infrastructure;
-using AspNetCore.Identity.MongoDbCore.Extensions;
+using DatabaseSettingsModel.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver;
+using ProjetoControleDeEstoque;
+using ProjetoControleDeEstoque.Services;
+using System.Text;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -29,9 +21,6 @@ builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
     var settings = serviceProvider.GetRequiredService<IOptions<DatabaseSettings>>().Value;
     return new MongoClient(settings.ConnectionString);
 });
-
-
-
 
 builder.Services.AddSingleton<IMongoDatabase>(serviceProvider =>
 {
@@ -52,9 +41,7 @@ builder.Services.AddSingleton<AuthService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 //mongoDB configurações da conta 
-
 var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
 {
     MongoDbSettings = new MongoDbSettings
@@ -73,17 +60,14 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
     }
 };
 
-
 //inicio jwt teste
-
-
 var key = Encoding.ASCII.GetBytes(Key.Secret);
 
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    
+
 }).AddJwtBearer(x =>
 {
     x.RequireHttpsMetadata = false;
@@ -91,10 +75,10 @@ builder.Services.AddAuthentication(x =>
     x.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateActor = true,
-        ValidateIssuer =  true,
+        ValidateIssuer = true,
         ValidateAudience = true,
         ValidateIssuerSigningKey = true,
-        
+
         ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value,
         ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
         IssuerSigningKey = new SymmetricSecurityKey(key),
@@ -115,9 +99,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 app.UseHttpsRedirection();
-
 
 app.MapControllers();
 

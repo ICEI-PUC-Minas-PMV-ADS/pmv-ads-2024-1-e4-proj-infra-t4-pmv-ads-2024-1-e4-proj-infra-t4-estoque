@@ -23,8 +23,10 @@ namespace ProjetoControleDeEstoque.Services
         {
             return _userCollection.InsertOneAsync(usuario);
         }
-
-
-
+        public async Task<Usuario> GetDadosUsuarios(string usuario)
+        {
+            var result = await _userCollection.FindAsync(f => f.Id == usuario);
+            return result.FirstOrDefault();
+        }
     }
 }
