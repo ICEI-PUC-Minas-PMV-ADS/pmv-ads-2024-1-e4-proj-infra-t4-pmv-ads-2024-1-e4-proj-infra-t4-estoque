@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
+using System.Collections.Generic;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -125,6 +126,22 @@ namespace ProjetoControleDeEstoque.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao tentar acessar os dados de produtos.");
+            }
+        }
+
+        //Método de consulta e filtros.
+        [HttpGet]
+        public async Task<IReadOnlyCollection<Produto>> FiltrarProdutos(string id, string usuarioId, string nome, int quantidade, string localizacao, string codigoProduto, int? estadoProduto, int? categoria)
+        {
+            IReadOnlyCollection<Produto> listaProdutos = new List<Produto>();
+            try
+            {
+                listaProdutos = await _produtosCollection.FiltrarProdutosDoBanco(id, usuarioId, quantidade, localizacao, codigoProduto, estadoProduto, categoria);
+                return listaProdutos;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao tentar acessar os dados de produtos.");
             }
         }
     }

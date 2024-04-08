@@ -1,8 +1,11 @@
 using DatabaseSettingsModel.Models;
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using Org.BouncyCastle.Bcpg;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
+
 public class ProdutosService
 {
     private readonly IMongoCollection<Produto> _produtosCollection;
@@ -86,5 +89,45 @@ public class ProdutosService
     {
         var result = await _produtosCollection.Find(p => p.UsuarioId == userId).CountDocumentsAsync();
         return result;
+    }
+
+    public async Task<IReadOnlyCollection<Produto>> FiltrarProdutosDoBanco(string id, string usuarioId, int quantidade, string localizacao, string codigoProduto, int? estadoProduto, int? categoria)
+    {
+        try
+        {
+            var buscaDeProdutos = await _produtosCollection.Find(f => f.UsuarioId == usuarioId).ToListAsync();
+            if (buscaDeProdutos.Count <= 0)
+                return null;
+
+            if (!string.IsNullOrEmpty(localizacao))
+            {
+                buscaDeProdutos = buscaDeProdutos.FindAll(f => f.Localizacao == localizacao);
+            }
+            if (!string.IsNullOrEmpty(codigoProduto))
+            {
+                buscaDeProdutos = buscaDeProdutos.FindAll(f => f.CodigoProduto == codigoProduto);
+            }
+            if (quantidade > 0)
+            {
+                buscaDeProdutos = buscaDeProdutos.FindAll(f => f.Quantidade == quantidade);
+            }
+            if (estadoProduto != null)
+            {
+                buscaDeProdutos = buscaDeProdutos.FindAll(f => f.EstadoProduto == (EstadoProduto)estadoProduto);
+            }
+            if (categoria != null)
+            {
+                buscaDeProdutos = buscaDeProdutos.FindAll(f => f.Categoria == (Categoria)categoria);
+            }
+            if (id != null)
+            {
+                buscaDeProdutos = buscaDeProdutos.FindAll(f => f.Id == id);
+            }
+            return buscaDeProdutos;
+        }
+        catch (Exception)
+        {
+            throw new Exception("Ocorreu um erro ao tentar relizar a busca!");
+        }
     }
 }
