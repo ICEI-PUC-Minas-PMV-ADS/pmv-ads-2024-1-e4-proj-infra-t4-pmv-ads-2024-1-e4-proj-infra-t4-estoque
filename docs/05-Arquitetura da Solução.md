@@ -62,15 +62,46 @@ Feito a  configuração do  aplicativo no Railway usando o comando railway up. I
 
 ## Qualidade de Software
 
-Conceituar qualidade de fato é uma tarefa complexa, mas ela pode ser vista como um método gerencial que através de procedimentos disseminados por toda a organização, busca garantir um produto final que satisfaça às expectativas dos stakeholders.
+A norma ISO 9126 é uma norma internacional que define um conjunto de características e subcaracterísticas para a avaliação da qualidade de software.  A escolha específica de características e subcaracterísticas dependerá das necessidades e objetivos do projeto de software.
 
-No contexto de desenvolvimento de software, qualidade pode ser entendida como um conjunto de características a serem satisfeitas, de modo que o produto de software atenda às necessidades de seus usuários. Entretanto, tal nível de satisfação nem sempre é alcançado de forma espontânea, devendo ser continuamente construído. Assim, a qualidade do produto depende fortemente do seu respectivo processo de desenvolvimento.
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/Qualidade%20de%20Softwere.png">
 
-A norma internacional ISO/IEC 25010, que é uma atualização da ISO/IEC 9126, define oito características e 30 subcaracterísticas de qualidade para produtos de software.
-Com base nessas características e nas respectivas sub-características, identifique as sub-características que sua equipe utilizará como base para nortear o desenvolvimento do projeto de software considerando-se alguns aspectos simples de qualidade. Justifique as subcaracterísticas escolhidas pelo time e elenque as métricas que permitirão a equipe avaliar os objetos de interesse.
 
-> **Links Úteis**:
->
-> - [ISO/IEC 25010:2011 - Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models](https://www.iso.org/standard/35733.html/)
-> - [Análise sobre a ISO 9126 – NBR 13596](https://www.tiespecialistas.com.br/analise-sobre-iso-9126-nbr-13596/)
-> - [Qualidade de Software - Engenharia de Software 29](https://www.devmedia.com.br/qualidade-de-software-engenharia-de-software-29/18209/)
+
+## Requisitos de Qualidade
+
+#### Funcionalidade
+
+- **Adequação:** Fornecer uma variedade de funções para organização de guarda-roupa em diferentes dispositivos e plataformas.
+- **Acurácia:** Alto grau de precisão na exibição de informações sobre roupas e conjuntos, sincronizando dados entre dispositivos.
+- **Interoperabilidade:** Compatibilidade com Android, iOS e plataformas web, garantindo uma experiência consistente em todos os dispositivos.
+- **Segurança:** Criptografia de dados pessoais e autenticação do usuário em todos os pontos de acesso da aplicação.
+- **Conformidade:** Conformidade com as leis de proteção de dados e outras regulamentações, considerando as diferenças regionais.
+
+#### Usabilidade
+
+- **Inteligibilidade:** Design responsivo e intuitivo para fácil navegação em diferentes tamanhos de tela.
+- **Apreensibilidade:** Inclusão de tutoriais ou guias interativos para auxiliar novos usuários em diferentes plataformas.
+- **Operabilidade:** Facilidade de uso com controles bem projetados, como filtros e recursos de busca, adaptados para interação via toque ou mouse.
+- **Atratividade:** Design visualmente agradável, com uma paleta de cores apropriada e adaptação ao tema do dispositivo (claro/escuro).
+- **Conformidade:** Adesão às melhores práticas e padrões da indústria para design de UI/UX em aplicações multiplataforma.
+
+#### Qualidade dos Padrões de Codificação
+
+- **Local Storage:**
+  - **Nomeação de Chaves:** Use nomes descritivos e claros para facilitar a compreensão em um contexto distribuído.
+  - **Verificação de Existência:** Verifique se a chave já existe no Local Storage antes de tentar recuperar dados, considerando a possibilidade de sincronização entre dispositivos.
+  - **Segurança:** Evite armazenar informações sensíveis e considere o uso de mecanismos de armazenamento mais seguros para dados críticos.
+
+- **JSON:**
+  - **Indentação:** Mantenha a indentação consistente para facilitar a leitura e manutenção do JSON em um ambiente de desenvolvimento colaborativo.
+  - **Nomeação de Atributos:** Use camelCase para nomear atributos, mantendo a consistência em toda a aplicação distribuída.
+  - **Validação de JSON:** Certifique-se de que o JSON é válido antes de usá-lo em sua aplicação, especialmente ao receber dados de diferentes fontes.
+  - **Tipo de Dados:** Seja consistente com os tipos de dados para garantir a integridade e consistência dos dados em toda a aplicação.
+
+### Considerações Adicionais para Aplicações Distribuídas
+
+- **Escalabilidade:** Garanta que a aplicação possa escalar horizontalmente para lidar com o aumento da carga e do número de usuários.
+- **Disponibilidade:** Implemente estratégias para garantir a alta disponibilidade da aplicação, como o uso de balanceadores de carga e replicação de dados.
+- **Consistência:** Considere os desafios de consistência de dados em um ambiente distribuído e escolha o modelo de consistência adequado para sua aplicação.
+
