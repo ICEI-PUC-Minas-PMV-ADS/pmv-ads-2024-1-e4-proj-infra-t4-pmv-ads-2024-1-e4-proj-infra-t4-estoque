@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -22,7 +23,7 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-                Document document = new Document();
+                iTextSharp.text.Document document = new iTextSharp.text.Document();
                 string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Relatório de Inventário.pdf");
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(outputPath, FileMode.Create));
                 document.Open();
