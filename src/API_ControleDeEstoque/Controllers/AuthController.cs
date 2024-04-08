@@ -17,7 +17,12 @@ namespace ProjetoControleDeEstoque.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AuthService _authService;
-        
+
+        public AuthController(AuthService authService)
+        {
+            _authService = authService;
+        }
+
         //Criação de usuário
         [HttpPost]
         public async Task<ActionResult<Usuario>> Create(Usuario usuario)
@@ -39,7 +44,7 @@ namespace ProjetoControleDeEstoque.Controllers
 
         private string GenerateJSONWebToken(Usuario usuarioinfo)
         {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Jwt:Key"));
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Jwt:jkl3n242jlkn9pd8@!!#$!#!miodsanmkjlcn"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
