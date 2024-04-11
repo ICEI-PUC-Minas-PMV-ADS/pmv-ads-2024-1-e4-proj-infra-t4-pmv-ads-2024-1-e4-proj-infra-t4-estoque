@@ -86,14 +86,16 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-                if (id != fornecedor.Id)
-                    return BadRequest("O Id do fornecedor não corresponde ao Id fornecido.");
+   var success = await _fornecedoresService.UpdateFornecedor(id, fornecedor);
 
-                var success = await _fornecedoresService.UpdateFornecedor(id, fornecedor);
-                if (!success)
+         if (!success)
                     return NotFound($"Fornecedor com Id: {id} - não encontrado.");
+              
 
-                return NoContent();
+             
+          
+
+               return Ok($"Fornecedor com Id: {id} - atualizado com sucesso.");
             }
             catch (Exception ex)
             {

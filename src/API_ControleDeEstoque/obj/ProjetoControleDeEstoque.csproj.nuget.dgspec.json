@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luisa\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj": {}
+    "C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luisa\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj": {
+    "C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luisa\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
+        "projectUniqueName": "C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
         "projectName": "ProjetoControleDeEstoque",
-        "projectPath": "C:\\Users\\luisa\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
-        "packagesPath": "C:\\Users\\luisa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luisa\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\obj\\",
+        "projectPath": "C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
+        "packagesPath": "C:\\Users\\eudes\\.nuget\\packages\\",
+        "outputPath": "C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\luisa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\eudes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,10 +74,6 @@
               "target": "Package",
               "version": "[7.5.1, )"
             },
-            "MongoDB.Bson": {
-              "target": "Package",
-              "version": "[2.24.0, )"
-            },
             "Swashbuckle": {
               "target": "Package",
               "version": "[5.6.0, )"
@@ -90,6 +85,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.5.1, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.3, )"
             },
             "mongodb.driver": {
               "target": "Package",
@@ -115,7 +114,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

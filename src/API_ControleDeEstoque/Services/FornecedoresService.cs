@@ -74,14 +74,23 @@ namespace ProjetoControleDeEstoque.Services
                 return result;
             }
             else
-                throw new Exception("Este CNPJ/CPF já está cadastrado no banco de dados, por favor verifique no menu 'FORNECEDORES'.");
+                throw new Exception("Este CNPJ/CPF jï¿½ estï¿½ cadastrado no banco de dados, por favor verifique no menu 'FORNECEDORES'.");
         }
 
-        public async Task<bool> UpdateFornecedor(string id, Fornecedor fornecedor)
-        {
-            var result = await _fornecedoresCollection.ReplaceOneAsync(f => f.Id == id, fornecedor);
-            return result.ModifiedCount > 0;
-        }
+      public async Task<bool> UpdateFornecedor(string id, Fornecedor fornecedor)
+{
+
+
+            fornecedor.Id = id;
+   
+    if (string.IsNullOrEmpty(fornecedor.Id))
+    {
+        throw new ArgumentException("O _id do fornecedor nÃ£o pode ser nulo ou vazio.");
+    }
+
+    var result = await _fornecedoresCollection.ReplaceOneAsync(f => f.Id == id, fornecedor);
+    return result.ModifiedCount > 0;
+}
 
         public async Task<bool> DeleteFornecedor(string id)
         {

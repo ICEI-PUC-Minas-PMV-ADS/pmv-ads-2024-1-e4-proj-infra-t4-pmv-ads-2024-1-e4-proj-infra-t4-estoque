@@ -73,14 +73,13 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-                if (id != produto.Id)
-                    return BadRequest("O Id do produto não corresponde ao Id fornecido.");
+               
 
                 var result = await _produtosCollection.UpdateProduto(id, produto);
                 if (!result)
                     return NotFound($"Produto com o Id: {id} - não encontrado.");
 
-                return NoContent();
+                return Ok($"Produto com Id: {id} - atualizado com sucesso.");
             }
             catch (Exception ex)
             {

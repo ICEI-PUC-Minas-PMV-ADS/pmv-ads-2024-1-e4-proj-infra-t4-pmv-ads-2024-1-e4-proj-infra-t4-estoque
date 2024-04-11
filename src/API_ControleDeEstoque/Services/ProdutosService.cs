@@ -62,7 +62,10 @@ public class ProdutosService
     }
 
     public async Task<bool> UpdateProduto(string id, Produto produto)
+
     {
+        produto.Id = id;
+
         var result = await _produtosCollection.ReplaceOneAsync(f => f.Id == id, produto);
         return result.ModifiedCount > 0;
     }
