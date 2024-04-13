@@ -1,10 +1,18 @@
+using AspNetCore.Identity.MongoDbCore.Extensions;
 using AspNetCore.Identity.MongoDbCore.Infrastructure;
 using DatabaseSettingsModel.Models;
+using DnsClient.Protocol;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using ProjetoControleDeEstoque;
+using ProjetoControleDeEstoque.Controllers;
+using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -29,6 +37,8 @@ builder.Services.AddSingleton<IMongoDatabase>(serviceProvider =>
     return client.GetDatabase(settings.DatabaseName);
 });
 
+BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
 // Injeção de dependência
 builder.Services.AddSingleton<FornecedoresService>();
 builder.Services.AddSingleton<ProdutosService>();
@@ -42,11 +52,14 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 //mongoDB configurações da conta 
 var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
 {
     MongoDbSettings = new MongoDbSettings
     {
+        ConnectionString = "mongodb+srv://controleEstoque:controlestq12@cluster0.kxqhdpo.mongodb.net/",
+        DatabaseName = "controleEstoqueDatabase"
     },
     IdentityOptionsAction = options =>
     {
@@ -61,7 +74,14 @@ var mongoDbIdentityConfig = new MongoDbIdentityConfiguration
     }
 };
 
-//inicio jwt teste
+builder.Services.ConfigureMongoDbIdentity<LoginUsuario, RoleUsuario, Guid>(mongoDbIdentityConfig)
+    .AddUserManager<UserManager<LoginUsuario>>()
+    .AddSignInManager<SignInManager<LoginUsuario>>()
+    .AddRoleManager<RoleManager<RoleUsuario>>()
+    .AddDefaultTokenProviders();
+
+
+//inicio jwt
 var key = Encoding.ASCII.GetBytes(Key.Secret);
 
 builder.Services.AddAuthentication(x =>
@@ -75,15 +95,15 @@ builder.Services.AddAuthentication(x =>
     x.SaveToken = true;
     x.TokenValidationParameters = new TokenValidationParameters
     {
+        ValidateIssuerSigningKey = true,
         ValidateActor = true,
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidateIssuerSigningKey = true,
-
-        ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value,
-        ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
+        ValidateLifetime = true,
+        ValidAudience = "http://localhost:5020",
+        ValidIssuer = "http://localhost:5020",
         IssuerSigningKey = new SymmetricSecurityKey(key),
-
+        ClockSkew = TimeSpan.Zero
     };
 });
 

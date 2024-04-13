@@ -8,7 +8,7 @@ namespace ProjetoControleDeEstoque.Services
 {
     public class TokenService
     {
-        private string GenerateJSONWebToken(Usuario usuarioinfo)
+        /*private string GenerateJSONWebToken(Usuario usuarioinfo)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Jwt:Key"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -25,6 +25,6 @@ namespace ProjetoControleDeEstoque.Services
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+        }*/
     }
 }

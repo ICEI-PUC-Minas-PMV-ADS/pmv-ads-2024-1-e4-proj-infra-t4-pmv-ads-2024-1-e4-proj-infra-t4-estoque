@@ -59,8 +59,9 @@ namespace ProjetoControleDeEstoque.Controllers
                 userExists = new LoginUsuario
                 {
                     FullName = request.UserName,
-                    UserName = request.Email,
-                    ConcurrencyStamp = Guid.NewGuid().ToString()
+                    Email = request.Email,
+                    ConcurrencyStamp = Guid.NewGuid().ToString(),
+                    UserName = request.Email
                 };
                 var createUserResult = await _userManager.CreateAsync(userExists, request.Password);
                 if(!createUserResult.Succeeded) return new RegisterResponse 
