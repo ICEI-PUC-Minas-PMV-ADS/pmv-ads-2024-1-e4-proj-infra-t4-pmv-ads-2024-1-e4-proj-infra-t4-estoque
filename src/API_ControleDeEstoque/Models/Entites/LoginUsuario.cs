@@ -6,12 +6,9 @@ using System.ComponentModel.DataAnnotations;
 //ainda nao implementado
 namespace ProjetoControleDeEstoque.Models.Entites
 {
-    public class LoginUsuario
+    [CollectionName("usuarios")]
+    public class LoginUsuario : MongoIdentityUser<Guid>
     {
-        [Required, DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
-        [Required, DataType(DataType.Password)]
-        public string Password { get; set; }
-
+        public string FullName { get; set; } = string.Empty;
     }
 }
