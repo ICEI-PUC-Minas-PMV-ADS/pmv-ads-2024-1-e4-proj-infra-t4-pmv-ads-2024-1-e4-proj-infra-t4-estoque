@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
 using System.Collections.Generic;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController(ProdutosService produtosService, AuthService authService, IHttpContextAccessor httpContextAccessor) : ControllerBase

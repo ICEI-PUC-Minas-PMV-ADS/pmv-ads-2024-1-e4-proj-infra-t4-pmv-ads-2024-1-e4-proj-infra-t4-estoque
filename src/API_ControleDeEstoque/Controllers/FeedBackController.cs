@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FeedBackController : ControllerBase

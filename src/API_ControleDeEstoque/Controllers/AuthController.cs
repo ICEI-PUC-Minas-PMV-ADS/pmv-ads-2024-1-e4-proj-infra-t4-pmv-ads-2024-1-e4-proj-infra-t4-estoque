@@ -89,20 +89,24 @@ namespace ProjetoControleDeEstoque.Controllers
         [HttpPost]
         [Route("login")]
         [ProducesResponseType((int) HttpStatusCode.OK , Type = typeof(LoginResponse))]
-        public async Task<IActionResult> Login([FromBody] Dtos.LoginRequest request)
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
            var result = await LoginAsync(request);
 
            return result.Sucesso ? Ok(result) : BadRequest(result.Message);
         }
 
-        private async Task<LoginResponse> LoginAsync(Dtos.LoginRequest request)
+        private async Task<LoginResponse> LoginAsync(LoginRequest request)
         {
             try
             {
                 var user = await _userManager.FindByEmailAsync(request.Email);
-                if (user is null) return new LoginResponse { Message = "Email ou senha invalida", Sucesso = false };
-
+                    if (user is null) return new LoginResponse { Message = "Email ou senha invalida", Sucesso = false };
+                
+                var userPassword = await _userManager.CheckPasswordAsync(user, request.Password );
+                if (!userPassword)
+                    return new LoginResponse { Message = "Email ou senha inválida", Sucesso = false };
+                
                 var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
