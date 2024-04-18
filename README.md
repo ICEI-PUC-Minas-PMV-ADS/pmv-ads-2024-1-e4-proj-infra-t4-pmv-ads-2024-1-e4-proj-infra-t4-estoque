@@ -23,7 +23,7 @@ Nosso projeto visa criar uma plataforma intuitiva que permitirá às empresas mo
 
 ## Orientador
 
-* Pedro Felipe Alves de Oliveira
+* Pedro Alves de Oliveira
 
 ## Instruções de utilização
 
