@@ -22,8 +22,8 @@ namespace ProjetoControleDeEstoque.Services
         }
         public async Task<Usuario> GetDadosUsuarios(string usuario)
         {
-            var result = await _userCollection.FindAsync(f => f.Id == usuario);
-            return result.FirstOrDefault();
+           var result = await _userCollection.FindAsync(f => f.Id == usuario);
+           return result.FirstOrDefault();
         }
     }
 }
