@@ -10,11 +10,6 @@ O diagrama de classes ilustra graficamente como será a estrutura do software, e
 
 <div align="center"><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/DIAGRAMA%20DE%20CLASSES%20Diagrama%20(1).png" /></div>
 
-https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/DIAGRAMA%20DE%20CLASSES%20Diagrama%20(1).png
-## Modelo Físico
-
-Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
-
 ## Tecnologias Utilizadas
 Segue as tecnologias que foram utilizadas para a realização (desenvolvimento) desta aplicação distribuída.
 
