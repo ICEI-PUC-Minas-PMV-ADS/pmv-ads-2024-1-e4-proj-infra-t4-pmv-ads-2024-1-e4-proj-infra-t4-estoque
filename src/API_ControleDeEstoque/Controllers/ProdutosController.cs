@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutosController(ProdutosService produtosService, AuthService authService, IHttpContextAccessor httpContextAccessor) : ControllerBase

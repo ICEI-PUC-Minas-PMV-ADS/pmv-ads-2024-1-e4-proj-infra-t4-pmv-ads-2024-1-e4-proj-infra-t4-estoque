@@ -1,0 +1,102 @@
+.EstoqueDeProdutos-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: spin infinite 20s linear;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 40px;
+  color: white;
+}
+
+.left-title {
+  margin: 0;
+}
+
+.right-title {
+  margin: 0;
+  margin-right: 100px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button-container {
+  background-color: #FFF8E7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+}
+
+.addButton {
+  background: linear-gradient(to right, #252c41, #18368f);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  justify-content: flex-end;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.searchButton {
+  background-color: #4e73df;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  margin-left: 5px;
+}
+
+.table-container {
+  padding: 20px;
+  background-color: #FFF8E7;
+  height: calc(100vh - 200px); 
+  overflow-y: auto; 
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
