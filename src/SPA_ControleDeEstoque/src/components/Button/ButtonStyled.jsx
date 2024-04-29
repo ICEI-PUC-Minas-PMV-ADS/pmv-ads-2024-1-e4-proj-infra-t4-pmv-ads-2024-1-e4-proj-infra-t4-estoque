@@ -6,12 +6,12 @@ export const ButtonSpace = styled.button`
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-
   font-weight: bold;
   color: #fff;
   transition: all 0.4s ease-in-out;
   cursor: pointer;
   border-radius: 0.3rem;
+  font-size: 20px;
 
 
   

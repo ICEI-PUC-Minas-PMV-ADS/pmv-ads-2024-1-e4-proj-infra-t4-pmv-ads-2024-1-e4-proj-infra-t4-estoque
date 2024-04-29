@@ -9,9 +9,7 @@ export const ContainerHome = styled.header`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
-  padding: 20px;
 
 
 `
@@ -40,11 +38,9 @@ export const ContainerButton = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 25px;
-    width: 100%;
-    
+    width: 100%;  
+    height: 100%  
 
-    
-  
 `
 
 
@@ -59,11 +55,8 @@ input {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 20px;
 }
-
-
-
-
 `
 
 
@@ -74,6 +67,7 @@ export const ButtonSearch = styled.button`
   border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
+  font-size: 20px;
 
 `
 export const LeftTitle = styled.h3`
@@ -110,9 +104,12 @@ export const ContainerTable = styled.div`
 
  th,
 td {
-  padding: 10px;
+  padding: 80px;
   border: 1px solid #ddd;
   color: black;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
 }
 
 `
