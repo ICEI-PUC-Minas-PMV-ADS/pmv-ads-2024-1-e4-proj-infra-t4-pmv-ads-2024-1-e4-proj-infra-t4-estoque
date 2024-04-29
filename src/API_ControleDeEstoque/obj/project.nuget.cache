@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QhXtXKSyie1oCROdWTkw8GtedH3MMkir1xoJ+ZkgX+rQQeCTaXfm+jgfB9c7sivoM+6DZJsP26mCPi1YsHP4Gg==",
+  "dgSpecHash": "ODJbnKVcD2ZEqtxIymeDEyz/Tdf+ahS1uok1VSJfewRrw7MGGNidlVfRriTnI2Y5Q2KnXLDsYQTwm8hGNJTH+w==",
   "success": true,
-  "projectFilePath": "C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
+  "projectFilePath": "C:\\milos\\programaçao\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\ProjetoControleDeEstoque.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eudes\\.nuget\\packages\\aspnetcore.identity.mongodbcore\\3.1.2\\aspnetcore.identity.mongodbcore.3.1.2.nupkg.sha512",
     "C:\\Users\\eudes\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
@@ -113,12 +113,6 @@
     "C:\\Users\\eudes\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\milos\\programaçao\\ProjetoControleEstoquePucMg\\src\\API_ControleDeEstoque\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
     {
       "code": "NU1608",
       "level": "Warning",
