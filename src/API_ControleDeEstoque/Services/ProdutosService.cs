@@ -55,9 +55,10 @@ public class ProdutosService
         return result;
     }
 
-
     public Task CreateProduto(Produto produto)
     {
+        produto.Valor = produto.ValorUnidade * produto.Quantidade;
+        produto.DataDeCriacao = DateTime.Now;
         return _produtosCollection.InsertOneAsync(produto);
     }
 

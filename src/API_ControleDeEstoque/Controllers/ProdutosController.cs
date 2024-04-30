@@ -54,7 +54,6 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-                produto.DataDeCriacao = DateTime.Now;
                 await _produtosCollection.CreateProduto(produto);
                 return CreatedAtAction(nameof(GetById), new { id = produto.Id }, produto);
             }
