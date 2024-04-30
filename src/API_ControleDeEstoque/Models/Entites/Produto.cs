@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using ProjetoControleDeEstoque.Dtos;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,7 +19,10 @@ namespace ProjetoControleDeEstoque.Models.Entites
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Valor { get; set; }
+        public decimal ValorUnidade { get; set; }
         public string Localizacao { get; set; }
+        public DateTime DataDeCriacao { get; set; }
+        public DateTime? DataDeModificacao { get; set; }
         public string CodigoProduto { get; set; }
         [Required]
         public EstadoProduto EstadoProduto { get; set; }
@@ -28,7 +32,7 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public Fornecedor Fornecedor { get; set; }
         [Required]
         public string UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
+        public LoginUsuario Usuario { get; set; }
     }
     public enum EstadoProduto
     {

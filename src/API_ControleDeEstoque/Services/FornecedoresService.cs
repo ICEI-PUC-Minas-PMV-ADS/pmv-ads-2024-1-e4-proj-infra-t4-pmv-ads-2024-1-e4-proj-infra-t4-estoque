@@ -8,13 +8,13 @@ namespace ProjetoControleDeEstoque.Services
     public class FornecedoresService
     {
         private readonly IMongoCollection<Fornecedor> _fornecedoresCollection;
-        private readonly AuthService _authCollection;
+        private readonly AuthService _authService;
         public FornecedoresService(IOptions<DatabaseSettings> DatabaseSettings, AuthService authService)
         {
             var mongoClient = new MongoClient(DatabaseSettings.Value.ConnectionString);
             var mongoDatabase = mongoClient.GetDatabase(DatabaseSettings.Value.DatabaseName);
             _fornecedoresCollection = mongoDatabase.GetCollection<Fornecedor>(DatabaseSettings.Value.FornecedoresCollectionName);
-            _authCollection = authService;
+            _authService = authService;
         }
 
         public async Task<IReadOnlyCollection<Fornecedor>> GetAllFornecedores(string usuarioId)
@@ -24,7 +24,7 @@ namespace ProjetoControleDeEstoque.Services
             var results = await _fornecedoresCollection.Find(f => f.UsuarioId == usuarioId).ToListAsync();
             foreach (var fornecedor in results)
             {
-                var usuarioDados = await _authCollection.GetDadosUsuarios(fornecedor.UsuarioId);
+                var usuarioDados = await _authService.GetDadosUsuarios(fornecedor.UsuarioId);
                 fornecedor.Usuario = usuarioDados;
 
                 listaDeFornecedorPorUsuario.Add(fornecedor);
@@ -39,7 +39,7 @@ namespace ProjetoControleDeEstoque.Services
 
             if (result != null)
             {
-                var usuarioDados = await _authCollection.GetDadosUsuarios(result.UsuarioId);
+                var usuarioDados = await _authService.GetDadosUsuarios(result.UsuarioId);
                 result.Usuario = usuarioDados;
             }
 
@@ -52,7 +52,7 @@ namespace ProjetoControleDeEstoque.Services
 
             if (result != null)
             {
-                var usuarioDados = await _authCollection.GetDadosUsuarios(result.UsuarioId);
+                var usuarioDados = await _authService.GetDadosUsuarios(result.UsuarioId);
                 result.Usuario = usuarioDados;
             }
             return result;

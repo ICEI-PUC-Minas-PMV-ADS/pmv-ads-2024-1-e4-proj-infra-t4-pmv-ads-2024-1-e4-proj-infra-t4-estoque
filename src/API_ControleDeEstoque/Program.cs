@@ -40,11 +40,12 @@ builder.Services.AddSingleton<IMongoDatabase>(serviceProvider =>
 BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
 
 // Injeção de dependência
-builder.Services.AddSingleton<FornecedoresService>();
-builder.Services.AddSingleton<ProdutosService>();
-builder.Services.AddSingleton<FeedBackService>();
-builder.Services.AddSingleton<EmailService>();
-builder.Services.AddSingleton<AuthService>();
+builder.Services.AddScoped<FornecedoresService>();
+builder.Services.AddScoped<ProdutosService>();
+builder.Services.AddScoped<FeedBackService>();
+builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<AuthService>();
+
 
 builder.Services.AddHttpContextAccessor();
 
@@ -121,11 +122,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(options =>
 {
-    options.WithOrigins("http://localhost:3000", "http://localhost:5173");
+    options.WithOrigins("http://localhost:3000", "http://localhost:5173", "http://localhost:5020");
     options.AllowAnyMethod();
     options.AllowAnyHeader();
 });
-
 
 app.UseHttpsRedirection();
 
