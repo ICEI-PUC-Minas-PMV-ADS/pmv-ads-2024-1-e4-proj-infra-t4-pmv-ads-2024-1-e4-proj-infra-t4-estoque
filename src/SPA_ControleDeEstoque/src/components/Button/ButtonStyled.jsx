@@ -13,7 +13,7 @@ export const ButtonSpace = styled.button`
   cursor: pointer;
   border-radius: 0.3rem;
 
-
+  
   
  
   letter-spacing: 0.1rem;
