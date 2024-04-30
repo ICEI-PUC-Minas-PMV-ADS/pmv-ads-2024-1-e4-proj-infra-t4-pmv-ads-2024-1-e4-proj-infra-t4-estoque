@@ -1,3 +1,5 @@
+npm install -g vite            -------------> Caso não tenha baixado.
+npm install vite --save-dev            -------------> Caso não tenha baixado.
 npm i @fortawesome/free-solid-svg-icons
 npm i fortawesome/react-fontawesome
 npm i axios

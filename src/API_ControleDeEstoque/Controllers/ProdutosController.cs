@@ -20,13 +20,8 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-                //if (User.Identity.IsAuthenticated)
-                //{
-                //var userId = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 var produtos = await _produtosCollection.GetAllProdutos(usuarioId);
                 return Ok(produtos);
-                //}
-                //return StatusCode(StatusCodes.Status500InternalServerError, $"Usuário não autenticado.");
             }
             catch (Exception ex)
             {
@@ -74,8 +69,6 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-               
-
                 var result = await _produtosCollection.UpdateProduto(id, produto);
                 if (!result)
                     return NotFound($"Produto com o Id: {id} - não encontrado.");

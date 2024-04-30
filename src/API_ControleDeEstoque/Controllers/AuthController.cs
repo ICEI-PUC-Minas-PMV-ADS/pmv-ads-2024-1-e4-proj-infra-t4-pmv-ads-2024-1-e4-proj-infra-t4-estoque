@@ -8,6 +8,7 @@ using ProjetoControleDeEstoque.Models;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq.Expressions;
 using System.Net;
 using System.Reflection;
 using System.Security.Claims;
@@ -20,128 +21,75 @@ namespace ProjetoControleDeEstoque.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<LoginUsuario> _userManager;
-        private readonly RoleManager<RoleUsuario> _roleManager;
-        public AuthController(UserManager<LoginUsuario> userManager, RoleManager<RoleUsuario> roleManager)
+        private readonly AuthService _authService;
+        public AuthController(AuthService authService)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
+            _authService = authService;
         }
 
-
-        //adicionando role
+        // Inserindo role.
         [HttpPost]
         [Route("roles")]
         public async Task<IActionResult> CreateRole([FromBody] CreateRoleRequest request)
         {
-            var appRole = new RoleUsuario { Name = request.Role};
-            var createRole = await _roleManager.CreateAsync(appRole);
+            try
+            {
+                var appRole = new RoleUsuario { Name = request.Role };
+                var createRole = await _authService.CreateRole(appRole);
 
-            return Ok(new { message = "role criado" });
+                return Ok(new { message = "Role criado" });
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao tentar criar o role.");
+            }
         }
 
-        //Registro de usuário
+        // Acessando dados do usuário que está cadastrado.
+        [HttpPost]
+        [Route("usuarioIdDados")]
+        public async Task<LoginUsuario> GetDadosUsuarios(string usuarioId)
+        {
+            try
+            {
+                return await _authService.GetDadosUsuarios(usuarioId);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao tentar acessar os dados.");
+            }
+        }
+
+        //Registro de usuário.
         [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] Dtos.RegisterRequest request)
         {
-            var result = await RegisterAsync(request);
-            return result.Sucesso ? Ok(result) : BadRequest(result.Message);
-        }
-
-        private async Task<RegisterResponse> RegisterAsync(Dtos.RegisterRequest request)
-        {
             try
             {
-                var userExists = await _userManager.FindByEmailAsync(request.Email);
-                if (userExists != null) return new RegisterResponse { Message = "Usuario ja existe", Sucesso = false };
-
-                userExists = new LoginUsuario
-                {
-                    FullName = request.UserName,
-                    Email = request.Email,
-                    ConcurrencyStamp = Guid.NewGuid().ToString(),
-                    UserName = request.Email
-                };
-                var createUserResult = await _userManager.CreateAsync(userExists, request.Password);
-                if(!createUserResult.Succeeded) return new RegisterResponse 
-                { Message = $"A criacao de usuario falhou {createUserResult?.Errors.First()?.Description}", Sucesso = false };
-
-                var addUserToRoleResult = await _userManager.AddToRoleAsync(userExists, "USER");
-                if(!addUserToRoleResult.Succeeded) return new RegisterResponse
-                { Message = $"A criacao de usuario foi feita mas falhou em adicionar um Role {addUserToRoleResult?.Errors.First()?.Description}", Sucesso = false };
-
-                return new RegisterResponse
-                {
-                    Sucesso = true,
-                    Message = "Usuario registrado com sucesso"
-                };
+                var result = await _authService.RegisterAsync(request);
+                return result.Sucesso ? Ok(result) : BadRequest(result.Message);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                return new RegisterResponse { Message = ex.Message, Sucesso = false };
+                throw new Exception("Ocorreu um erro ao tentar se registrar.");
             }
         }
 
-
-        //Login de usuário
+        //Login de usuário.
         [HttpPost]
         [Route("login")]
-        [ProducesResponseType((int) HttpStatusCode.OK , Type = typeof(LoginResponse))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(LoginResponse))]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
-        {
-           var result = await LoginAsync(request);
-
-           return result.Sucesso ? Ok(result) : BadRequest(result.Message);
-        }
-
-        private async Task<LoginResponse> LoginAsync(LoginRequest request)
         {
             try
             {
-                var user = await _userManager.FindByEmailAsync(request.Email);
-                    if (user is null) return new LoginResponse { Message = "Email ou senha invalida", Sucesso = false };
-                
-                var userPassword = await _userManager.CheckPasswordAsync(user, request.Password );
-                if (!userPassword)
-                    return new LoginResponse { Message = "Email ou senha inválida", Sucesso = false };
-                
-                var claims = new List<Claim>
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
-            };
-                var roles = await _userManager.GetRolesAsync(user);
-                var roleClaims = roles.Select(x => new Claim(ClaimTypes.Role, x));
-                claims.AddRange(roleClaims);
-
-                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Key.Secret));
-                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-                var expires = DateTime.Now.AddMinutes(40);
-                var token = new JwtSecurityToken(
-                    issuer: "http://localhost:5020",
-                    audience: "http://localhost:5020",
-                    claims: claims,
-                    expires: expires,
-                    signingCredentials: creds
-                    );
-                return new LoginResponse
-                {
-                    AcessToken = new JwtSecurityTokenHandler().WriteToken(token),
-                    Message = "Login Concluido",
-                    Email = user?.Email,
-                    Sucesso = true,
-                    UserId = user?.Id.ToString()
-                };
+                var result = await _authService.LoginAsync(request);
+                return result.Sucesso ? Ok(result) : BadRequest(result.Message);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                Console.WriteLine(ex.Message);
-                return new LoginResponse { Sucesso = false };
+                throw new Exception("Ocorreu um erro ao tentar fazer login.");
             }
         }
     }

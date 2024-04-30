@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\API_ControleDeEstoque",
+    "\\src\\API_ControleDeEstoque\\Controllers"
   ],
-  "SelectedNode": "\\ProjetoControleDeEstoque.sln",
+  "SelectedNode": "\\src\\API_ControleDeEstoque\\Controllers\\AuthController.cs",
   "PreviewInSolutionExplorer": false
 }

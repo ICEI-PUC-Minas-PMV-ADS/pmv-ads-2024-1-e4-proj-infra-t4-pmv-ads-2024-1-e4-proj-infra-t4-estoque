@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using ProjetoControleDeEstoque.Dtos;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjetoControleDeEstoque.Models.Entites
@@ -16,6 +17,6 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public string Email { get; set; }
         [Required]
         public string UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
+        public LoginUsuario Usuario { get; set; }
     }
 }

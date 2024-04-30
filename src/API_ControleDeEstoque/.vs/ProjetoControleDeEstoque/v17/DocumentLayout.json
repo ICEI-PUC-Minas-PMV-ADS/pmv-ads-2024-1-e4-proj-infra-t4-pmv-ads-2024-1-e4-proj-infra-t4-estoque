@@ -1,34 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\",
+  "WorkspaceRootPath": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\adm\\desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\luisa\\source\\repos\\icei-puc-minas-pmv-ads\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\adm\\desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\luisa\\source\\repos\\icei-puc-minas-pmv-ads\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|solutionrelative:services\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\adm\\desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\luisa\\source\\repos\\icei-puc-minas-pmv-ads\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\adm\\desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\models\\mongodbmodel\\databasesettingsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\luisa\\source\\repos\\icei-puc-minas-pmv-ads\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\models\\mongodbmodel\\databasesettingsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|solutionrelative:models\\mongodbmodel\\databasesettingsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\adm\\desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\models\\entites\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|solutionrelative:models\\entites\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\adm\\desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\luisa\\source\\repos\\icei-puc-minas-pmv-ads\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\adm\\desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|c:\\users\\luisa\\source\\repos\\icei-puc-minas-pmv-ads\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\api_controledeestoque\\key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{78E2DCCC-A8E4-4B3B-971D-D81BB627A39A}|ProjetoControleDeEstoque.csproj|solutionrelative:key.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\Entites\\Usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -63,10 +62,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             }
           ]
         },
@@ -82,9 +77,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "TokenService.cs",
-              "DocumentMoniker": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\TokenService.cs",
+              "DocumentMoniker": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\TokenService.cs",
               "RelativeDocumentMoniker": "Services\\TokenService.cs",
-              "ToolTip": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\TokenService.cs",
+              "ToolTip": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\TokenService.cs",
               "RelativeToolTip": "Services\\TokenService.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -92,11 +87,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Program.cs",
+              "ToolTip": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -104,11 +99,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Key.cs",
-              "DocumentMoniker": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Key.cs",
+              "DocumentMoniker": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Key.cs",
               "RelativeDocumentMoniker": "Key.cs",
-              "ToolTip": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Key.cs",
+              "ToolTip": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Key.cs",
               "RelativeToolTip": "Key.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -118,9 +113,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Services\\AuthService.cs",
-              "ToolTip": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Services\\AuthService.cs",
               "RelativeToolTip": "Services\\AuthService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -130,9 +125,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "DatabaseSettingsModel.cs",
-              "DocumentMoniker": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\MongoDbModel\\DatabaseSettingsModel.cs",
+              "DocumentMoniker": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\MongoDbModel\\DatabaseSettingsModel.cs",
               "RelativeDocumentMoniker": "Models\\MongoDbModel\\DatabaseSettingsModel.cs",
-              "ToolTip": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\MongoDbModel\\DatabaseSettingsModel.cs",
+              "ToolTip": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\MongoDbModel\\DatabaseSettingsModel.cs",
               "RelativeToolTip": "Models\\MongoDbModel\\DatabaseSettingsModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -140,12 +135,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\Entites\\Usuario.cs",
-              "RelativeDocumentMoniker": "Models\\Entites\\Usuario.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\Entites\\Usuario.cs",
               "ToolTip": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\Entites\\Usuario.cs",
-              "RelativeToolTip": "Models\\Entites\\Usuario.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Models\\Entites\\Usuario.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAuwAgAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-05T22:26:25.252Z"
@@ -154,9 +149,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\adm\\Desktop\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\luisa\\source\\repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque\\src\\API_ControleDeEstoque\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
