@@ -11,22 +11,20 @@ import {
   ContainerSearch,
   ContainerTable,
   LeftTitle,
-  RightTitle,
-} from "./HomeStyled";
+} from "./FornecedoresStyled";
 import { Button } from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function Fornecedor() {
   const baseUrl =
-    "http://localhost:5020/api/Produtos/usuarioIdProdutos?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
+    "http://localhost:5020/api/Fornecedores/usuarioIdFornecedores?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
   const [data, setData] = useState([]);
 
-  const produtoGet = async () => {
+  const fornecedorGet = async () => {
     await axios
       .get(baseUrl)
       .then((response) => {
         setData(response.data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -34,7 +32,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    produtoGet();
+    fornecedorGet();
   }, []);
 
   return (
@@ -45,13 +43,8 @@ export default function Home() {
         <ContainerHeaderHome>
           <div>
             <LeftTitle style={{ paddingLeft: "20px", fontSize: "30px" }}>
-              ESTOQUE DE PRODUTOS
+              FORNECEDORES
             </LeftTitle>
-          </div>
-          <div>
-            <RightTitle style={{ paddingLeft: "20px", fontSize: "30px" }}>
-              VALOR:{" "}
-            </RightTitle>
           </div>
         </ContainerHeaderHome>
         <br />
@@ -78,25 +71,22 @@ export default function Home() {
             <thead style={{ backgroundColor: "#f8f9fc" }}>
               <tr>
                 <th>ID</th>
-                <th>NOME DO PRODUTO</th>
-                <th>QUANTIDADE</th>
-                <th>CATEGORIA</th>
-                <th>CÓDIGO PRODUTO</th>
-                <th>LOCALIZAÇÃO</th>
-                <th>VALOR TOTAL</th>
-                <th>EDITAR</th>
+                <th>CÓDIGO DO FORNECEDOR</th>
+                <th>NOME DO FORNECEDOR</th>
+                <th>EMAIL</th>
+                <th>CNPJ</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((produto) => (
-                <tr key={produto.id}>
-                  <td>{produto.id}</td>
-                  <td>{produto.nome}</td>
-                  <td>{produto.quantidade}</td>
-                  <td>{produto.categoria}</td>
-                  <td>{produto.codigoProduto}</td>
-                  <td>{produto.localizacao}</td>
-                  <td>{produto.valor}</td>
+              {data.map((fornecedor) => (
+                <tr key={fornecedor.id}>
+                  <td>{fornecedor.id}</td>
+                  <td>{fornecedor.codigoFornecedor}</td>
+                  <td>{fornecedor.nome}</td>
+                  <td>{fornecedor.email}</td>
+
+                  <td>{fornecedor.cnpjCpf}</td>
+
                   <td>
                     <Button text="Editar" type="button" />
                   </td>
