@@ -1,42 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import {
-  ButtonSearch,
-  ContainerButton,
-  ContainerHeaderHome,
-  ContainerHome,
-  ContainerSearch,
-  ContainerTable,
-  LeftTitle,
-  RightTitle,
-} from "./HomeStyled";
-import { Button } from "../../components/Button/Button";
-import { Link } from "react-router-dom";
+
+import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { ButtonSearch, ContainerButton, ContainerHeaderHome, ContainerHome, ContainerSearch, ContainerTable, LeftTitle, RightTitle } from './HomeStyled';
+import { Button } from '../../components/Button/Button';
+import { Link } from 'react-router-dom';
+
 
 export default function Home() {
-  const baseUrl =
-    "http://localhost:5020/api/Produtos/usuarioIdProdutos?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
+  const baseUrl = "http://localhost:5020/api/Produtos/usuarioIdProdutos?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
   const [data, setData] = useState([]);
 
   const produtoGet = async () => {
-    await axios
-      .get(baseUrl)
-      .then((response) => {
+    await axios.get(baseUrl)
+      .then(response => {
         setData(response.data);
-        console.log(data);
-      })
-      .catch((error) => {
+        console.log(data)
+      }).catch(error => {
         console.log(error);
-      });
-  };
+      })
+  }
 
   useEffect(() => {
     produtoGet();
-  }, []);
+  });
 
+  
   return (
     <>
       <ContainerHome>
@@ -44,15 +35,12 @@ export default function Home() {
         <br />
         <ContainerHeaderHome>
           <div>
-            <LeftTitle style={{ paddingLeft: "20px", fontSize: "30px" }}>
-              ESTOQUE DE PRODUTOS
-            </LeftTitle>
+            <LeftTitle style={{paddingLeft:"20px", fontSize:"30px"}}>ESTOQUE DE PRODUTOS</LeftTitle>
           </div>
           <div>
-            <RightTitle style={{ paddingLeft: "20px", fontSize: "30px" }}>
-              VALOR:{" "}
-            </RightTitle>
+            <RightTitle style={{paddingLeft:"20px", fontSize:"30px"}}>VALOR: </RightTitle>
           </div>
+
         </ContainerHeaderHome>
         <br />
 
@@ -63,19 +51,17 @@ export default function Home() {
               <FontAwesomeIcon icon={faSearch} />
             </ButtonSearch>
           </ContainerSearch>
-          <Link to="/as">
-            <Button
-              style={{ justifyContent: "flex-end" }}
-              text="ADICIONAR PRODUTO"
-              type="button"
-            ></Button>
+          <Link to='/as'>
+            <Button style={{ justifyContent: "flex-end" }} text="ADICIONAR PRODUTO" type="button"></Button>
           </Link>
+
         </ContainerButton>
         <br />
 
         <ContainerTable>
-          <table className="table table-bordered">
-            <thead style={{ backgroundColor: "#f8f9fc" }}>
+
+          <table className='table table-bordered'>
+            <thead style={{ backgroundColor: '#f8f9fc' }}>
               <tr>
                 <th>ID</th>
                 <th>NOME DO PRODUTO</th>
@@ -88,7 +74,8 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {data.map((produto) => (
+
+              {data.map(produto => (
                 <tr key={produto.id}>
                   <td>{produto.id}</td>
                   <td>{produto.nome}</td>
@@ -97,9 +84,7 @@ export default function Home() {
                   <td>{produto.codigoProduto}</td>
                   <td>{produto.localizacao}</td>
                   <td>{produto.valor}</td>
-                  <td>
-                    <Button text="Editar" type="button" />
-                  </td>
+                  <td><Button text='Editar' type='button' /></td>
                 </tr>
               ))}
             </tbody>

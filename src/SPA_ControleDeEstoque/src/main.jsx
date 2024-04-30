@@ -6,7 +6,9 @@ import { GlobalStyle } from './GlobalStyled.jsx';
 import Header from './components/Header/Header.jsx';
 
 import Home from './pages/Home/Home.jsx';
-import Fornecedor from './pages/Fornecedores/Fornecedores.jsx';
+import Fornecedor from './pages/Fornecedores/Fornecedor/Fornecedores.jsx';
+import AddFornecedor from './pages/Fornecedores/AddFornecedor/AddFornecedor.jsx';
+
 
 
 createRoot(document.getElementById('root')).render(
@@ -18,7 +20,8 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={
           <Home />} />
-        <Route path="/fornecedores" element={<Fornecedor/>}/>
+        <Route path="/fornecedores" element={<Fornecedor />} />
+        <Route path="/addFornecedor" element={<AddFornecedor/>} />
           
        
         </Routes>
