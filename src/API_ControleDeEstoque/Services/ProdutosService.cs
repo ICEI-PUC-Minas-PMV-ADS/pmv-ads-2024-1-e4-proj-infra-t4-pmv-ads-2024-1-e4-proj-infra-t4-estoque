@@ -66,7 +66,8 @@ public class ProdutosService
 
     {
         produto.Id = id;
-
+        produto.DataDeModificacao = DateTime.Now;
+        produto.Valor = produto.ValorUnidade * produto.Quantidade;
         var result = await _produtosCollection.ReplaceOneAsync(f => f.Id == id, produto);
         return result.ModifiedCount > 0;
     }

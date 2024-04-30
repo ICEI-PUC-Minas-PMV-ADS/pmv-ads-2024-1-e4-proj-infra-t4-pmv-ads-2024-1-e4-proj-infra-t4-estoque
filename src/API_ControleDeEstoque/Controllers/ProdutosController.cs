@@ -69,7 +69,6 @@ namespace ProjetoControleDeEstoque.Controllers
         {
             try
             {
-                produto.DataDeModificacao = DateTime.Now;
                 var result = await _produtosCollection.UpdateProduto(id, produto);
                 if (!result)
                     return NotFound($"Produto com o Id: {id} - não encontrado.");
