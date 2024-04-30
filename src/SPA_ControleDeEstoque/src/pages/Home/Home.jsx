@@ -9,8 +9,6 @@ import { Button } from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 
 
-
-
 export default function Home() {
   const baseUrl = "http://localhost:5020/api/Produtos/usuarioIdProdutos?usuarioId=660f3988f53e5653efaf5441";
   const [data, setData] = useState([]);

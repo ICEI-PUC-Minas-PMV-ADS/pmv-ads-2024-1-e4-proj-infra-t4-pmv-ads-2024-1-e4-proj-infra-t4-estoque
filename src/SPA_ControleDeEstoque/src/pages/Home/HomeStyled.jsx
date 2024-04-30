@@ -88,8 +88,6 @@ export const RightTitle = styled.h3`
 
 export const ContainerTable = styled.div`
 
-
-
   padding: 20px;
   background-color: #FFF8E7;
   height: calc(100vh - 200px); 
@@ -104,7 +102,7 @@ export const ContainerTable = styled.div`
 
  th,
 td {
-  padding: 80px;
+  padding: 50px;
   border: 1px solid #ddd;
   color: black;
   padding-top: 15px;
@@ -140,11 +138,6 @@ export const ContainerrHome = styled.header`
     transform: rotate(360deg);
   }
 }
-
-
-
-
-
 
 
 
