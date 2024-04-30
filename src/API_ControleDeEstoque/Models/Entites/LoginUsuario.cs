@@ -10,5 +10,6 @@ namespace ProjetoControleDeEstoque.Models.Entites
     public class LoginUsuario : MongoIdentityUser<Guid>
     {
         public string FullName { get; set; } = string.Empty;
+        public string Cnpj { get; set; } = string.Empty;
     }
 }

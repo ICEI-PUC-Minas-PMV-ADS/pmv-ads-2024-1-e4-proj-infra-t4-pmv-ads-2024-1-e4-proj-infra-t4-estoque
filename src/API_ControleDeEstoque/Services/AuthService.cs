@@ -55,7 +55,8 @@ namespace ProjetoControleDeEstoque.Services
                     FullName = request.UserName,
                     Email = request.Email,
                     ConcurrencyStamp = Guid.NewGuid().ToString(),
-                    UserName = request.Email
+                    UserName = request.Email,
+                    Cnpj = request.Cnpj
                 };
                 var createUserResult = await _userManager.CreateAsync(userExists, request.Password);
                 if (!createUserResult.Succeeded) return new RegisterResponse
