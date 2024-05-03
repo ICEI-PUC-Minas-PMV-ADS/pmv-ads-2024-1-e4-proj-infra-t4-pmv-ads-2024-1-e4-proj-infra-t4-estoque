@@ -25,8 +25,7 @@ export default function AddFornecedor() {
     e.preventDefault();
     try {
       await axios.post("http://localhost:5020/api/Fornecedores", formData);
-      // Adicionou com sucesso, você pode redirecionar para a página de fornecedores ou exibir uma mensagem de sucesso
-      console.log("Fornecedor adicionado com sucesso!");
+   
     } catch (error) {
       console.error("Erro ao adicionar fornecedor:", error);
     }
