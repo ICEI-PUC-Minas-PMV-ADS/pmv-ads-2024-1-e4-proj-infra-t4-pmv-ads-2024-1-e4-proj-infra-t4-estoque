@@ -13,6 +13,7 @@ namespace ProjetoControleDeEstoque.Models.Entites
         public string Nome { get; set; }
         [Required]
         public string CnpjCpf { get; set; }
+        public string CodigoFornecedor { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]

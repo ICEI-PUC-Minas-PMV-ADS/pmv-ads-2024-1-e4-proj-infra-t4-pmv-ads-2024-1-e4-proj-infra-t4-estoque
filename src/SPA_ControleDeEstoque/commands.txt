@@ -5,3 +5,7 @@ npm i fortawesome/react-fontawesome
 npm i axios
 npm i
 npm run dev
+
+
+npm install sweetalert2
+npm install react-icons

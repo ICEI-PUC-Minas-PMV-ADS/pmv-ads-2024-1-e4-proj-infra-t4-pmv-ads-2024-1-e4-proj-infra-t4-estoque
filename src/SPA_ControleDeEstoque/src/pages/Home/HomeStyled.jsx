@@ -1,8 +1,6 @@
 import styled from "styled-components"
 
 export const ContainerHome = styled.header`
-
- 
   background-color: #5871FB;
   min-height: 100vh;
   display: flex;
@@ -12,45 +10,28 @@ export const ContainerHome = styled.header`
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
-
-
 `
 
 export const ContainerHeaderHome = styled.div`
-
- 
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 40px;
   color: white;
   width: 100%;
-
-
-
-
 `
 
 export const ContainerButton = styled.div`
-    
-    
- 
     background-color: #FFF8E7;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 25px;
     width: 100%;
-    
-
-    
-  
 `
 
 
 export const ContainerSearch = styled.div`
-
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -60,10 +41,6 @@ input {
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-
-
-
-
 `
 
 
@@ -74,33 +51,24 @@ export const ButtonSearch = styled.button`
   border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
-
 `
 export const LeftTitle = styled.h3`
- 
   margin: 0;
-
-
+  paddingLeft: 20px;
+  fontSize: 30px;
 `
 
 export const RightTitle = styled.h3`
- 
  margin: 0;
   margin-right: 100px;
-
-
 `
 
 
 export const ContainerTable = styled.div`
-
-
-
   padding: 20px;
   background-color: #FFF8E7;
   height: calc(100vh - 200px); 
   overflow-y: auto; 
-
 
  table {
   width: 100%;
@@ -118,7 +86,6 @@ td {
 `
 
 export const ContainerrHome = styled.header`
-
 .logo {
   height: 40vmin;
   pointer-events: none;
@@ -130,11 +97,6 @@ export const ContainerrHome = styled.header`
   }
 }
 
-
-
-
-
-
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -143,16 +105,4 @@ export const ContainerrHome = styled.header`
     transform: rotate(360deg);
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 `
