@@ -5,15 +5,19 @@ import {
   ContainerButton,
   ContainerForm,
 } from "./AddFornecedorStyled";
-import { useState } from "react";
+import {  useState } from "react";
 import { Button } from "../../../components/Button/Button";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function AddFornecedor() {
+  const { usuarioId } = useParams();
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     codigoFornecedor: "",
     nome: "",
     email: "",
     cnpjCpf: "",
+    usuarioId: `${usuarioId}`
   });
 
   const handleChange = (e) => {
@@ -24,12 +28,18 @@ export default function AddFornecedor() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5020/api/Fornecedores", formData);
-   
+      await axios.post(`http://localhost:5020/api/Fornecedores/`, formData);
+     navigate('/fornecedores')
+      
     } catch (error) {
       console.error("Erro ao adicionar fornecedor:", error);
     }
   };
+
+
+
+
+
 
   return (
     <ContainerFornecedor>

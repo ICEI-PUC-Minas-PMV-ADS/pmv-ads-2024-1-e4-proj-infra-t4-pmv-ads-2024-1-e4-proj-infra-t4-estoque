@@ -1,42 +1,58 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+const mobileBreakpoint = "768px";
+
 
 export const ContainerHeader = styled.header`
   list-style-type: none;
   background-color: #5871fb;
+  min-width: 100%;
+
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    min-width: auto;
+  }
 `;
 
 export const ContainerMenuHeader = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px;
+  background-color: #5871fb;
+  min-width: 100%;
 
   span {
-    margin: 0 50px;
-    color: rgb(33, 25, 70);
-    size: 130px;
+    margin: 0 1rem;
+    color: #000000;
+    font-size: 1.2rem;
     font-weight: 1000;
   }
 
   li {
-    margin-right: 20px;
+    margin-right: 2rem;
+  }
+
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    min-width: auto;
   }
 `;
 
 export const ContainerMenu = styled.div`
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 1.5rem;
   background-color: #fff8e7;
-
+  min-width: 100%;
 
   span {
-    margin: 0 50px;
-    color: rgb(33, 25, 70);
-    size: 130px;
+    margin: 0 1rem;
+    color: #FFFFF;
+    font-size: 1.2rem;
     font-weight: 1000;
   }
-`
 
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    min-width: auto;
+  }
+`;
 
 export const DropDownMenu = styled.ul`
   display: none;
@@ -47,25 +63,34 @@ export const DropDownMenu = styled.ul`
   z-index: 1;
   list-style: none;
   color: black;
-
+  
   a {
     color: #000000;
     margin-left: 10px;
+  }
+
+  li {
+    flex-direction: row-reverse;
   }
 
   a:hover {
     color: #000000;
     text-decoration: underline;
   }
-`
+
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    display: block;
+    position: static;
+    box-shadow: none;
+  }
+`;
 
 export const ButtonsHeader = styled.li`
-  
-  
-  position: relative; 
+  position: relative;
+  cursor: pointer;
 
   &:hover ${DropDownMenu} {
-    display: block; 
+    display: block;
   }
 
   a {
@@ -79,16 +104,12 @@ export const ButtonsHeader = styled.li`
   }
 
   a:hover {
-    color: black;
+    color: #000000;
     text-decoration: underline;
   }
 `;
 
-
-
 export const ButtonsMenu = styled.li`
-
-
   a {
     font-size: larger;
     color: rgb(196, 196, 196);
@@ -112,7 +133,11 @@ export const MenuItem = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  width: 400px;
+  max-width: 400px;
   height: auto;
-  margin-right: 300px;
+
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    width: 100%;
+    margin-right: 0;
+  }
 `;

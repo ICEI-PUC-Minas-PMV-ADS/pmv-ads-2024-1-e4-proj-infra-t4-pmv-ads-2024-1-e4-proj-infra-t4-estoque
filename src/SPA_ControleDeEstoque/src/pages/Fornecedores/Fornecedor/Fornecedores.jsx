@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +11,6 @@ import {
   ContainerTable,
   LeftTitle,
 } from "./FornecedoresStyled";
-
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button/Button";
 
@@ -20,16 +18,15 @@ export default function Fornecedor() {
   const baseUrl =
     "http://localhost:5020/api/Fornecedores/usuarioIdFornecedores?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
   const [data, setData] = useState([]);
+  const [usuarioId, setUsuarioId] = useState(""); 
 
   const fornecedorGet = async () => {
-    await axios
-      .get(baseUrl)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
+    await axios.get(baseUrl).then((response) => {
+      setData(response.data);
+      response.data.forEach((item) => {
+        setUsuarioId(item.usuarioId); 
       });
+    });
   };
 
   useEffect(() => {
@@ -57,7 +54,8 @@ export default function Fornecedor() {
               <FontAwesomeIcon icon={faSearch} />
             </ButtonSearch>
           </ContainerSearch>
-          <Link to="/addFornecedor">
+       
+          <Link to={`/addFornecedor/${usuarioId}`}>
             <Button
               style={{ justifyContent: "flex-end" }}
               text="ADICIONAR FORNECEDOR"
@@ -85,11 +83,11 @@ export default function Fornecedor() {
                   <td>{fornecedor.codigoFornecedor}</td>
                   <td>{fornecedor.nome}</td>
                   <td>{fornecedor.email}</td>
-
                   <td>{fornecedor.cnpjCpf}</td>
-
                   <td>
-                    <Button text="Editar" type="button" />
+                    <Link to={`/editFornecedor/${fornecedor.id}`}>
+                      <Button text="Editar" type="button" />
+                    </Link>
                   </td>
                 </tr>
               ))}

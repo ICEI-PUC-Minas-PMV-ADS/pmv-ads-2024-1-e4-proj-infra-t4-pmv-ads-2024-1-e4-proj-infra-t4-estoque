@@ -26,7 +26,6 @@ export default function Home() {
   useEffect(() => {
     produtoGet();
   });
-
   
   return (
     <>
@@ -35,12 +34,8 @@ export default function Home() {
         <br />
         <ContainerHeaderHome>
           <div>
-            <LeftTitle style={{paddingLeft:"20px", fontSize:"30px"}}>ESTOQUE DE PRODUTOS</LeftTitle>
+            <LeftTitle>ESTOQUE DE PRODUTOS</LeftTitle>
           </div>
-          <div>
-            <RightTitle style={{paddingLeft:"20px", fontSize:"30px"}}>VALOR: </RightTitle>
-          </div>
-
         </ContainerHeaderHome>
         <br />
 
@@ -54,12 +49,9 @@ export default function Home() {
           <Link to='/as'>
             <Button style={{ justifyContent: "flex-end" }} text="ADICIONAR PRODUTO" type="button"></Button>
           </Link>
-
         </ContainerButton>
         <br />
-
         <ContainerTable>
-
           <table className='table table-bordered'>
             <thead style={{ backgroundColor: '#f8f9fc' }}>
               <tr>
@@ -69,12 +61,12 @@ export default function Home() {
                 <th>CATEGORIA</th>
                 <th>CÓDIGO PRODUTO</th>
                 <th>LOCALIZAÇÃO</th>
+                <th>VALOR UNIDADE</th>
                 <th>VALOR TOTAL</th>
                 <th>EDITAR</th>
               </tr>
             </thead>
             <tbody>
-
               {data.map(produto => (
                 <tr key={produto.id}>
                   <td>{produto.id}</td>
@@ -84,6 +76,7 @@ export default function Home() {
                   <td>{produto.codigoProduto}</td>
                   <td>{produto.localizacao}</td>
                   <td>{produto.valor}</td>
+                  <td>{produto.valorUnidade}</td>
                   <td><Button text='Editar' type='button' /></td>
                 </tr>
               ))}

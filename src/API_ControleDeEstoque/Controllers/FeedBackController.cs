@@ -6,7 +6,6 @@ using ProjetoControleDeEstoque.Services;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FeedBackController : ControllerBase
