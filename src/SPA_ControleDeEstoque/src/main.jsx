@@ -21,6 +21,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Home />} />
         <Route path="/fornecedores" element={<Fornecedor />} />
         <Route path="/addFornecedor/:usuarioId" element={<AddFornecedor />} />
+        <Route path="/Admin" element={<Admin />} />
 
         <Route path="/editFornecedor/:id" element={<EditFornecedor />} />
         <Route path="/ConfiguracaoPerfil" element={<ConfiguracaoPerfil />} />
