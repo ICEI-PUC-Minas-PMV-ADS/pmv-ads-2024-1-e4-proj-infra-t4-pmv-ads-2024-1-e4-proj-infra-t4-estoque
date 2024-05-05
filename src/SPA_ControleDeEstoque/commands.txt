@@ -9,3 +9,5 @@ npm run dev
 
 npm install sweetalert2
 npm install react-icons
+npm i chart.js
+npm i react-chartjs-2
