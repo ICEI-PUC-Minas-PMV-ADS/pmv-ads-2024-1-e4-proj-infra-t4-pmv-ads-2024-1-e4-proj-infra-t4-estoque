@@ -69,7 +69,7 @@ export default function Fornecedor() {
           <table className="table table-bordered">
             <thead style={{ backgroundColor: "#f8f9fc" }}>
               <tr>
-                <th>ID</th>
+            
                 <th>CÓDIGO DO FORNECEDOR</th>
                 <th>NOME DO FORNECEDOR</th>
                 <th>EMAIL</th>
@@ -79,7 +79,7 @@ export default function Fornecedor() {
             <tbody>
               {data.map((fornecedor) => (
                 <tr key={fornecedor.id}>
-                  <td>{fornecedor.id}</td>
+                
                   <td>{fornecedor.codigoFornecedor}</td>
                   <td>{fornecedor.nome}</td>
                   <td>{fornecedor.email}</td>
