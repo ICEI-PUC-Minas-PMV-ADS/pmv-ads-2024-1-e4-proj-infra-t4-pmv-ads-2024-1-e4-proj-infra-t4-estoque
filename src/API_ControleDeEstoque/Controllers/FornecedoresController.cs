@@ -68,6 +68,29 @@ namespace ProjetoControleDeEstoque.Controllers
             }
         }
 
+        
+        [HttpGet("codigoFornecedor")]
+        public async Task<ActionResult<Fornecedor>> GetByCodigo(string codigoFornecedor)
+        {
+            try
+            {
+                if (codigoFornecedor == null)
+                    return BadRequest("Código do Fornecedor não fornecido.");
+
+                var fornecedor = await _fornecedoresService.GetFornecedorByCodigo(codigoFornecedor);
+
+                if (fornecedor == null)
+                    return NotFound($"O fornecedor de Código do Fornecedor: {codigoFornecedor} - não encontrado.");
+
+                return Ok(fornecedor);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao verificar a existência do fornecedor: {ex.Message}");
+            }
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<Fornecedor>> Create(Fornecedor fornecedor)
         {

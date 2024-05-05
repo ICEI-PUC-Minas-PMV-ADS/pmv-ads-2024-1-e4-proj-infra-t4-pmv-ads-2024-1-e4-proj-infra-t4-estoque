@@ -58,6 +58,19 @@ namespace ProjetoControleDeEstoque.Services
             return result;
         }
 
+          public async Task<Fornecedor> GetFornecedorByCodigo(string codigoFornecedor)
+        {
+            var result = await _fornecedoresCollection.Find(f => f.CodigoFornecedor == codigoFornecedor).FirstOrDefaultAsync();
+
+            if (result != null)
+            {
+                var usuarioDados = await _authService.GetDadosUsuarios(result.UsuarioId);
+                result.Usuario = usuarioDados;
+            }
+            return result;
+        }
+
+
         public async Task<bool> CheckIfFornecedorExists(string cnpjCpf)
         {
             var fornecedor = await GetFornecedorByCnpjCpf(cnpjCpf);
