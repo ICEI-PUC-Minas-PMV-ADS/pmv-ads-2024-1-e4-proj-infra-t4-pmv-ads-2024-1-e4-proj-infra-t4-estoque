@@ -10,6 +10,7 @@ import Fornecedor from "./pages/Fornecedores/Fornecedor/Fornecedores.jsx";
 import AddFornecedor from "./pages/Fornecedores/AddFornecedor/AddFornecedor.jsx";
 import ConfiguracaoPerfil from "./pages/ConfiguracaoPerfil/ConfiguracaoPerfil.jsx";
 import EditFornecedor from "./pages/Fornecedores/EditFornecedor/EditFornecedor.jsx";
+import Admin from "./pages/Admin/Admin.jsx";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
