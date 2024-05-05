@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using ProjetoControleDeEstoque.Dtos;
@@ -124,6 +125,43 @@ namespace ProjetoControleDeEstoque.Services
 
                 Console.WriteLine(ex.Message);
                 return new LoginResponse { Sucesso = false };
+            }
+        }
+
+        // Editar usuario
+        public async Task<RegisterResponse> EditUserAsync(EditUser request)
+        {
+            try
+            {
+                var user = await _userManager.FindByIdAsync(request.UserId);
+                if (user == null)
+                {
+                    return new RegisterResponse { Message = "o usuario nao existe", Sucesso = false };
+                }
+
+                user.UserName = request.NewUserName;
+                user.Email = request.NewEmail;
+                user.Cnpj = request.NewCnpj;
+
+                if (!string.IsNullOrEmpty(request.NewPassword))
+                {
+                    var acessToken = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    await _userManager.ResetPasswordAsync(user, acessToken, request.NewPassword);
+                }
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return new RegisterResponse { Message = "Informacoes atualizadas com sucesso", Sucesso = true };
+                }
+                else
+                {
+                    return new RegisterResponse { Message = "A atualização dos dados falhou", Sucesso = false };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new RegisterResponse { Message = ex.Message, Sucesso = false };
             }
         }
     }

@@ -92,5 +92,22 @@ namespace ProjetoControleDeEstoque.Controllers
                 throw new Exception("Ocorreu um erro ao tentar fazer login.");
             }
         }
+
+        //Editar usuário
+
+        [HttpPut]
+        [Route("editUsuario")]
+        public async Task<IActionResult> EditUser([FromBody] EditUser request)
+        {
+            try
+            {
+                var result = await _authService.EditUserAsync(request);
+                return result.Sucesso ? Ok(result) : BadRequest(result.Message);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocorreu um erro ao tentar editar o usuario.");
+            }
+        }
     }
 }
