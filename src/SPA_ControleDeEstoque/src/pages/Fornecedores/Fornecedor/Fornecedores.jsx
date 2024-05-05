@@ -18,20 +18,40 @@ export default function Fornecedor() {
   const baseUrl =
     "http://localhost:5020/api/Fornecedores/usuarioIdFornecedores?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [usuarioId, setUsuarioId] = useState(""); 
 
   const fornecedorGet = async () => {
-    await axios.get(baseUrl).then((response) => {
+    try {
+      const response = await axios.get(baseUrl);
       setData(response.data);
       response.data.forEach((item) => {
         setUsuarioId(item.usuarioId); 
       });
-    });
+    } catch (error) {
+      console.error("Erro ao buscar fornecedores:", error);
+    }
   };
 
   useEffect(() => {
     fornecedorGet();
   }, []);
+
+  useEffect(() => {
+    if (searchTerm === "") {
+      setFilteredData(data);
+    } else {
+      const filtered = data.filter((fornecedor) =>
+        fornecedor.nome.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredData(filtered);
+    }
+  }, [searchTerm, data]);
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <>
@@ -49,7 +69,12 @@ export default function Fornecedor() {
 
         <ContainerButton>
           <ContainerSearch>
-            <input type="text" placeholder="PROCURAR" />
+            <input
+              type="text"
+              placeholder="PROCURAR"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
             <ButtonSearch>
               <FontAwesomeIcon icon={faSearch} />
             </ButtonSearch>
@@ -69,7 +94,6 @@ export default function Fornecedor() {
           <table className="table table-bordered">
             <thead style={{ backgroundColor: "#f8f9fc" }}>
               <tr>
-            
                 <th>CÓDIGO DO FORNECEDOR</th>
                 <th>NOME DO FORNECEDOR</th>
                 <th>EMAIL</th>
@@ -78,9 +102,8 @@ export default function Fornecedor() {
               </tr>
             </thead>
             <tbody>
-              {data.map((fornecedor) => (
+              {filteredData.map((fornecedor) => (
                 <tr key={fornecedor.id}>
-                
                   <td>{fornecedor.codigoFornecedor}</td>
                   <td>{fornecedor.nome}</td>
                   <td>{fornecedor.email}</td>
