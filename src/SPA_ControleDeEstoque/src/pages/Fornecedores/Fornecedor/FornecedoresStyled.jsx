@@ -115,6 +115,11 @@ td {
   color: black;
 }
 
+
+th{
+background-color: #e8e8e8;
+}
+
 `
 
 export const ContainerrHome = styled.header`

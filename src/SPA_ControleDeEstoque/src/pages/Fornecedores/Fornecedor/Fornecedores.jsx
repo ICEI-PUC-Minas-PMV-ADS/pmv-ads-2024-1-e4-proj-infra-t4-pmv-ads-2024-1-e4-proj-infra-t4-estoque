@@ -74,6 +74,7 @@ export default function Fornecedor() {
                 <th>NOME DO FORNECEDOR</th>
                 <th>EMAIL</th>
                 <th>CNPJ</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
