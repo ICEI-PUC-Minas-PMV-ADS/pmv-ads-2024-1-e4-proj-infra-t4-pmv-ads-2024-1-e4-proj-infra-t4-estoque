@@ -1,135 +1,40 @@
 # Plano de Testes de Software
 
-#### RF-001 - O sistema deve permitir que a empresa crie uma conta e faça o login.	
-- **URL Local:** `https://localhost:7014/api/Auth`
-- **Método:** `POST`
-- **Corpo da Requisição:**
-  ```json
-   {
-     "password": "user",
-     "email": "user@example.com",
-     "name": "teste",
-     "cnpj": "331293210390",
-     "role": "string"
-   }
-  ```
-- **Resposta:** Evento criado com status 201.
 
-#### RF-002 - O sistema deve permitir que o usuário cadastre produtos.		
-- **URL Local:** `https://localhost:7014/api/Produtos`
-- **Método:** `POST`
-- **Corpo da Requisição:**
-  ```json
-    {
-      "nome": "teste",
-      "descricao": "teste",
-      "quantidade": 3,
-      "valor": 254.99,
-      "localizacao": "a1231",
-      "codigoProduto": "adoakmsdoasmo",
-      "estadoProduto": 0,
-      "categoria": 0,
-      "fornecedorId": "66115a89d926b33ca9861532",
-      "usuarioId": "660f3988f53e5653efaf5441"
-    }
-  ```
-- **Resposta:** Evento criado com status 201.
+| **Caso de Teste** 	| **CT-01 – Login de usuário.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-001 - O sistema deve permitir que a empresa crie uma conta e faça o login.  |
+| Objetivo do Teste 	| Verificar se o usuário consegue realizar login. |
+| Passos 	| - Acessar a aplicação <br> - Preencher os campos obrigatórios <br> - Aguardar o direcionamento para a página inicial. 
+|Critério de Êxito | - O usuário conseguiu acessar os componentes da aplicação com sucesso. |
 
-#### RF-006 - O sistema deve incorporar recursos de localização que permitam aos usuários identificar a posição de um produto dentro de um determinado local.	
-- **URL Local:** `https://localhost:7014/api/Produtos/661351df2519dedf9d031c7a`
-- **Método:** `GET`
-- **Corpo da Requisição:**
-  ```json
-    {
-        "id": "661351df2519dedf9d031c7a",
-        "nome": "teste",
-        "descricao": "teste",
-        "quantidade": 3,
-        "valor": 254.99,
-        "localizacao": "a1231",
-        "codigoProduto": "adoakmsdoasmo",
-        "estadoProduto": 0,
-        "categoria": 0,
-        "fornecedorId": "66115a89d926b33ca9861532",
-        "fornecedor": {
-            "id": "66115a89d926b33ca9861532",
-            "nome": "AMAZON SERVICOS DE VAREJO DO BRASIL LTDA.",
-            "cnpjCpf": "15.436.940/0001-03",
-            "email": "amzbr-tax-compliance@amazon.com",
-            "usuarioId": "660f3988f53e5653efaf5441",
-            "usuario": {
-                "id": "660f3988f53e5653efaf5441",
-                "password": "teste",
-                "email": "teste@example.com",
-                "name": "teste 123",
-                "cnpj": "2213123123333",
-                "role": "string"
-            }
-        },
-        "usuarioId": "660f3988f53e5653efaf5441",
-        "usuario": {
-            "id": "660f3988f53e5653efaf5441",
-            "password": "teste",
-            "email": "teste@example.com",
-            "name": "teste 123",
-            "cnpj": "2213123123333",
-            "role": "string"
-        }
-    }
-  ```
-- **Resposta:** Evento criado com status 200. Iremos receber os dados e está ali o recurso de localização.
+| **Caso de Teste** 	| **CT-02 – Criar Produto.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-002 - O sistema deve permitir que o usuário cadastre produtos. |
+| Objetivo do Teste 	| Criar produto. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Redirecionamento para a página inicial. <br> Acessar a página de adicionar produtos. <br> - Clicar em "Novo Produto". <br> - Preencher as informações solicitadas e clicar em "Salvar". |
+|Critério de Êxito | -  Produto criado com sucesso. |
 
-#### RF-009 - O sistema deve permitir o registro do fornecedor associado a cada produto, facilitando a identificação e o histórico de fornecedores para futuras compras.		
-- **URL Local:** `https://localhost:7014/api/Produtos`
-- **Método:** `POST`
-- **Corpo da Requisição:**
-  ```json
-    {
-  "id": "1df2519dedf9d031",
-  "nome": "teste",
-  "descricao": "teste",
-  "quantidade": 0,
-  "valor": 0,
-  "localizacao": "111ass",
-  "codigoProduto": "115a89d926b33ca98",
-  "estadoProduto": 0,
-  "categoria": 2,
-  "fornecedorId": "d0s98a53511o1180",
-  "fornecedor": {
-    "id": "73218053289",
-    "nome": "teste",
-    "cnpjCpf": "09873217890",
-    "email": "teste@teste.com",
-    "usuarioId": "3543412as31256",
-    "usuario": {
-      "id": "string",
-      "password": "string",
-      "email": "user@example.com",
-      "name": "string",
-      "cnpj": "string",
-      "role": "string"
-      }
-  ```
-- **Resposta:** Evento criado com status 201.
 
-#### RF-010 - O sistema deve exibir os produtos com estoque zerado, estoque mínimo e quantos estão cadastrados.	
-- **URL Local:** `https://localhost:7014/api/Produtos`
-- **Método:** `POST`
-- **Corpo da Requisição:**
-  ```json
-    {
-  "id": "19deddf2519f9d031",
-  "nome": "testando",
-  "descricao": "teste",
-  "quantidade": 0,
-  "valor": 120,
-  "localizacao": "1211",
-  "codigoProduto": "645432412",
-  "estadoProduto": 1,
-  "categoria": 0,
-  "fornecedorId": "teste",
-      }
-  ```
-- **Resposta:** Evento criado com status 201.
-## Ferramentas de Testes
-Ferramenta de teste utilizada: [POSTMAN](https://www.postman.com).
+| **Caso de Teste** 	| **CT-03 – Gestão de produtos.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-009 - O sistema deve permitir o registro do fornecedor associado a cada produto, <br> facilitando a identificação e o histórico de fornecedores para futuras compras. |
+| Objetivo do Teste 	| Verificar se o usuário consegue gerenciar produtos. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Ir para página inicial. <br> Acessar a página de produtos. <br> - Acessar o produto desejado. <br> - Efetuar alterações(nome, quantidade). <br> - Selecionar fornecedor desejado. "Confirmar"|
+|Critério de Êxito | - Usuário obteve sucesso ao gerenciar produtos. |
+
+
+| **Caso de Teste** 	| **CT-04 – Buscar produtos.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-004 - O sistema deve ter um recurso de busca avançado para encontrar produtos. |
+| Objetivo do Teste 	| Busca avançada por produto. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Ir para página inicial. <br> Acessar a página de produtos. <br> - Clicar em "Buscar produto". <br> - Preencher as informações desejadas e clicar em "Confirmar". |
+|Critério de Êxito | -  Fornecedor criado com sucesso. |
+
+
+| **Caso de Teste** 	| **CT-05 – Alerta de estoque.** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-007	O sistema deve alertar o usuário, quando um produto  estiver em pouca quantidade <br> no estoque. |
+| Objetivo do Teste 	| Notificar o usuário sobre seus produtos com baixo estoque. |
+| Passos 	| - Acessar a aplicação <br> - Inserir os dados de login. <br> - Ir para página inicial. <br> Acessar a página de produtos. <br> - Verificar informações (nome, quantidade, fornecedor). <br> - Salvar alterações.|
+|Critério de Êxito | - Usuário obteve sucesso ao gerenciar fornecedores. |
