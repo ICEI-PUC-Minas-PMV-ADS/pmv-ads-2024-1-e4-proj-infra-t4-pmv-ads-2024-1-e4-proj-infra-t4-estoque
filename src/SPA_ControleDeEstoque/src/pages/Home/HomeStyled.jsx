@@ -71,7 +71,6 @@ export const ContainerTable = styled.div`
   overflow-y: auto; 
 
  table {
-  width: 100%;
   border-collapse: collapse;
   background-color: white;
 }

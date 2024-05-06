@@ -3,6 +3,8 @@ import axios from "axios";
 import { Button } from '../../components/Button/Button';
 import BotaoMostrarSenha from '../../components/BotaoMostrarSenha/BotaoMostrarSenha';
 import Swal from 'sweetalert2';
+import { getDadosUsuario, updateDadosUsuario } from '../../services/configuracaoPerfilService';
+import InputMask from 'react-input-mask';
 
 import {
   ContainerConfiguracaoPerfil,
@@ -19,17 +21,16 @@ export default function ConfiguracaoPerfil() {
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
-    oldPassword: "",
+    cnpj: "",
     newPassword: ""
   });
 
-  const [senhaAntigaVisivel, toggleSenhaAntigaVisivel] = useState(false);
   const [senhaAtualVisivel, toggleSenhaAtualVisivel] = useState(false);
 
   useEffect(() => {
     const getDadosUsuarios = async () => {
       try {
-        const response = await axios.get("https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=asdasd");
+        const response = await getDadosUsuario();
         const userData = response.data;
         setFormData(userData);
       } catch (error) {
@@ -45,10 +46,6 @@ export default function ConfiguracaoPerfil() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const toggleSenhaAntigaVisibility = () => {
-    toggleSenhaAntigaVisivel((prev) => !prev);
-  };
-
   const toggleSenhaAtualVisibility = () => {
     toggleSenhaAtualVisivel((prev) => !prev);
   };
@@ -56,7 +53,7 @@ export default function ConfiguracaoPerfil() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.nome && !formData.email && !formData.oldPassword && !formData.newPassword) {
+    if (!formData.nome && !formData.email && !formData.cnpj && !formData.newPassword) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -65,15 +62,6 @@ export default function ConfiguracaoPerfil() {
       return;
     }
 
-    if ((formData.oldPassword || formData.newPassword) && (!formData.oldPassword || !formData.newPassword)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'É obrigatório preencher as duas senhas.'
-      });
-      return;
-    }
-  
     if ((formData.oldPassword || formData.newPassword) &&
       (formData.newPassword.length < 8 || !/\d/.test(formData.newPassword) || !/[A-Z]/.test(formData.newPassword) || !/[^a-zA-Z0-9]/.test(formData.newPassword))) {
       Swal.fire({
@@ -85,6 +73,7 @@ export default function ConfiguracaoPerfil() {
     }
 
     try {
+      await updateDadosUsuario(formData.nome, formData.email, formData.oldPassword, formData.newPassword);
       console.log("Alteração feita com sucesso!");
     } catch (error) {
       console.error("Ocorreu um erro ao realizar a alteração:", error);
@@ -96,11 +85,11 @@ export default function ConfiguracaoPerfil() {
       <LeftTitle>MEU PERFIL</LeftTitle>
       <ContainerForm>
         <h6 style={{ fontSize: "30px" }}> Gerencie sua conta </h6>
-        <hr/>
+        <hr />
         <br />
         <form onSubmit={handleSubmit}>
           <FormItem>
-            <Label htmlFor="codigoFornecedor">Nome da Empresa:</Label>
+            <Label htmlFor="nome">Nome da Empresa:</Label>
             <Input
               type="text"
               id="nome"
@@ -122,19 +111,24 @@ export default function ConfiguracaoPerfil() {
           </FormItem>
 
           <FormItem>
-            <Label htmlFor="oldPassword">Senha antiga:</Label>
-            <InputPassword
-              type={senhaAntigaVisivel ? "text" : "password"}
-              id="oldPassword"
-              name="oldPassword"
-              value={formData.oldPassword}
+            <Label htmlFor="cnpj">CNPJ:</Label>
+            <InputMask
+              mask="99.999.999/9999-99"
+              maskChar="_"
+              type="text"
+              id="cnpj"
+              name="cnpj"
+              value={formData.cnpj}
               onChange={handleChange}
-            />
-            <BotaoMostrarSenha
-              senhaVisivel={senhaAntigaVisivel}
-              togglePasswordVisibility={toggleSenhaAntigaVisibility}
+              style={{
+                flex: '3',
+                width: '100%',
+                fontSize: '20px',
+                padding: '5px'
+              }}
             />
           </FormItem>
+
 
           <FormItem>
             <Label htmlFor="newPassword">Senha nova:</Label>

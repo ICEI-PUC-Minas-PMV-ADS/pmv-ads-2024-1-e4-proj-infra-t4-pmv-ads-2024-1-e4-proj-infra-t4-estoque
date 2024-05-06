@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
-import axios from 'axios';
+import { enviarFeedback } from '../../services/enviarFeedbackService';
 
 export default function EnviarFeedbackModal() {
   useEffect(() => {
-    const enviarFeedback = async () => {
+    const enviarFeedbackModal = async () => {
       const { value: formValues } = await Swal.fire({
         title: "ENVIAR FEEDBACK",
         html: `
@@ -55,7 +55,7 @@ export default function EnviarFeedbackModal() {
         focusConfirm: false,
         showCancelButton: true,
         showCloseButton: true,
-        
+
         preConfirm: async () => {
           const email = document.getElementById('swal-input1').value;
           const descricao = document.getElementById('swal-input2').value;
@@ -65,26 +65,16 @@ export default function EnviarFeedbackModal() {
             return false;
           }
 
-          if (!isValidEmail(email)) {
-            Swal.showValidationMessage('Por favor, insira um endereço de e-mail válido.');
-            return false;
-          }
-
           try {
-            const response = await axios.post('https://localhost:44398/api/FeedBack/EnviarFeedBack', {
-              email,
-              descricao
-            });
-
+            await enviarFeedback({ email: email, feedBackDescricao: descricao });
             return [email, descricao];
           } catch (error) {
-            console.error('Erro ao enviar feedback:', error);
             Swal.showValidationMessage('Ocorreu um erro ao enviar o feedback. Por favor, tente novamente.');
             return false;
           }
         }
       });
-      
+
       if (formValues) {
         const [email, descricao] = formValues;
 
@@ -99,21 +89,16 @@ export default function EnviarFeedbackModal() {
             toast.onmouseleave = Swal.resumeTimer;
           }
         });
-        
+
         Toast.fire({
           icon: "success",
           title: "Enviado com sucesso!"
         });
       }
     };
-    
-    enviarFeedback();
-  }, []);
 
-  const isValidEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
+    enviarFeedbackModal();
+  }, []);
 
   return null;
 }

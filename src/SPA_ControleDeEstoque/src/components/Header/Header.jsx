@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import ControleDeEstoqueLogo from "../../assets/ControleDeEstoqueLogo.jpg";
@@ -14,18 +14,33 @@ import {
 } from "./HeaderStyled";
 import EnviarFeedbackModal from "../../pages/EnviarFeedBack/EnviarFeedBack";
 import { Link } from "react-router-dom";
+import { getDadosUsuario } from "../../services/configuracaoPerfilService";
 
 export default function Header() {
-
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-  
+
   const [isOpenModal, setIsOpenModal] = useState(false);
   const toggleModalFeedBack = () => {
     setIsOpenModal(!isOpenModal);
   };
+
+  const [nomeUsuario, setNomeUsuario] = useState("");
+
+  useEffect(() => {
+    async function getNomeUsuario() {
+      try {
+        const response = await getDadosUsuario();
+        setNomeUsuario(response.data.nome);
+      } catch (error) {
+        console.error("Erro ao obter dados do usuário:", error);
+      }
+    }
+
+    getNomeUsuario();
+  }, []);
 
   return (
     <ContainerHeader>
@@ -39,12 +54,12 @@ export default function Header() {
           </a>
         </li>
         <ButtonsHeader>
-          <a onClick={toggleModalFeedBack} >ENVIAR FEEDBACK</a>
+          <a onClick={toggleModalFeedBack}>ENVIAR FEEDBACK</a>
         </ButtonsHeader>
         {isOpenModal && <EnviarFeedbackModal />}
         <span>|</span>
         <ButtonsHeader>
-          <a>NOME DA EMPRESA LOGADA</a>
+          <a>{nomeUsuario ? nomeUsuario : "NOME DA EMPRESA LOGADA"}</a>
         </ButtonsHeader>
         <span>|</span>
         <ButtonsHeader>
@@ -71,7 +86,9 @@ export default function Header() {
         </Link>{" "}
         <span>|</span>
         <ButtonsMenu>
-          <a href="#">ADMINISTRAÇÃO</a>
+          <Link to="/Admin">
+            <a href="#">ADMINISTRAÇÃO</a>
+          </Link>{" "}
         </ButtonsMenu>
         <span>|</span>
         <Link to="/fornecedores">
