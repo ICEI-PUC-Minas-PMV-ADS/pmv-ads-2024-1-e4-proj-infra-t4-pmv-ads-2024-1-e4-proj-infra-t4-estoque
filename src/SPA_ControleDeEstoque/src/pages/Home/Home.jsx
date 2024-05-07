@@ -7,13 +7,15 @@ import { Button } from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 import { getAllProdutos } from '../../services/homeService';
 
+import Header from '../../components/Header/Header';
+
 export default function Home() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   const produtoGet = async () => {
     try {
-      const response = await getAllProdutos(); 
+      const response = await getAllProdutos();
       setData(response.data);
     } catch (error) {
       console.log(error);
@@ -67,6 +69,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <ContainerHome>
         <br />
         <br />

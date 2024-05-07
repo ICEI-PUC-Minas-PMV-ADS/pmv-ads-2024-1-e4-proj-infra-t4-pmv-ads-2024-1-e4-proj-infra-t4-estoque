@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import ControleDeEstoqueLogo from "../../assets/ControleDeEstoqueLogo.jpg";
+import ControleDeEstoqueLogo2 from "../../assets/ControleDeEstoqueLogo2.png";
 import {
   ButtonsHeader,
   ButtonsMenu,
@@ -48,7 +48,7 @@ export default function Header() {
         <li className="logoControle">
           <a>
             <LogoImage
-              src={ControleDeEstoqueLogo}
+              src={ControleDeEstoqueLogo2}
               alt="Logo Controle de Estoque"
             />
           </a>

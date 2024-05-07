@@ -4,7 +4,7 @@ import { ContainerADM, StyledButton, ContainerHeaderADM, LeftTitle, ContainerTab
 import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2'
 import { Button } from '../../components/Button/Button';
-
+import Header from '../../components/Header/Header';
 
 export default function Admin() {
 
@@ -34,39 +34,40 @@ export default function Admin() {
 
   return (
     <>
+      <Header />
       <ContainerADM>
         <br />
         <br />
         <ContainerHeaderADM>
           <div>
-          <LeftTitle>ADMINISTRAÇÃO</LeftTitle>
+            <LeftTitle>ADMINISTRAÇÃO</LeftTitle>
           </div>
         </ContainerHeaderADM>
-  
+
         <ContainerTable>
 
-            <StyledButton>  DADOS GERAIS DO ESTOQUE </StyledButton>
-            <StyledButton>  VER PRODUTOS ZERADOS </StyledButton>
-            <StyledButton>  VER PRODUTOS COM ESTOQUE MINIMO </StyledButton>
-            
-            <div className='Chart'>
-              <Bar data={{
-                labels: data.map((produto) => produto.nome),
-                datasets : [
-                  {
-                    label: 'Quantidade', 
-                    data: data.map((produto) => produto.quantidade),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1,
-                  }
-                ]
-              }}/>
-            </div>
-            <div>
-            <StyledButton  onClick={generatePdf}> GERAR METODO DE RELATÓRIO </StyledButton>
-            
-            </div>
+          <StyledButton>  DADOS GERAIS DO ESTOQUE </StyledButton>
+          <StyledButton>  VER PRODUTOS ZERADOS </StyledButton>
+          <StyledButton>  VER PRODUTOS COM ESTOQUE MINIMO </StyledButton>
+
+          <div className='Chart'>
+            <Bar data={{
+              labels: data.map((produto) => produto.nome),
+              datasets: [
+                {
+                  label: 'Quantidade',
+                  data: data.map((produto) => produto.quantidade),
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1,
+                }
+              ]
+            }} />
+          </div>
+          <div>
+            <StyledButton onClick={generatePdf}> GERAR METODO DE RELATÓRIO </StyledButton>
+
+          </div>
         </ContainerTable>
         <footer></footer>
       </ContainerADM>

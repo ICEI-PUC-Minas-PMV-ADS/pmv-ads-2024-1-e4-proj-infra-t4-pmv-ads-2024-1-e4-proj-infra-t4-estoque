@@ -7,6 +7,9 @@ export const ContainerHeader = styled.header`
   list-style-type: none;
   background-color: #5871fb;
   min-width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
     min-width: auto;
@@ -14,10 +17,13 @@ export const ContainerHeader = styled.header`
 `;
 
 export const ContainerMenuHeader = styled.div`
+  max-width: 100%;
+  overflow: auto;
   display: flex;
   align-items: center;
   background-color: #5871fb;
-  min-width: 100%;
+  padding-top: 11rem;
+ 
 
   span {
     margin: 0 1rem;
@@ -37,14 +43,14 @@ export const ContainerMenuHeader = styled.div`
 
 export const ContainerMenu = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding: 1.5rem;
   background-color: #fff8e7;
   min-width: 100%;
 
   span {
     margin: 0 1rem;
-    color: #FFFFF;
+    color: #ffffffF;
     font-size: 1.2rem;
     font-weight: 1000;
   }
@@ -133,8 +139,13 @@ export const MenuItem = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  max-width: 400px;
+  max-width: 250px;
   height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
     width: 100%;
