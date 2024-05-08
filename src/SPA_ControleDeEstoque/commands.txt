@@ -3,12 +3,13 @@ npm install vite --save-dev            -------------> Caso não tenha baixado.
 npm i @fortawesome/free-solid-svg-icons
 npm i fortawesome/react-fontawesome
 npm i axios
-npm i
-npm run dev
-
-
 npm install sweetalert2
 npm install react-icons
 npm i chart.js
 npm i react-chartjs-2
 npm install react-input-mask
+
+
+
+npm i
+npm run dev

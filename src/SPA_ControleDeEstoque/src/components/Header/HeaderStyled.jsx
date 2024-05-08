@@ -1,18 +1,25 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const mobileBreakpoint = "768px";
-
+const mobileBreakpoint = "710px";
+const desktopSmallBreakpoint = "1200px"
+const tabletBreakpoint = "980px"; 
 
 export const ContainerHeader = styled.header`
   list-style-type: none;
   background-color: #5871fb;
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  position: fixed;
+  top: 0px;
 
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    min-width: auto;
+  @media only screen and (max-width: ${tabletBreakpoint}) {
+ display: flex;
+ flex-direction: column;
+ 
+
+ 
   }
 `;
 
@@ -22,7 +29,7 @@ export const ContainerMenuHeader = styled.div`
   display: flex;
   align-items: center;
   background-color: #5871fb;
-  padding-top: 11rem;
+
  
 
   span {
@@ -36,9 +43,19 @@ export const ContainerMenuHeader = styled.div`
     margin-right: 2rem;
   }
 
-  @media only screen and (max-width: ${mobileBreakpoint}) {
-    min-width: auto;
+
+
+  @media only screen and (max-width: ${tabletBreakpoint}) {
+   
+   display: none;
+  
+   
+ 
+   
   }
+
+
+  
 `;
 
 export const ContainerMenu = styled.div`
@@ -50,13 +67,26 @@ export const ContainerMenu = styled.div`
 
   span {
     margin: 0 1rem;
-    color: #ffffffF;
+    color: #fffffF;
     font-size: 1.2rem;
     font-weight: 1000;
   }
 
+  @media only screen and (max-width: ${tabletBreakpoint}) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: small;
+  margin-top: 20px;
+  }
+
+
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    min-width: auto;
+   
+   display: none;
+   
+ 
+   
   }
 `;
 
@@ -85,9 +115,7 @@ export const DropDownMenu = styled.ul`
   }
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    display: block;
-    position: static;
-    box-shadow: none;
+
   }
 `;
 
@@ -107,6 +135,15 @@ export const ButtonsHeader = styled.li`
     display: flex;
     align-items: center;
     text-align: right;
+  }
+
+  @media only screen and (max-width: ${desktopSmallBreakpoint}) {
+   
+    a{
+      font-size: small;
+    }
+
+   
   }
 
   a:hover {
@@ -146,9 +183,121 @@ export const LogoImage = styled.img`
   margin-right: auto;
   padding: 1rem;
 
-
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    width: 100%;
-    margin-right: 0;
+   
+ 
+    
+   max-width: 150px;
+    
+   
   }
+
+
+
 `;
+
+
+export const ContainerMenuHeaderTablet = styled.div`
+
+display: none;
+
+
+@media only screen and (max-width: ${tabletBreakpoint}) {
+   
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 35px;
+  
+ }
+
+ @media only screen and (max-width: ${mobileBreakpoint}) {
+   
+
+   flex-direction: row;
+  
+ 
+   
+  }
+
+
+`
+
+export const ContainerLogo = styled.div`
+display: flex;
+margin: auto;
+
+
+
+
+`
+
+export const ContainerButtonsHeader = styled.div`
+
+display: flex;
+flex-direction: row;
+margin: auto;
+
+@media only screen and (max-width: ${mobileBreakpoint}) {
+   
+   display: none;
+   
+ 
+   
+  }
+
+a{
+  padding: 0px 20px;
+ 
+}
+
+`
+
+export const ContainerMenuDrop = styled.div`
+
+display: none;
+
+@media only screen and (max-width: ${mobileBreakpoint}) {
+   
+   display: flex;
+   
+   i{
+    color: white;
+    font-size: 40px;
+   }
+ 
+   
+  }
+
+`
+
+export const ContainerMenuMobile = styled.div`
+
+
+display: flex;
+justify-content: start;
+align-items: start;
+background-color: white;
+color: #5871fb;
+position: relative;
+height: 100vh;
+
+ul{
+  margin: 20px;
+}
+
+a{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+li{
+  padding: 15px;
+  list-style: none;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+`

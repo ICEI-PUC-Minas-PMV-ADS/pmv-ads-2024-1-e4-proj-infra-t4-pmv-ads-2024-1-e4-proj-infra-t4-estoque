@@ -79,6 +79,7 @@ const Login = () => {
     }
 
     return (
+        <div className="body">
         <div className={`wrapper ${action}`}>
             <div className="form-box login">
                 <form onSubmit={handleSubmit}>
@@ -143,7 +144,8 @@ const Login = () => {
                     </div>
                 </form>
             </div>
-        </div>
+            </div>
+            </div>
     )
 }
 

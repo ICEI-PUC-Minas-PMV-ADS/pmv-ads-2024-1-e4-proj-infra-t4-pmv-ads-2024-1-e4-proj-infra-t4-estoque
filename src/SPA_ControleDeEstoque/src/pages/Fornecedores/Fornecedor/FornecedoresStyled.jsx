@@ -12,6 +12,7 @@ export const ContainerFornecedor = styled.header`
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
+margin-top: 150px;
 
 
 `

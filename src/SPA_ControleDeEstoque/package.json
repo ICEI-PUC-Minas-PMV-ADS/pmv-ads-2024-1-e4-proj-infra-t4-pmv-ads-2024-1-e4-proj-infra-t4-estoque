@@ -19,6 +19,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.0",
+    "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.23.0",
     "styled-components": "^6.1.8",
     "sweetalert2": "^11.10.8"
