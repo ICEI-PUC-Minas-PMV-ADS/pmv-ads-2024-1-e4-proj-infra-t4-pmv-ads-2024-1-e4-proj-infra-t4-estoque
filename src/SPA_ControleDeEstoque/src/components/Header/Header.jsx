@@ -4,6 +4,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { BsGridFill, BsPeopleFill, BsPersonFill, BsGearFill, BsChatDotsFill } from "react-icons/bs"; // Importando os ícones do Bootstrap Icons
 import ControleDeEstoqueLogo2 from "../../assets/ControleDeEstoqueLogo2.png";
 import axios from "axios";
+import Cookies from 'js-cookie';
 import {
   ButtonsHeader,
   ButtonsMenu,

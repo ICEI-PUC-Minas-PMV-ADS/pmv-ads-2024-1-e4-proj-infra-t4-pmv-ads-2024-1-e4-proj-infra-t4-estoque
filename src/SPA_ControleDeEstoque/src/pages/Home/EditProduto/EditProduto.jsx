@@ -20,7 +20,7 @@ import {
   Note,
   Select,
   Input
-} from "./AddProdutoStyled";
+} from "./EditProdutoStyled";
 import Header from "../../../components/Header/Header";
 
 export default function EditProduto() {
