@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { ButtonSearch, ContainerButton, ContainerHeaderHome, ContainerHome, ContainerSearch, ContainerTable, LeftTitle, RightTitle } from './HomeStyled';
+import { ButtonSearch, ContainerButton, ContainerHeaderHome, ContainerHome, ContainerSearch, ContainerTable, LeftTitle } from './HomeStyled';
 import { Button } from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 import Header from '../../components/Header/Header';
 
