@@ -12,7 +12,7 @@ import Admin from "./pages/Admin/Admin.jsx";
 import Start from "./pages/Start/Start.jsx";
 import Login from "./pages/Start/Login.jsx";
 import AddProduto from "./pages/Home/AddProduto/AddProduto.jsx";
-import EditProduto from "./pages/home/EditProduto/EditProduto.jsx";
+import EditProduto from "./pages/Home/EditProduto/EditProduto.jsx"
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
