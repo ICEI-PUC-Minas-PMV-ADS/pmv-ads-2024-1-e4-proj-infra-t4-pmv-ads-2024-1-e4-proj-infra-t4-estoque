@@ -57,9 +57,9 @@ export default function EnviarFeedbackModal() {
 
         preConfirm: async () => {
           const email = document.getElementById('swal-input1').value;
-          const descricao = document.getElementById('swal-input2').value;
+          const feedBackDescricao = document.getElementById('swal-input2').value;
 
-          if (!email || !descricao) {
+          if (!email || !feedBackDescricao) {
             Swal.showValidationMessage('Por favor, preencha todos os campos.');
             return false;
           }
@@ -70,14 +70,14 @@ export default function EnviarFeedbackModal() {
               headers: {
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({ email, descricao })
+              body: JSON.stringify({ email, feedBackDescricao })
             });
 
             if (!response.ok) {
               throw new Error('Erro ao enviar feedback');
             }
 
-            return [email, descricao];
+            return [email, feedBackDescricao];
           } catch (error) {
             Swal.showValidationMessage('Ocorreu um erro ao enviar o feedback. Por favor, tente novamente.');
             return false;
@@ -86,7 +86,7 @@ export default function EnviarFeedbackModal() {
       });
 
       if (formValues) {
-        const [email, descricao] = formValues;
+        const [email, feedBackDescricao] = formValues;
 
         const Toast = Swal.mixin({
           toast: true,

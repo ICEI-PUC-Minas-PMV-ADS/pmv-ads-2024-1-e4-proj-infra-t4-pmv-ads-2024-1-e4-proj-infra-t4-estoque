@@ -12,10 +12,11 @@ import Header from '../../components/Header/Header';
 export default function Home() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const userId =    localStorage.getItem('userId', data.userId);
 
   const produtoGet = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${Cookies.get("usuarioId")}`);
+      const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${userId}`);
       setData(response.data);
     } catch (error) {
       console.log(error);

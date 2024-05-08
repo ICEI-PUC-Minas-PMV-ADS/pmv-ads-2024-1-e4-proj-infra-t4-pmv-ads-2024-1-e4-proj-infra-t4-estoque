@@ -9,7 +9,7 @@ namespace ProjetoControleDeEstoque.Services
             try
             {
                 // E-mail que irá enviar para os administradores do sistema por padrão.
-                var gmail = new Email("smtp.gmail.com", "desenvolvedoresprojetocontrole@gmail.com", "");
+                var gmail = new Email("smtp.gmail.com", "desenvolvedoresprojetocontrole@gmail.com", "afyr rpah peam kjlb");
 
                 gmail.SendEmail(
                 emailsTo: new List<string>

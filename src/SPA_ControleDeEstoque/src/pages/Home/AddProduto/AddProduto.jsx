@@ -35,6 +35,7 @@ export default function AddProduto() {
   const [fornecedores, setFornecedores] = useState([]);
   const [valorTotal, setValorTotal] = useState("");
   const navigate = useNavigate();
+  const userId =    localStorage.getItem('userId', data.userId);
 
   useEffect(() => {
     pegandoDados();
@@ -42,7 +43,7 @@ export default function AddProduto() {
 
   async function pegandoDados() {
     try {
-      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${Cookies.get("usuarioId")}`);
+      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
       setFornecedores(response.data); 
     } catch (error) {
       console.error("Erro ao buscar fornecedores:", error);
@@ -104,7 +105,7 @@ export default function AddProduto() {
         estadoProduto: parseInt(formData.estadoProduto),
         categoria: parseInt(formData.categoria),
         fornecedorId: formData.fornecedor,
-        usuarioId: Cookies.get("usuarioId")
+        usuarioId: userId
       }, {
         headers: {
           Authorization: `Bearer ${Cookies.get("token")}`,
@@ -259,7 +260,7 @@ export default function AddProduto() {
               style={{ marginLeft: "10px" }}
               text="Novo Fornecedor"
               type="button"
-              onClick={() => navigate('/addFornecedor/' + Cookies.get("usuarioId"))} 
+              onClick={() => navigate('/addFornecedor/' + {userId})} 
             />
             <Button style={{ justifyContent: "flex-end" }} text="CADASTRAR" type="submit"></Button>
           </ContainerButton>

@@ -26,11 +26,12 @@ export default function ConfiguracaoPerfil() {
   });
 
   const [senhaAtualVisivel, toggleSenhaAtualVisivel] = useState(false);
+  const userId =    localStorage.getItem('userId', data.userId);
 
   useEffect(() => {
     const getDadosUsuario = async () => {
       try {
-        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados`, {
+        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}}`, {
           headers: {
             Authorization: `Bearer ${Cookies.get("token")}`
           }

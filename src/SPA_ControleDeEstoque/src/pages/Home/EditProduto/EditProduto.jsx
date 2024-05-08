@@ -25,6 +25,7 @@ import Header from "../../../components/Header/Header";
 
 export default function EditProduto() {
   const { id } = useParams();
+  const userId =    localStorage.getItem('userId', data.userId);
   const [formData, setFormData] = useState({
     nomeProduto: "",
     descricaoProduto: "",
@@ -45,10 +46,9 @@ export default function EditProduto() {
 
   async function pegandoDados() {
     try {
-      const usuarioId = Cookies.get("usuarioId");
 
       // Requisição para obter os fornecedores do usuário logado
-      const fornecedoresData = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${usuarioId}`);
+      const fornecedoresData = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
       setFornecedores(fornecedoresData.data);
 
       const produtoData = await axios.get(`https://localhost:44398/api/Produtos/${id}`);
@@ -121,7 +121,7 @@ export default function EditProduto() {
         estadoProduto: parseInt(formData.estadoProduto),
         categoria: parseInt(formData.categoria),
         fornecedorId: formData.fornecedor,
-        usuarioId: usuarioId
+        usuarioId: userId
       });
       Swal.fire({
         icon: 'success',

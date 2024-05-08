@@ -26,7 +26,6 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   const [data] = useState([]);
-  const userId =    localStorage.getItem('userId', data.userId);
   const token = localStorage.getItem('token', data.token);
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,6 +44,7 @@ export default function Header() {
   };
 
   const [nomeUsuario, setNomeUsuario] = useState("");
+  const userId =    localStorage.getItem('userId', data.userId);
 
   useEffect(() => {
     async function getNomeUsuario() {
@@ -92,7 +92,7 @@ export default function Header() {
           {isOpen && (
             <DropDownMenu>
               <li>
-                <Link to="/ConfiguracaoPerfil">
+              <Link to={`/ConfiguracaoPerfil/${userId}`}>
                   <a>CONFIGURAÇÃO DO PERFIL</a>
                 </Link>{" "}
               </li>
@@ -135,7 +135,7 @@ export default function Header() {
             {isOpen && (
               <DropDownMenu>
                 <li>
-                  <Link to="/ConfiguracaoPerfil">
+                  <Link to={`/ConfiguracaoPerfil/${userId}`}>
                     <a>CONFIGURAÇÃO DO PERFIL</a>
                   </Link>{" "}
                 </li>
@@ -186,7 +186,7 @@ export default function Header() {
             <li>
               <Link
                 style={{ textDecoration: "none", color: "#5871fb" }}
-                to="/ConfiguracaoPerfil"
+                to={`/ConfiguracaoPerfil/${userId}`}
               >
                 <BsGearFill style={{ marginRight: "5px" }} /> Configuração de Perfil
               </Link>
