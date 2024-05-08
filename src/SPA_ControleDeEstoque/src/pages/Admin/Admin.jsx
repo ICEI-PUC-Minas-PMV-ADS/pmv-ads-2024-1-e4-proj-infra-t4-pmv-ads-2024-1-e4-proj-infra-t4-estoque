@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import axios from "axios"
-import { ContainerADM, StyledButton, ContainerHeaderADM, LeftTitle, ContainerTable } from './AdminStyled'
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import { ContainerADM, StyledSquare, StyledButton, ContainerHeaderADM, LeftTitle, ContainerTable, StyledSquareContainer, CenterAlign, SquareHeader, ChartStyled, AllCharts } from './AdminStyled';
 import Chart from 'chart.js/auto';
-import { Bar } from 'react-chartjs-2'
-import { Button } from '../../components/Button/Button';
+import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import Header from '../../components/Header/Header';
 
 export default function Admin() {
-
   const baseUrl = "http://localhost:5020/api/Produtos/usuarioIdProdutos?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
   const [data, setData] = useState([]);
 
@@ -17,16 +16,17 @@ export default function Admin() {
         setData(response.data);
       }).catch(error => {
         console.log(error);
-      })
-  }
+      });
+  };
 
   useEffect(() => {
     produtoGet();
-  });
+  }, []);
 
   const generatePdf = async () => {
     try {
-      await axios.get("http://localhost:5020/api/PdfGen/Gerar/663051cdc173bb91ef22c563");
+      const url = `http://localhost:5020/api/PdfGen/Gerar/${id}`;
+      await axios.get(url);
     } catch (error) {
       console.error("Error generating PDF", error);
     }
@@ -40,16 +40,42 @@ export default function Admin() {
         <br />
         <ContainerHeaderADM>
           <div>
-            <LeftTitle>ADMINISTRAÇÃO</LeftTitle>
+            <LeftTitle style={{ fontSize: "30px" }}>ADMINISTRAÇÃO</LeftTitle>
           </div>
         </ContainerHeaderADM>
 
         <ContainerTable>
+          <StyledSquareContainer>
 
-          <StyledButton>  DADOS GERAIS DO ESTOQUE </StyledButton>
-          <StyledButton>  VER PRODUTOS ZERADOS </StyledButton>
-          <StyledButton>  VER PRODUTOS COM ESTOQUE MINIMO </StyledButton>
+            <StyledSquare style={{ backgroundColor: "#0a4eb1" }}>
+              <SquareHeader>
+              <div>DADOS GERAIS</div>
+              </SquareHeader>
+              <div> </div>
+              <div>X PRODUTOS CADASTRADOS</div>
+              <div>X ITENS REGISTRADOS</div>
+            </StyledSquare>
 
+            <StyledSquare style={{ backgroundColor: "#e8c743" }}>
+            <SquareHeader>
+            <div>ESTOQUE MÍNIMO</div>
+            </SquareHeader>
+            <div></div>
+              <div>X PRODUTOS COM ESTOQUE BAIXO</div>
+            </StyledSquare>
+
+            <StyledSquare style={{ backgroundColor: "#f5535e" }}>
+            <SquareHeader>
+            <div>ESTOQUE ZERADO</div>
+            </SquareHeader>
+            <div></div>
+              <div>X PRODUTOS FORA DO ESTOQUE</div>
+            </StyledSquare>
+
+          </StyledSquareContainer>
+
+          <AllCharts>
+          <ChartStyled>
           <div className='Chart'>
             <Bar data={{
               labels: data.map((produto) => produto.nome),
@@ -64,10 +90,38 @@ export default function Admin() {
               ]
             }} />
           </div>
-          <div>
-            <StyledButton onClick={generatePdf}> GERAR METODO DE RELATÓRIO </StyledButton>
+          </ChartStyled>
 
+          <ChartStyled>
+          <div className='Chart'>
+            <Line data={{
+              labels: ['01/24', '02/24', '03/24', '04/24', '05/24', '06/24'],
+              datasets: [
+                {
+                  label: ['Entrada'],
+                  data: [12, 19, 3, 5, 2, 3],
+                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 1,
+                },
+                {
+                  label: ['Saída'],
+                  data: [2, 3, 5, 2, 3, 12],
+                  backgroundColor: 'rgba(13, 80, 80, 0.2)',
+                  borderColor: '#116363',
+                  borderWidth: 1,
+                }
+              ]
+            }} />
           </div>
+          </ChartStyled>
+          </AllCharts>
+
+            <CenterAlign>
+              <div>
+                <StyledButton onClick={generatePdf}>GERAR METODO DE RELATÓRIO</StyledButton>
+              </div>
+          </CenterAlign>
         </ContainerTable>
         <footer></footer>
       </ContainerADM>
