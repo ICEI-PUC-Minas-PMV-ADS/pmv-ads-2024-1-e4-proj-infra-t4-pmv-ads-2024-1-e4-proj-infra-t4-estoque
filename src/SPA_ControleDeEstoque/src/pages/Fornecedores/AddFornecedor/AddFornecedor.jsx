@@ -6,8 +6,9 @@ import {
   ContainerHeaderFornecedor,
   ContainerButton,
   ContainerForm,
-} from "./AddFornecedorStyled"; 
+} from "./AddFornecedorStyled";
 import { Button } from "../../../components/Button/Button";
+import Header from "../../../components/Header/Header";
 
 export default function AddFornecedor() {
   const { usuarioId } = useParams();
@@ -50,59 +51,62 @@ export default function AddFornecedor() {
   };
 
   return (
-    <ContainerFornecedor>
-      <ContainerHeaderFornecedor>
-        <h2 style={{ fontSize: "40px" }}>Novo Fornecedor</h2>
-      </ContainerHeaderFornecedor>
+    <>
+      <Header />
+      <ContainerFornecedor>
+        <ContainerHeaderFornecedor>
+          <h2 style={{ fontSize: "40px" }}>Novo Fornecedor</h2>
+        </ContainerHeaderFornecedor>
 
-      <ContainerForm>
-        <h6>Informação Básica</h6>
-        <form onSubmit={handleSubmit}>
-          <div style={{ display: "none" }}>
-            <label>Código do Fornecedor: </label>
-            <input
-              type="text"
-              name="codigoFornecedor"
-              value={formData.codigoFornecedor}
-              onChange={handleChange}
-              readOnly
-            />
-          </div>
-          <div>
-            <label>Nome: <span>*</span></label>
-            <input
-              type="text"
-              name="nome"
-              value={formData.nome}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>Email: <span>*</span></label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label>CNPJ/CPF: <span>*</span></label>
-            <input
-              type="text"
-              name="cnpjCpf"
-              value={formData.cnpjCpf}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <ContainerButton>
-            <Button text="Salvar" type="submit"></Button>
-          </ContainerButton>
-        </form>
-      </ContainerForm>
-    </ContainerFornecedor>
+        <ContainerForm>
+          <h6>Informação Básica</h6>
+          <form onSubmit={handleSubmit}>
+            <div style={{ display: "none" }}>
+              <label>Código do Fornecedor: </label>
+              <input
+                type="text"
+                name="codigoFornecedor"
+                value={formData.codigoFornecedor}
+                onChange={handleChange}
+                readOnly
+              />
+            </div>
+            <div>
+              <label>Nome: <span>*</span></label>
+              <input
+                type="text"
+                name="nome"
+                value={formData.nome}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label>Email: <span>*</span></label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label>CNPJ/CPF: <span>*</span></label>
+              <input
+                type="text"
+                name="cnpjCpf"
+                value={formData.cnpjCpf}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <ContainerButton>
+              <Button text="Salvar" type="submit"></Button>
+            </ContainerButton>
+          </form>
+        </ContainerForm>
+      </ContainerFornecedor>
+    </>
   );
 }

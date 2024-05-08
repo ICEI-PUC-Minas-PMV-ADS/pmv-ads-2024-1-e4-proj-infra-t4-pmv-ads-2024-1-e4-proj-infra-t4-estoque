@@ -1,10 +1,14 @@
 import { useState } from "react"
-import "./Login.css"
 import { FaUser, FaLock, FaEnvelope, FaIdCard } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
+
+import "./Login.css"
+
 
 const Login = () => {
 
     // Login
+    const history = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -28,6 +32,7 @@ const Login = () => {
             // Guarda token no localStorage 
             localStorage.setItem('acessToken', data.acessToken);
             console.log('Login successful');
+            history('/home');
         } else {
             console.error('Invalid login credentials');
         }

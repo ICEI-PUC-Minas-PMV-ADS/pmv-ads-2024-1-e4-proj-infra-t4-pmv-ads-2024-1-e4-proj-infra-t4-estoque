@@ -13,6 +13,8 @@ import {
 } from "./FornecedoresStyled";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button/Button";
+import Header from "../../../components/Header/Header";
+
 
 export default function Fornecedor() {
   const baseUrl =
@@ -20,14 +22,14 @@ export default function Fornecedor() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [usuarioId, setUsuarioId] = useState(""); 
+  const [usuarioId, setUsuarioId] = useState("");
 
   const fornecedorGet = async () => {
     try {
       const response = await axios.get(baseUrl);
       setData(response.data);
       response.data.forEach((item) => {
-        setUsuarioId(item.usuarioId); 
+        setUsuarioId(item.usuarioId);
       });
     } catch (error) {
       console.error("Erro ao buscar fornecedores:", error);
@@ -55,6 +57,7 @@ export default function Fornecedor() {
 
   return (
     <>
+      <Header />
       <ContainerFornecedor>
         <br />
         <br />
@@ -79,7 +82,7 @@ export default function Fornecedor() {
               <FontAwesomeIcon icon={faSearch} />
             </ButtonSearch>
           </ContainerSearch>
-       
+
           <Link to={`/addFornecedor/${usuarioId}`}>
             <Button
               style={{ justifyContent: "flex-end" }}

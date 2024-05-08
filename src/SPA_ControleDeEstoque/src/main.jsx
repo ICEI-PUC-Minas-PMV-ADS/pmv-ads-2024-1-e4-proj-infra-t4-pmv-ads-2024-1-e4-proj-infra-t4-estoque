@@ -1,9 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { GlobalStyle } from "./GlobalStyled.jsx";
-import Header from "./components/Header/Header.jsx";
 
 import Home from "./pages/Home/Home.jsx";
 import Fornecedor from "./pages/Fornecedores/Fornecedor/Fornecedores.jsx";
@@ -11,16 +9,19 @@ import AddFornecedor from "./pages/Fornecedores/AddFornecedor/AddFornecedor.jsx"
 import ConfiguracaoPerfil from "./pages/ConfiguracaoPerfil/ConfiguracaoPerfil.jsx";
 import EditFornecedor from "./pages/Fornecedores/EditFornecedor/EditFornecedor.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
+import Start from "./pages/Start/Start.jsx";
+import Login from "./pages/Start/Login.jsx";
 import AddProduto from "./pages/Home/AddProduto/AddProduto.jsx";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <GlobalStyle />
-
     <BrowserRouter>
-      <Header />
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Start />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/fornecedores" element={<Fornecedor />} />
         <Route path="/addFornecedor/:usuarioId" element={<AddFornecedor />} />
         <Route path="/AddProduto" element={<AddProduto />} />
