@@ -84,7 +84,7 @@ export default function Home() {
               <FontAwesomeIcon icon={faSearch} />
             </ButtonSearch>
           </ContainerSearch>
-          <Link to='/as'>
+          <Link to='/AddProduto'>
             <Button style={{ justifyContent: "flex-end" }} text="ADICIONAR PRODUTO" type="button"></Button>
           </Link>
         </ContainerButton>

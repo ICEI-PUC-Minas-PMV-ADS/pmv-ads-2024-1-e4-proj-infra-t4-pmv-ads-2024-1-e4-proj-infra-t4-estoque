@@ -11,6 +11,7 @@ import AddFornecedor from "./pages/Fornecedores/AddFornecedor/AddFornecedor.jsx"
 import ConfiguracaoPerfil from "./pages/ConfiguracaoPerfil/ConfiguracaoPerfil.jsx";
 import EditFornecedor from "./pages/Fornecedores/EditFornecedor/EditFornecedor.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
+import AddProduto from "./pages/Home/AddProduto/AddProduto.jsx";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Home />} />
         <Route path="/fornecedores" element={<Fornecedor />} />
         <Route path="/addFornecedor/:usuarioId" element={<AddFornecedor />} />
+        <Route path="/AddProduto" element={<AddProduto />} />
         <Route path="/Admin" element={<Admin />} />
 
         <Route path="/editFornecedor/:id" element={<EditFornecedor />} />
