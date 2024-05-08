@@ -3,9 +3,12 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { ContainerFornecedor, ContainerHeaderFornecedor, ContainerButton, ContainerForm } from "./EditFornecedorStyled";
 import { Button } from "../../../components/Button/Button";
+import Header from "../../../components/Header/Header";
 
 export default function EditFornecedor() {
   const { id } = useParams();
+  const [data] = useState([]);
+  const userId =    localStorage.getItem('userId', data.userId);
   const navigate = useNavigate(); // Obtendo a função navigate
   const [formData, setFormData] = useState({
     codigoFornecedor: "",
@@ -37,13 +40,15 @@ export default function EditFornecedor() {
     e.preventDefault();
     try {
       await axios.put(`http://localhost:5020/api/Fornecedores/${id}`, formData);
-      navigate('/fornecedores'); // Navegando para a página de fornecedores após salvar
+      navigate(`/fornecedores/${userId}`); // Navegando para a página de fornecedores após salvar
     } catch (error) {
       console.error("Erro ao editar fornecedor:", error);
     }
   };
 
   return (
+    <>
+    <Header/>
     <ContainerFornecedor>
       <ContainerHeaderFornecedor>
         <h2 style={{ fontSize:"40px"}}>Editar Fornecedor</h2>
@@ -87,6 +92,7 @@ export default function EditFornecedor() {
           </ContainerButton>
         </form>
       </ContainerForm>
-    </ContainerFornecedor>
+      </ContainerFornecedor>
+      </>
   );
 }

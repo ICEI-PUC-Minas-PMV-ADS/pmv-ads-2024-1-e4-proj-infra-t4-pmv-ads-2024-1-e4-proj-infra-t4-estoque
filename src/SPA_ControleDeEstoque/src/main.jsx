@@ -14,24 +14,29 @@ import Login from "./pages/Start/Login.jsx";
 import AddProduto from "./pages/Home/AddProduto/AddProduto.jsx";
 import EditProduto from "./pages/Home/EditProduto/EditProduto.jsx"
 
+
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <GlobalStyle />
+
+
+
     <BrowserRouter>
 
       <Routes>
         <Route path="/" element={<Start />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home/:usuarioId" element={<Home />} />
-        <Route path="/fornecedores" element={<Fornecedor />} />
-        <Route path="/addFornecedor/:usuarioId" element={<AddFornecedor />} />
-        <Route path="/AddProduto/:usuarioId" element={<AddProduto />} />
+        <Route path="/home/:userId" element={<Home />} />
+        <Route path="/fornecedores/:userId" element={<Fornecedor />} />
+        <Route path="/addFornecedor/:userId" element={<AddFornecedor />} />
+        <Route path="/AddProduto/:userId" element={<AddProduto />} />
         <Route path="/Admin" element={<Admin />} />
 
         <Route path="/editFornecedor/:id" element={<EditFornecedor />} />
         <Route path="/EditProduto/:id" element={<EditProduto />} />
         <Route path="/ConfiguracaoPerfil/:usuarioId" element={<ConfiguracaoPerfil />} />
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+     
   </React.StrictMode>
 );

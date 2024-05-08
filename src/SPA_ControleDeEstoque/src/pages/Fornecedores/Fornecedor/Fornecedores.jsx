@@ -17,20 +17,20 @@ import Header from "../../../components/Header/Header";
 
 
 export default function Fornecedor() {
-  const baseUrl =
-    "http://localhost:5020/api/Fornecedores/usuarioIdFornecedores?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
+  
+  
+
   const [data, setData] = useState([]);
+  const userId =    localStorage.getItem('userId', data.userId);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [usuarioId, setUsuarioId] = useState("");
+  
 
   const fornecedorGet = async () => {
     try {
-      const response = await axios.get(baseUrl);
+      const response = await axios.get(`http://localhost:5020/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
       setData(response.data);
-      response.data.forEach((item) => {
-        setUsuarioId(item.usuarioId);
-      });
+     
     } catch (error) {
       console.error("Erro ao buscar fornecedores:", error);
     }
@@ -83,7 +83,7 @@ export default function Fornecedor() {
             </ButtonSearch>
           </ContainerSearch>
 
-          <Link to={`/addFornecedor/${usuarioId}`}>
+          <Link to={`/addFornecedor/${userId}`}>
             <Button
               style={{ justifyContent: "flex-end" }}
               text="ADICIONAR FORNECEDOR"

@@ -11,6 +11,7 @@ export const ContainerFornecedor = styled.header`
   color: white;
   padding: 20px;
   align-items: center;
+  padding-top: 250px;
 `;
 
 export const ContainerHeaderFornecedor = styled.div`

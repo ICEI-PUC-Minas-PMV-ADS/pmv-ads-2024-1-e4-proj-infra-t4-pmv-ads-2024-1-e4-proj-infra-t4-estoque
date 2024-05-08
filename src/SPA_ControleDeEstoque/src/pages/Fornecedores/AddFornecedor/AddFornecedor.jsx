@@ -1,6 +1,6 @@
-import { useState } from "react";
+import  { useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   ContainerFornecedor,
   ContainerHeaderFornecedor,
@@ -10,15 +10,20 @@ import {
 import { Button } from "../../../components/Button/Button";
 import Header from "../../../components/Header/Header";
 
+const getUserIdFromLocalStorage = () => {
+  return localStorage.getItem("userId") || "";
+};
+
 export default function AddFornecedor() {
-  const { usuarioId } = useParams();
   const navigate = useNavigate();
+  const [data] = useState([]);
+  const userId =    localStorage.getItem('userId', data.userId);
   const [formData, setFormData] = useState({
     codigoFornecedor: "",
     nome: "",
     email: "",
     cnpjCpf: "",
-    usuarioId: `${usuarioId}`
+    usuarioId: getUserIdFromLocalStorage() // Obtém userId do localStorage ao definir o estado inicial
   });
 
   const generateFornecedorCode = () => {
@@ -44,7 +49,8 @@ export default function AddFornecedor() {
     e.preventDefault();
     try {
       await axios.post(`http://localhost:5020/api/Fornecedores/`, formData);
-      navigate('/fornecedores');
+     
+      navigate(`/fornecedores/${userId}`);
     } catch (error) {
       console.error("Erro ao adicionar fornecedor:", error);
     }

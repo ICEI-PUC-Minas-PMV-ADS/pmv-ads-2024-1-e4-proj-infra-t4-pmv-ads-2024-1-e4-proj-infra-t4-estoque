@@ -29,10 +29,12 @@ const Login = () => {
         const data = await response.json();
 
         if (data.acessToken) {
-            // Guarda token no localStorage 
+           
             localStorage.setItem('acessToken', data.acessToken);
+            localStorage.setItem('userId', data.userId);
             console.log('Login successful');
-            history('/home');
+        
+            history(`/home/${data.userId}`);
         } else {
             console.error('Invalid login credentials');
         }
