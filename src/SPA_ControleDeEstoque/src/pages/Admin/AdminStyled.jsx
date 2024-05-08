@@ -1,5 +1,31 @@
 import styled from 'styled-components';
 
+export const StyledSquareContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const StyledSquare = styled.div`
+  width: 300px;
+  height: 120px;
+  margin: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none; 
+  border-radius: 10px;
+  color: white;
+  background-color: ${props => props.bgColor || '#5555c2'};
+
+`;
+
+export const SquareHeader = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+`;
+
 export const StyledButton = styled.button`
   margin: 20px;
   padding: 10px 20px;
@@ -8,16 +34,18 @@ export const StyledButton = styled.button`
   border-radius: 10px;
   cursor: pointer;
   color: white;
-  background-color: ${props => props.bgColor || '#5555c2'};
-
+  background: linear-gradient(265.27deg, #0000 20.55%, #55a0c2 94.17%);
+  background-color: #55a0c2;
+  transition: all 0.2s ease-in-out;
+    
   &:hover {
-    background-color: ${props => props.hoverColor || '#5555c2'};
+    background-color: #5555c2;
   }
 `;
 
 export const ContainerADM = styled.div`
   background-color: #5871FB;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,16 +87,34 @@ export const ContainerSearch = styled.div`
 `;
 
 export const LeftTitle = styled.h3`
-  font-size: 30px;
   margin: 0;
   padding-left: 20px;
-  padding-bottom: 45px;
+  padding-bottom: 20px;
+`;
+
+export const CenterAlign = styled.div`
+display: flex;
+justify-content: center;
+`;
+
+export const ChartStyled = styled.div`
+width: 100%;
+height: 100%;
+margin: 10px;
+background-color: white;
+border-radius: 10px;
+padding: 10px;
+`;
+
+export const AllCharts = styled.div`
+display: flex;
+justify-content: center;
 `;
 
 export const ContainerTable = styled.div`
   padding: 20px;
   background-color: #FFF8E7;
-  height: calc(100vh - 200px); 
+  height: 605px; 
   overflow-y: auto;
 
   table {
