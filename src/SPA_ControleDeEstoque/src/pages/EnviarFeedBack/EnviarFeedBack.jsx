@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
-import { enviarFeedback } from '../../services/enviarFeedbackService';
 
 export default function EnviarFeedbackModal() {
   useEffect(() => {
@@ -66,7 +65,18 @@ export default function EnviarFeedbackModal() {
           }
 
           try {
-            await enviarFeedback({ email: email, feedBackDescricao: descricao });
+            const response = await fetch('https://localhost:44398/api/FeedBack/EnviarFeedBack', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email, descricao })
+            });
+
+            if (!response.ok) {
+              throw new Error('Erro ao enviar feedback');
+            }
+
             return [email, descricao];
           } catch (error) {
             Swal.showValidationMessage('Ocorreu um erro ao enviar o feedback. Por favor, tente novamente.');

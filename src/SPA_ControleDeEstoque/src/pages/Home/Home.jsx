@@ -5,7 +5,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { ButtonSearch, ContainerButton, ContainerHeaderHome, ContainerHome, ContainerSearch, ContainerTable, LeftTitle, RightTitle } from './HomeStyled';
 import { Button } from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
-import { getAllProdutos } from '../../services/homeService';
 
 import Header from '../../components/Header/Header';
 
@@ -15,12 +14,13 @@ export default function Home() {
 
   const produtoGet = async () => {
     try {
-      const response = await getAllProdutos();
+      const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${Cookies.get("usuarioId")}`);
       setData(response.data);
     } catch (error) {
       console.log(error);
     }
   };
+
   const getEstadoProdutoNome = (estadoProduto) => {
     switch (estadoProduto) {
       case 0:
@@ -79,7 +79,6 @@ export default function Home() {
           </div>
         </ContainerHeaderHome>
         <br />
-
         <ContainerButton>
           <ContainerSearch>
             <input type="text" placeholder="PROCURAR" value={searchTerm} onChange={handleSearch} />
@@ -135,7 +134,9 @@ export default function Home() {
                   <td>{produto.localizacao}</td>
                   <td>{produto.valor}</td>
                   <td>{produto.valorUnidade}</td>
-                  <td><Button text='Editar' type='button' /></td>
+                  <td><Link to={`/EditProduto/${produto.id}`}>
+                    <Button text='Editar' type='button' />
+                  </Link></td>
                 </tr>
               ))}
             </tbody>

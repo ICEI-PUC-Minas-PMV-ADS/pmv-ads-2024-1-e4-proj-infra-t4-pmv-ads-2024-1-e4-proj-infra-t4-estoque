@@ -3,10 +3,10 @@ import Cookies from 'js-cookie'
 
 const baseURL = "http://localhost:5173"
 
-export function getAllProdutos(body) {
+export function getProdutosUsers(body) {
     try {
   
-      const response = axios.post(`${baseURL}/api/Produtos/${Cookies.get("usuarioId")}`, body, {
+      const response = axios.post(`${baseURL}/home/${Cookies.get("usuarioId")}`, body, {
         headers: {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
@@ -16,4 +16,5 @@ export function getAllProdutos(body) {
     } catch (error) {
       console.log(error)
     }
+   
   }

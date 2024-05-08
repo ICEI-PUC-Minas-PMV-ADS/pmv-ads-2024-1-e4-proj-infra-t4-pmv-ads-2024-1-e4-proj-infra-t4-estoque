@@ -3,16 +3,17 @@ import Cookies from 'js-cookie';
 
 const baseURL = "http://localhost:5173";
 
-export async function getFornecedores() {
+export async function getProdutoId() {
     try {
-        const response = await axios.get(`${baseURL}/api/Fornecedores/usuarioIdFornecedores?usuarioId=${Cookies.get("usuarioId")}`, {
+
+        const response = axios.post(`${baseURL}/AddProduto/${Cookies.get("usuarioId")}`, body, {
             headers: {
                 Authorization: `Bearer ${Cookies.get("token")}`,
             },
         });
-        return response.data;
+        return response;
+
     } catch (error) {
-        console.error("Erro ao buscar fornecedores:", error);
-        throw error; 
+        console.log(error)
     }
 }

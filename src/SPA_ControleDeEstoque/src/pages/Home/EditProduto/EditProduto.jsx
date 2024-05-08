@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import { Button } from "../../../components/Button/Button";
-import { getFornecedores, getProduto, updateProduto } from '../../../services/addProdutoService';
+import { useParams } from 'react-router-dom';
 import {
   ContainerProduto,
   ContainerButton,
@@ -24,6 +24,7 @@ import {
 import Header from "../../../components/Header/Header";
 
 export default function EditProduto() {
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     nomeProduto: "",
     descricaoProduto: "",
@@ -44,19 +45,21 @@ export default function EditProduto() {
 
   async function pegandoDados() {
     try {
-      const fornecedoresData = await getFornecedores();
-      setFornecedores(fornecedoresData); 
+      const usuarioId = Cookies.get("usuarioId");
 
-      const produtoId = Cookies.get("usuarioId");
-      const produtoData = await getProduto(produtoId);
+      // Requisição para obter os fornecedores do usuário logado
+      const fornecedoresData = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${usuarioId}`);
+      setFornecedores(fornecedoresData.data);
+
+      const produtoData = await axios.get(`https://localhost:44398/api/Produtos/${id}`);
       setFormData({
-        nomeProduto: produtoData.nome,
-        descricaoProduto: produtoData.descricao,
-        quantidade: produtoData.quantidade.toString(),
-        valorPorUnidade: produtoData.valorUnidade.toString(),
-        estadoProduto: produtoData.estadoProduto.toString(),
-        localizacao: produtoData.localizacao,
-        fornecedor: produtoData.fornecedorId,
+        nomeProduto: produtoData.data.nome,
+        descricaoProduto: produtoData.data.descricao,
+        quantidade: produtoData.data.quantidade.toString(),
+        valorPorUnidade: produtoData.data.valorUnidade.toString(),
+        estadoProduto: produtoData.data.estadoProduto.toString(),
+        localizacao: produtoData.data.localizacao,
+        fornecedor: produtoData.data.fornecedorId,
       });
     } catch (error) {
       console.error("Erro ao buscar dados do produto:", error);
@@ -108,7 +111,8 @@ export default function EditProduto() {
     }
 
     try {
-      await updateProduto(Cookies.get("usuarioId"), {
+      // Requisição para atualizar os dados do produto
+      await axios.put(`https://localhost:44398/api/Produtos/${id}`, {
         nome: formData.nomeProduto,
         descricao: formData.descricaoProduto,
         quantidade: parseInt(formData.quantidade),
@@ -117,7 +121,7 @@ export default function EditProduto() {
         estadoProduto: parseInt(formData.estadoProduto),
         categoria: parseInt(formData.categoria),
         fornecedorId: formData.fornecedor,
-        usuarioId: Cookies.get("usuarioId")
+        usuarioId: usuarioId
       });
       Swal.fire({
         icon: 'success',

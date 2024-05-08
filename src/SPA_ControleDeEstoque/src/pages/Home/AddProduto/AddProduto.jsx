@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Swal from 'sweetalert2';
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import { Button } from "../../../components/Button/Button";
-import { getFornecedores } from "../../../services/homeService";
 import {
   ContainerProduto,
   ContainerButton,
@@ -43,8 +42,8 @@ export default function AddProduto() {
 
   async function pegandoDados() {
     try {
-      const fornecedoresData = await getFornecedores();
-      setFornecedores(fornecedoresData); 
+      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${Cookies.get("usuarioId")}`);
+      setFornecedores(response.data); 
     } catch (error) {
       console.error("Erro ao buscar fornecedores:", error);
     }
@@ -85,7 +84,7 @@ export default function AddProduto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.nomeProduto || !formData.descricaoProduto || !formData.quantidade || !formData.valorPorUnidade) {
+    if (!formData.nomeProduto || !formData.descricaoProduto || !formData.quantidade || !formData.valorPorUnidade || !formData.fornecedor) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -111,6 +110,7 @@ export default function AddProduto() {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
       });
+      
       console.log("Dados do produto enviados com sucesso!", response.data);
     } catch (error) {
       console.error("Ocorreu um erro ao enviar os dados do produto:", error);
@@ -249,7 +249,7 @@ export default function AddProduto() {
             >
               <option value="">Selecione...</option>
               {fornecedores.map((fornecedor) => (
-                <option key={fornecedor.id} value={fornecedor.nome}>{fornecedor.nome}</option>
+                <option key={fornecedor.id} value={fornecedor.id}>{fornecedor.nome}</option>
               ))}
             </select>
           </FormItem>
@@ -259,7 +259,7 @@ export default function AddProduto() {
               style={{ marginLeft: "10px" }}
               text="Novo Fornecedor"
               type="button"
-              onClick={() => navigate('/addFornecedor/' + Cookies.get("usuarioId"))} // Navegar para a rota desejada
+              onClick={() => navigate('/addFornecedor/' + Cookies.get("usuarioId"))} 
             />
             <Button style={{ justifyContent: "flex-end" }} text="CADASTRAR" type="submit"></Button>
           </ContainerButton>

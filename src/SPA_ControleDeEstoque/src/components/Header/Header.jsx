@@ -20,7 +20,7 @@ import {
 } from "./HeaderStyled";
 import EnviarFeedbackModal from "../../pages/EnviarFeedBack/EnviarFeedBack";
 import { Link } from "react-router-dom";
-import { getDadosUsuario } from "../../services/configuracaoPerfilService";
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,12 +44,17 @@ export default function Header() {
   useEffect(() => {
     async function getNomeUsuario() {
       try {
-        const response = await getDadosUsuario();
+        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados`, {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`
+          }
+        });
         setNomeUsuario(response.data.nome);
       } catch (error) {
         console.error("Erro ao obter dados do usuário:", error);
       }
     }
+
 
     getNomeUsuario();
   }, []);
@@ -57,7 +62,6 @@ export default function Header() {
   return (
     <ContainerHeader>
       <ContainerMenuHeader>
-        {/* Renderiza o logo no início em todas as larguras de tela */}
         <li className="logoControle">
           <a>
             <LogoImage

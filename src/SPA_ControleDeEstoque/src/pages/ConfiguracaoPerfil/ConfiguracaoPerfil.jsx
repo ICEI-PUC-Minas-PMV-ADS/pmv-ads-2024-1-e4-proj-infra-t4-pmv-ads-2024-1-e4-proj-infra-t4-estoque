@@ -3,8 +3,8 @@ import axios from "axios";
 import { Button } from '../../components/Button/Button';
 import BotaoMostrarSenha from '../../components/BotaoMostrarSenha/BotaoMostrarSenha';
 import Swal from 'sweetalert2';
-import { getDadosUsuario, updateDadosUsuario } from '../../services/configuracaoPerfilService';
 import InputMask from 'react-input-mask';
+import Cookies from 'js-cookie';
 
 import {
   ContainerConfiguracaoPerfil,
@@ -28,9 +28,13 @@ export default function ConfiguracaoPerfil() {
   const [senhaAtualVisivel, toggleSenhaAtualVisivel] = useState(false);
 
   useEffect(() => {
-    const getDadosUsuarios = async () => {
+    const getDadosUsuario = async () => {
       try {
-        const response = await getDadosUsuario();
+        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados`, {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`
+          }
+        });
         const userData = response.data;
         setFormData(userData);
       } catch (error) {
@@ -38,7 +42,7 @@ export default function ConfiguracaoPerfil() {
       }
     };
 
-    getDadosUsuarios();
+    getDadosUsuario();
   }, []);
 
   const handleChange = (e) => {
@@ -73,7 +77,16 @@ export default function ConfiguracaoPerfil() {
     }
 
     try {
-      await updateDadosUsuario(formData.nome, formData.email, formData.oldPassword, formData.newPassword);
+      await axios.put('https://localhost:44398/api/Auth/editUsuario', {
+        newUserName: formData.nome,
+        newEmail: formData.email,
+        newCnpj: formData.cnpj,
+        newPassword: formData.newPassword
+      }, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`
+        }
+      });
       console.log("Alteração feita com sucesso!");
     } catch (error) {
       console.error("Ocorreu um erro ao realizar a alteração:", error);
