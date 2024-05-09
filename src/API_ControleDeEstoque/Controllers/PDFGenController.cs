@@ -3,6 +3,9 @@ using MongoDB.Driver;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -18,17 +21,22 @@ namespace ProjetoControleDeEstoque.Controllers
         }
 
         [HttpGet("usuarioId")]
-        public IActionResult GeneratePDF(string usuarioId)
+        public async Task<IActionResult> GeneratePDF(string usuarioId)
         {
             try
             {
-                Document document = new Document();
-                string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Relatório de Inventário.pdf");
+                var filter = Builders<BsonDocument>.Filter.Eq("UsuarioId", usuarioId);
+                var documents = await _collection.Find(filter).ToListAsync();
+
+                if (documents.Count == 0)
+                {
+                    return BadRequest("Não foi possível gerar o PDF, nenhum documento encontrado para este usuário.");
+                }
+
+                Document document = new();
+                string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Relatório de Inventário_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.pdf");
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(outputPath, FileMode.Create));
                 document.Open();
-
-                var filter = Builders<BsonDocument>.Filter.Eq("UsuarioId", ObjectId.Parse(usuarioId));
-                var documents = _collection.Find(filter).ToList();
 
                 foreach (var documentData in documents)
                 {
@@ -40,44 +48,48 @@ namespace ProjetoControleDeEstoque.Controllers
                     string field6 = documentData.GetValue("CodigoProduto").AsString;
                     int field7 = documentData.GetValue("EstadoProduto").AsInt32;
                     int field8 = documentData.GetValue("Categoria").AsInt32;
-                    DateTime field9 = DateTime.Now;
-                    Paragraph paragraph9 = new Paragraph($"DataDeCriacao: {field9}");
+                    DateTime field9 = documentData.GetValue("DataDeCriacao").ToUniversalTime();
+
+                    Paragraph paragraph9 = new($"Data de Criação: {field9}");
                     document.Add(paragraph9);
 
-                    Paragraph paragraph = new Paragraph($"_id: {field1}");
+                    Paragraph paragraph = new($"_id: {field1}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"Nome: {field2}");
+                    paragraph = new($"Nome: {field2}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"Quantidade: {field3}");
+                    paragraph = new($"Quantidade: {field3}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"Valor: {field4}");
+                    paragraph = new($"Valor: {field4:C}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"Localizacao: {field5}");
+                    paragraph = new($"Localizacao: {field5}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"CodigoProduto: {field6}");
+                    paragraph = new($"CodigoProduto: {field6}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"EstadoProduto: {field7}");
+                    paragraph = new($"EstadoProduto: {field7}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"Categoria: {field8}");
+                    paragraph = new($"Categoria: {field8}");
                     document.Add(paragraph);
 
-                    paragraph = new Paragraph($"Data de Entrada: {field9}");
+                    paragraph = new($"Data de Entrada: {field9:yyyy-MM-dd HH:mm:ss}");
                     document.Add(paragraph);
+
+                    document.Add(new Chunk("\n")); // Adiciona uma quebra de linha entre os documentos.
                 }
+
                 document.Close();
-                string fileName = $"Relatório de Inventário_ {DateTime.Now.ToString("yyyy/MM/dd")}.pdf";
-                return File(new FileStream(outputPath, FileMode.Open), "application/pdf", fileName);
+                string fileName = Path.GetFileName(outputPath);
+                return File(System.IO.File.ReadAllBytes(outputPath), "application/pdf", fileName);
             }
             catch (Exception ex)
             {
-                return BadRequest($"Falha ao Gerar PDF. {ex.Message}");
+                return BadRequest($"Falha ao gerar o PDF: {ex.Message}");
             }
         }
     }

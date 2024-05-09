@@ -46,7 +46,7 @@ namespace ProjetoControleDeEstoque.Controllers
         }
 
         // Acessando dados do usuário que está cadastrado.
-        [HttpPost]
+        [HttpGet]
         [Route("usuarioIdDados")]
         public async Task<LoginUsuario> GetDadosUsuarios(string usuarioId)
         {

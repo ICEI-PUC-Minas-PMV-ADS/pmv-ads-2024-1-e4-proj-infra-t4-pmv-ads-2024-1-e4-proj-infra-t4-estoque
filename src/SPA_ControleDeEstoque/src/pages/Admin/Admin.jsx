@@ -27,7 +27,7 @@ export default function Admin() {
 
   const generatePdf = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/PdfGen/usuarioIdDados?usuarioId=${userId}`);
+      const response = await axios.get(`https://localhost:44398/api/PDFGen/usuarioId?usuarioId=${userId}`);
       setData(response.data);
     } catch (error) {	
       console.error(error);
