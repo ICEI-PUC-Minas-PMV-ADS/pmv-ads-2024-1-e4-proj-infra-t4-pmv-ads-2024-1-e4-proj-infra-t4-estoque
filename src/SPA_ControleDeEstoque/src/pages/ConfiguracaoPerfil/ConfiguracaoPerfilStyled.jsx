@@ -12,6 +12,7 @@ export const ContainerConfiguracaoPerfil = styled.header`
   padding: 40px;
   align-items: center;
   overflow-y: hidden;
+  padding-top: 300px;
 `;
 
 export const ContainerForm = styled.div`

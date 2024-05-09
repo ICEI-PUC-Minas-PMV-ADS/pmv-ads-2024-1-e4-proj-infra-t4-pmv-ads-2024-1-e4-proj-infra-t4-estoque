@@ -20,7 +20,8 @@ namespace ProjetoControleDeEstoque.Services
                     "thiago.souza.1138412@sga.pucminas.br",
                     "ricardo.fonseca@sga.pucminas.br",
                     "jadirdesousag@gmail.com",
-                    "diego.ruas@sga.pucminas.br"
+                    "diego.ruas@sga.pucminas.br",
+                    "luisacoutinho06@gmail.com"
                 },
                 subject: $"Feedback - E-mail: {model.Email} - Protocolo: {model.Id}",
                 body: $@"<html>

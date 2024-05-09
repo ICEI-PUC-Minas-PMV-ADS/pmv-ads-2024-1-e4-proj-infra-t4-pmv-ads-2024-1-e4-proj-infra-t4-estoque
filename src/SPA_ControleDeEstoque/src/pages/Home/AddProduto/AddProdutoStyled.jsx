@@ -12,6 +12,7 @@ export const ContainerProduto = styled.header`
   padding: 40px;
   align-items: center;
   overflow-y: hidden;
+  padding-top: 250px;
 `;
 
 export const ContainerForm = styled.div`

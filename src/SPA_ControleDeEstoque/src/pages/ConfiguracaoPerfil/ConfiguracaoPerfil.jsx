@@ -16,6 +16,7 @@ import {
   Input,
   InputPassword,
 } from "./ConfiguracaoPerfilStyled";
+import Header from "../../components/Header/Header";
 
 export default function ConfiguracaoPerfil() {
   const [formData, setFormData] = useState({
@@ -26,6 +27,7 @@ export default function ConfiguracaoPerfil() {
   });
 
   const [senhaAtualVisivel, toggleSenhaAtualVisivel] = useState(false);
+  const [data] = useState([]);
   const userId =    localStorage.getItem('userId', data.userId);
 
   useEffect(() => {
@@ -95,6 +97,8 @@ export default function ConfiguracaoPerfil() {
   };
 
   return (
+    <>
+    <Header/>
     <ContainerConfiguracaoPerfil>
       <LeftTitle>MEU PERFIL</LeftTitle>
       <ContainerForm>
@@ -164,5 +168,6 @@ export default function ConfiguracaoPerfil() {
         </form>
       </ContainerForm>
     </ContainerConfiguracaoPerfil>
+    </>
   );
 }

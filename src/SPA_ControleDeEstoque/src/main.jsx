@@ -34,7 +34,7 @@ createRoot(document.getElementById("root")).render(
 
         <Route path="/editFornecedor/:id" element={<EditFornecedor />} />
         <Route path="/EditProduto/:id" element={<EditProduto />} />
-        <Route path="/ConfiguracaoPerfil/:usuarioId" element={<ConfiguracaoPerfil />} />
+        <Route path="/ConfiguracaoPerfil/:userId" element={<ConfiguracaoPerfil />} />
       </Routes>
       </BrowserRouter>
      

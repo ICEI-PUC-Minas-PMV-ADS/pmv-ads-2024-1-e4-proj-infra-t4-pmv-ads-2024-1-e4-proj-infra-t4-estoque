@@ -25,6 +25,7 @@ import Header from "../../../components/Header/Header";
 
 export default function EditProduto() {
   const { id } = useParams();
+  const [data] = useState([]);
   const userId =    localStorage.getItem('userId', data.userId);
   const [formData, setFormData] = useState({
     nomeProduto: "",
