@@ -3,7 +3,6 @@ using MongoDB.Driver;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata;
 
 namespace ProjetoControleDeEstoque.Controllers
 {
@@ -18,19 +17,20 @@ namespace ProjetoControleDeEstoque.Controllers
             _collection = database.GetCollection<BsonDocument>("Produtos");
         }
 
-        [HttpGet("Gerar/{id}")]
-        public IActionResult GeneratePDF(string id)
+        [HttpGet("usuarioId")]
+        public IActionResult GeneratePDF(string usuarioId)
         {
             try
             {
-                iTextSharp.text.Document document = new iTextSharp.text.Document();
-                string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Relatório de Inventário.pdf");
+                Document document = new Document();
+                string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Relatório de Inventário.pdf");
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(outputPath, FileMode.Create));
                 document.Open();
 
-                BsonDocument documentData = _collection.Find(Builders<BsonDocument>.Filter.Eq("_id", ObjectId.Parse(id))).FirstOrDefault();
+                var filter = Builders<BsonDocument>.Filter.Eq("UsuarioId", ObjectId.Parse(usuarioId));
+                var documents = _collection.Find(filter).ToList();
 
-                if (documentData != null)
+                foreach (var documentData in documents)
                 {
                     string field1 = documentData.GetValue("_id").ToString();
                     string field2 = documentData.GetValue("Nome").AsString;
@@ -40,6 +40,9 @@ namespace ProjetoControleDeEstoque.Controllers
                     string field6 = documentData.GetValue("CodigoProduto").AsString;
                     int field7 = documentData.GetValue("EstadoProduto").AsInt32;
                     int field8 = documentData.GetValue("Categoria").AsInt32;
+                    DateTime field9 = DateTime.Now;
+                    Paragraph paragraph9 = new Paragraph($"DataDeCriacao: {field9}");
+                    document.Add(paragraph9);
 
                     Paragraph paragraph = new Paragraph($"_id: {field1}");
                     document.Add(paragraph);
@@ -64,10 +67,13 @@ namespace ProjetoControleDeEstoque.Controllers
 
                     paragraph = new Paragraph($"Categoria: {field8}");
                     document.Add(paragraph);
-                }
 
+                    paragraph = new Paragraph($"Data de Entrada: {field9}");
+                    document.Add(paragraph);
+                }
                 document.Close();
-                return File(new FileStream(outputPath, FileMode.Open), "application/pdf", "Relatório de Inventário.pdf");
+                string fileName = $"Relatório de Inventário_ {DateTime.Now.ToString("yyyy/MM/dd")}.pdf";
+                return File(new FileStream(outputPath, FileMode.Open), "application/pdf", fileName);
             }
             catch (Exception ex)
             {
