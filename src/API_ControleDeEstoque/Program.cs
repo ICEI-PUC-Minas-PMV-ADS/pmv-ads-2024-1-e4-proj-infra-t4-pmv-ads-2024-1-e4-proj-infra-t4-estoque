@@ -100,8 +100,8 @@ builder.Services.AddAuthentication(x =>
         ValidateIssuer = true,
         ValidateAudience = true,
         ValidateLifetime = true,
-        ValidAudience = "http://localhost:5020",
-        ValidIssuer = "http://localhost:5020",
+        ValidAudience = "https://localhost:44398",
+        ValidIssuer = "https://localhost:44398",
         IssuerSigningKey = new SymmetricSecurityKey(key),
         ClockSkew = TimeSpan.Zero
     };
@@ -122,7 +122,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(options =>
 {
-    options.WithOrigins("http://localhost:3000", "http://localhost:5173", "http://localhost:5020");
+    options.WithOrigins("http://localhost:3000", "http://localhost:5173", "https://localhost:44398");
     options.AllowAnyMethod();
     options.AllowAnyHeader();
 });

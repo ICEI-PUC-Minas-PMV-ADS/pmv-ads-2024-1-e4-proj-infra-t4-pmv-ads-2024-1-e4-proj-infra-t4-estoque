@@ -105,8 +105,8 @@ namespace ProjetoControleDeEstoque.Services
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var expires = DateTime.Now.AddMinutes(40);
                 var token = new JwtSecurityToken(
-                    issuer: "http://localhost:5020",
-                    audience: "http://localhost:5020",
+                    issuer: "https://localhost:44398",
+                    audience: "https://localhost:44398",
                     claims: claims,
                     expires: expires,
                     signingCredentials: creds

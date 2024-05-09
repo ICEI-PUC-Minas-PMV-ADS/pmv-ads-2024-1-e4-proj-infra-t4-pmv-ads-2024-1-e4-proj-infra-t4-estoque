@@ -1,4 +1,4 @@
-@ProjetoControleDeEstoque_HostAddress = http://localhost:5020
+@ProjetoControleDeEstoque_HostAddress = https://localhost:44398
 
 GET {{ProjetoControleDeEstoque_HostAddress}}/weatherforecast/
 Accept: application/json

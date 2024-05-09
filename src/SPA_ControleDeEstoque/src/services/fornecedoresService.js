@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-const baseURL = "http://localhost:5020"
+const baseURL = "https://localhost:44398"
 
 export function createFornecedor(body) {
     try {

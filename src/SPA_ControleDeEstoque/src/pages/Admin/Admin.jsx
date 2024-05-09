@@ -8,28 +8,29 @@ import Header from '../../components/Header/Header';
 import Cookies from 'js-cookie';
 
 export default function Admin() {
-  const baseUrl = `https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${Cookies.get("usuarioId")}`;
   const [data, setData] = useState([]);
+  const userId = localStorage.getItem('userId', data.userId);
 
-  const produtoGet = async () => {
-    await axios.get(baseUrl)
-      .then(response => {
+  const adminGet = async () => {
+    try {
+      const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${userId}`);
+      console.log(response)
         setData(response.data);
-      }).catch(error => {
-        console.log(error);
-      });
+      } catch (error) {	
+        console.error(error);
+      }
   };
 
   useEffect(() => {
-    produtoGet();
+    adminGet();
   }, []);
 
   const generatePdf = async () => {
     try {
-      const url = `https://localhost:44398/api/PdfGen/usuarioIdProdutos?usuarioId=${Cookies.get("usuarioId")}`;
-      await axios.get(url);
-    } catch (error) {
-      console.error("Error generating PDF", error);
+      const response = await axios.get(`https://localhost:44398/api/PdfGen/usuarioIdDados?usuarioId=${userId}`);
+      setData(response.data);
+    } catch (error) {	
+      console.error(error);
     }
   };
 
@@ -96,7 +97,7 @@ export default function Admin() {
           <ChartStyled>
           <div className='Chart'>
             <Line data={{
-              labels: ['01/24', '02/24', '03/24', '04/24', '05/24', '06/24'],
+              labels: data.map((produto) => produto.nome),
               datasets: [
                 {
                   label: ['Entrada'],

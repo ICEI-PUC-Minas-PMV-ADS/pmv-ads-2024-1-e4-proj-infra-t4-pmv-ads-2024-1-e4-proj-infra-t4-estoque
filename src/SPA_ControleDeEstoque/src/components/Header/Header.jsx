@@ -49,7 +49,7 @@ export default function Header() {
   useEffect(() => {
     async function getNomeUsuario() {
       try {
-        const response = await axios.post(`http://localhost:5020/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
+        const response = await axios.post(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

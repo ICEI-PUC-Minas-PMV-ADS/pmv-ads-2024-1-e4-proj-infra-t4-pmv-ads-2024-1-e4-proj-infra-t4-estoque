@@ -28,7 +28,7 @@ export default function Fornecedor() {
 
   const fornecedorGet = async () => {
     try {
-      const response = await axios.get(`http://localhost:5020/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
+      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
       setData(response.data);
      
     } catch (error) {
