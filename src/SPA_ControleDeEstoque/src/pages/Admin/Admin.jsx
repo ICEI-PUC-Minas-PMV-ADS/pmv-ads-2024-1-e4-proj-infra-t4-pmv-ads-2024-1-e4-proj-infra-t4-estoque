@@ -5,9 +5,10 @@ import Chart from 'chart.js/auto';
 import { Bar } from 'react-chartjs-2';
 import { Line } from 'react-chartjs-2';
 import Header from '../../components/Header/Header';
+import Cookies from 'js-cookie';
 
 export default function Admin() {
-  const baseUrl = "http://localhost:5020/api/Produtos/usuarioIdProdutos?usuarioId=b72d1cb4-31c7-479c-81cc-fa4c4c35892e";
+  const baseUrl = `https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${Cookies.get("usuarioId")}`;
   const [data, setData] = useState([]);
 
   const produtoGet = async () => {
@@ -25,7 +26,7 @@ export default function Admin() {
 
   const generatePdf = async () => {
     try {
-      const url = `http://localhost:5020/api/PdfGen/Gerar/${id}`;
+      const url = `https://localhost:44398/api/PdfGen/usuarioIdProdutos?usuarioId=${Cookies.get("usuarioId")}`;
       await axios.get(url);
     } catch (error) {
       console.error("Error generating PDF", error);
