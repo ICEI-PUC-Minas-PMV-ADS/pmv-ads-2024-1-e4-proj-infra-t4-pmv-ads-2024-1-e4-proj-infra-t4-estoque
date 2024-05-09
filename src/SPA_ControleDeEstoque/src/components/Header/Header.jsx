@@ -153,8 +153,8 @@ export default function Header() {
         </Link>{" "}
         <span>|</span>
         <ButtonsMenu>
-          <Link to="/Admin">
-            <a href="#">ADMINISTRAÇÃO</a>
+          <Link to={`/Admin/${userId}`}>
+            <a style={{ fontSize: '18px'}}>ADMINISTRAÇÃO</a>
           </Link>{" "}
         </ButtonsMenu>
         <span>|</span>
