@@ -9,6 +9,7 @@ import {
 } from "./AddFornecedorStyled";
 import { Button } from "../../../components/Button/Button";
 import Header from "../../../components/Header/Header";
+import Swal from "sweetalert2";
 
 const getUserIdFromLocalStorage = () => {
   return localStorage.getItem("userId") || "";
@@ -49,12 +50,27 @@ export default function AddFornecedor() {
     e.preventDefault();
     try {
       await axios.post(`https://localhost:44398/api/Fornecedores/`, formData);
-     
-      navigate(`/fornecedores/${userId}`);
+      Swal.fire({
+        icon: 'success',
+        title: 'Sucesso!',
+        text: 'Fornecedor criado com sucesso!'
+      });
+  
+      setTimeout(() => {
+        navigate(`/fornecedores/${userId}`);
+      }, 2000); 
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro!',
+        text: 'Ocorreu um problema ao tentar criar o fornecedor, tente novamente!'
+      });
       console.error("Erro ao adicionar fornecedor:", error);
     }
+  
+
   };
+  
 
   return (
     <>

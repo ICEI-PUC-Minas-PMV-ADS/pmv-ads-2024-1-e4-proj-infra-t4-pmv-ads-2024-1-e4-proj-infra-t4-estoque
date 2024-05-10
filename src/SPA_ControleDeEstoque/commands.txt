@@ -10,6 +10,11 @@ npm i react-chartjs-2
 npm install react-input-mask
 
 
+Rodar o Frontend:
 
 npm i
 npm run dev
+
+Rodar o Backend:
+
+dotnet run --urls="https://localhost:44398"
