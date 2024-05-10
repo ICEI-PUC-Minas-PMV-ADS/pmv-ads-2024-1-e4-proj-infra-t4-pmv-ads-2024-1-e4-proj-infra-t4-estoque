@@ -68,12 +68,15 @@ export const RightTitle = styled.h3`
 export const ContainerTable = styled.div`
   padding: 20px;
   background-color: #FFF8E7;
+  max-width: 100%;
+  overflow-x: auto; /* Adicionando rolagem horizontal */
   height: calc(100vh - 200px); 
   overflow-y: auto; 
 
  table {
   border-collapse: collapse;
   background-color: white;
+  width: 100%; /* Para ocupar a largura disponível */
 }
 
  th,
@@ -82,7 +85,6 @@ td {
   border: 1px solid #ddd;
   color: black;
 }
-
 `
 
 export const ContainerrHome = styled.header`

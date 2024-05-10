@@ -20,7 +20,7 @@ import {
   Input
 } from "./AddProdutoStyled";
 import Header from "../../../components/Header/Header";
-import { Link } from "react-router-dom";
+import { Form, Link } from "react-router-dom";
 
 export default function AddProduto() {
   const [formData, setFormData] = useState({
@@ -28,6 +28,7 @@ export default function AddProduto() {
     descricaoProduto: "",
     quantidade: "",
     valorPorUnidade: "",
+    codigoProduto: "",
     estadoProduto: "",
     localizacao: "",
     fornecedor: "",
@@ -100,23 +101,36 @@ export default function AddProduto() {
         nome: formData.nomeProduto,
         descricao: formData.descricaoProduto,
         quantidade: parseInt(formData.quantidade),
-        valor: parseFloat(formData.valorTotal),
+        valor: parseFloat(valorTotal),
         valorUnidade: parseFloat(formData.valorPorUnidade),
         localizacao: formData.localizacao,
+        codigoProduto: formData.codigoProduto,
         estadoProduto: parseInt(formData.estadoProduto),
         categoria: parseInt(formData.categoria),
         fornecedorId: formData.fornecedor,
-        usuarioId: {userId}
+        usuarioId: userId
       }, {
         headers: {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
       });
-
+      Swal.fire({
+        icon: 'success',
+        title: 'Sucesso!',
+        text: 'Produto criado com sucesso!'
+      });
       console.log("Dados do produto enviados com sucesso!", response.data);
     } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro!',
+        text: 'Ocorreu um problema ao tentar criar o produto, tente novamente!'
+      });
       console.error("Ocorreu um erro ao enviar os dados do produto:", error);
     }
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   };
 
   return (
@@ -236,7 +250,17 @@ export default function AddProduto() {
                 placeholder="Insira a localização do produto..."
               />
             </FormItem>
-
+            <FormItem>
+              <Label htmlFor="codigoProduto">Código do Produto:</Label>
+              <Input
+                type="text"
+                id="codigoProduto"
+                name="codigoProduto"
+                value={formData.codigoProduto}
+                onChange={handleChange}
+                placeholder="Insira a código do produto..."
+              />
+            </FormItem>
             <FormItem>
               <Label htmlFor="fornecedor">Escolha na lista de fornecedores:</Label>
               <br />
@@ -256,20 +280,19 @@ export default function AddProduto() {
                   <option key={fornecedor.id} value={fornecedor.id}>{fornecedor.nome}</option>
                 ))}
               </select>
-              
-            <ContainerButton>
-              <Link to={`/addFornecedor/${userId}`}>
-                <Button
-                  style={{ marginLeft: "1000px" }}
-                  text="Novo Fornecedor"
-                  type="button"
-                />
-              </Link>
-            </ContainerButton>
-            </FormItem>
 
-            <br/>
-              <Button style={{ justifyContent: "flex-end" }} text="CADASTRAR" type="submit"></Button>
+              <ContainerButton>
+                <Link to={`/addFornecedor/${userId}`} target="_blank">
+                  <Button
+                    style={{ marginLeft: "1000px" }}
+                    text="Novo Fornecedor"
+                    type="button"
+                  />
+                </Link>
+              </ContainerButton>
+            </FormItem>
+            <br />
+            <Button style={{ justifyContent: "flex-end" }} text="CADASTRAR" type="submit"></Button>
           </form>
         </ContainerForm>
       </ContainerProduto>

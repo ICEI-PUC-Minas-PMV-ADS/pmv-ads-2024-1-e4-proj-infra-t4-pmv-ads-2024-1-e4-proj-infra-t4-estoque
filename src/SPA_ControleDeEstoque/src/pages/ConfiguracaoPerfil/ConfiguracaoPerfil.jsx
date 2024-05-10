@@ -19,27 +19,35 @@ import {
 import Header from "../../components/Header/Header";
 
 export default function ConfiguracaoPerfil() {
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    cnpj: "",
-    newPassword: ""
-  });
-
   const [senhaAtualVisivel, toggleSenhaAtualVisivel] = useState(false);
   const [data] = useState([]);
-  const userId =    localStorage.getItem('userId', data.userId);
+  const userId = localStorage.getItem('userId', data.userId);
+
+  const [formData, setFormData] = useState({
+    newUserName: "",
+    newEmail: "",
+    newCnpj: "",
+    newPassword: "",
+    userId: `${userId}`
+  });
 
   useEffect(() => {
     const getDadosUsuario = async () => {
       try {
-        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}}`, {
+        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
           headers: {
             Authorization: `Bearer ${Cookies.get("token")}`
           }
         });
         const userData = response.data;
-        setFormData(userData);
+        const { fullName, email, cnpj } = userData;
+        setFormData({
+          newUserName: fullName,
+          newEmail: email,
+          newCnpj: cnpj,
+          newPassword: "",
+          userId: `${userId}`
+        });
       } catch (error) {
         console.error("Ocorreu um erro ao obter os dados do usuário:", error);
       }
@@ -60,16 +68,7 @@ export default function ConfiguracaoPerfil() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.nome && !formData.email && !formData.cnpj && !formData.newPassword) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Preencha pelo menos um dos campos.'
-      });
-      return;
-    }
-
-    if ((formData.oldPassword || formData.newPassword) &&
+    if ((formData.newPassword) &&
       (formData.newPassword.length < 8 || !/\d/.test(formData.newPassword) || !/[A-Z]/.test(formData.newPassword) || !/[^a-zA-Z0-9]/.test(formData.newPassword))) {
       Swal.fire({
         icon: 'error',
@@ -80,94 +79,127 @@ export default function ConfiguracaoPerfil() {
     }
 
     try {
-      await axios.put('https://localhost:44398/api/Auth/editUsuario', {
-        newUserName: formData.nome,
-        newEmail: formData.email,
-        newCnpj: formData.cnpj,
-        newPassword: formData.newPassword
-      }, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("token")}`
+      await axios.put(
+        `https://localhost:44398/api/Auth/editUsuario`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+          },
         }
+      );
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
       });
-      console.log("Alteração feita com sucesso!");
+
+      Toast.fire({
+        icon: "success",
+        title: "Editado com sucesso!",
+      });
     } catch (error) {
-      console.error("Ocorreu um erro ao realizar a alteração:", error);
+      console.error("Erro ao editar os dados do usuário:", error);
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+
+      Toast.fire({
+        icon: "error",
+        title: "Ocorreu um erro ao editar!",
+      });
     }
+    setTimeout(() => {
+      window.location.reload();
+    }, 3050);
   };
 
   return (
     <>
-    <Header/>
-    <ContainerConfiguracaoPerfil>
-      <LeftTitle>MEU PERFIL</LeftTitle>
-      <ContainerForm>
-        <h6 style={{ fontSize: "30px" }}> Gerencie sua conta </h6>
-        <hr />
-        <br />
-        <form onSubmit={handleSubmit}>
-          <FormItem>
-            <Label htmlFor="nome">Nome da Empresa:</Label>
-            <Input
-              type="text"
-              id="nome"
-              name="nome"
-              value={formData.nome}
-              onChange={handleChange}
-            />
-          </FormItem>
+      <Header />
+      <ContainerConfiguracaoPerfil>
+        <LeftTitle>MEU PERFIL</LeftTitle>
+        <ContainerForm>
+          <h6 style={{ fontSize: "30px" }}> Gerencie sua conta </h6>
+          <hr />
+          <br />
+          <form onSubmit={handleSubmit}>
+            <FormItem>
+              <Label htmlFor="newUserName">Nome da Empresa:</Label>
+              <Input
+                type="text"
+                id="newUserName"
+                name="newUserName"
+                value={formData.newUserName}
+                onChange={handleChange}
+              />
+            </FormItem>
 
-          <FormItem>
-            <Label htmlFor="email">E-mail:</Label>
-            <Input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </FormItem>
+            <FormItem>
+              <Label htmlFor="newEmail">E-mail:</Label>
+              <Input
+                type="email"
+                id="newEmail"
+                name="newEmail"
+                value={formData.newEmail}
+                onChange={handleChange}
+              />
+            </FormItem>
 
-          <FormItem>
-            <Label htmlFor="cnpj">CNPJ:</Label>
-            <InputMask
-              mask="99.999.999/9999-99"
-              maskChar="_"
-              type="text"
-              id="cnpj"
-              name="cnpj"
-              value={formData.cnpj}
-              onChange={handleChange}
-              style={{
-                flex: '3',
-                width: '100%',
-                fontSize: '20px',
-                padding: '5px'
-              }}
-            />
-          </FormItem>
-
-
-          <FormItem>
-            <Label htmlFor="newPassword">Senha nova:</Label>
-            <InputPassword
-              type={senhaAtualVisivel ? "text" : "password"}
-              id="newPassword"
-              name="newPassword"
-              value={formData.newPassword}
-              onChange={handleChange}
-            />
-            <BotaoMostrarSenha
-              senhaVisivel={senhaAtualVisivel}
-              togglePasswordVisibility={toggleSenhaAtualVisibility}
-            />
-          </FormItem>
-          <ContainerButton>
-            <Button style={{ justifyContent: "flex-end" }} text="ALTERAR" type="submit"></Button>
-          </ContainerButton>
-        </form>
-      </ContainerForm>
-    </ContainerConfiguracaoPerfil>
+            <FormItem>
+              <Label htmlFor="newCnpj">CNPJ:</Label>
+              <InputMask
+                mask="99.999.999/9999-99"
+                maskChar="_"
+                type="text"
+                id="newCnpj"
+                name="newCnpj"
+                value={formData.newCnpj}
+                onChange={handleChange}
+                style={{
+                  flex: '3',
+                  width: '100%',
+                  fontSize: '20px',
+                  padding: '5px'
+                }}
+              />
+            </FormItem>
+            <FormItem>
+              <Label htmlFor="newPassword">Senha nova:</Label>
+              <InputPassword
+                type={senhaAtualVisivel ? "text" : "password"}
+                id="newPassword"
+                name="newPassword"
+                value={formData.newPassword}
+                onChange={handleChange}
+              />
+              <BotaoMostrarSenha
+                senhaVisivel={senhaAtualVisivel}
+                togglePasswordVisibility={toggleSenhaAtualVisibility}
+              />
+            </FormItem>
+            <ContainerButton>
+              <Button style={{ justifyContent: "flex-end" }} text="ALTERAR" type="submit"></Button>
+            </ContainerButton>
+          </form>
+        </ContainerForm>
+      </ContainerConfiguracaoPerfil>
     </>
   );
 }

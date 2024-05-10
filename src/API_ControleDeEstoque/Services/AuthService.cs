@@ -139,7 +139,7 @@ namespace ProjetoControleDeEstoque.Services
                     return new RegisterResponse { Message = "o usuario nao existe", Sucesso = false };
                 }
 
-                user.UserName = request.NewUserName;
+                user.FullName = request.NewUserName;
                 user.Email = request.NewEmail;
                 user.Cnpj = request.NewCnpj;
 

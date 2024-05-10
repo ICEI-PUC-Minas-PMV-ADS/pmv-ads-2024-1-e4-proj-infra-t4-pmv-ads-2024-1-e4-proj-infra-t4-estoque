@@ -9,5 +9,5 @@ public class EditUser
     public string NewEmail { get; set; }
     public string NewCnpj { get; set; }
     public string NewPassword { get; set; }
-    public string UserId { get; internal set; }
+    public string UserId { get; set; }
 }

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { BsGridFill, BsPeopleFill, BsPersonFill, BsGearFill, BsChatDotsFill } from "react-icons/bs"; // Importando os ícones do Bootstrap Icons
+import { BsGridFill, BsPeopleFill, BsPersonFill, BsGearFill, BsChatDotsFill } from "react-icons/bs";
 import ControleDeEstoqueLogo2 from "../../assets/ControleDeEstoqueLogo2.png";
 import axios from "axios";
+import Cookies from 'js-cookie'; // Adicione esta linha
 
 import {
   ButtonsHeader,
@@ -22,6 +23,9 @@ import {
 } from "./HeaderStyled";
 import EnviarFeedbackModal from "../../pages/EnviarFeedBack/EnviarFeedBack";
 import { Link } from "react-router-dom";
+
+// Restante do seu código...
+
 
 
 export default function Header() {
@@ -43,66 +47,44 @@ export default function Header() {
     setIsOpenModal(!isOpenModal);
   };
 
+  const [formData, setFormData] = useState({
+    newUserName: "",
+    newEmail: ""
+  });
+
   const [nomeUsuario, setNomeUsuario] = useState("");
-  const userId =    localStorage.getItem('userId', data.userId);
+  const [email, setEmail] = useState("");
+
+  const userId = localStorage.getItem('userId', data.userId);
 
   useEffect(() => {
-    async function getNomeUsuario() {
+    async function getDadosUsuario() {
       try {
-        const response = await axios.post(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
+        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${Cookies.get("token")}`
           }
         });
-        setNomeUsuario(response.data.nome);
+        const userData = response.data;
+        const { fullName, email, cnpj } = userData;
+        setFormData({
+          newUserName: fullName,
+          newEmail: email,
+        });
+        setNomeUsuario(fullName);
+        setEmail(email);
       } catch (error) {
-        console.error("Erro ao obter dados do usuário:", error);
+        console.error("Ocorreu um erro ao obter os dados do usuário:", error);
       }
-    }
+    };
 
-
-    getNomeUsuario();
+    getDadosUsuario();
   }, []);
 
   return (
-    <ContainerHeader>
-      <ContainerMenuHeader>
-        <li className="logoControle">
-          <a>
-            <LogoImage
-              src={ControleDeEstoqueLogo2}
-              alt="Logo Controle de Estoque"
-            />
-          </a>
-        </li>
-        <ButtonsHeader>
-          <a onClick={toggleModalFeedBack}>ENVIAR FEEDBACK</a>
-        </ButtonsHeader>
-        {isOpenModal && <EnviarFeedbackModal />}
-        <span>|</span>
-        <ButtonsHeader>
-          <a>{nomeUsuario ? nomeUsuario : "NOME DA EMPRESA LOGADA"}</a>
-        </ButtonsHeader>
-        <span>|</span>
-        <ButtonsHeader>
-          <MenuItem onClick={toggleDropdown}>
-            <a>EMPRESA@EMPRESA.COM.BR</a>
-            <FontAwesomeIcon icon={faCaretDown} />
-          </MenuItem>
-          {isOpen && (
-            <DropDownMenu>
-              <li>
-              <Link to={`/ConfiguracaoPerfil/${userId}`}>
-                  <a>CONFIGURAÇÃO DO PERFIL</a>
-                </Link>{" "}
-              </li>
-            </DropDownMenu>
-          )}
-        </ButtonsHeader>
-      </ContainerMenuHeader>
-
-      <ContainerMenuHeaderTablet>
-        <ContainerLogo>
+    <>
+      <ContainerHeader>
+        <ContainerMenuHeader>
           <li className="logoControle">
             <a>
               <LogoImage
@@ -111,25 +93,18 @@ export default function Header() {
               />
             </a>
           </li>
-        </ContainerLogo>
-
-        <ContainerMenuDrop onClick={toggleMenu}>
-          <i className="bi bi-list"></i>
-        </ContainerMenuDrop>
-
-        <ContainerButtonsHeader>
           <ButtonsHeader>
             <a onClick={toggleModalFeedBack}>ENVIAR FEEDBACK</a>
           </ButtonsHeader>
           {isOpenModal && <EnviarFeedbackModal />}
           <span>|</span>
           <ButtonsHeader>
-            <a>{nomeUsuario ? nomeUsuario : "NOME DA EMPRESA LOGADA"}</a>
+            <a>{nomeUsuario ? nomeUsuario.toUpperCase() : "NOME DA EMPRESA LOGADA"}</a>
           </ButtonsHeader>
           <span>|</span>
           <ButtonsHeader>
             <MenuItem onClick={toggleDropdown}>
-              <a>EMPRESA@EMPRESA.COM.BR</a>
+              <a>{email ? email.toUpperCase() : "EMPRESA@EMPRESA.COM.BR"}</a>
               <FontAwesomeIcon icon={faCaretDown} />
             </MenuItem>
             {isOpen && (
@@ -142,66 +117,110 @@ export default function Header() {
               </DropDownMenu>
             )}
           </ButtonsHeader>
-        </ContainerButtonsHeader>
-      </ContainerMenuHeaderTablet>
+        </ContainerMenuHeader>
 
-      <ContainerMenu>
-        <Link to={`/home/${userId}`}>
-          <ButtonsMenu>
-            <a>ESTOQUE DE PRODUTOS</a>
-          </ButtonsMenu>
-        </Link>{" "}
-        <span>|</span>
-        <ButtonsMenu>
-          <Link to={`/Admin/${userId}`}>
-            <a style={{ fontSize: '18px'}}>ADMINISTRAÇÃO</a>
+        <ContainerMenuHeaderTablet>
+          <ContainerLogo>
+            <li className="logoControle">
+              <a>
+                <LogoImage
+                  src={ControleDeEstoqueLogo2}
+                  alt="Logo Controle de Estoque"
+                />
+              </a>
+            </li>
+          </ContainerLogo>
+
+          <ContainerMenuDrop onClick={toggleMenu}>
+            <i className="bi bi-list"></i>
+          </ContainerMenuDrop>
+
+          <ContainerButtonsHeader>
+            <ButtonsHeader>
+              <a onClick={toggleModalFeedBack}>ENVIAR FEEDBACK</a>
+            </ButtonsHeader>
+            {isOpenModal && <EnviarFeedbackModal />}
+            <span>|</span>
+            <ButtonsHeader>
+              <a>{nomeUsuario ? nomeUsuario : "NOME DA EMPRESA LOGADA"}</a>
+            </ButtonsHeader>
+            <span>|</span>
+            <ButtonsHeader>
+              <MenuItem onClick={toggleDropdown}>
+                <a>EMPRESA@EMPRESA.COM.BR</a>
+                <FontAwesomeIcon icon={faCaretDown} />
+              </MenuItem>
+              {isOpen && (
+                <DropDownMenu>
+                  <li>
+                    <Link to={`/ConfiguracaoPerfil/${userId}`}>
+                      <a>CONFIGURAÇÃO DO PERFIL</a>
+                    </Link>{" "}
+                  </li>
+                </DropDownMenu>
+              )}
+            </ButtonsHeader>
+          </ContainerButtonsHeader>
+        </ContainerMenuHeaderTablet>
+
+        <ContainerMenu>
+          <Link to={`/home/${userId}`}>
+            <ButtonsMenu>
+              <a>ESTOQUE DE PRODUTOS</a>
+            </ButtonsMenu>
           </Link>{" "}
-        </ButtonsMenu>
-        <span>|</span>
-        <Link to={`/fornecedores/${userId}`}>
+          <span>|</span>
           <ButtonsMenu>
-            <a>FORNECEDORES</a>
+            <Link to={`/Admin/${userId}`}>
+              <a style={{ fontSize: '18px' }}>ADMINISTRAÇÃO</a>
+            </Link>{" "}
           </ButtonsMenu>
-        </Link>
-      </ContainerMenu>
+          <span>|</span>
+          <Link to={`/fornecedores/${userId}`}>
+            <ButtonsMenu>
+              <a>FORNECEDORES</a>
+            </ButtonsMenu>
+          </Link>
+        </ContainerMenu>
 
-      {isMenuOpen && (
-        <ContainerMenuMobile>
-          <ul>
-            <li>
-              <Link style={{ textDecoration: "none", color: "#5871fb" }} to={`/home/${userId}`}>
-                <BsGridFill style={{ marginRight: "5px" }} /> Estoque de Produtos
-              </Link>
-            </li>
-            <li>
-              <Link style={{ textDecoration: "none", color: "#5871fb" }} to="/Admin">
-                <BsPeopleFill style={{ marginRight: "5px" }} /> Administração
-              </Link>
-            </li>
-            <li>
-              <Link style={{ textDecoration: "none", color: "#5871fb" }} to={`/fornecedores/${userId}`}>
-                <BsPersonFill style={{ marginRight: "5px" }} /> Fornecedores
-              </Link>
-            </li>
-            <li>
-              <Link
-                style={{ textDecoration: "none", color: "#5871fb" }}
-                to={`/ConfiguracaoPerfil/${userId}`}
-              >
-                <BsGearFill style={{ marginRight: "5px" }} /> Configuração de Perfil
-              </Link>
-            </li>
-            <li>
-              <Link
-                style={{ textDecoration: "none", color: "#5871fb" }}
-                onClick={toggleModalFeedBack}
-              >
-                <BsChatDotsFill style={{ marginRight: "5px" }} /> Enviar Feedback
-              </Link>
-            </li>
-          </ul>
-        </ContainerMenuMobile>
-      )}
-    </ContainerHeader>
+        {isMenuOpen && (
+          <ContainerMenuMobile>
+            <ul>
+              <li>
+                <Link style={{ textDecoration: "none", color: "#5871fb" }} to={`/home/${userId}`}>
+                  <BsGridFill style={{ marginRight: "5px" }} /> Estoque de Produtos
+                </Link>
+              </li>
+              <li>
+                <Link style={{ textDecoration: "none", color: "#5871fb" }} to="/Admin">
+                  <BsPeopleFill style={{ marginRight: "5px" }} /> Administração
+                </Link>
+              </li>
+              <li>
+                <Link style={{ textDecoration: "none", color: "#5871fb" }} to={`/fornecedores/${userId}`}>
+                  <BsPersonFill style={{ marginRight: "5px" }} /> Fornecedores
+                </Link>
+              </li>
+              <li>
+                <Link
+                  style={{ textDecoration: "none", color: "#5871fb" }}
+                  to={`/ConfiguracaoPerfil/${userId}`}
+                >
+                  <BsGearFill style={{ marginRight: "5px" }} /> Configuração de Perfil
+                </Link>
+              </li>
+              <li>
+                <Link
+                  style={{ textDecoration: "none", color: "#5871fb" }}
+                  onClick={toggleModalFeedBack}
+                >
+                  <BsChatDotsFill style={{ marginRight: "5px" }} /> Enviar Feedback
+                </Link>
+              </li>
+            </ul>
+          </ContainerMenuMobile>
+        )}
+      </ContainerHeader>
+    </>
   );
 }
