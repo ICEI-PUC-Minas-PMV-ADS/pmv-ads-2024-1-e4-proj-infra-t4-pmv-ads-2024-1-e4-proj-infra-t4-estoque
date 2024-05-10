@@ -15,22 +15,18 @@ import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button/Button";
 import Header from "../../../components/Header/Header";
 
-
 export default function Fornecedor() {
-  
-  
-
   const [data, setData] = useState([]);
-  const userId =    localStorage.getItem('userId', data.userId);
+  const userId = localStorage.getItem("userId", data.userId);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  
 
   const fornecedorGet = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
+      const response = await axios.get(
+        `https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`
+      );
       setData(response.data);
-     
     } catch (error) {
       console.error("Erro ao buscar fornecedores:", error);
     }
@@ -86,9 +82,11 @@ export default function Fornecedor() {
           <Link to={`/addFornecedor/${userId}`}>
             <Button
               style={{ justifyContent: "flex-end" }}
+              className="button-add-desktop"
               text="ADICIONAR FORNECEDOR"
               type="button"
             ></Button>
+            <i className="bi bi-plus-square-fill"></i>
           </Link>
         </ContainerButton>
         <br />
@@ -113,7 +111,15 @@ export default function Fornecedor() {
                   <td>{fornecedor.cnpjCpf}</td>
                   <td>
                     <Link to={`/editFornecedor/${fornecedor.id}`}>
-                      <Button text="Editar" type="button" />
+                      <Button
+                        text="Editar"
+                        type="button"
+                        className="button-edit-desktop" // Esta classe é exibida apenas no desktop
+                      />
+                    
+                    
+                    
+                      <i className="bi bi-pencil-square"></i>
                     </Link>
                   </td>
                 </tr>

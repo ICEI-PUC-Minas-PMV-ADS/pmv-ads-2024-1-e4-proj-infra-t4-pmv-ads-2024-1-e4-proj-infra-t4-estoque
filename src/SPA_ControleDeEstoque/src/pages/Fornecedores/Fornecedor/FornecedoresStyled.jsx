@@ -1,5 +1,12 @@
 import styled from "styled-components"
 
+const mobileBreakpoint = "710px";
+const desktopSmallBreakpoint = "1200px"
+const tabletBreakpoint = "980px"; 
+const mobileSmallBreakpoint = "600px"
+const mobileSuperSmallBreakpoint = "420px"
+
+
 export const ContainerFornecedor = styled.header`
 
  
@@ -14,6 +21,25 @@ export const ContainerFornecedor = styled.header`
   padding: 20px;
 margin-top: 150px;
 
+@media only screen and (max-width: ${desktopSmallBreakpoint}) {
+  
+  margin-top: 150px;
+  justify-content: start;
+
+}
+@media only screen and (max-width: ${desktopSmallBreakpoint}) {
+  
+  margin-top: 220px;
+  justify-content: start;
+
+}
+
+@media only screen and (max-width: ${mobileBreakpoint}) {
+  
+  margin-top: 78px;
+  justify-content: start;
+
+}
 
 `
 
@@ -42,7 +68,38 @@ export const ContainerButton = styled.div`
     align-items: center;
     padding: 25px;
     width: 100%;
+
+    i{
+      display: none;
+    }
     
+    @media only screen and (max-width: ${desktopSmallBreakpoint}) {
+
+button{
+  padding: 10px;
+}
+
+
+@media only screen and (max-width: ${mobileBreakpoint}) {
+  
+
+
+ input{
+  max-width: 100px;
+ }
+
+i{
+  display: block;
+  font-size: 35px;
+  color: #18368f;
+}
+.button-add-desktop{
+  display: none;
+}
+
+
+}
+ }
 
     
   
@@ -76,6 +133,8 @@ export const ButtonSearch = styled.button`
   padding: 8px;
   margin-left: 5px;
 
+  
+
 `
 export const LeftTitle = styled.h3`
  
@@ -99,9 +158,12 @@ export const ContainerTable = styled.div`
 
   padding: 20px;
   background-color: #FFF8E7;
-  height: calc(100vh - 200px); 
+
   overflow-y: auto; 
 
+i{
+  display: none;
+}
 
  table {
   width: 100%;
@@ -121,6 +183,77 @@ th{
 background-color: #e8e8e8;
 }
 
+@media only screen and (max-width: ${desktopSmallBreakpoint}) {
+
+th{
+  font-size: 16px;
+}
+
+ td{
+  font-size: 13px;
+ }
+
+ button{
+  padding: 5px;
+  font-size: 10px;
+ }
+}
+
+@media only screen and (max-width: ${mobileBreakpoint}) {
+  .button-edit-desktop {
+    display: none; // Oculta o botão de edição no desktop
+  }
+
+i{
+  display: block;
+  color: #18368f;
+  font-size: 18px;
+}
+
+  th {
+    font-size: 14px;
+  }
+
+  td {
+    font-size: 11px;
+  }
+
+  padding: 10px;
+}
+
+@media only screen and (max-width: ${mobileSmallBreakpoint}) {
+
+  th {
+    font-size: 10px;
+  }
+
+  td {
+    font-size: 10px;
+    
+  }
+
+
+
+  padding: 5px;
+
+
+}
+
+@media only screen and (max-width: ${mobileSmallBreakpoint}) {
+
+  th {
+    font-size: 10px;
+  }
+
+  td {
+    font-size: 10px;
+
+
+
+  padding: 5px;
+
+
+}
 `
 
 export const ContainerrHome = styled.header`
