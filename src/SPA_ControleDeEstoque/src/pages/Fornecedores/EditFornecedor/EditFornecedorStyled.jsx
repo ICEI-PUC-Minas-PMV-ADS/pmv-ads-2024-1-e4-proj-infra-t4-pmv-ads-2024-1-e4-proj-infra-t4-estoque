@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const mobileBreakpoint = "710px";
+
 export const ContainerFornecedor = styled.header`
   background-color: #5871fb;
   min-height: 100vh;
@@ -12,6 +14,12 @@ export const ContainerFornecedor = styled.header`
   padding: 20px;
   align-items: center;
   padding-top: 250px;
+
+  @media only screen and (max-width: ${mobileBreakpoint}) {
+    margin-top: 78px;
+    padding-top: 120px;
+    justify-content: start;
+  }
 `;
 
 export const ContainerHeaderFornecedor = styled.div`

@@ -10,6 +10,7 @@ import {
   ContainerSearch,
   ContainerTable,
   LeftTitle,
+  ContainerTableMobile,
 } from "./FornecedoresStyled";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/Button/Button";
@@ -91,7 +92,7 @@ export default function Fornecedor() {
         </ContainerButton>
         <br />
 
-        <ContainerTable>
+        <ContainerTable className="table-desktop">
           <table className="table table-bordered">
             <thead style={{ backgroundColor: "#f8f9fc" }}>
               <tr>
@@ -116,9 +117,7 @@ export default function Fornecedor() {
                         type="button"
                         className="button-edit-desktop" // Esta classe é exibida apenas no desktop
                       />
-                    
-                    
-                    
+
                       <i className="bi bi-pencil-square"></i>
                     </Link>
                   </td>
@@ -127,6 +126,39 @@ export default function Fornecedor() {
             </tbody>
           </table>
         </ContainerTable>
+
+        <ContainerTableMobile>
+          <table className="table table-bordered">
+            <thead style={{ backgroundColor: "#f8f9fc" }}>
+              <tr>
+                <th>CÓDIGO DO FORNECEDOR</th>
+                <th>NOME DO FORNECEDOR</th>
+
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.map((fornecedor) => (
+                <tr key={fornecedor.id}>
+                  <td>{fornecedor.codigoFornecedor}</td>
+                  <td>{fornecedor.nome}</td>
+
+                  <td>
+                    <Link to={`/editFornecedor/${fornecedor.id}`}>
+                      <Button
+                        text="Editar"
+                        type="button"
+                        className="button-edit-desktop" // Esta classe é exibida apenas no desktop
+                      />
+
+                      <i className="bi bi-pencil-square"></i>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </ContainerTableMobile>
         <footer></footer>
       </ContainerFornecedor>
     </>
