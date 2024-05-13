@@ -27,8 +27,19 @@ export default function Admin() {
 
   const generatePdf = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/PDFGen/usuarioId?usuarioId=${userId}`);
-      setData(response.data);
+      const response = await axios.get(`https://localhost:44398/api/PDFGen/usuarioId?usuarioId=${userId}`, {
+        responseType: 'arraybuffer'
+      });
+      console.log(response.data);
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Relatório_de_Inventário.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
     } catch (error) {	
       console.error(error);
     }
