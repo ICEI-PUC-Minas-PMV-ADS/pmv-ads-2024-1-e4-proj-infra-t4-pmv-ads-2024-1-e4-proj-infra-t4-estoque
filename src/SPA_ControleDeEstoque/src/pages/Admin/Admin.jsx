@@ -60,30 +60,27 @@ export default function Admin() {
         <ContainerTable>
           <StyledSquareContainer>
 
-            <StyledSquare style={{ backgroundColor: "#0a4eb1" }}>
+          <StyledSquare style={{ backgroundColor: "#0a4eb1" }}>
               <SquareHeader>
-              <div>DADOS GERAIS</div>
+                <div>DADOS GERAIS</div>
               </SquareHeader>
-              <div> </div>
-              <div>X PRODUTOS CADASTRADOS</div>
-              <div>X ITENS REGISTRADOS</div>
+              <div> <strong>{data.length}</strong> Produtos Registrados</div>
+              <div> <strong>{data.reduce((total, produto) => total + produto.quantidade, 0)}</strong> Itens no Estoque</div>
             </StyledSquare>
 
             <StyledSquare style={{ backgroundColor: "#e8c743" }}>
             <SquareHeader>
-            <div>ESTOQUE MÍNIMO</div>
+              <div>ESTOQUE MÍNIMO</div>
             </SquareHeader>
-            <div></div>
-              <div>X PRODUTOS COM ESTOQUE BAIXO</div>
-            </StyledSquare>
+            <div> <strong>{data.filter(produto => produto.quantidade < 20).length}</strong> Produtos com Estoque Baixo </div>
+          </StyledSquare>
 
-            <StyledSquare style={{ backgroundColor: "#f5535e" }}>
-            <SquareHeader>
+          <StyledSquare style={{ backgroundColor: "#f5535e" }}>
+          <SquareHeader>
             <div>ESTOQUE ZERADO</div>
-            </SquareHeader>
-            <div></div>
-              <div>X PRODUTOS FORA DO ESTOQUE</div>
-            </StyledSquare>
+          </SquareHeader>
+          <div> <strong>{data.filter(produto => produto.quantidade === 0).length}</strong> Produtos com Estoque Zerado</div>
+        </StyledSquare>
 
           </StyledSquareContainer>
 
