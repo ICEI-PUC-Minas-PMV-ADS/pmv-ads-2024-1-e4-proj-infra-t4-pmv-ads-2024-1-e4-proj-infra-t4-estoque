@@ -1,17 +1,19 @@
 import React from "react";
 
-import { SafeAreaProvider } from "react-native-safe-area-context";
+
 
 
 import Main from "./main";
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function App() {
+const App = () => {
+
   return (
-    <>
-      <SafeAreaProvider>
-       
-        <Main/>
-      </SafeAreaProvider>
-    </>
-  );
+    <NavigationContainer>
+     <Main />
+    </NavigationContainer>
+  )
+
 }
+
+export default App

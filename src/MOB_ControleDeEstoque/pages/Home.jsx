@@ -9,8 +9,8 @@ const Home = () => {
   const [index, setIndex] = useState(0);
 
   const [routes] = useState([
-    { key: "produtos", title: "Produtos", icon: "gas-station" },
-    { key: "fornecedores", title: "Fornecedores", icon: "calculator" },
+    { key: "produtos", title: "Produtos", Icon: "home" },
+    { key: "fornecedores", title: "Fornecedores", icon: "cog" },
     { key: "admin", title: "Administração", icon: "admin" },
   ]);
 

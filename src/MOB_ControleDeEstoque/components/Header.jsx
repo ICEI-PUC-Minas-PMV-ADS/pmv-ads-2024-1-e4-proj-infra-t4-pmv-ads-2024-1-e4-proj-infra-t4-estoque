@@ -4,12 +4,17 @@ import { StyleSheet} from 'react-native';
 
 
 export default function Header() {
+
+    
   return (
     
-    <Appbar.Header style={styles.header}>
+      <Appbar.Header style={styles.header}>
+          
        
     <Appbar.Content color='white' title="Controle de Estoque" />
-   
+    <Appbar.Action icon="menu" color='white' size={35} />
+          
+          
   
   </Appbar.Header>
   )
