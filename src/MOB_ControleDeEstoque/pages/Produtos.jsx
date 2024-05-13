@@ -49,16 +49,7 @@ export default function Produtos() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
+
   table: {
     borderWidth: 1,
     borderColor: "#ccc",
