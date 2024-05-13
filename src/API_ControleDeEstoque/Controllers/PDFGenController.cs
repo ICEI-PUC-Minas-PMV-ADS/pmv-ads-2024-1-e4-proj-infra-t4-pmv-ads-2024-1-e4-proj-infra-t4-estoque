@@ -33,9 +33,10 @@ namespace ProjetoControleDeEstoque.Controllers
                     return BadRequest("Não foi possível gerar o PDF, nenhum documento encontrado para este usuário.");
                 }
 
+                MemoryStream memoryStream = new();
                 Document document = new();
-                string outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Relatório de Inventário_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.pdf");
-                PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(outputPath, FileMode.Create));
+                PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
+                writer.CloseStream = false;
                 document.Open();
 
                 foreach (var documentData in documents)
@@ -80,12 +81,14 @@ namespace ProjetoControleDeEstoque.Controllers
                     paragraph = new($"Data de Entrada: {field9:yyyy-MM-dd HH:mm:ss}");
                     document.Add(paragraph);
 
-                    document.Add(new Chunk("\n")); // Adiciona uma quebra de linha entre os documentos.
+                    document.Add(new Chunk("\n"));
                 }
 
                 document.Close();
-                string fileName = Path.GetFileName(outputPath);
-                return File(System.IO.File.ReadAllBytes(outputPath), "application/pdf", fileName);
+                memoryStream.Position = 0;
+                string fileName = $"Relatório de Inventário_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.pdf";
+
+                return File(memoryStream, "application/pdf", fileName);
             }
             catch (Exception ex)
             {

@@ -26,10 +26,11 @@ export default function AddProduto() {
   const [formData, setFormData] = useState({
     nomeProduto: "",
     descricaoProduto: "",
-    quantidade: "",
+    quantidade: 0,
     valorPorUnidade: "",
     codigoProduto: "",
-    estadoProduto: "",
+    estadoProduto: 0,
+    categoria: 0,
     localizacao: "",
     fornecedor: "",
   });
@@ -65,7 +66,7 @@ export default function AddProduto() {
     setFormData({ ...formData, [name]: value });
 
     if (name === "quantidade") {
-      if (value !== "") {
+      if (value !== 0) {
         document.getElementById("valorPorUnidade").removeAttribute("disabled");
       } else {
         setFormData({ ...formData, valorPorUnidade: "" });
@@ -87,7 +88,11 @@ export default function AddProduto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.nomeProduto || !formData.descricaoProduto || !formData.quantidade || !formData.valorPorUnidade) {
+    const estadoProduto = formData.estadoProduto === "" ? 0 : formData.estadoProduto;
+    const categoria = formData.categoria === "" ? 0 : formData.categoria;
+
+    if (!formData.nomeProduto || !formData.descricaoProduto || formData.quantidade == 0 || formData.quantidade == ""
+      || formData.valorPorUnidade == 0 || formData.valorPorUnidade == "") {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -105,9 +110,10 @@ export default function AddProduto() {
         valorUnidade: parseFloat(formData.valorPorUnidade),
         localizacao: formData.localizacao,
         codigoProduto: formData.codigoProduto,
-        estadoProduto: parseInt(formData.estadoProduto),
-        categoria: parseInt(formData.categoria),
+        estadoProduto: parseInt(estadoProduto),
+        categoria: parseInt(categoria),
         fornecedorId: formData.fornecedor,
+        dataDeCriacao: new Date(),
         usuarioId: userId
       }, {
         headers: {
@@ -120,6 +126,9 @@ export default function AddProduto() {
         text: 'Produto criado com sucesso!'
       });
       console.log("Dados do produto enviados com sucesso!", response.data);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -128,9 +137,6 @@ export default function AddProduto() {
       });
       console.error("Ocorreu um erro ao enviar os dados do produto:", error);
     }
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
   };
 
   return (
@@ -145,7 +151,6 @@ export default function AddProduto() {
           <form onSubmit={handleSubmit}>
             <FormItem>
               <Label htmlFor="nomeProduto">Nome do Produto: <span style={{ color: "red" }}>*</span></Label>
-              <br />
               <Input
                 type="text"
                 id="nomeProduto"
@@ -179,6 +184,11 @@ export default function AddProduto() {
                 name="quantidade"
                 value={formData.quantidade}
                 onChange={handleChange}
+                onClick={(e) => {
+                  if (e.target.value === "0") {
+                    setFormData({ ...formData, quantidade: "" });
+                  }
+                }}
                 placeholder="0"
               />
 
@@ -204,9 +214,9 @@ export default function AddProduto() {
               />
             </FormItemMenores>
 
+            <br />
             <FormItemCategoriaEstado>
-              <Label htmlFor="categoria">Categoria:</Label>
-              <br />
+              <Label style={{ paddingRight: '160px' }} htmlFor="categoria">Categoria:</Label>
               <Select
                 id="categoria"
                 name="categoria"
@@ -222,7 +232,10 @@ export default function AddProduto() {
                 <option value="6">Eletrodoméstico</option>
               </Select>
 
-              <Label htmlFor="estadoProduto">Estado do Produto:</Label>
+            </FormItemCategoriaEstado>
+
+            <FormItemCategoriaEstado>
+              <Label style={{ paddingRight: '50px' }} htmlFor="estadoProduto">Estado do Produto:</Label>
               <br />
               <Select
                 id="estadoProduto"
@@ -264,27 +277,27 @@ export default function AddProduto() {
             <FormItem>
               <Label htmlFor="fornecedor">Escolha na lista de fornecedores:</Label>
               <br />
-              <select
+              <Select
                 id="fornecedor"
                 name="fornecedor"
                 value={formData.fornecedor}
                 onChange={handleChange}
                 style={{
-                  width: '40%',
-                  fontSize: '20px',
-                  padding: '5px'
+                  width: '60%',
+                  fontSize: '16px',
+                  padding: '5px',
+                  marginTop: '5px'
                 }}
               >
                 <option value="">Selecione...</option>
                 {fornecedores.map((fornecedor) => (
                   <option key={fornecedor.id} value={fornecedor.id}>{fornecedor.nome}</option>
                 ))}
-              </select>
+              </Select>
 
               <ContainerButton>
                 <Link to={`/addFornecedor/${userId}`} target="_blank">
                   <Button
-                    style={{ marginLeft: "1000px" }}
                     text="Novo Fornecedor"
                     type="button"
                   />
@@ -295,7 +308,7 @@ export default function AddProduto() {
             <Button style={{ justifyContent: "flex-end" }} text="CADASTRAR" type="submit"></Button>
           </form>
         </ContainerForm>
-      </ContainerProduto>
+      </ContainerProduto >
     </>
   );
 }

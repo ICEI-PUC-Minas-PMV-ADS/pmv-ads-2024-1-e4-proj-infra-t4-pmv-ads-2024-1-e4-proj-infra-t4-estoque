@@ -17,6 +17,7 @@ import {
   InputPassword,
 } from "./ConfiguracaoPerfilStyled";
 import Header from "../../components/Header/Header";
+import { BsDeviceHddFill } from "react-icons/bs";
 
 export default function ConfiguracaoPerfil() {
   const [senhaAtualVisivel, toggleSenhaAtualVisivel] = useState(false);
@@ -173,7 +174,6 @@ export default function ConfiguracaoPerfil() {
                 value={formData.newCnpj}
                 onChange={handleChange}
                 style={{
-                  flex: '3',
                   width: '100%',
                   fontSize: '20px',
                   padding: '5px'

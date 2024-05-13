@@ -195,6 +195,11 @@ export default function EditProduto() {
                 name="quantidade"
                 value={formData.quantidade}
                 onChange={handleChange}
+                onClick={(e) => {
+                  if (e.target.value === "0") {
+                    setFormData({ ...formData, quantidade: "" });
+                  }
+                }}
                 placeholder="0"
               />
 
@@ -222,7 +227,7 @@ export default function EditProduto() {
             </FormItemMenores>
 
             <FormItemCategoriaEstado>
-              <Label htmlFor="categoria">Categoria:</Label>
+            <Label style={{ paddingRight: '160px' }} htmlFor="categoria">Categoria:</Label>
               <br />
               <Select
                 id="categoria"
@@ -239,7 +244,7 @@ export default function EditProduto() {
                 <option value="6">Eletrodoméstico</option>
               </Select>
 
-              <Label htmlFor="estadoProduto">Estado do Produto:</Label>
+              <Label style={{ paddingRight: '50px' }} htmlFor="estadoProduto">Estado do Produto:</Label>
               <br />
               <Select
                 id="estadoProduto"
@@ -302,7 +307,6 @@ export default function EditProduto() {
               <ContainerButton>
                 <Link to={`/addFornecedor/${userId}`} target="_blank">
                   <Button
-                    style={{ marginLeft: "1000px" }}
                     text="Novo Fornecedor"
                     type="button"
                   />
