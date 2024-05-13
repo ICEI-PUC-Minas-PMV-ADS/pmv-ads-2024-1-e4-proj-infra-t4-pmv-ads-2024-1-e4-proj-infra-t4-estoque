@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import axios from "axios";
 import Header from "../components/Header";
+import Title from "../components/Title";
 
 export default function Produtos() {
   const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ export default function Produtos() {
     <>
       <Header />
       <View style={styles.container}>
-        <Text style={styles.title}>Produtos</Text>
+        <Title title="Produtos"/>
         <View style={styles.table}>
           <View style={styles.row}>
             <Text style={styles.header}>Nome do Produto</Text>
