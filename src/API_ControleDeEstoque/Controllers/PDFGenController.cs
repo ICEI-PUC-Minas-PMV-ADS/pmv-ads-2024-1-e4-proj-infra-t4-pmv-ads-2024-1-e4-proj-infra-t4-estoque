@@ -51,9 +51,6 @@ namespace ProjetoControleDeEstoque.Controllers
                     int field8 = documentData.GetValue("Categoria").AsInt32;
                     DateTime field9 = documentData.GetValue("DataDeCriacao").ToUniversalTime();
 
-                    Paragraph paragraph9 = new($"Data de Criação: {field9}");
-                    document.Add(paragraph9);
-
                     Paragraph paragraph = new($"_id: {field1}");
                     document.Add(paragraph);
 
@@ -78,7 +75,7 @@ namespace ProjetoControleDeEstoque.Controllers
                     paragraph = new($"Categoria: {field8}");
                     document.Add(paragraph);
 
-                    paragraph = new($"Data de Entrada: {field9:yyyy-MM-dd HH:mm:ss}");
+                    paragraph = new($"Data de Entrada: {field9:dd-MM-yyyy HH:mm}");
                     document.Add(paragraph);
 
                     document.Add(new Chunk("\n"));

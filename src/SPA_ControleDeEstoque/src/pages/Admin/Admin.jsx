@@ -103,27 +103,24 @@ export default function Admin() {
           </ChartStyled>
 
           <ChartStyled>
-          <div className='Chart'>
-            <Line data={{
-              labels: data.map((produto) => produto.nome),
-              datasets: [
-                {
-                  label: ['Entrada'],
-                  data: [12, 19, 3, 5, 2, 3],
-                  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                  borderColor: 'rgba(75, 192, 192, 1)',
-                  borderWidth: 1,
-                },
-                {
-                  label: ['Saída'],
-                  data: [2, 3, 5, 2, 3, 12],
-                  backgroundColor: 'rgba(13, 80, 80, 0.2)',
-                  borderColor: '#116363',
-                  borderWidth: 1,
-                }
-              ]
-            }} />
-          </div>
+            <div className='Chart'>
+              <Line data={{
+                labels: Array.from({ length: 12 }, (_, i) => {
+                  return new Date(2024, i, 1).toLocaleString('default', { month: 'short' });
+                }),
+                datasets: [
+                  {
+                    label: 'Entrada',
+                    data: Array.from({ length: 12 }, (_, i) => { 
+                      return data.filter(produto => new Date(produto.dataDeCriacao).getMonth() === i).reduce((total, produto) => total + produto.quantidade, 0);
+                    }),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                  }
+                ]
+              }} />
+            </div>
           </ChartStyled>
           </AllCharts>
 
