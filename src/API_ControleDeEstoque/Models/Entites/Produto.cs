@@ -49,7 +49,10 @@ namespace ProjetoControleDeEstoque.Models.Entites
         Reembolsado = 3,
 
         [Display(Name = "Produto obsoleto")]
-        Obsoleto = 4
+        Obsoleto = 4,
+
+        [Display(Name = "Produto vendido - FINALIZADO")]
+        Vendido = 5
     }
     public enum Categoria
     {

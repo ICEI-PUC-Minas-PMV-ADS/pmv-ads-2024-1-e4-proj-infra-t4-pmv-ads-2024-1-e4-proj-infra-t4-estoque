@@ -129,7 +129,7 @@ namespace ProjetoControleDeEstoque.Controllers
             IReadOnlyCollection<Produto> listaProdutos = new List<Produto>();
             try
             {
-                listaProdutos = await _produtosCollection.FiltrarProdutosDoBanco(id, usuarioId, quantidade, localizacao, codigoProduto, estadoProduto, categoria);
+                listaProdutos = await _produtosCollection.FiltrarProdutosDoBanco(id, usuarioId, nome, quantidade, localizacao, codigoProduto, estadoProduto, categoria);
                 return listaProdutos;
             }
             catch (Exception)
