@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using Org.BouncyCastle.Bcpg;
 using ProjetoControleDeEstoque.Models.Entites;
 using ProjetoControleDeEstoque.Services;
+using System.Text.RegularExpressions;
 
 public class ProdutosService
 {
@@ -21,22 +22,33 @@ public class ProdutosService
     }
     public async Task<IReadOnlyCollection<Produto>> GetAllProdutos(string userId)
     {
-        List<Produto> listaDeProdutosPorUsuario = new List<Produto>();
-
-        var result = await _produtosCollection.Find(f => f.UsuarioId == userId).ToListAsync();
-
-        foreach (var produto in result)
+        try
         {
-            var usuarioDados = await _authCollection.GetDadosUsuarios(produto.UsuarioId);
-            produto.Usuario = usuarioDados;
 
-            var fornecedorDados = await _fornecedorCollection.GetFornecedorById(produto.FornecedorId);
-            produto.Fornecedor = fornecedorDados;
+            List<Produto> listaDeProdutosPorUsuario = new List<Produto>();
 
-            listaDeProdutosPorUsuario.Add(produto);
+            var result = await _produtosCollection.Find(f => f.UsuarioId == userId).ToListAsync();
+
+            foreach (var produto in result)
+            {
+                var usuarioDados = await _authCollection.GetDadosUsuarios(produto.UsuarioId);
+                produto.Usuario = usuarioDados;
+
+                if (produto.FornecedorId != null)
+                {
+                    var fornecedorDados = await _fornecedorCollection.GetFornecedorById(produto.FornecedorId);
+                    produto.Fornecedor = fornecedorDados;
+                }
+
+                listaDeProdutosPorUsuario.Add(produto);
+            }
+
+            return listaDeProdutosPorUsuario;
         }
-
-        return listaDeProdutosPorUsuario;
+        catch (Exception ex)
+        {
+            throw new Exception("Ocorreu um erro ao tentar trazer os dados, mensagem:", ex);
+        }
     }
 
     public async Task<Produto> GetProdutoById(string id)
@@ -96,7 +108,7 @@ public class ProdutosService
         return result;
     }
 
-    public async Task<IReadOnlyCollection<Produto>> FiltrarProdutosDoBanco(string id, string usuarioId, int quantidade, string localizacao, string codigoProduto, int? estadoProduto, int? categoria)
+    public async Task<IReadOnlyCollection<Produto>> FiltrarProdutosDoBanco(string id, string usuarioId, string nome, int quantidade, string localizacao, string codigoProduto, int? estadoProduto, int? categoria)
     {
         try
         {
@@ -107,6 +119,11 @@ public class ProdutosService
             if (!string.IsNullOrEmpty(localizacao))
             {
                 buscaDeProdutos = buscaDeProdutos.FindAll(f => f.Localizacao == localizacao);
+            }
+            if (!string.IsNullOrEmpty(nome))
+            {
+                var regex = new Regex(nome, RegexOptions.IgnoreCase);
+                buscaDeProdutos = buscaDeProdutos.FindAll(f => regex.IsMatch(f.Nome));
             }
             if (!string.IsNullOrEmpty(codigoProduto))
             {
