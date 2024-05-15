@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 const mobileBreakpoint = "710px";
 const desktopSmallBreakpoint = "1200px"
-const tabletBreakpoint = "980px"; 
+const tabletBreakpoint = "980px";
 
 export const ContainerHeader = styled.header`
   list-style-type: none;
   background-color: #5871fb;
-  width: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -25,10 +24,13 @@ export const ContainerHeader = styled.header`
 
 export const ContainerMenuHeader = styled.div`
   max-width: 100%;
-  overflow: auto;
+  width: 100%;
   display: flex;
   align-items: center;
   background-color: #5871fb;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
  
 
@@ -62,8 +64,13 @@ export const ContainerMenu = styled.div`
   display: flex;
   align-items: flex-end;
   padding: 1.5rem;
-  background-color: #fff8e7;
+  background-color: #8395fe;
   min-width: 100%;
+  justify-content: start;
+  padding: 1.2rem;
+  justify-content: space-evenly;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
 
   span {
     margin: 0 1rem;
@@ -73,12 +80,13 @@ export const ContainerMenu = styled.div`
   }
 
   @media only screen and (max-width: ${tabletBreakpoint}) {
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: small;
   margin-top: 20px;
-  }
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
 
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -95,7 +103,7 @@ export const DropDownMenu = styled.ul`
   position: absolute;
   background-color: #ffffff;
   min-width: 200px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(60, 60, 60, 0.242);
   z-index: 1;
   list-style: none;
   color: black;
@@ -110,8 +118,8 @@ export const DropDownMenu = styled.ul`
   }
 
   a:hover {
-    color: #000000;
-    text-decoration: underline;
+    color: #333333;
+    text-decoration: none;
   }
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
@@ -128,10 +136,10 @@ export const ButtonsHeader = styled.li`
   }
 
   a {
-    font-size: larger;
+    font-size: 19px;
     color: rgb(196, 196, 196);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     display: flex;
     align-items: center;
     text-align: right;
@@ -139,30 +147,44 @@ export const ButtonsHeader = styled.li`
 
   @media only screen and (max-width: ${desktopSmallBreakpoint}) {
    
+    
+
     a{
-      font-size: small;
+      font-size: 16px;
     }
 
    
   }
 
   a:hover {
-    color: #000000;
-    text-decoration: underline;
+    text-shadow: 2px 2px 2px #373737ee;
+    text-decoration: none;
+
   }
 `;
 
 export const ButtonsMenu = styled.li`
   a {
-    font-size: larger;
-    color: rgb(196, 196, 196);
+    font-size: 17px;
+    color: rgb(72, 72, 72);
     text-decoration: none;
     font-weight: 500;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    align-items: center;
   }
 
   a:hover {
-    color: #000000;
-    text-decoration: underline;
+    color: #484848;
+    text-shadow: 1px 1px 1px #4a4a4a6b;
+  }
+
+  @media only screen and (max-width: ${desktopSmallBreakpoint}) {
+   
+    a{
+      font-size: 15px;
+    }
+
   }
 `;
 

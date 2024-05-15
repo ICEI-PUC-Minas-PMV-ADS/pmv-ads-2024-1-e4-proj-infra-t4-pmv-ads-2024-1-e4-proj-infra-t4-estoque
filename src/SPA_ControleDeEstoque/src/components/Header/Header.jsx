@@ -97,11 +97,10 @@ export default function Header() {
             <a onClick={toggleModalFeedBack}>ENVIAR FEEDBACK</a>
           </ButtonsHeader>
           {isOpenModal && <EnviarFeedbackModal />}
-          <span>|</span>
           <ButtonsHeader>
             <a>{nomeUsuario ? nomeUsuario.toUpperCase() : "NOME DA EMPRESA LOGADA"}</a>
           </ButtonsHeader>
-          <span>|</span>
+
           <ButtonsHeader>
             <MenuItem onClick={toggleDropdown}>
               <a>{email ? email.toUpperCase() : "EMPRESA@EMPRESA.COM.BR"}</a>
@@ -140,11 +139,11 @@ export default function Header() {
               <a onClick={toggleModalFeedBack}>ENVIAR FEEDBACK</a>
             </ButtonsHeader>
             {isOpenModal && <EnviarFeedbackModal />}
-            <span>|</span>
+
             <ButtonsHeader>
               <a>{nomeUsuario ? nomeUsuario : "NOME DA EMPRESA LOGADA"}</a>
             </ButtonsHeader>
-            <span>|</span>
+
             <ButtonsHeader>
               <MenuItem onClick={toggleDropdown}>
                 <a>EMPRESA@EMPRESA.COM.BR</a>
@@ -164,23 +163,23 @@ export default function Header() {
         </ContainerMenuHeaderTablet>
 
         <ContainerMenu>
-          <Link to={`/home/${userId}`}>
-            <ButtonsMenu>
-              <a>ESTOQUE DE PRODUTOS</a>
-            </ButtonsMenu>
-          </Link>{" "}
-          <span>|</span>
           <ButtonsMenu>
-            <Link to={`/Admin/${userId}`}>
-              <a style={{ fontSize: '18px' }}>ADMINISTRAÇÃO</a>
+            <Link to={`/home/${userId}`}>
+              <a>ESTOQUE DE PRODUTOS</a>
             </Link>{" "}
           </ButtonsMenu>
-          <span>|</span>
-          <Link to={`/fornecedores/${userId}`}>
-            <ButtonsMenu>
+
+          <ButtonsMenu>
+            <Link to={`/Admin/${userId}`}>
+              <a>ADMINISTRAÇÃO</a>
+            </Link>{" "}
+          </ButtonsMenu>
+
+          <ButtonsMenu>
+            <Link to={`/fornecedores/${userId}`}>
               <a>FORNECEDORES</a>
-            </ButtonsMenu>
-          </Link>
+            </Link>
+          </ButtonsMenu>
         </ContainerMenu>
 
         {isMenuOpen && (
