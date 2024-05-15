@@ -86,7 +86,7 @@ export default function Header() {
       <ContainerHeader>
         <ContainerMenuHeader>
           <li className="logoControle">
-            <a>
+            <a href="/home/:userId">
               <LogoImage
                 src={ControleDeEstoqueLogo2}
                 alt="Logo Controle de Estoque"

@@ -204,6 +204,7 @@ export const LogoImage = styled.img`
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
+  cursor: pointer;
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
    
