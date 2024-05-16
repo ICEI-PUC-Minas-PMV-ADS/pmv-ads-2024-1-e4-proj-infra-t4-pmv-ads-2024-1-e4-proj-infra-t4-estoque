@@ -136,13 +136,15 @@ export const ButtonsHeader = styled.li`
   }
 
   a {
-    font-size: 19px;
-    color: rgb(196, 196, 196);
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    color: rgb(219, 219, 219);
     text-decoration: none;
     font-weight: 600;
     display: flex;
     align-items: center;
     text-align: right;
+    letter-spacing: 0.1rem;
   }
 
   @media only screen and (max-width: ${desktopSmallBreakpoint}) {
@@ -150,7 +152,7 @@ export const ButtonsHeader = styled.li`
     
 
     a{
-      font-size: 16px;
+      font-size: 13px;
     }
 
    
@@ -165,13 +167,15 @@ export const ButtonsHeader = styled.li`
 
 export const ButtonsMenu = styled.li`
   a {
-    font-size: 17px;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
     color: rgb(72, 72, 72);
     text-decoration: none;
     font-weight: 500;
     padding-left: 1rem;
     padding-right: 1rem;
     align-items: center;
+    letter-spacing: 0.05rem;
   }
 
   a:hover {
@@ -182,7 +186,7 @@ export const ButtonsMenu = styled.li`
   @media only screen and (max-width: ${desktopSmallBreakpoint}) {
    
     a{
-      font-size: 15px;
+      font-size: 14px;
     }
 
   }

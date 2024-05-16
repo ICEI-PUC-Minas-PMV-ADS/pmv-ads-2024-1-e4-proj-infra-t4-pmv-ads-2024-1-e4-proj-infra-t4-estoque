@@ -13,10 +13,9 @@ export const ContainerFornecedor = styled.header`
   color: white;
   padding: 20px;
   align-items: center;
-  padding-top: 250px;
+  padding-top: 210px;
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    margin-top: 78px;
     padding-top: 120px;
     justify-content: start;
   }

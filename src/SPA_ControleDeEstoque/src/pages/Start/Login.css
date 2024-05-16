@@ -9,6 +9,10 @@
 
 }
 
+h1{
+    user-select: none;
+}
+
 .wrapper{
     position: relative;
     width: 420px;

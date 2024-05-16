@@ -13,11 +13,10 @@ font-size: calc(10px + 2vmin);
 color: white;
 padding: 20px;
 align-items: center;
-padding-top: 250px;
+padding-top: 220px;
 
 @media only screen and (max-width: ${mobileBreakpoint}) {
-  margin-top: 78px;
-  padding-top: 120px;
+  padding-top: 130px;
   justify-content: start;
 }
 `;
@@ -69,7 +68,7 @@ export const LeftTitle = styled.h3`
 
 export const FormItem = styled.div`
 display: flex;
-flex-direction: column; /
+flex-direction: column; 
 margin-bottom: 15px;
 `;
 

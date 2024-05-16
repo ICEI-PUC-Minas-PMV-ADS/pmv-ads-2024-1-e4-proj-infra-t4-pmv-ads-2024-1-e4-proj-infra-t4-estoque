@@ -14,21 +14,14 @@ justify-content: center;
 font-size: calc(10px + 2vmin);
 color: white;
 padding: 20px;
-margin-top: 150px;
-padding-top: 50px;
+padding-top: 210px;
 
 @media only screen and (max-width: ${desktopSmallBreakpoint}) {
-  margin-top: 150px;
-  justify-content: start;
-}
-@media only screen and (max-width: ${desktopSmallBreakpoint}) {
-  margin-top: 220px;
-  justify-content: start;
+  padding-top: 220px;
 }
 
 @media only screen and (max-width: ${mobileBreakpoint}) {
-  margin-top: 78px;
-  justify-content: start;
+  padding-top: 1px;
 }
 `
 
@@ -39,6 +32,7 @@ align-items: center;
 margin: 0 40px;
 color: white;
 width: 100%;
+padding-bottom: 20px;
 `
 
 export const ContainerButton = styled.div`

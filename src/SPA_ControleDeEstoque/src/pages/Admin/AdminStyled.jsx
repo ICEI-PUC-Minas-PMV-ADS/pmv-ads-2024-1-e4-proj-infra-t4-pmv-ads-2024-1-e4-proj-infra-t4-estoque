@@ -53,7 +53,7 @@ export const ContainerADM = styled.div`
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
-  margin-top: 150px;
+  padding-top: 220px;
 `;
 
 export const ContainerHeaderADM = styled.div`

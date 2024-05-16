@@ -6,16 +6,14 @@ export const ButtonSpace = styled.button`
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-
+  transition: all 0.4s ease-in-out;
   font-weight: bold;
   color: #ececec;
-  transition: all 0.4s ease-in-out;
   cursor: pointer;
   border-radius: 0.3rem;
 
   &:hover {
     background: linear-gradient(45deg, #8395fe 30%, #4d68fe 90%);
-    color: white;
   }
 
   

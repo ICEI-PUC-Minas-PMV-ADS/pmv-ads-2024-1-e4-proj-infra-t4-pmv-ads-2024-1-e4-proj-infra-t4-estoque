@@ -14,19 +14,17 @@ export const ContainerFornecedor = styled.header`
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
-  margin-top: 150px;
 
   @media only screen and (max-width: ${desktopSmallBreakpoint}) {
-    margin-top: 150px;
     justify-content: start;
   }
   @media only screen and (max-width: ${desktopSmallBreakpoint}) {
-    margin-top: 220px;
+    padding-top: 220px;
     justify-content: start;
   }
 
   @media only screen and (max-width: ${mobileBreakpoint}) {
-    margin-top: 78px;
+    padding-top: 178px;
     justify-content: start;
   }
 `;
@@ -36,6 +34,7 @@ export const ContainerHeaderFornecedor = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 40px;
+  padding-bottom: 20px;
   color: white;
   width: 100%;
 `;
