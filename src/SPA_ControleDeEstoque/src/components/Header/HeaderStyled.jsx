@@ -50,10 +50,8 @@ export const ContainerMenuHeader = styled.div`
   @media only screen and (max-width: ${tabletBreakpoint}) {
    
    display: none;
-  
-   
- 
-   
+   justify-content: space-around;
+   padding: 0px;
   }
 
 
@@ -83,7 +81,7 @@ export const ContainerMenu = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 20px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
@@ -101,24 +99,27 @@ export const ContainerMenu = styled.div`
 export const DropDownMenu = styled.ul`
   display: none;
   position: absolute;
-  background-color: #ffffff;
-  min-width: 200px;
-  box-shadow: 0 8px 16px 0 rgba(60, 60, 60, 0.242);
+  background-color: #5757ff72;
+  width: 310px;
+  top: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.242);
   z-index: 1;
   list-style: none;
   color: black;
+
   
   a {
+    position: relative;
     color: #000000;
-    margin-left: 10px;
+    padding: 0.1rem;
   }
 
   li {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
 
   a:hover {
-    color: #333333;
+    color: #c0c0c0;
     text-decoration: none;
   }
 
@@ -136,15 +137,23 @@ export const ButtonsHeader = styled.li`
   }
 
   a {
-    font-family: "Poppins", sans-serif;
     font-size: 17px;
-    color: rgb(219, 219, 219);
-    text-decoration: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    text-align: right;
-    letter-spacing: 0.1rem;
+    color: #e1e1e1;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    letter-spacing: 0.04rem;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+  }
+
+  li{
+    font-size: 120px;
   }
 
   @media only screen and (max-width: ${desktopSmallBreakpoint}) {
@@ -158,30 +167,75 @@ export const ButtonsHeader = styled.li`
    
   }
 
-  a:hover {
-    text-shadow: 2px 2px 2px #373737ee;
-    text-decoration: none;
-
+  @media only screen and (max-width: ${tabletBreakpoint}) {
+      a{
+        font-size: 12px;
+      }
   }
+
+  a:hover, a:focus {
+    color: #fff;
+  }
+  a:focus:after,
+  a:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+a:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
 `;
 
 export const ButtonsMenu = styled.li`
   a {
-    font-family: "Poppins", sans-serif;
-    font-size: 16px;
-    color: rgb(72, 72, 72);
+    font-size: 15px;
+    color: #ececec;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
     text-decoration: none;
-    font-weight: 500;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    align-items: center;
-    letter-spacing: 0.05rem;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
   }
 
-  a:hover {
-    color: #484848;
-    text-shadow: 1px 1px 1px #4a4a4a6b;
+  a:hover, a:focus {
+    color: #fff;
   }
+  a:focus:after,
+a:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+a:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
 
   @media only screen and (max-width: ${desktopSmallBreakpoint}) {
    
@@ -197,8 +251,10 @@ export const MenuItem = styled.div`
   align-items: center;
 
   a {
-    margin-right: 5px;
+    
   }
+
+  
 `;
 
 export const LogoImage = styled.img`
@@ -214,7 +270,7 @@ export const LogoImage = styled.img`
    
  
     
-   max-width: 150px;
+   max-width: 250px;
     
    
   }

@@ -39,7 +39,7 @@ export const StyledButton = styled.button`
   transition: all 0.2s ease-in-out;
     
   &:hover {
-    background-color: #5555c2;
+    background-color: #4160fc;
   }
 `;
 
@@ -53,7 +53,7 @@ export const ContainerADM = styled.div`
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
-  padding-top: 220px;
+  padding-top: 210px;
 `;
 
 export const ContainerHeaderADM = styled.div`

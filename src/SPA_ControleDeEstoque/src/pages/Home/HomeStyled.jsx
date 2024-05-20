@@ -60,7 +60,7 @@ background-color: #fff8e7;
       i {
         display: block;
         font-size: 35px;
-        color: #18368f;
+        color: #5c6cc4;
       }
       .button-add-desktop {
         display: none;
@@ -84,10 +84,11 @@ input {
 
 
 export const ButtonSearch = styled.button`
-background-color: #4e73df;
+background-color: #5c6cc4;
 color: white;
 border: none;
 border-radius: 5px;
+
 padding: 8px;
 margin-left: 5px;
 `
@@ -127,8 +128,8 @@ td {
   padding: 10px;
   border: 1px solid #ddd;
   color: black;
-  maxWidth: 250px;
-  wordWrap: 'break-word'
+  max-width: 250px;
+  word-wrap: 'break-word'
 }
 
 th {

@@ -35,3 +35,13 @@
     margin-right: 0.8rem;
     box-shadow: #0000008f 0px 0px 10px;
 }
+
+@media screen and (max-width: 768px){
+    .nav-saiba{
+        display: none;
+    }
+    .nav-logo{
+        padding-left: 65px;
+    }
+    
+}

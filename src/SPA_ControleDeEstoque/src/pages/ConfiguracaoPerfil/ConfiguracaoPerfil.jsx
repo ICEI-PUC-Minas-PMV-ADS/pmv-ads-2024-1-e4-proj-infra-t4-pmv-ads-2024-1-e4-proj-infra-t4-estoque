@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from '../../components/Button/Button';
 import BotaoMostrarSenha from '../../components/BotaoMostrarSenha/BotaoMostrarSenha';

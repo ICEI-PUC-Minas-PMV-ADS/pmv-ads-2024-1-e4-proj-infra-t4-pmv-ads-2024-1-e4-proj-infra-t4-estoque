@@ -14,10 +14,9 @@ font-size: calc(10px + 2vmin);
 color: white;
 padding: 20px;
 align-items: center;
-padding-top: 250px;
+padding-top: 220px;
 
 @media only screen and (max-width: ${mobileBreakpoint}) {
-  margin-top: 78px;
   padding-top: 120px;
   justify-content: start;
 }
@@ -25,7 +24,7 @@ padding-top: 250px;
 
 export const ContainerForm = styled.div`
 background-color: #fff8e7;
-color: black;
+color: #525252;
 display: flex;
 flex-direction: column;
 padding: 2rem;
@@ -64,12 +63,12 @@ justify-content: inital;
 `;
 
 export const LeftTitle = styled.h3`
-margin: 0;
+font-size: 30px;
 `;
 
 export const FormItem = styled.div`
 display: flex;
-flex-direction: column; /
+flex-direction: column; 
 margin-bottom: 15px;
 `;
 
