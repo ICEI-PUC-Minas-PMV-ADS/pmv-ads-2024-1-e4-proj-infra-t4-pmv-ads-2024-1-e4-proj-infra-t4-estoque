@@ -24,9 +24,7 @@ export default function EditProduto() {
 
   return (
     <>
-      <Header />
       <View style={styles.container}>
-        <Title title="Editar Produto" />
         <TextInput/>
       </View>
     </>
@@ -34,7 +32,5 @@ export default function EditProduto() {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    fontWeight: "bold",
-  },
+
 });

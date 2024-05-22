@@ -25,8 +25,7 @@ export default function AddProduto() {
   return (
     <>
       <View style={styles.container}>
-        <Title title="Adicionar Produtos" />
-        <TextInput/>
+        <TextInput />
       </View>
     </>
   );

@@ -12,10 +12,14 @@ export default function Produtos() {
 
   const produtoGet = async () => {
     try {
-      const response = await axios.get(
-        `https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`
-      );
-      setData(response.data);
+      const response = await fetch('https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=474de96f-117e-41f3-a658-8931bda38b07', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const json = await response.json();
+      setData(json);
     } catch (error) {
       console.log(error);
     }
