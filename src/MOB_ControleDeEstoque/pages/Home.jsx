@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BottomNavigation, Text } from "react-native-paper";
 
 import Fornecedores from "./Fornecedores";
-import Produtos from "./Produtos";
+import Produtos from "../pages/Produtos/Produtos";
 import Admin from "./Admin";
 
 const Home = () => {
