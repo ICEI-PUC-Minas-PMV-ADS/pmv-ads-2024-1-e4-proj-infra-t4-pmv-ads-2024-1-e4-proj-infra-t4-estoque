@@ -191,7 +191,7 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link style={{ textDecoration: "none", color: "#5871fb" }} to="/Admin">
+                <Link style={{ textDecoration: "none", color: "#5871fb" }} to={`/admin/${userId}`}>
                   <BsPeopleFill style={{ marginRight: "5px" }} /> Administração
                 </Link>
               </li>
