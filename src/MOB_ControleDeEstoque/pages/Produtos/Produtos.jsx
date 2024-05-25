@@ -10,20 +10,17 @@ export default function Produtos() {
   const [data, setData] = useState([]);
   const navigation = useNavigation();
 
+
   const produtoGet = async () => {
     try {
-      const response = await fetch('https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=474de96f-117e-41f3-a658-8931bda38b07', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      const json = await response.json();
-      setData(json);
+        const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`);
+      setData(response.data);
+      console.log(response.data)
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  };
+};
+
 
   useEffect(() => {
     produtoGet();
@@ -47,17 +44,16 @@ export default function Produtos() {
         {data.length === 0 ? (
           <Text style={styles.emptyText}>Nenhum produto cadastrado.</Text>
         ) : (
-          <View style={styles.table}>
-            data={data}
-            keyExtractor={(item) => item.id.toString()}
-            <View style={styles.row}>
+            <View style={styles.table}>
+              
+              <View style={styles.row}>
               <Text style={styles.header}>Nome do Produto</Text>
               <Text style={styles.header}>Quantidade</Text>
               <Text style={styles.header}>Código do Produto</Text>
               <Text style={styles.header}>Edit</Text>
             </View>
-            renderItem={({ item }) => (
-              <View key={item.id} style={styles.row}>
+              {data.map((item) => (
+                <View key={item.id} style={styles.row}>
                 <Text>{item.nome}</Text>
                 <Text>{item.quantidade}</Text>
                 <Text>{item.codigoProduto}</Text>
@@ -67,7 +63,10 @@ export default function Produtos() {
                   <Text style={styles.editButton}>Edit</Text>
                 </TouchableOpacity>
               </View>
-            )}
+            ) )}
+         
+         
+            
           </View>
         )}
       </View>
