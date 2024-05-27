@@ -1,2 +1,4 @@
 npm i
 npx expo start
+
+npm i -g expo-cli
