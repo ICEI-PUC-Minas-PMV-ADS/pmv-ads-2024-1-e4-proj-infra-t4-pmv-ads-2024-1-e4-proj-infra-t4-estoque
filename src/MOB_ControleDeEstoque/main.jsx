@@ -5,7 +5,6 @@ import AddProduto from "./pages/Produtos/AddProduto";
 import EditProduto from "./pages/Produtos/EditProduto";
 import AddFornecedor from "./pages/Fornecedores/AddFornecedor";
 import EditFornecedor from "./pages/Fornecedores/EditFornecedor";
-import Fornecedores from "./pages/Fornecedores/Fornecedores";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,8 +31,10 @@ const Main = () => {
 
       <Stack.Screen 
         name="Fornecedores" 
-        component={Fornecedores} 
-        options={{ headerShown: false }}
+        component={Home} 
+        options={{
+          header: () => null,
+        }}
       />
       <Stack.Screen
         name="AddFornecedor"
