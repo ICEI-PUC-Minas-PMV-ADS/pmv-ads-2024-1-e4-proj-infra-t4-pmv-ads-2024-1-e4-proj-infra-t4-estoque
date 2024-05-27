@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { BottomNavigation, Text } from "react-native-paper";
 
-import Fornecedores from "./Fornecedores";
+
 import Produtos from "../pages/Produtos/Produtos";
 import Admin from "./Admin";
+import Fornecedores from "./Fornecedores/Fornecedores";
 
 const Home = () => {
   const [index, setIndex] = useState(0);
