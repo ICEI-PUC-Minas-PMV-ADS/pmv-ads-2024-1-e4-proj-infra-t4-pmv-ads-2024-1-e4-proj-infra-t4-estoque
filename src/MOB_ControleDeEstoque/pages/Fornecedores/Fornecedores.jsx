@@ -43,7 +43,7 @@ export default function Fornecedores() {
             <Text style={styles.header}>Edit</Text>
           </View>
           {data.length === 0 ? (
-            <Text style={styles.emptyText}>Nenhum produto cadastrado.</Text>
+            <Text style={styles.emptyText}>Nenhum fornecedor cadastrado.</Text>
           ) : (
             data.map((item) => (
               <View key={item.id} style={styles.row}>
@@ -52,7 +52,7 @@ export default function Fornecedores() {
                 <Text style={[styles.cell, styles.alignCenter]}>{item.cnpjCpf}</Text>
                 <TouchableOpacity
                   style={styles.editButtonContainer}
-                  onPress={() => navigation.navigate('EditProduto', { produtoId: item.id })}
+                  onPress={() => navigation.navigate('EditFornecedor', { fornecedorId: item.id })}
                 >
                   <Text style={styles.editButton}>Edit</Text>
                 </TouchableOpacity>
