@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 
 export default function AddFornecedor() {
   const navigation = useNavigation();
@@ -43,46 +43,50 @@ export default function AddFornecedor() {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <View>
-        <Text style={{ fontSize: 40 }}>Novo Fornecedor</Text>
+        <Text style={styles.headerText}>Novo Fornecedor</Text>
       </View>
 
       <View>
-        <Text>Informação Básica</Text>
+        <Text style={styles.subHeaderText}>Informação Básica</Text>
         <View>
-          <View style={{ display: "none" }}>
+          <View style={styles.hiddenField}>
             <Text>Código do Fornecedor: </Text>
             <TextInput
               value={formData.codigoFornecedor}
               editable={false}
+              style={styles.input}
             />
           </View>
-          <View>
+          <View style={styles.field}>
             <Text>Nome: <Text>*</Text></Text>
             <TextInput
               value={formData.nome}
               onChangeText={(value) => handleChange("nome", value)}
               required
+              style={styles.input}
             />
           </View>
-          <View>
+          <View style={styles.field}>
             <Text>Email: <Text>*</Text></Text>
             <TextInput
               value={formData.email}
               onChangeText={(value) => handleChange("email", value)}
               required
+              style={styles.input}
             />
           </View>
-          <View>
+          <View style={styles.field}>
             <Text>CNPJ/CPF: <Text>*</Text></Text>
             <TextInput
               value={formData.cnpjCpf}
               onChangeText={(value) => handleChange("cnpjCpf", value)}
               required
+              style={styles.input}
             />
           </View>
-          <View>
+          <View style={styles.buttonContainer}>
             <Button title="Salvar" onPress={handleSubmit} />
           </View>
         </View>
@@ -90,3 +94,41 @@ export default function AddFornecedor() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: "#f5f5f5"
+  },
+  headerText: {
+    fontSize: 40,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "start",
+    color: "#333"
+  },
+  subHeaderText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#666"
+  },
+  hiddenField: {
+    display: "none"
+  },
+  field: {
+    marginBottom: 20
+  },
+  input: {
+    height: 40,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    backgroundColor: "#fff"
+  },
+  buttonContainer: {
+    marginTop: 20
+  }
+});

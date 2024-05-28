@@ -9,17 +9,15 @@ export default function Fornecedores() {
   const [data, setData] = useState([]);
   const navigation = useNavigation();
 
-
   const fornecedoresGet = async () => {
     try {
       const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`);
       setData(response.data);
-      console.log(response.data)
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
   };
-
 
   useEffect(() => {
     fornecedoresGet();
@@ -52,7 +50,7 @@ export default function Fornecedores() {
                 <Text style={[styles.cell, styles.alignCenter]}>{item.cnpjCpf}</Text>
                 <TouchableOpacity
                   style={styles.editButtonContainer}
-                  onPress={() => navigation.navigate('EditFornecedor', { fornecedorId: item.id })}
+                  onPress={() => navigation.navigate('EditFornecedor', { id: item.id })}
                 >
                   <Text style={styles.editButton}>Edit</Text>
                 </TouchableOpacity>
@@ -64,6 +62,8 @@ export default function Fornecedores() {
     </>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
