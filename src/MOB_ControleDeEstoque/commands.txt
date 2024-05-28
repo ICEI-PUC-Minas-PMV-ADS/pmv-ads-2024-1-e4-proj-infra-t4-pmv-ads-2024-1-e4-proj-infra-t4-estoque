@@ -3,5 +3,6 @@ npx expo start
 npm install @react-native-async-storage/async-storage --force
 npm install @react-native-picker/picker
 
+npx expo start --web
 
 npm i -g expo-cli

@@ -1,0 +1,53 @@
+PUC Minas Virtual
+
+Curso: Tecnologia em Análise de Sistemas de Informação
+Relatório de Atividades - Aluno: Ricardo Fonseca Pereira
+
+Eixo: 4 - Turma: 4 - Professor: Pedro Felipe Alves de Oliveira                                             
+Parecer em relação às tarefas realizadas no período:
+(  X  ) Cumpriu totalmente as tarefas 
+(    ) Cumpriu parcialmente as tarefas
+(    ) Não cumpriu as tarefas
+
+Atividades realizadas no período de 08/04/2024  a 05/05/2024
+
+1.Criação da página de Fornecedores, EditFornecedores e AddFornecedores no Frontend.
+2.Resposividade do Header no Frontend.
+3.Organização do código Frontend.
+
+Atividades planejadas para o período: 06/05/2024 a 02/06/2024
+
+1.Criação do Frontend Mobile da aplicação.
+2.Criação entre a conexão Frontend Mobile e a Api Backend.
+3.
+4.
+5.
+
+Observações:
+
+
+Curso: Tecnologia em Análise de Sistemas de Informação
+Relatório de Atividades - Aluno: Thiago Henrique de Oliveira Souza
+
+Eixo: 4 - Turma: 4 - Professor: Pedro Felipe Alves de Oliveira                                             
+Parecer em relação às tarefas realizadas no período:
+(  X  ) Cumpriu totalmente as tarefas 
+(    ) Cumpriu parcialmente as tarefas
+(    ) Não cumpriu as tarefas
+
+Atividades realizadas no período de 08/04/2024  a 05/05/2024
+
+1. Front-end Cadastro e Login
+2. Front-end página inicial de boas vindas
+3. Testes/registro de software
+4. Wireframes
+
+Atividades planejadas para o período: 06/05/2024 a 02/06/2024
+
+1. Criar a aplicação mobile em react native
+2. Terminar documentação
+3. Refatorar códigos necessários para o melhor desempenho
+4. Disponibilizar código através do Azure e Vercel
+
+Observações:
+
