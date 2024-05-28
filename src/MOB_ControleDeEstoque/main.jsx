@@ -21,14 +21,21 @@ const Main = () => {
       <Stack.Screen
         name="AddProduto"
         component={AddProduto}
-        options={{ title: "Adicionar Produto" }}
+        options={{
+          title: "Adicionar Produto",
+          headerStyle: { backgroundColor: "#5871fb" },
+          headerTintColor: "#fff",  
+        }}
       />
       <Stack.Screen
         name="EditProduto"
         component={EditProduto}
-        options={{ title: "Editar Produto" }}
+        options={{
+          title: "Editar Produto",
+          headerStyle: { backgroundColor: "#5871fb" },
+          headerTintColor: "#fff",  
+        }}
       />
-
       <Stack.Screen 
         name="Fornecedores" 
         component={Home} 
@@ -39,13 +46,20 @@ const Main = () => {
       <Stack.Screen
         name="AddFornecedor"
         component={AddFornecedor}
-        options={{ title: "Adicionar Fornecedor" }}
+        options={{
+          title: "Adicionar Fornecedor",
+          headerStyle: { backgroundColor: "#5871fb" },
+          headerTintColor: "#fff",  
+        }}
       />
-
       <Stack.Screen
         name="EditFornecedor"
         component={EditFornecedor}
-        options={{ title: "Editar Fornecedor" }}
+        options={{
+          title: "Editar Fornecedor",
+          headerStyle: { backgroundColor: "#5871fb" },
+          headerTintColor: "#fff", 
+        }}
       />
     </Stack.Navigator>
   );
