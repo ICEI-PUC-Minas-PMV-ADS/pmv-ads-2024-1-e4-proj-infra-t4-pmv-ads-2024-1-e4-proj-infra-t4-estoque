@@ -42,7 +42,6 @@ const Main = () => {
         name="Profile"
         component={Profile}
         options={{ title: 'CONFIGURAÇÃO DE PERFIL' }}
-        }}
       />
       <Stack.Screen 
         name="Fornecedores" 
