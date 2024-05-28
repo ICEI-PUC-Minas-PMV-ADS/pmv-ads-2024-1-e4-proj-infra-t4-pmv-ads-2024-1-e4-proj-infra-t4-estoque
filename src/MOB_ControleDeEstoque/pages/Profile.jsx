@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, StyleSheet, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, Text } from "react-native";
 import { TextInput } from 'react-native-paper';
-import Title from "../components/Title";
-
+import { TextInputMask } from 'react-native-masked-text';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function Profile() {
   const [data, setData] = useState([]);
@@ -10,21 +10,7 @@ export default function Profile() {
   const [email, setEmail] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
-
-  // const produtoGet = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`
-  //     );
-  //     setData(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   produtoGet();
-  // }, []);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
   };
@@ -59,6 +45,8 @@ export default function Profile() {
               label="E-mail"
               value={email}
               onChangeText={setEmail}
+              keyboardType="email-address"
+              autoCapitalize="none"
               style={styles.InputPadrao}
               theme={{
                 colors: {
@@ -72,39 +60,53 @@ export default function Profile() {
               mode="outlined"
             />
 
-            <TextInput
+            <TextInputMask
+              type={'cnpj'}
               label="CNPJ"
               value={cnpj}
               onChangeText={setCnpj}
               style={styles.InputPadrao}
-              theme={{
-                colors: {
-                  primary: '#5871fb',
-                  underlineColor: 'transparent',
-                  background: '#ffffff',
-                  placeholder: '#a9a9a9',
-                  text: '#000000',
+              customTextInput={TextInput}
+              customTextInputProps={{
+                label: 'CNPJ',
+                mode: 'outlined',
+                theme: {
+                  colors: {
+                    primary: '#5871fb',
+                    underlineColor: 'transparent',
+                    background: '#ffffff',
+                    placeholder: '#a9a9a9',
+                    text: '#000000',
+                  },
                 },
               }}
-              mode="outlined"
             />
 
-            <TextInput
-              label="Nova Senha"
-              value={password}
-              onChangeText={setPassword}
-              style={styles.InputSenha}
-              theme={{
-                colors: {
-                  primary: '#5871fb',
-                  underlineColor: 'transparent',
-                  background: '#ffffff',
-                  placeholder: '#a9a9a9',
-                  text: '#000000',
-                },
-              }}
-              mode="outlined"
-            />
+            <View style={styles.passwordContainer}>
+              <TextInput
+                label="Nova Senha"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry={!showPassword}
+                style={[styles.InputSenha, { flex: 1 }]}
+                theme={{
+                  colors: {
+                    primary: '#5871fb',
+                    underlineColor: 'transparent',
+                    background: '#ffffff',
+                    placeholder: '#a9a9a9',
+                    text: '#000000',
+                  },
+                }}
+                mode="outlined"
+              />
+              <TouchableOpacity
+                onPress={() => setShowPassword(!showPassword)}
+                style={styles.iconButton}
+              >
+                <Icon name={showPassword ? "visibility" : "visibility-off"} size={24} color="#5871fb" />
+              </TouchableOpacity>
+            </View>
 
             <TouchableOpacity style={styles.salvarButton} onPress={handleSubmit}>
               <Text style={styles.salvarButtonText}>SALVAR E FINALIZAR</Text>
@@ -112,9 +114,7 @@ export default function Profile() {
           </View>
         </View>
       </ScrollView>
-
     </KeyboardAvoidingView>
-
   );
 }
 
@@ -129,23 +129,30 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#ffffff',
     padding: 20,
-    marginBottom: 300
+    marginBottom: 300,
   },
   InputPadrao: {
-    color: 'black',
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  passwordContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 20,
   },
   InputSenha: {
-    color: 'black',
-    marginBottom: 20,
+    fontSize: 16, 
     height: 40,
     width: 250,
+  },
+  iconButton: {
+    marginLeft: 10,
   },
   salvarButton: {
     backgroundColor: '#007BFF',
     padding: 10,
     borderRadius: 5,
-    marginTop: 20
+    marginTop: 20,
   },
   salvarButtonText: {
     color: '#fff',
