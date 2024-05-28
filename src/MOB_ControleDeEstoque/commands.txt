@@ -1,4 +1,7 @@
 npm i
 npx expo start
+npm install @react-native-async-storage/async-storage --force
+npm install @react-native-picker/picker
+
 
 npm i -g expo-cli
