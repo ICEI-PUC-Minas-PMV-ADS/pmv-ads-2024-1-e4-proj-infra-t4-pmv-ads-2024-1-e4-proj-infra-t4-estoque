@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import Title from "../../components/Title";
-import { Ionicons } from '@expo/vector-icons'; // Importe os ícones do pacote
+import { Ionicons } from '@expo/vector-icons';
 
 export default function Fornecedores() {
   const [data, setData] = useState([]);
@@ -27,8 +27,13 @@ export default function Fornecedores() {
     fornecedoresGet();
   }, []);
 
-  const handleSearch = () => {
-    const newData = data.filter(item => item.nome.toLowerCase().includes(searchQuery.toLowerCase()));
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    const newData = data.filter(item => 
+      item.nome.toLowerCase().includes(query.toLowerCase()) ||
+      item.cnpjCpf.toLowerCase().includes(query.toLowerCase()) ||
+      item.codigoFornecedor.toLowerCase().includes(query.toLowerCase())
+    );
     setFilteredData(newData);
   };
 
@@ -39,15 +44,12 @@ export default function Fornecedores() {
         <Title title="FORNECEDORES" />
         <View style={styles.Quadrado}>
           <View style={styles.buttonsContainer}>
-            <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
-              <Ionicons name="search" size={24} color="black" />
-            </TouchableOpacity>
+            <Ionicons name="search" size={24} color="black" style={styles.searchIcon} />
             <TextInput
               placeholder="Pesquisar..."
               value={searchQuery}
-              onChangeText={setSearchQuery}
+              onChangeText={handleSearch}
               style={styles.searchInput}
-              onSubmitEditing={handleSearch}
             />
             <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddFornecedor')}>
               <Text style={styles.addButtonText}>+</Text>
@@ -60,7 +62,7 @@ export default function Fornecedores() {
               <Text style={styles.header}>CNPJ</Text>
               <Text style={styles.header}>EDIT</Text>
             </View>
-            {data.length === 0 ? (
+            {filteredData.length === 0 ? (
               <Text style={styles.emptyText}>Nenhum fornecedor cadastrado.</Text>
             ) : (
               filteredData.map((item) => (
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
-  searchButton: {
+  searchIcon: {
     padding: 5,
     borderRadius: 5,
     backgroundColor: '#007BFF',
@@ -127,14 +129,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     marginLeft: 10,
-    marginRight: 80
+    marginRight: 10,
   },
   table: {
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 5,
     overflow: 'hidden',
-    marginTop: 20
+    marginTop: 20,
   },
   row: {
     flexDirection: "row",
