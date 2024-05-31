@@ -1,12 +1,42 @@
 # Template Padrão da Aplicação
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>, <a href="4-Metodologia.md"> Metodologia</a>
+#### Segue o template padrão referente à aplicação web.
 
-Layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
+### Página inicial
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Página%20inicial%20do%20site.png"/></div>
 
-> **Links Úteis**:
->
-> - [CSS Website Layout (W3Schools)](https://www.w3schools.com/css/css_website_layout.asp)
-> - [Website Page Layouts](http://www.cellbiol.com/bioinformatics_web_development/chapter-3-your-first-web-page-learning-html-and-css/website-page-layouts/)
-> - [Perfect Liquid Layout](https://matthewjamestaylor.com/perfect-liquid-layouts)
-> - [How and Why Icons Improve Your Web Design](https://usabilla.com/blog/how-and-why-icons-improve-you-web-design/)
+### Área de cadastro e login do usuário
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Página%20de%20login.png"/></div>
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Página%20de%20cadastro.png"/></div>
+
+### Página inicial de controle de estoque
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Tela%20inicial%20-%20Estoque%20de%20produtos.png"/></div>
+
+### Modal para adicionar produtos
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Cadastro%20de%20produtos%20-%20PART%201.png"/></div>
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Cadastro%20de%20produtos%20-%20PART%202.png"/></div>
+
+### Modal para editar produtos
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Edição%20de%20produtos%20-%20PART%201.png"/></div>
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Edição%20de%20produtos%20-%20PART%202.png"/></div>
+
+### Página contendo os fornecedores
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Tela%20de%20Fornecedores.png"/></div>
+
+### Modal para adicionar fornecedor
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Tela%20de%20adicionar%20fornecedores.png"/></div>
+
+### Modal para editar fornecedor
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/dabde34cda359a3f27e91365365e1d34a8f1677d/docs/img/Tela%20para%20editar%20fornecedores.png"/></div>
+
+### Página de controle administrativo
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/cb211f48287e0b8be33f0251c7029e4fe97f9d0c/docs/img/Tela%20de%20Administração.png"/></div>
+
+### Modal de envio de feedback
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/dabde34cda359a3f27e91365365e1d34a8f1677d/docs/img/Tela%20para%20enviar%20feedback.png"/></div>
+
+### Modal para editar perfil do usuário logado
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/dabde34cda359a3f27e91365365e1d34a8f1677d/docs/img/Tela%20para%20gerenciar%20o%20perfil..png"/></div>
+
+
+
