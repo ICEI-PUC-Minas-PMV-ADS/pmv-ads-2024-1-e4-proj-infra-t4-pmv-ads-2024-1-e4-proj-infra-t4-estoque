@@ -275,18 +275,6 @@ export default function EditProduto() {
                         </FormItem>
 
                         <FormItem>
-                            <Label htmlFor="codigoProduto">Código do Produto:</Label>
-                            <Input
-                                type="text"
-                                id="codigoProduto"
-                                name="codigoProduto"
-                                value={formData.codigoProduto}
-                                onChange={handleChange}
-                                placeholder="Insira a código do produto..."
-                            />
-                        </FormItem>
-
-                        <FormItem>
                             <Label htmlFor="fornecedor">Escolha na lista de fornecedores:</Label>
                             <br />
                             <select

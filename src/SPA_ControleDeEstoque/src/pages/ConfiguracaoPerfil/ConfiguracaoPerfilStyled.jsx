@@ -89,5 +89,5 @@ export const InputPassword = styled.input`
 font-size: 20px;
 padding: 5px;
 display: flex;
-width: 93%;
+width: 90%;
 `;
