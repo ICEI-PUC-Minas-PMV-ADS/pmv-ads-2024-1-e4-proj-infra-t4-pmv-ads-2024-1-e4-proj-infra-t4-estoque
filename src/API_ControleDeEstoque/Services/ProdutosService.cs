@@ -34,7 +34,7 @@ public class ProdutosService
                 var usuarioDados = await _authCollection.GetDadosUsuarios(produto.UsuarioId);
                 produto.Usuario = usuarioDados;
 
-                if (produto.FornecedorId != null)
+                if (produto.FornecedorId != null && !string.IsNullOrEmpty(produto.FornecedorId))
                 {
                     var fornecedorDados = await _fornecedorCollection.GetFornecedorById(produto.FornecedorId);
                     produto.Fornecedor = fornecedorDados;
