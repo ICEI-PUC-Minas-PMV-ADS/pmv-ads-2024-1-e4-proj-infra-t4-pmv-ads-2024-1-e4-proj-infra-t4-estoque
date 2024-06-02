@@ -1,26 +1,26 @@
 export default [
     {
         id: '1',
-        title: 'Rapido e facil',
-        description: 'Cresca sua empresa com a gente e tenha lucro garantido em pouco tempo',
+        title: 'Bem-vindo ao Sistema de Controle de Estoque',
+        description: 'Simplifique o gerenciamento de seu inventário com nosso sistema intuitivo.',
         image: require('../assets/opcoes.png'),
     },
     {
         id: '2',
-        title: 'Construa sua empresa',
-        description: 'Facilite sua vida com a gente e tenha lucro garantido em pouco tempo',
+        title: 'Criação e Gestão de Produtos',
+        description: 'Adicione, edite e organize seus produtos. Mantenha seu estoque sempre atualizado e evite rupturas de inventário.',
         image: require('../assets/negocios.png'),
     },
     {
         id: '3',
-        title: 'Lucro garantido',
-        description: 'Logistas e clientes satisfeitos e lucro garantido em pouco tempo',
+        title: 'Controle de Fornecedores',
+        description: 'Gerencie seus fornecedores de forma eficiente. Registre informações importantes e mantenha uma relação com seus parceiros comerciais.',
         image: require('../assets/graficos.png'),
     },
     {
         id: '4',
-        title: 'Faltou ideia',
-        description: 'lucro garantido em pouco tempo e clientes satisfeitos',
+        title: 'Relatórios e Análises Detalhadas',
+        description: 'Obtenha insights valiosos com nossos relatórios detalhados. Otimize seu estoque e maximize seus lucros.',
         image: require('../assets/logistica.png'),
     },
 

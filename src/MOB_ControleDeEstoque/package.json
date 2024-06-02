@@ -11,8 +11,6 @@
   "dependencies": {
     "@expo/metro-runtime": "~3.2.1",
     "@react-native-async-storage/async-storage": "^1.23.1",
-    "@expo/metro-runtime": "~3.2.1",
-    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-picker/picker": "^2.7.6",
     "@react-navigation/drawer": "^6.6.15",
     "@react-navigation/native": "^6.1.17",
@@ -23,13 +21,14 @@
     "expo-status-bar": "~1.12.1",
     "react": "18.3.1",
     "react-native": "0.74.1",
-    "react-native-masked-text": "^1.13.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
+    "react-native-masked-text": "^1.13.0",
     "react-native-paper": "^5.12.3",
-    "react-native-vector-icons": "^10.1.0",
     "react-native-svg": "^15.3.0",
+    "react-native-vector-icons": "^10.1.0",
     "react-native-web": "~0.19.10",
-    "typescript": "~5.3.3""react-router-dom": "^6.23.1"
+    "react-router-dom": "^6.23.1",
+    "typescript": "~5.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
