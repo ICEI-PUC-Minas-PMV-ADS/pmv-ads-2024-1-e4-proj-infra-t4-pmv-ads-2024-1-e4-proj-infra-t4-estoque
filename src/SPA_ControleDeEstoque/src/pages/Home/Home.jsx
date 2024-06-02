@@ -11,6 +11,8 @@ import Header from '../../components/Header/Header';
 export default function Home() {
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [deleting, setDeleting] = useState(false);
+
     const userId = localStorage.getItem('userId', data.userId);
 
     const produtoGet = async () => {
@@ -87,6 +89,25 @@ export default function Home() {
         produtoGet();
     }, []);
 
+    const apagarProduto = async (idProduto) => {
+        console.log('ID do produto:', idProduto);
+        try {
+            if (!idProduto) {
+                console.error('Ocorreu um erro ao tentar acessar o id do produto.');
+                return;
+            }
+
+            setDeleting(true);
+            const response = await axios.delete(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/${idProduto}`);
+            console.log("Produto removido com sucesso!", response.data);
+            produtoGet();
+        } catch (error) {
+            console.error('Erro ao excluir produto:', error);
+        } finally {
+            setDeleting(false);
+        }
+    };
+
     return (
         <>
             <Header />
@@ -132,6 +153,7 @@ export default function Home() {
                                 <th>VALOR UNIDADE</th>
                                 <th>VALOR TOTAL</th>
                                 <th>EDITAR</th>
+                                <th>REMOVER</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -169,6 +191,16 @@ export default function Home() {
                                             />
                                             <i className="bi bi-pencil-square"></i>
                                         </Link>
+                                    </td>
+                                    <td>
+                                        <Button
+                                            text='Deletar'
+                                            type='button'
+                                            className="button-edit-desktop"
+                                            onClick={() => apagarProduto(produto.id)}
+                                            disabled={deleting}
+                                        />
+                                        {deleting && <i className="bi bi-hourglass"></i>}
                                     </td>
                                 </tr>
                             ))}
@@ -210,7 +242,7 @@ export default function Home() {
                                             <Button
                                                 text='Editar'
                                                 type='button'
-                                                className="button-edit-desktop" // Esta classe é exibida apenas no desktop
+                                                className="button-edit-desktop"
                                             />
 
                                             <i className="bi bi-pencil-square"></i>
