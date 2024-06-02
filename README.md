@@ -32,10 +32,10 @@ https://controledeestoqueapi.azurewebsites.net/swagger/index.html </br>
 ### Front-end: 
 https://spa-controle-de-estoque.vercel.app/
 ### Mobile:
-Abra o projeto MOB_ControleDeEstoque
-Com o projeto aberto execute no terminal: npm i --force
-Em seguida inicie o projeto com: npx expo start
-Instale o Expo Go em seu dispositivo
+Abra o projeto MOB_ControleDeEstoque </br>
+Com o projeto aberto execute no terminal: npm i --force </br>
+Em seguida inicie o projeto com: npx expo start </br>
+Instale o Expo Go em seu dispositivo </br>
 
 
 # Documentação
