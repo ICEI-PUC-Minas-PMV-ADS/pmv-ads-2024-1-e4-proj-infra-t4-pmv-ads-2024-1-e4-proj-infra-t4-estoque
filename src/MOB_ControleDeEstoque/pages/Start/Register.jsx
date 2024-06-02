@@ -13,8 +13,7 @@ const Register = () => {
     const [cnpj, setCnpj] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleRegister = async (event) => {
-        event.preventDefault();
+    const handleRegister = async () => {
 
         if (password !== confirmPassword) {
             Alert.alert('Error', 'Passwords do not match');
@@ -35,7 +34,7 @@ const Register = () => {
             }
 
             console.log('User created successfully');
-            loginLink();
+            navigation.navigate('Login');
         } catch (error) {
             console.error('Fetch error:', error);
         }
