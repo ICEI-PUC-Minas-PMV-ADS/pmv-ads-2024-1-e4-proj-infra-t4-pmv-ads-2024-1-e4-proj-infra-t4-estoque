@@ -1,37 +1,70 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, ScrollView } from "react-native";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
-import AddProduto from "./AddProduto";
 import Title from "../../components/Title";
-import { Ionicons } from '@expo/vector-icons'; // Importe os ícones do pacote
+import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Produtos() {
   const [data, setData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredData, setFilteredData] = useState([]);
-    const navigation = useNavigation();
-
-  const produtoGet = async () => {
-    try {
-      const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`);
-      setData(response.data);
-      setFilteredData(response.data);
-      console.log(response.data)
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const navigation = useNavigation();
 
   useEffect(() => {
+    const produtoGet = async () => {
+      try {
+        const userId = await AsyncStorage.getItem('userId');
+
+        if (userId) {
+          const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/usuarioIdProdutos?usuarioId=${userId}`);
+          setData(response.data);
+          setFilteredData(response.data);
+          console.log('User ID:', userId);
+        } else {
+          console.error('User id não encontrado');
+        }
+      } catch (error) {
+        console.log('Erro ao buscar produtos:', error);
+      }
+    };
+
     produtoGet();
   }, []);
 
+  const apagarProduto = async (idProduto) => {
+    try {
+      if (!idProduto) {
+        console.error('Ocorreu um erro ao tentar acessar o id do produto.');
+        return;
+      }
+
+      const response = await axios.delete(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/${idProduto}`);
+
+      console.log("Produto removido com sucesso!", response.data);
+
+      produtoGet();
+    } catch (error) {
+      console.error('Erro ao excluir produto:', error);
+    }
+  };
+
   const handleSearch = () => {
-    const newData = data.filter(item => item.nome.toLowerCase().includes(searchQuery.toLowerCase()));
+    if (searchQuery === "") {
+      setFilteredData(data);
+      return;
+    }
+
+    const newData = data.filter(item => {
+      const itemName = item.nome.toLowerCase();
+      const search = searchQuery.toLowerCase();
+      return itemName.includes(search);
+    });
     setFilteredData(newData);
   };
+
 
   return (
     <>
@@ -40,45 +73,54 @@ export default function Produtos() {
         <Title title="ESTOQUE DE PRODUTOS" />
         <View style={styles.Quadrado}>
           <View style={styles.buttonsContainer}>
-            <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
+            <TouchableOpacity style={styles.searchButton}>
               <Ionicons name="search" size={24} color="black" />
             </TouchableOpacity>
             <TextInput
               placeholder="Pesquisar..."
               value={searchQuery}
-              onChangeText={setSearchQuery}
+              onChangeText={(text) => {
+                setSearchQuery(text);
+                handleSearch(); 
+              }}
               style={styles.searchInput}
-              onSubmitEditing={handleSearch}
             />
             <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddProduto')}>
               <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.table}>
+          <ScrollView style={styles.table}>
             <View style={styles.row}>
               <Text style={styles.header}>CÓDIGO</Text>
               <Text style={styles.header}>NOME</Text>
-              <Text style={styles.header}>QUANT.</Text>
+              <Text style={styles.header}>TOTAL</Text>
               <Text style={styles.header}>EDIT</Text>
+              <Text style={styles.header}>DELETE</Text>
             </View>
-            {data.length === 0 ? (
+            {filteredData.length === 0 ? (
               <Text style={styles.emptyText}>Nenhum produto cadastrado.</Text>
             ) : (
-              data.map((item) => (
+              filteredData.map((item) => (
                 <View key={item.id} style={styles.row}>
                   <Text style={[styles.cell, styles.alignCenter]}>{item.codigoProduto}</Text>
                   <Text style={[styles.cell, styles.alignCenter]}>{item.nome}</Text>
-                  <Text style={[styles.cell, styles.alignCenter]}>{item.quantidade}</Text>
+                  <Text style={[styles.cell, styles.alignCenter]}>{item.valorFormatado}</Text>
                   <TouchableOpacity
                     style={styles.editButtonContainer}
                     onPress={() => navigation.navigate('EditProduto', { produtoId: item.id })}
                   >
                     <Text style={styles.editButton}>Edit</Text>
                   </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.editButtonContainer}
+                    onPress={() => apagarProduto(item.id)}
+                  >
+                    <Text style={styles.editButtonDelete}>Deletar</Text>
+                  </TouchableOpacity>
                 </View>
               ))
             )}
-          </View>
+          </ScrollView>
         </View>
       </View>
     </>
@@ -128,13 +170,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     marginLeft: 10,
-    marginRight:80
+    marginRight: 80
   },
   table: {
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 5,
-    overflow: 'hidden',
     marginTop: 20
   },
   row: {
@@ -163,6 +204,10 @@ const styles = StyleSheet.create({
   },
   editButton: {
     color: '#007BFF',
+    fontWeight: 'bold',
+  },
+  editButtonDelete: {
+    color: '#ff0000',
     fontWeight: 'bold',
   },
   emptyText: {

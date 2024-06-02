@@ -1,18 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity, Text } from "react-native";
-import { TextInput } from 'react-native-paper';
+import { TextInput, Snackbar } from 'react-native-paper';
 import { TextInputMask } from 'react-native-masked-text';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Profile() {
-  const [data, setData] = useState([]);
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const navigation = useNavigation();
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    async function fetchUserData() {
+      const userId = await AsyncStorage.getItem('userId');
+
+      try {
+        const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Auth/usuarioIdDados?usuarioId=${userId}`);
+        const userData = response.data;
+        setNome(userData.fullName);
+        setEmail(userData.email);
+        setCnpj(userData.cnpj);
+
+      } catch (error) {
+        console.error("Erro ao buscar dados do usuário:", error);
+      }
+    }
+
+    fetchUserData();
+  }, []);
+
+  const handleSubmit = async () => {
+    const userId = await AsyncStorage.getItem('userId');
+    try {
+      const response = await axios.put('https://controledeestoqueapi.azurewebsites.net/api/Auth/editUsuario', {
+        newUserName: nome,
+        newEmail: email,
+        newCnpj: cnpj,
+        newPassword: password,
+        userId: userId
+      });
+      console.log(response);
+      setSnackbarMessage("Dados atualizados com sucesso!");
+      setSnackbarVisible(true);
+
+      navigation.navigate('Home', { userId: userId });
+
+    } catch (error) {
+      console.error("Erro ao atualizar dados do usuário:", error);
+      setSnackbarMessage("Erro ao atualizar dados do usuário.");
+      setSnackbarVisible(true);
+    }
   };
 
   return (
@@ -114,6 +158,13 @@ export default function Profile() {
           </View>
         </View>
       </ScrollView>
+      <Snackbar
+        visible={snackbarVisible}
+        onDismiss={() => setSnackbarVisible(false)}
+        duration={3000}
+      >
+        {snackbarMessage}
+      </Snackbar>
     </KeyboardAvoidingView>
   );
 }
@@ -141,7 +192,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   InputSenha: {
-    fontSize: 16, 
+    fontSize: 16,
     height: 40,
     width: 250,
   },

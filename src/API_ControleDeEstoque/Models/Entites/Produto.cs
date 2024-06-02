@@ -3,6 +3,8 @@ using MongoDB.Bson.Serialization.Attributes;
 using ProjetoControleDeEstoque.Dtos;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Drawing;
+using System.Globalization;
 
 namespace ProjetoControleDeEstoque.Models.Entites
 {
@@ -33,6 +35,14 @@ namespace ProjetoControleDeEstoque.Models.Entites
         [Required]
         public string UsuarioId { get; set; }
         public LoginUsuario Usuario { get; set; }
+
+        public string ValorFormatado
+        {
+            get
+            {
+                return Valor.ToString("C", CultureInfo.CreateSpecificCulture("pt-BR"));
+            }
+        }
     }
     public enum EstadoProduto
     {

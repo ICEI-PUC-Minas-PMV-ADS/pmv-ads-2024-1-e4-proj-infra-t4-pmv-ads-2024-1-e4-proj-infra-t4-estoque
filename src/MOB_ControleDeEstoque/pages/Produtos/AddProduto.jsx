@@ -4,6 +4,8 @@ import { TextInput, Snackbar, Text } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
 import Title from "../../components/Title";
 import axios from "axios";
+import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function AddProduto(onSubmit) {
   const [nome, setNome] = useState("");
@@ -17,6 +19,9 @@ export default function AddProduto(onSubmit) {
   const [fornecedores, setFornecedores] = useState([]);
   const [fornecedorSelecionado, setFornecedorSelecionado] = useState(null);
   const [errorVisible, setErrorVisible] = useState(false);
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const navigation = useNavigation();
 
   const categorias = [
     { value: 0, label: 'Sem Categoria' },
@@ -54,21 +59,22 @@ export default function AddProduto(onSubmit) {
 
   const handleQuantidadeChange = (value) => {
     setQuantidade(value);
-    calculateTotal(valorUnidade, value); 
+    calculateTotal(valorUnidade, value);
   };
 
   const calculateTotal = (valor, quantidade) => {
-    const numericValue = valor.replace(/[^0-9]/g, ""); 
-    const valorFloat = parseFloat(numericValue.replace(",", ".")); 
+    const numericValue = valor.replace(/[^0-9]/g, "");
+    const valorFloat = parseFloat(numericValue.replace(",", "."));
 
-    const total = valorFloat * parseInt(quantidade); 
+    const total = valorFloat * parseInt(quantidade);
     const formattedTotal = formatCurrency(total.toString());
-    setTotal(formattedTotal); 
+    setTotal(formattedTotal);
   };
 
   const pegandoDados = async () => {
+    const userId = await AsyncStorage.getItem('userId');
     try {
-      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`);
+      const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
       setFornecedores(response.data);
     } catch (error) {
       console.error("Erro ao buscar fornecedores:", error);
@@ -79,50 +85,77 @@ export default function AddProduto(onSubmit) {
     pegandoDados();
   }, []);
 
+  const generateProdutoCode = () => {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
+    for (let i = 0; i < 8; i++) {
+      code += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return code;
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!nome || !descricao || !quantidade || !valorUnidade) {
       setErrorVisible(true);
       return;
     }
-
-    console.log("Dados a serem enviados para a API:", {
-      nome: nome,
-      descricao: descricao,
-      quantidade: parseInt(quantidade),
-      valorUnidade: parseFloat(valorUnidade),
-      localizacao: localizacao,
-      estadoProduto: estado,
-      categoria: categoria,
-      fornecedorId: fornecedorSelecionado,
-      dataDeCriacao: new Date(),
-      usuarioId: '474de96f-117e-41f3-a658-8931bda38b07'
-    });
-
+  
     try {
-      const response = await axios.post('https://localhost:44398/api/Produtos', {
-        nome: nome,
-        descricao: descricao,
+      const userId = await AsyncStorage.getItem('userId');
+  
+      if (!userId) {
+        console.error('User ID not found in AsyncStorage');
+        return;
+      }
+  
+      const codigoProduto = generateProdutoCode(); 
+  
+      console.log("Dados a serem enviados para a API:", {
+        codigoProduto,
+        nome,
+        descricao,
         quantidade: parseInt(quantidade),
         valorUnidade: parseFloat(valorUnidade),
-        localizacao: localizacao,
+        localizacao,
         estadoProduto: estado,
-        categoria: categoria,
+        categoria,
         fornecedorId: fornecedorSelecionado,
         dataDeCriacao: new Date(),
-        usuarioId: '474de96f-117e-41f3-a658-8931bda38b07'
-      }, {
+        usuarioId: userId,
       });
+  
+      const response = await axios.post('https://controledeestoqueapi.azurewebsites.net/api/Produtos', {
+        codigoProduto,
+        nome,
+        descricao,
+        quantidade: parseInt(quantidade),
+        valorUnidade: parseFloat(valorUnidade),
+        localizacao,
+        estadoProduto: estado,
+        categoria,
+        fornecedorId: fornecedorSelecionado,
+        dataDeCriacao: new Date(),
+        usuarioId: userId,
+      });
+  
       console.log("Dados do produto enviados com sucesso!", response.data);
+  
+      setSnackbarMessage('Produto salvo com sucesso!');
+      setSnackbarVisible(true);
+  
       setTimeout(() => {
-        window.location.reload();
-      }, 2000);
+        navigation.navigate('Home', { userId: userId });
+      }, 3000);
     } catch (error) {
       console.error("Ocorreu um erro ao enviar os dados do produto:", error);
+  
+      setSnackbarMessage('Ocorreu um erro ao salvar o produto.');
+      setSnackbarVisible(true);
     }
   };
-
+  
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
@@ -262,17 +295,17 @@ export default function AddProduto(onSubmit) {
         </View>
       </ScrollView>
       <Snackbar
-        visible={errorVisible}
-        onDismiss={() => setErrorVisible(false)}
-        duration={3000}
-        action={{
-          label: 'Fechar',
-          onPress: () => setErrorVisible(false),
-        }}
-        style={{ position: 'top' }}
-      >
-        Preencha todos os campos obrigatórios.
-      </Snackbar>
+      visible={snackbarVisible}
+      onDismiss={() => setSnackbarVisible(false)}
+      duration={3000}
+      action={{
+        label: 'Fechar',
+        onPress: () => setSnackbarVisible(false),
+      }}
+      style={{ position: 'top' }}
+    >
+      {snackbarMessage}
+    </Snackbar>
     </KeyboardAvoidingView>
   );
 }
