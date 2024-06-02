@@ -46,10 +46,10 @@ export default function EditProduto() {
     async function pegandoDados() {
         try {
 
-            const fornecedoresData = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
+            const fornecedoresData = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
             setFornecedores(fornecedoresData.data);
 
-            const produtoData = await axios.get(`https://localhost:44398/api/Produtos/${id}`);
+            const produtoData = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/${id}`);
             setFormData({
                 nomeProduto: produtoData.data.nome,
                 descricaoProduto: produtoData.data.descricao,
@@ -119,7 +119,7 @@ export default function EditProduto() {
         }
 
         try {
-            await axios.put(`https://localhost:44398/api/Produtos/${id}`, {
+            await axios.put(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/${id}`, {
                 nome: formData.nomeProduto,
                 descricao: formData.descricaoProduto,
                 quantidade: parseInt(formData.quantidade),

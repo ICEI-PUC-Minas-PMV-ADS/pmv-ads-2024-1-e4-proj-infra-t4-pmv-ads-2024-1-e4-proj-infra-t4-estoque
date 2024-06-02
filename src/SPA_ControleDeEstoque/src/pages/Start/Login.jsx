@@ -15,7 +15,7 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch('https://localhost:44398/api/Auth/login', {
+        const response = await fetch('https://controledeestoqueapi.azurewebsites.net/api/Auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const Login = () => {
             return;
         }
 
-        const response = await fetch('https://localhost:44398/api/Auth/register', {
+        const response = await fetch('https://controledeestoqueapi.azurewebsites.net/api/Auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

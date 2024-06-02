@@ -35,7 +35,7 @@ export default function ConfiguracaoPerfil() {
   useEffect(() => {
     const getDadosUsuario = async () => {
       try {
-        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
+        const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
           headers: {
             Authorization: `Bearer ${Cookies.get("token")}`
           }
@@ -81,7 +81,7 @@ export default function ConfiguracaoPerfil() {
 
     try {
       await axios.put(
-        `https://localhost:44398/api/Auth/editUsuario`,
+        `https://controledeestoqueapi.azurewebsites.net/api/Auth/editUsuario`,
         formData,
         {
           headers: {

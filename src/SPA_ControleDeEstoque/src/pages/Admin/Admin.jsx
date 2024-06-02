@@ -13,7 +13,7 @@ export default function Admin() {
 
   const adminGet = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${userId}`);
+      const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/usuarioIdProdutos?usuarioId=${userId}`);
       console.log(response)
         setData(response.data);
       } catch (error) {	
@@ -27,7 +27,7 @@ export default function Admin() {
 
   const generatePdf = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/PDFGen/usuarioId?usuarioId=${userId}`, {
+      const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/PDFGen/usuarioId?usuarioId=${userId}`, {
         responseType: 'arraybuffer'
       });
       console.log(response.data);
