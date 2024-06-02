@@ -5,12 +5,36 @@ import AddProduto from "./pages/Produtos/AddProduto";
 import EditProduto from "./pages/Produtos/EditProduto";
 import AddFornecedor from "./pages/Fornecedores/AddFornecedor";
 import EditFornecedor from "./pages/Fornecedores/EditFornecedor";
+import LandingPage from "./pages/Start/LandingPage";
+import Login from "./pages/Start/Login";
+import Register from "./pages/Start/Register";
 
 const Stack = createNativeStackNavigator();
 
 const Main = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="LandingPage">
+      <Stack.Screen
+        name="LandingPage"
+        component={LandingPage}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          header: () => null,
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          header: () => null,
+        }}
+      />
       <Stack.Screen
         name="Home"
         component={Home}
@@ -29,9 +53,9 @@ const Main = () => {
         options={{ title: "Editar Produto" }}
       />
 
-      <Stack.Screen 
-        name="Fornecedores" 
-        component={Home} 
+      <Stack.Screen
+        name="Fornecedores"
+        component={Home}
         options={{
           header: () => null,
         }}

@@ -29,11 +29,11 @@ const Login = () => {
         const data = await response.json();
 
         if (data.acessToken) {
-           
+
             localStorage.setItem('acessToken', data.acessToken);
             localStorage.setItem('userId', data.userId);
-            console.log('Login successful');
-        
+            //console.log('Login successful');
+
             history(`/home/${data.userId}`);
         } else {
             console.error('Invalid login credentials');
@@ -65,7 +65,7 @@ const Login = () => {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log('User created successfully');
+        //console.log('User created successfully');
         loginLink();
     };
 
@@ -82,72 +82,72 @@ const Login = () => {
 
     return (
         <div className="body">
-        <div className={`wrapper ${action}`}>
-            <div className="form-box login">
-                <form onSubmit={handleSubmit}>
-                    <h1>Login</h1>
-                    <div className="input-box">
-                        <input type="email" placeholder="E-mail" required value={email} onChange={e => setEmail(e.target.value)} />
+            <div className={`wrapper ${action}`}>
+                <div className="form-box login">
+                    <form onSubmit={handleSubmit}>
+                        <h1>Login</h1>
+                        <div className="input-box">
+                            <input type="email" placeholder="E-mail" required value={email} onChange={e => setEmail(e.target.value)} />
 
-                        <FaUser className="icon" />
-                    </div>
-                    <div className="input-box">
-                        <input type="password" placeholder="Senha" required value={password} onChange={e => setPassword(e.target.value)} />
-                        <FaLock className="icon" />
-                    </div>
-                    <div className="remember-forgot">
-                        <label><input type="checkbox" />
-                            Manter conectado</label>
-                        <a href="#">Esqueceu sua senha?</a>
-                    </div>
+                            <FaUser className="icon" />
+                        </div>
+                        <div className="input-box">
+                            <input type="password" placeholder="Senha" required value={password} onChange={e => setPassword(e.target.value)} />
+                            <FaLock className="icon" />
+                        </div>
+                        <div className="remember-forgot">
+                            <label><input type="checkbox" />
+                                Manter conectado</label>
+                            <a href="#">Esqueceu sua senha?</a>
+                        </div>
 
-                    <button type="submit">Login</button>
+                        <button type="submit">Login</button>
 
-                    <div className="register-link">
-                        <p>Não possuí uma conta? <a href="#" onClick={registerLink} >Cadastre-se</a> </p>
-                    </div>
-                </form>
+                        <div className="register-link">
+                            <p>Não possuí uma conta? <a href="#" onClick={registerLink} >Cadastre-se</a> </p>
+                        </div>
+                    </form>
+                </div>
+
+                {/* Inicio cadastro */}
+
+                <div className="form-box register">
+                    <form onSubmit={handleRegister}>
+                        <h1>Cadastrar</h1>
+                        <div className="input-box">
+                            <input type="text" placeholder="Nome completo" required value={userName} onChange={e => setName(e.target.value)} />
+                            <FaUser className="icon" />
+                        </div>
+                        <div className="input-box">
+                            <input type="number" placeholder="Cnpj" required value={cnpj} onChange={e => setCnpj(e.target.value)} />
+                            <FaIdCard className="icon" />
+                        </div>
+                        <div className="input-box">
+                            <input type="email" placeholder="E-mail" required value={email} onChange={e => setEmail(e.target.value)} />
+                            <FaEnvelope className="icon" />
+                        </div>
+                        <div className="input-box">
+                            <input type="password" placeholder="Senha" required value={password} onChange={e => setPassword(e.target.value)} />
+                            <FaLock className="icon" />
+                        </div>
+                        <div className="input-box">
+                            <input type="password" placeholder="Confirme sua senha" required value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+                            <FaLock className="icon" />
+                        </div>
+                        <div className="remember-forgot">
+                            <label><input type="checkbox" required />
+                                Eu aceito os termos e condições.</label>
+                        </div>
+
+                        <button type="submit">Confirmar</button>
+
+                        <div className="register-link">
+                            <p>Já possuí uma conta? <a href="#" onClick={loginLink}>Login</a> </p>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            {/* Inicio cadastro */}
-
-            <div className="form-box register">
-                <form onSubmit={handleRegister}>
-                    <h1>Cadastrar</h1>
-                    <div className="input-box">
-                        <input type="text" placeholder="Nome completo" required value={userName} onChange={e => setName(e.target.value)} />
-                        <FaUser className="icon" />
-                    </div>
-                    <div className="input-box">
-                        <input type="number" placeholder="Cnpj" required value={cnpj} onChange={e => setCnpj(e.target.value)} />
-                        <FaIdCard className="icon" />
-                    </div>
-                    <div className="input-box">
-                        <input type="email" placeholder="E-mail" required value={email} onChange={e => setEmail(e.target.value)} />
-                        <FaEnvelope className="icon" />
-                    </div>
-                    <div className="input-box">
-                        <input type="password" placeholder="Senha" required value={password} onChange={e => setPassword(e.target.value)} />
-                        <FaLock className="icon" />
-                    </div>
-                    <div className="input-box">
-                        <input type="password" placeholder="Confirme sua senha" required value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
-                        <FaLock className="icon" />
-                    </div>
-                    <div className="remember-forgot">
-                        <label><input type="checkbox" required />
-                            Eu aceito os termos e condições.</label>
-                    </div>
-
-                    <button type="submit">Confirmar</button>
-
-                    <div className="register-link">
-                        <p>Já possuí uma conta? <a href="#" onClick={loginLink}>Login</a> </p>
-                    </div>
-                </form>
-            </div>
-            </div>
-            </div>
+        </div>
     )
 }
 
