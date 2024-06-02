@@ -21,28 +21,31 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch('https://localhost:44398/api/Auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-        }).catch(error => console.error('Fetch error:', error));
+        try {
+            const response = await fetch('https://controledeestoqueapi.azurewebsites.net/api/Auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-        if (data.acessToken) {
+            const data = await response.json();
 
-            localStorage.setItem('acessToken', data.acessToken);
-            localStorage.setItem('userId', data.userId);
-            console.log('Login successful');
-
-            history(`/home/${data.userId}`);
-        } else {
-            console.error('Invalid login credentials');
+            if (data.acessToken) {
+                await AsyncStorage.setItem('acessToken', data.acessToken);
+                await AsyncStorage.setItem('userId', data.userId);
+                console.log('Login successful');
+                navigation.navigate('Home', { userId: data.userId });
+            } else {
+                console.error('Invalid login credentials');
+            }
+        } catch (error) {
+            console.error('Fetch error:', error);
         }
     };
     return (
