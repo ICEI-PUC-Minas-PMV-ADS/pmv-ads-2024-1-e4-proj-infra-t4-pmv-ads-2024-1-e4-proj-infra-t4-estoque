@@ -53,6 +53,15 @@ export default function AddProduto() {
         }
     }
 
+    const generateProdutoCode = () => {
+        const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let code = "";
+        for (let i = 0; i < 8; i++) {
+            code += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return code;
+    };
+
     function mascara(valor) {
         var valorAlterado = valor.value;
         valorAlterado = valorAlterado.replace(/\D/g, ""); // Remove todos os não dígitos
@@ -102,6 +111,8 @@ export default function AddProduto() {
         }
 
         try {
+
+            const codigoProdutoGerado = generateProdutoCode();
             const response = await axios.post('https://localhost:44398/api/Produtos', {
                 nome: formData.nomeProduto,
                 descricao: formData.descricaoProduto,
@@ -109,7 +120,7 @@ export default function AddProduto() {
                 valor: parseFloat(valorTotal),
                 valorUnidade: parseFloat(formData.valorPorUnidade),
                 localizacao: formData.localizacao,
-                codigoProduto: formData.codigoProduto,
+                codigoProduto: codigoProdutoGerado,
                 estadoProduto: parseInt(estadoProduto),
                 categoria: parseInt(categoria),
                 fornecedorId: formData.fornecedor,
@@ -262,17 +273,6 @@ export default function AddProduto() {
                                 value={formData.localizacao}
                                 onChange={handleChange}
                                 placeholder="Insira a localização do produto..."
-                            />
-                        </FormItem>
-                        <FormItem>
-                            <Label htmlFor="codigoProduto">Código do Produto:</Label>
-                            <Input
-                                type="text"
-                                id="codigoProduto"
-                                name="codigoProduto"
-                                value={formData.codigoProduto}
-                                onChange={handleChange}
-                                placeholder="Insira a código do produto..."
                             />
                         </FormItem>
                         <FormItem>

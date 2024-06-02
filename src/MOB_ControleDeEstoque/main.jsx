@@ -1,5 +1,6 @@
-import React from "react";
+import React from 'react';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Profile from './pages/Profile';
 import Home from "./pages/Home";
 import AddProduto from "./pages/Produtos/AddProduto";
 import EditProduto from "./pages/Produtos/EditProduto";
@@ -45,12 +46,17 @@ const Main = () => {
       <Stack.Screen
         name="AddProduto"
         component={AddProduto}
-        options={{ title: "Adicionar Produto" }}
+        options={{ title: 'ADICIONAR PRODUTO' }}
       />
       <Stack.Screen
         name="EditProduto"
         component={EditProduto}
-        options={{ title: "Editar Produto" }}
+        options={{ title: 'EDITAR PRODUTO' }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ title: 'CONFIGURAÇÃO DE PERFIL' }}
       />
 
       <Stack.Screen
@@ -63,13 +69,20 @@ const Main = () => {
       <Stack.Screen
         name="AddFornecedor"
         component={AddFornecedor}
-        options={{ title: "Adicionar Fornecedor" }}
+        options={{
+          title: "Adicionar Fornecedor",
+          headerStyle: { backgroundColor: "#5871fb" },
+          headerTintColor: "#fff",
+        }}
       />
-
       <Stack.Screen
         name="EditFornecedor"
         component={EditFornecedor}
-        options={{ title: "Editar Fornecedor" }}
+        options={{
+          title: "Editar Fornecedor",
+          headerStyle: { backgroundColor: "#5871fb" },
+          headerTintColor: "#fff",
+        }}
       />
     </Stack.Navigator>
   );

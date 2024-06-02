@@ -1,65 +1,84 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import AddProduto from "./AddProduto";
 import Title from "../../components/Title";
+import { Ionicons } from '@expo/vector-icons'; // Importe os ícones do pacote
 
 export default function Produtos() {
   const [data, setData] = useState([]);
-  const navigation = useNavigation();
-
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
+    const navigation = useNavigation();
 
   const produtoGet = async () => {
     try {
       const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`);
       setData(response.data);
+      setFilteredData(response.data);
       console.log(response.data)
     } catch (error) {
       console.log(error);
     }
   };
 
-
   useEffect(() => {
     produtoGet();
   }, []);
+
+  const handleSearch = () => {
+    const newData = data.filter(item => item.nome.toLowerCase().includes(searchQuery.toLowerCase()));
+    setFilteredData(newData);
+  };
 
   return (
     <>
       <Header />
       <View style={styles.container}>
-        <View style={styles.titleContainer}>
-          <Title title="Produtos" />
-          <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddProduto')}>
-            <Text style={styles.addButtonText}>Adicionar Produto</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.table}>
-          <View style={styles.row}>
-            <Text style={styles.header}>Código do Produto</Text>
-            <Text style={styles.header}>Nome do Produto</Text>
-            <Text style={styles.header}>Quantidade</Text>
-            <Text style={styles.header}>Edit</Text>
+        <Title title="ESTOQUE DE PRODUTOS" />
+        <View style={styles.Quadrado}>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
+              <Ionicons name="search" size={24} color="black" />
+            </TouchableOpacity>
+            <TextInput
+              placeholder="Pesquisar..."
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+              style={styles.searchInput}
+              onSubmitEditing={handleSearch}
+            />
+            <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate('AddProduto')}>
+              <Text style={styles.addButtonText}>+</Text>
+            </TouchableOpacity>
           </View>
-          {data.length === 0 ? (
-            <Text style={styles.emptyText}>Nenhum produto cadastrado.</Text>
-          ) : (
-            data.map((item) => (
-              <View key={item.id} style={styles.row}>
-                <Text style={[styles.cell, styles.alignCenter]}>{item.codigoProduto}</Text>
-                <Text style={[styles.cell, styles.alignCenter]}>{item.nome}</Text>
-                <Text style={[styles.cell, styles.alignCenter]}>{item.quantidade}</Text>
-                <TouchableOpacity
-                  style={styles.editButtonContainer}
-                  onPress={() => navigation.navigate('EditProduto', { produtoId: item.id })}
-                >
-                  <Text style={styles.editButton}>Edit</Text>
-                </TouchableOpacity>
-              </View>
-            ))
-          )}
+          <View style={styles.table}>
+            <View style={styles.row}>
+              <Text style={styles.header}>CÓDIGO</Text>
+              <Text style={styles.header}>NOME</Text>
+              <Text style={styles.header}>QUANT.</Text>
+              <Text style={styles.header}>EDIT</Text>
+            </View>
+            {data.length === 0 ? (
+              <Text style={styles.emptyText}>Nenhum produto cadastrado.</Text>
+            ) : (
+              data.map((item) => (
+                <View key={item.id} style={styles.row}>
+                  <Text style={[styles.cell, styles.alignCenter]}>{item.codigoProduto}</Text>
+                  <Text style={[styles.cell, styles.alignCenter]}>{item.nome}</Text>
+                  <Text style={[styles.cell, styles.alignCenter]}>{item.quantidade}</Text>
+                  <TouchableOpacity
+                    style={styles.editButtonContainer}
+                    onPress={() => navigation.navigate('EditProduto', { produtoId: item.id })}
+                  >
+                    <Text style={styles.editButton}>Edit</Text>
+                  </TouchableOpacity>
+                </View>
+              ))
+            )}
+          </View>
         </View>
       </View>
     </>
@@ -69,28 +88,54 @@ export default function Produtos() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    padding: 20,
+    backgroundColor: '#5871fb',
   },
-  titleContainer: {
+  Quadrado: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#ffffff',
+    padding: 20,
+  },
+  buttonsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 10,
   },
   addButton: {
     backgroundColor: '#007BFF',
     padding: 10,
     borderRadius: 5,
+    width: 30,
   },
   addButtonText: {
     color: '#fff',
     fontWeight: 'bold',
+  },
+  searchButton: {
+    padding: 5,
+    borderRadius: 5,
+    backgroundColor: '#007BFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  searchInput: {
+    flex: 1,
+    backgroundColor: '#fff',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    marginLeft: 10,
+    marginRight:80
   },
   table: {
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 5,
     overflow: 'hidden',
+    marginTop: 20
   },
   row: {
     flexDirection: "row",

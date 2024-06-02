@@ -128,8 +128,9 @@ td {
   padding: 10px;
   border: 1px solid #ddd;
   color: black;
-  max-width: 250px;
-  word-wrap: 'break-word'
+  max-width: 200px;
+  word-wrap:'break-word';
+  white-space: 'normal';
 }
 
 th {

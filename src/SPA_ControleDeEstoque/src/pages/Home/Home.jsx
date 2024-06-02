@@ -123,12 +123,11 @@ export default function Home() {
                     <table className="table table-bordered">
                         <thead style={{ backgroundColor: '#f8f9fc' }}>
                             <tr>
-                                <th>ID</th>
+                                <th>CÓDIGO PRODUTO</th>
                                 <th>NOME DO PRODUTO</th>
                                 <th>QUANTIDADE</th>
                                 <th>CATEGORIA</th>
                                 <th>ESTADO DO PRODUTO</th>
-                                <th>CÓDIGO PRODUTO</th>
                                 <th>LOCALIZAÇÃO</th>
                                 <th>VALOR UNIDADE</th>
                                 <th>VALOR TOTAL</th>
@@ -153,12 +152,11 @@ export default function Home() {
                                 }
                             }).map(produto => (
                                 <tr key={produto.id}>
-                                    <td>{produto.id}</td>
+                                    <td>{produto.codigoProduto}</td>
                                     <td>{produto.nome}</td>
                                     <td>{produto.quantidade}</td>
                                     <td>{getCategoriaNome(produto.categoria)}</td>
                                     <td>{getEstadoProdutoNome(produto.estadoProduto)}</td>
-                                    <td>{produto.codigoProduto}</td>
                                     <td>{produto.localizacao}</td>
                                     <td>R$ {mascara(produto.valor, 'valor')}</td>
                                     <td>R$ {mascara(produto.valorUnidade, 'valorUnidade')}</td>
@@ -167,7 +165,7 @@ export default function Home() {
                                             <Button
                                                 text='Editar'
                                                 type='button'
-                                                className="button-edit-desktop" // Esta classe é exibida apenas no desktop
+                                                className="button-edit-desktop"
                                             />
                                             <i className="bi bi-pencil-square"></i>
                                         </Link>

@@ -44,3 +44,38 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 
 ### Página contendo os fornecedores
 <div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/12%20P%C3%81GINA%20QUE%20CONT%C3%89M%20OS%20FORNECEDORES.png"/></div>
+
+## Wireframes mobile
+
+### Página inicial
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/1landing.png"/></div>
+
+### Área de cadastro e login do usuário
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/2login.png"/></div>
+
+### Página inicial de controle de estoque
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/3inicio.png"/></div>
+
+### Modal para editar produtos
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/4editar.png"/></div>
+
+### Modal para adicionar produtos
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/5criar.png"/></div>
+
+### Modal para adicionar fornecedor
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/6novofornecedor.png"/></div>
+
+### Modal para editar fornecedor linkado
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/7editarfornecedor.png"/></div>
+
+### Modal de envio de feedback
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/8enviarfeedback.png"/></div>
+
+### Tela de fornecedores
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/9listafornecedor.png"/></div>
+
+### Tela de administração
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/10administrador.png"/></div>
+
+### Dropdown menu
+<div><img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque/blob/main/docs/img/11dropdownmenu.png"/></div>
