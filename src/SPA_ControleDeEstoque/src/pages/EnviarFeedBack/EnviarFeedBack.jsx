@@ -65,7 +65,7 @@ export default function EnviarFeedbackModal() {
           }
 
           try {
-            const response = await fetch('https://localhost:44398/api/FeedBack/EnviarFeedBack', {
+            const response = await fetch('https://controledeestoqueapi.azurewebsites.net/api/FeedBack/EnviarFeedBack', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

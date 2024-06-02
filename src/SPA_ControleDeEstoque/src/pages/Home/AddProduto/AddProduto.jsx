@@ -46,7 +46,7 @@ export default function AddProduto() {
 
     async function pegandoDados() {
         try {
-            const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
+            const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
             setFornecedores(response.data);
         } catch (error) {
             console.error("Erro ao buscar fornecedores:", error);
@@ -113,7 +113,7 @@ export default function AddProduto() {
         try {
 
             const codigoProdutoGerado = generateProdutoCode();
-            const response = await axios.post('https://localhost:44398/api/Produtos', {
+            const response = await axios.post('https://controledeestoqueapi.azurewebsites.net/api/Produtos', {
                 nome: formData.nomeProduto,
                 descricao: formData.descricaoProduto,
                 quantidade: parseInt(formData.quantidade),

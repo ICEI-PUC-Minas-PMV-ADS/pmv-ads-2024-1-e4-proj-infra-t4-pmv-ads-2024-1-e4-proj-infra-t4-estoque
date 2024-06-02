@@ -20,7 +20,7 @@ export default function EditFornecedor() {
   useEffect(() => {
     const fetchFornecedorData = async () => {
       try {
-        const response = await axios.get(`https://localhost:44398/api/Fornecedores/${id}`);
+        const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/${id}`);
         const fornecedorData = response.data;
         setFormData(fornecedorData);
       } catch (error) {
@@ -39,7 +39,7 @@ export default function EditFornecedor() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`https://localhost:44398/api/Fornecedores/${id}`, formData);
+      await axios.put(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/${id}`, formData);
       navigate(`/fornecedores/${userId}`); // Navegando para a página de fornecedores após salvar
     } catch (error) {
       console.error("Erro ao editar fornecedor:", error);

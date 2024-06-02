@@ -66,7 +66,7 @@ Atividades realizadas no período de 08/04/2024  a 05/05/2024
 1. Front-end da tela inicial mobil em react native;
 2. Front-end página de configuração de perfil mobile em react native;
 3. Inseri os templates padrões na documentação.
-4. 
+4. Subi o projeto de API (back-end) na nuvem do azure.
 
 Atividades planejadas para o período: 06/05/2024 a 02/06/2024
 

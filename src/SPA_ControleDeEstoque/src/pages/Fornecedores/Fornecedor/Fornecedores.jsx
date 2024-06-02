@@ -25,7 +25,7 @@ export default function Fornecedor() {
   const fornecedorGet = async () => {
     try {
       const response = await axios.get(
-        `https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`
+        `https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`
       );
       setData(response.data);
     } catch (error) {

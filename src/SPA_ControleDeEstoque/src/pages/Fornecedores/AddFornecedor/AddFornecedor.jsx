@@ -49,7 +49,7 @@ export default function AddFornecedor() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://localhost:44398/api/Fornecedores/`, formData);
+      await axios.post(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/`, formData);
       Swal.fire({
         icon: 'success',
         title: 'Sucesso!',

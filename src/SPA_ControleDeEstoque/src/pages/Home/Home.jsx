@@ -15,7 +15,7 @@ export default function Home() {
 
     const produtoGet = async () => {
         try {
-            const response = await axios.get(`https://localhost:44398/api/Produtos/usuarioIdProdutos?usuarioId=${userId}`);
+            const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/usuarioIdProdutos?usuarioId=${userId}`);
             setData(response.data);
         } catch (error) {
             console.log(error);
