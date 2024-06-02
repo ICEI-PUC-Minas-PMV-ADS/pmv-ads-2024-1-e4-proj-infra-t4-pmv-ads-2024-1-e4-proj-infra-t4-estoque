@@ -27,7 +27,16 @@ Nosso projeto visa criar uma plataforma intuitiva que permitirá às empresas mo
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+### Back-end: 
+https://controledeestoqueapi.azurewebsites.net/swagger/index.html </br>
+### Front-end: 
+https://spa-controle-de-estoque.vercel.app/
+### Mobile:
+Abra o projeto MOB_ControleDeEstoque
+Com o projeto aberto execute no terminal: npm i --force
+Em seguida inicie o projeto com: npx expo start
+Instale o Expo Go em seu dispositivo
+
 
 # Documentação
 
