@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView, View, Image, Text, TouchableOpacity, TextInput, Button } from 'react-native';
+import { Alert, StyleSheet, SafeAreaView, View, Image, Text, TouchableOpacity, TextInput, Button } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -17,23 +17,28 @@ const Register = () => {
         event.preventDefault();
 
         if (password !== confirmPassword) {
-            alert('Passwords do not match');
+            Alert.alert('Error', 'Passwords do not match');
             return;
         }
 
-        const response = await fetch('https://localhost:44398/api/Auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ userName, cnpj, email, password, confirmPassword })
-        });
+        try {
+            const response = await fetch('https://controledeestoqueapi.azurewebsites.net/api/Auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userName, cnpj, email, password, confirmPassword })
+            });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            console.log('User created successfully');
+            loginLink();
+        } catch (error) {
+            console.error('Fetch error:', error);
         }
-        console.log('User created successfully');
-        loginLink();
     };
 
     return (
@@ -103,7 +108,7 @@ const Register = () => {
                                 autoCorrect={false}
                                 clearButtonMode="while-editing"
                                 onChangeText={setPassword}
-                                placeholder="********"
+                                placeholder="Deve possuir no mínimo 8 caracteres e conter letras e números"
                                 placeholderTextColor="#6b7280"
                                 style={styles.inputControl}
                                 secureTextEntry={true}
