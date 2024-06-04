@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, TouchableOpacity, TextInput } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, ScrollView } from "react-native";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../../components/Header";
 import Title from "../../components/Title";
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Fornecedores() {
   const [data, setData] = useState([]);
@@ -14,12 +15,18 @@ export default function Fornecedores() {
 
   const fornecedoresGet = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`);
-      setData(response.data);
-      setFilteredData(response.data);
-      console.log(response.data);
+      const userId = await AsyncStorage.getItem('userId');
+
+      if (userId) {
+        const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
+        setData(response.data);
+        setFilteredData(response.data);
+        console.log('User ID:', userId);
+      } else {
+        console.error('User id não encontrado');
+      }
     } catch (error) {
-      console.log(error);
+      console.log('Erro ao buscar fornecedores:', error);
     }
   };
 
@@ -29,6 +36,10 @@ export default function Fornecedores() {
 
   const handleSearch = (query) => {
     setSearchQuery(query);
+    if (query === "") {
+      setFilteredData(data);
+      return;
+    }
     const newData = data.filter(item => 
       item.nome.toLowerCase().includes(query.toLowerCase()) ||
       item.cnpjCpf.toLowerCase().includes(query.toLowerCase()) ||
@@ -55,7 +66,7 @@ export default function Fornecedores() {
               <Text style={styles.addButtonText}>+</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.table}>
+          <ScrollView style={styles.table}>
             <View style={styles.row}>
               <Text style={styles.header}>CÓDIGO</Text>
               <Text style={styles.header}>NOME</Text>
@@ -79,7 +90,7 @@ export default function Fornecedores() {
                 </View>
               ))
             )}
-          </View>
+          </ScrollView>
         </View>
       </View>
     </>

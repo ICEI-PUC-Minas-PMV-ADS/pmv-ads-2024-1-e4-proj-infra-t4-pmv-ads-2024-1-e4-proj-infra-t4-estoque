@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from "react-native";
 import { TextInput, Snackbar, Text } from 'react-native-paper';
 import { Picker } from '@react-native-picker/picker';
-import Title from "../../components/Title";
 import axios from "axios";
 import { useRoute, useNavigation } from '@react-navigation/native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function EditProduto() {
   const [nome, setNome] = useState("");
@@ -17,6 +17,7 @@ export default function EditProduto() {
   const [estado, setEstado] = useState(0);
   const [fornecedores, setFornecedores] = useState([]);
   const [fornecedorSelecionado, setFornecedorSelecionado] = useState(null);
+  const [codigoProduto, setCodigoProduto] = useState("");
   const [errorVisible, setErrorVisible] = useState(false);
 
   const categorias = [
@@ -53,9 +54,9 @@ export default function EditProduto() {
   };
 
   const handleValorUnidadeChange = (value) => {
-    const formattedValue = formatCurrency(value);
-    setValorUnidade(formattedValue);
-    calculateTotal(formattedValue, quantidade);
+    const numericValue = value.replace(/[^0-9]/g, "");
+    setValorUnidade(numericValue);
+    calculateTotal(numericValue, quantidade);
   };
 
   const handleQuantidadeChange = (value) => {
@@ -64,9 +65,7 @@ export default function EditProduto() {
   };
 
   const calculateTotal = (valor, quantidade) => {
-    const numericValue = valor.replace(/[^0-9]/g, "");
-    const valorFloat = parseFloat(numericValue.replace(",", "."));
-
+    const valorFloat = parseFloat(valor.replace(",", "."));
     const total = valorFloat * parseInt(quantidade);
     const formattedTotal = formatCurrency(total.toString());
     setTotal(formattedTotal);
@@ -74,7 +73,8 @@ export default function EditProduto() {
 
   const pegandoDados = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/Fornecedores/usuarioIdFornecedores?usuarioId=474de96f-117e-41f3-a658-8931bda38b07`);
+      const userId = await AsyncStorage.getItem('userId');
+      const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
       setFornecedores(response.data);
     } catch (error) {
       console.error("Erro ao buscar fornecedores:", error);
@@ -83,17 +83,18 @@ export default function EditProduto() {
 
   const buscarProduto = async () => {
     try {
-      const response = await axios.get(`https://localhost:44398/api/Produtos/${produtoId}`);
+      const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/${produtoId}`);
       const produto = response.data;
       setNome(produto.nome);
       setDescricao(produto.descricao);
       setQuantidade(produto.quantidade.toString());
-      setValorUnidade(formatCurrency(produto.valorUnidade.toString()));
+      setValorUnidade(produto.valorUnidade.toString());
       setLocalizacao(produto.localizacao);
       setCategoria(produto.categoria);
       setEstado(produto.estadoProduto);
       setFornecedorSelecionado(produto.fornecedorId);
-      calculateTotal(formatCurrency(produto.valorUnidade.toString()), produto.quantidade.toString());
+      setCodigoProduto(produto.codigoProduto);
+      calculateTotal(produto.valorUnidade.toString(), produto.quantidade.toString());
     } catch (error) {
       console.error("Erro ao buscar produto:", error);
     }
@@ -104,16 +105,15 @@ export default function EditProduto() {
     buscarProduto();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     if (!nome || !descricao || !quantidade || !valorUnidade) {
       setErrorVisible(true);
       return;
     }
 
     try {
-      const response = await axios.put(`https://localhost:44398/api/Produtos/${produtoId}`, {
+      const userId = await AsyncStorage.getItem('userId');
+      await axios.put(`https://controledeestoqueapi.azurewebsites.net/api/Produtos/${produtoId}`, {
         nome: nome,
         descricao: descricao,
         quantidade: parseInt(quantidade),
@@ -122,12 +122,13 @@ export default function EditProduto() {
         estadoProduto: estado,
         categoria: categoria,
         fornecedorId: fornecedorSelecionado,
+        codigoProduto: codigoProduto,
         dataDeCriacao: new Date(),
-        usuarioId: '474de96f-117e-41f3-a658-8931bda38b07'
+        usuarioId: userId
       });
-      console.log("Dados do produto atualizados com sucesso!", response.data);
+      console.log("Dados do produto atualizados com sucesso!");
       setTimeout(() => {
-        window.location.reload();
+        navigation.navigate("Produtos", { userId: userId });
       }, 2000);
     } catch (error) {
       console.error("Ocorreu um erro ao atualizar os dados do produto:", error);
@@ -199,7 +200,7 @@ export default function EditProduto() {
               />
               <TextInput
                 label="Valor por unidade *"
-                value={valorUnidade}
+                value={formatCurrency(valorUnidade)}
                 onChangeText={handleValorUnidadeChange}
                 style={styles.InputMenor}
                 keyboardType="numeric"
@@ -255,34 +256,31 @@ export default function EditProduto() {
               ))}
             </Picker>
 
-            <Text style={styles.radioLabel}>Escolha na lista de fornecedores:</Text>
+            <Text style={styles.radioLabel}>Selecione um fornecedor:</Text>
             <Picker
               selectedValue={fornecedorSelecionado}
               style={styles.picker}
               onValueChange={(itemValue) => setFornecedorSelecionado(itemValue)}
             >
-              <Picker.Item label="Selecione..." value={null} />
-              {Array.isArray(fornecedores) && fornecedores.map(fornecedor => (
+              {fornecedores.map(fornecedor => (
                 <Picker.Item key={fornecedor.id} label={fornecedor.nome} value={fornecedor.id} />
               ))}
             </Picker>
-            <TouchableOpacity style={styles.salvarButton} onPress={handleSubmit}>
-              <Text style={styles.salvarButtonText}>SALVAR E FINALIZAR</Text>
+
+            <TouchableOpacity style={styles.botao} onPress={handleSubmit}>
+              <Text style={styles.textoBotao}>Salvar alterações</Text>
             </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
+
       <Snackbar
         visible={errorVisible}
         onDismiss={() => setErrorVisible(false)}
         duration={3000}
-        action={{
-          label: 'Fechar',
-          onPress: () => setErrorVisible(false),
-        }}
-        style={{ position: 'top' }}
+        style={{ backgroundColor: 'red' }}
       >
-        Preencha todos os campos obrigatórios.
+        Por favor, preencha todos os campos obrigatórios.
       </Snackbar>
     </KeyboardAvoidingView>
   );
@@ -291,57 +289,57 @@ export default function EditProduto() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: '#5871fb',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    backgroundColor: '#f5f5f5',
   },
   Quadrado: {
-    flex: 1,
-    flexDirection: 'column',
     backgroundColor: '#ffffff',
+    borderRadius: 10,
     padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '100%',
+    maxWidth: 500,
   },
   InputPadrao: {
-    color: 'black',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   InputDescricao: {
-    textAlignVertical: 'top',
-  },
-  InputMenor: {
-    color: 'black',
-    marginBottom: 20,
-    height: 40,
-    width: 130,
+    height: 100,
   },
   InputsLinkados: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  InputMenor: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
   radioLabel: {
-    fontSize: 16,
+    marginTop: 15,
+    marginBottom: 5,
+    color: '#a9a9a9',
+  },
+  picker: {
+    backgroundColor: '#ffffff',
+    borderRadius: 5,
     marginBottom: 10,
-    color: '#000',
-    marginTop: 30,
-    fontWeight: 'bold',
   },
-  borda: {
-    borderWidth: 1,
-    borderColor: "#ccc",
+  botao: {
+    backgroundColor: '#5871fb',
+    paddingVertical: 12,
     borderRadius: 5,
-    overflow: 'hidden',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 10,
+    marginTop: 10,
   },
-  salvarButton: {
-    backgroundColor: '#007BFF',
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 20
-  },
-  salvarButtonText: {
-    color: '#fff',
+  textoBotao: {
+    color: '#ffffff',
+    fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'center',
   },
 });

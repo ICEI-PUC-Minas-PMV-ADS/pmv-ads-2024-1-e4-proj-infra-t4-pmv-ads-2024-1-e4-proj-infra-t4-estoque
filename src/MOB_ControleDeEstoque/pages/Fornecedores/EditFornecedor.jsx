@@ -3,6 +3,7 @@ import { useRoute, useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { View, ScrollView, StyleSheet, KeyboardAvoidingView, Platform, TouchableOpacity } from "react-native";
 import { TextInput, Snackbar, Text } from 'react-native-paper';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function EditFornecedor() {
   const route = useRoute();
@@ -29,10 +30,11 @@ export default function EditFornecedor() {
     }
 
     try {
-      await axios.put(`https://localhost:44398/api/Fornecedores/${id}`, formData);
+      const userId = await AsyncStorage.getItem('userId');
+      await axios.put(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/${id}`, formData);
       console.log("Dados do fornecedor atualizados com sucesso!");
       setTimeout(() => {
-        navigation.navigate("Fornecedores", { userId: "474de96f-117e-41f3-a658-8931bda38b07" });
+        navigation.navigate("Fornecedores", { userId: userId });
       }, 2000);
     } catch (error) {
       console.error("Erro ao editar fornecedor:", error);
@@ -41,8 +43,10 @@ export default function EditFornecedor() {
 
   useEffect(() => {
     const fetchFornecedorData = async () => {
+      
       try {
-        const response = await axios.get(`https://localhost:44398/api/Fornecedores/${id}`);
+        
+        const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/${id}`);
         const fornecedorData = response.data;
         setFormData(fornecedorData);
       } catch (error) {
@@ -62,22 +66,7 @@ export default function EditFornecedor() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.container}>
           <View style={styles.Quadrado}>
-            <TextInput
-              label="Código do Fornecedor"
-              value={formData.codigoFornecedor}
-              editable={false}
-              style={styles.InputPadrao}
-              theme={{
-                colors: {
-                  primary: '#5871fb',
-                  underlineColor: 'transparent',
-                  background: '#ffffff',
-                  placeholder: '#a9a9a9',
-                  text: '#000000',
-                },
-              }}
-              mode="outlined"
-            />
+         
             <TextInput
               label="Nome *"
               value={formData.nome}

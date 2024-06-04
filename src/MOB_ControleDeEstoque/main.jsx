@@ -9,6 +9,7 @@ import EditFornecedor from "./pages/Fornecedores/EditFornecedor";
 import LandingPage from "./pages/Start/LandingPage";
 import Login from "./pages/Start/Login";
 import Register from "./pages/Start/Register";
+import Produtos from './pages/Produtos/Produtos';
 
 const Stack = createNativeStackNavigator();
 
@@ -43,6 +44,13 @@ const Main = () => {
           header: () => null,
         }}
       />
+       <Stack.Screen
+        name="Produtos"
+        component={Home}
+        options={{
+          header: () => null,
+        }}
+      />
       <Stack.Screen
         name="AddProduto"
         component={AddProduto}
@@ -71,8 +79,7 @@ const Main = () => {
         component={AddFornecedor}
         options={{
           title: "Adicionar Fornecedor",
-          headerStyle: { backgroundColor: "#5871fb" },
-          headerTintColor: "#fff",
+         
         }}
       />
       <Stack.Screen
@@ -80,8 +87,7 @@ const Main = () => {
         component={EditFornecedor}
         options={{
           title: "Editar Fornecedor",
-          headerStyle: { backgroundColor: "#5871fb" },
-          headerTintColor: "#fff",
+       
         }}
       />
     </Stack.Navigator>

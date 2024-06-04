@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet, ScrollView, KeyboardAvoidingView, Platform, TouchableOpacity } from "react-native";
-import { TextInput, Snackbar, Text } from 'react-native-paper';
+import { TextInput, Text, Snackbar } from 'react-native-paper';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 export default function AddFornecedor() {
   const navigation = useNavigation();
@@ -11,9 +13,21 @@ export default function AddFornecedor() {
     nome: "",
     email: "",
     cnpjCpf: "",
-    usuarioId: "474de96f-117e-41f3-a658-8931bda38b07"
+    usuarioId: ""
   });
   const [errorVisible, setErrorVisible] = useState(false);
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+
+  useEffect(() => {
+    const getUserId = async () => {
+      const userId = await AsyncStorage.getItem('userId');
+      if (userId) {
+        setFormData(prevFormData => ({ ...prevFormData, usuarioId: userId }));
+      }
+    };
+    getUserId();
+  }, []);
 
   const generateFornecedorCode = () => {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -40,12 +54,16 @@ export default function AddFornecedor() {
     }
 
     try {
-      await axios.post(`https://localhost:44398/api/Fornecedores/`, formData);
+      await axios.post(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/`, formData);
+      setSnackbarMessage('Fornecedor salvo com sucesso!');
+      setSnackbarVisible(true);
       setTimeout(() => {
         navigation.navigate("Fornecedores", { userId: formData.usuarioId });
       }, 2000);
     } catch (error) {
       console.error("Erro ao adicionar fornecedor:", error);
+      setSnackbarMessage('Ocorreu um erro ao salvar o fornecedor.');
+      setSnackbarVisible(true);
     }
   };
 
@@ -110,26 +128,29 @@ export default function AddFornecedor() {
               placeholder="Digite o CNPJ ou CPF do fornecedor"
             />
             <TouchableOpacity style={styles.salvarButton} onPress={handleSubmit}>
-              <Text style={styles.salvarButtonText}>SALVAR E FINALIZAR</Text>
+            <Text style={styles.salvarButtonText}>SALVAR E FINALIZAR</Text>
             </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
       <Snackbar
-        visible={errorVisible}
-        onDismiss={() => setErrorVisible(false)}
-        duration={3000}
-        action={{
-          label: 'Fechar',
-          onPress: () => setErrorVisible(false),
-        }}
-        style={{ position: 'top' }}
-      >
-        Preencha todos os campos obrigatórios.
-      </Snackbar>
+      visible={snackbarVisible}
+      onDismiss={() => setSnackbarVisible(false)}
+      duration={3000}
+      action={{
+        label: 'Fechar',
+        onPress: () => setSnackbarVisible(false),
+      }}
+      style={{ position: 'top' }}
+    >
+      {snackbarMessage}
+    </Snackbar>
+
     </KeyboardAvoidingView>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
