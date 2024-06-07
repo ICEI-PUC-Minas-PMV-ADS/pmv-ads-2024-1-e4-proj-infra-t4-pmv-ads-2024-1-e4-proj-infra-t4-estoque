@@ -60,7 +60,7 @@ export default function Header() {
   useEffect(() => {
     async function getDadosUsuario() {
       try {
-        const response = await axios.get(`https://localhost:44398/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
+        const response = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Auth/usuarioIdDados?usuarioId=${userId}`, {
           headers: {
             Authorization: `Bearer ${Cookies.get("token")}`
           }
