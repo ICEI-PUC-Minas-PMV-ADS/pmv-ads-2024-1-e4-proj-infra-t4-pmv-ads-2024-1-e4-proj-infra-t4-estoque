@@ -5,6 +5,7 @@ import BotaoMostrarSenha from '../../components/BotaoMostrarSenha/BotaoMostrarSe
 import Swal from 'sweetalert2';
 import InputMask from 'react-input-mask';
 import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 
 import {
   ContainerConfiguracaoPerfil,
@@ -23,6 +24,7 @@ export default function ConfiguracaoPerfil() {
   const [senhaAtualVisivel, toggleSenhaAtualVisivel] = useState(false);
   const [data] = useState([]);
   const userId = localStorage.getItem('userId', data.userId);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     newUserName: "",
@@ -127,8 +129,8 @@ export default function ConfiguracaoPerfil() {
       });
     }
     setTimeout(() => {
-      window.location.reload();
-    }, 3050);
+      navigate(`/home/${userId}`);
+    }, 3050); 
   };
 
   return (
