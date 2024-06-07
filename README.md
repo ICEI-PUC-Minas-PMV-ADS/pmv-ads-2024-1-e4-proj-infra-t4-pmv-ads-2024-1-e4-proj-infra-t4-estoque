@@ -31,8 +31,8 @@ Nosso projeto visa criar uma plataforma intuitiva que permitirá às empresas mo
 https://controle-de-estoque-puc.vercel.app/
 ### Mobile:
 Abra o projeto MOB_ControleDeEstoque </br>
-Com o projeto aberto execute no terminal: npm i --force </br>
-Em seguida inicie o projeto com: npx expo start </br>
+Com o projeto aberto execute no terminal: `npm i --force` </br>
+Em seguida inicie o projeto com: `npx expo start` </br>
 Instale o Expo Go em seu dispositivo e escaneie o QR CODE
 
 
