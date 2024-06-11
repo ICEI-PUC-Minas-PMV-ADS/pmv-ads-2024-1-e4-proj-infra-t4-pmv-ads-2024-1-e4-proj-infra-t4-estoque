@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
-import Cookies from 'js-cookie'
+
 import { Button } from "../../../components/Button/Button";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import {
     ContainerProduto,
@@ -27,6 +27,7 @@ export default function EditProduto() {
     const { id } = useParams();
     const [data] = useState([]);
     const userId = localStorage.getItem('userId', data.userId);
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
         nomeProduto: "",
         descricaoProduto: "",
@@ -45,7 +46,6 @@ export default function EditProduto() {
 
     async function pegandoDados() {
         try {
-
             const fornecedoresData = await axios.get(`https://controledeestoqueapi.azurewebsites.net/api/Fornecedores/usuarioIdFornecedores?usuarioId=${userId}`);
             setFornecedores(fornecedoresData.data);
 
@@ -136,6 +136,10 @@ export default function EditProduto() {
                 title: 'Sucesso!',
                 text: 'Dados do produto atualizados com sucesso.',
             });
+
+            setTimeout(() => {
+                navigate(`/home/${userId}`);
+            }, 2000);
         } catch (error) {
             Swal.fire({
                 icon: 'error',
@@ -144,9 +148,6 @@ export default function EditProduto() {
             });
             console.error("Ocorreu um erro ao atualizar os dados do produto:", error);
         }
-        setTimeout(() => {
-            window.location.reload();
-        }, 2000);
     };
 
     return (
@@ -294,7 +295,7 @@ export default function EditProduto() {
                                 ))}
                             </select>
                             <ContainerButton>
-                                <Link to={`/addFornecedor/${userId}`} target="_blank">
+                            <Link to={`/addFornecedor/${userId}`}>
                                     <Button
                                         text="Novo Fornecedor"
                                         type="button"

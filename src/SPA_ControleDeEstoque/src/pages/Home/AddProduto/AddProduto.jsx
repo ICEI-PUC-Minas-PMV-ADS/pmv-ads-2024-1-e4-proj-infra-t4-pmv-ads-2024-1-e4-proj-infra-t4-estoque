@@ -297,7 +297,7 @@ export default function AddProduto() {
                             </Select>
 
                             <ContainerButton>
-                                <Link to={`/addFornecedor/${userId}`} target="_blank">
+                            <Link to={`/addFornecedor/${userId}`}>
                                     <Button
                                         text="Novo Fornecedor"
                                         type="button"
