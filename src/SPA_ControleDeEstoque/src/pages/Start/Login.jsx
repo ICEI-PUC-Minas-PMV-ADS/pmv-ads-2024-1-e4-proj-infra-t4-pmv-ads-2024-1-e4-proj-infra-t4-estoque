@@ -12,8 +12,11 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [loginError, setLoginError] = useState(false);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
 
         const response = await fetch('https://controledeestoqueapi.azurewebsites.net/api/Auth/login', {
             method: 'POST',
@@ -21,10 +24,12 @@ const Login = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email, password })
+
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            setLoginError(`ERRO HTTP status: ${response.status}`);
+            throw new Error(`ERRO HTTP status: ${response.status}`);
         }
         const data = await response.json();
 
@@ -32,11 +37,12 @@ const Login = () => {
 
             localStorage.setItem('acessToken', data.acessToken);
             localStorage.setItem('userId', data.userId);
-            //console.log('Login successful');
-
+            setLoginError('');
             history(`/home/${data.userId}`);
+            //console.log('Login successful');
         } else {
-            console.error('Invalid login credentials');
+            setLoginError('Login ou senha incorreta');
+            //console.error('Invalid login credentials');
         }
     };
 
@@ -100,7 +106,7 @@ const Login = () => {
                                 Manter conectado</label>
                             <a href="#">Esqueceu sua senha?</a>
                         </div>
-
+                        {loginError && <p style={{ color: 'red', padding: 2 }}>E-mail ou senha incorreta</p>}
                         <button type="submit">Login</button>
 
                         <div className="register-link">
@@ -133,6 +139,7 @@ const Login = () => {
                         <div className="input-box">
                             <input type="password" placeholder="Confirme sua senha" required value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
                             <FaLock className="icon" />
+                            <p style={{ fontSize: 10 }}>A senha deve possuir caractere especial, numero, maiuscula e minuscula</p>
                         </div>
                         <div className="remember-forgot">
                             <label><input type="checkbox" required />
