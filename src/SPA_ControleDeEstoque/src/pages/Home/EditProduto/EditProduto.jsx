@@ -154,7 +154,7 @@ export default function EditProduto() {
         <>
             <Header />
             <ContainerProduto>
-                <LeftTitle>EDIÇÃO DE PRODUTO - ID: {id}</LeftTitle>
+                <LeftTitle>EDIÇÃO DE PRODUTO</LeftTitle>
                 <ContainerForm>
                     <h6 style={{ fontSize: "30px" }}> Informações do Produto </h6>
                     <hr />
