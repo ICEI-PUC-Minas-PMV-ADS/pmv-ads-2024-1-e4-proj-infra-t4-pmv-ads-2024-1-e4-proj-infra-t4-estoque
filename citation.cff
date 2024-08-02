@@ -1,0 +1,24 @@
+message: Please cite this software using these metadata.
+title: Estoque
+authors:
+  - family-names: de Sousa Gonçalves
+    given-names: Jadir
+  - family-names: Costa Junior
+    given-names: Joanes
+  - family-names: Silva Coutinho
+    given-names: Luisa
+  - family-names: Fonseca Pereira
+    given-names: Ricardo
+  - family-names: Henrique de Oliveira Souza
+    given-names: Thiago
+  - family-names: Ruas Toledo
+    given-names: Diego
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Alves de Oliveira
+    given-names: Pedro
+keywords:
+  - Estoque
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-pmv-ads-2024-1-e4-proj-infra-t4-estoque
+version: 1.0.0
+date-released: 2024-02-01
